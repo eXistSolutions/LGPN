@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns="http://exist-db.org/collection-config/1.0">
+    <index xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <fulltext default="none" attributes="false"/>
+        <range>
+            <create qname="@nymRef" type="xs:string"/>
+            <create qname="tei:placeName">
+                <field name="placeName" type="xs:string" case="no"/>
+                <field name="key" match="@key" type="xs:string"/>
+            </create>
+            <create qname="tei:form">
+                <field name="form" type="xs:string" case="no"/>
+                <field name="form-lang" type="xs:string" match="@xml:lang"/>
+            </create>
+        </range>
+    </index>
+</collection>
