@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="en">
+    <head>
+        <title>LGPN</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+        <link href="resources/css/jquery.tagit.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
+        <script src="$shared/resources/scripts/jquery/jquery-ui.min.js" type="text/javascript" charset="utf-8"/>
+        <script src="resources/js/tag-it.js" type="text/javascript" charset="utf-8"/>
+        <script>
+        $(document).ready(function() {
+
+    var wrapper = document.getElementById("segment");
+    var x = 1;
+    $('#add_segment').click(function(e){ 
+        x=addSegmentationSection(wrapper, x, e);
+        //x=badSegmentationSection(wrapper, x, e);
+    });
+    
+    });
+
+
+function createInputField(name, classN, placeholder, i) {
+    iField = document.createElement("input");
+    iField.setAttribute('type', 'text');
+    iField.setAttribute('class', classN);
+    iField.setAttribute('placeholder', placeholder);
+    iField.setAttribute('name', name+'['+i+']');
+    return iField;
+}
+
+function createInputGroup(width, labelF, inpF) {
+    odiv = document.createElement("div");
+    odiv.setAttribute('class', 'col-xs-'+width);
+
+    idiv = document.createElement("div");
+    idiv.setAttribute('class', 'input-group');
+
+    span = document.createElement("span");
+    span.setAttribute('class', 'input-group-addon');
+
+    span.appendChild(labelF);
+    idiv.appendChild(span);
+    idiv.appendChild(inpF);
+    odiv.appendChild(idiv);
+
+    return odiv;
+}
+
+
+function createLabelGroup(label, glyphicon) {
+    span = document.createElement("span");
+    span.setAttribute('class', 'glyphicon '+glyphicon);
+    txt = document.createTextNode(label);
+    span.innerText = txt.textContent;
+    return span;
+
+}
+
+
+function createSelectField(name, classN, options, i) {
+    iField = document.createElement("select");
+    iField.setAttribute('name', name+'['+i+']');
+    iField.setAttribute('class', classN);
+    
+    for(k in options) {
+        opt = document.createElement("option");
+        opt.setAttribute('value', options[k]);
+        txt = document.createTextNode(options[k]);
+        opt.innerText = txt.textContent;
+        iField.appendChild(opt);
+    }
+    return iField;
+}
+
+
+function addSegmentationSection(wrapper, i, e) {
+    e.preventDefault();
+
+        hr = document.createElement("hr");
+
+        row1 = document.createElement("div");
+        row1.setAttribute('class', 'row');
+        br = document.createElement("br");
+        row2 = document.createElement("div");
+        row2.setAttribute('class', 'row');
+
+/* top row */
+        inputG1 = createInputGroup(3, createLabelGroup(' morpheme', 'glyphicon-th-list'), createInputField('morpheme', 'form-control', 'morpheme', i));
+
+        inputG2 = createInputGroup(2, createLabelGroup(' type', ''), createSelectField('type', 'form-control', ['radical', 'prefix', 'suffix'], i));
+
+        label3 = createLabelGroup(' subtype', '');
+        input3 = createSelectField('subtype', 'form-control', ['flexional'], i);
+        inputG3 = createInputGroup(3, createLabelGroup('subtype', ''), createSelectField('subtype', 'form-control', ['flexional'], i));
+       inputG4 = createInputGroup(2, createLabelGroup('function', ''), createSelectField('function', 'form-control', ['Verb', 'Noun'], i));
+       inputG5 = createInputGroup(2, createLabelGroup('n', ''), createSelectField('n', 'form-control', ['1', '2', '3'], i));
+        row1.appendChild(inputG1);
+        row1.appendChild(inputG2);
+        row1.appendChild(inputG3);
+        row1.appendChild(inputG4);
+        row1.appendChild(inputG5);
+
+        inputG21 = createInputGroup(3, createLabelGroup(' semantic categories', 'glyphicon-tasks'), createInputField('tags', 'semantic_tags', '', i));
+
+        row2.appendChild(inputG21);
+
+        wrapper.appendChild(hr);
+        wrapper.appendChild(row1);
+        wrapper.appendChild(br);
+        wrapper.appendChild(row2);
+
+    return i++;
+}
+
+
+function badSegmentationSection(wrapper, i, e) {
+    e.preventDefault();
+
+/*
+    var fr = '<div class="col-xs-6">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-font"/>
+                    </span>
+                    <input type="text" class="form-control" id="lname" placeholder="Enter Latin form"/>
+                </div>
+            </div>
+       ';
+  */
+  createFragment(wrapper, fr, 'blah');
+
+    return i++;
+}
+
+function createFragment(wrapper, html, id) {
+    tmp = document.createElement('div');
+    tmp.id=id;
+    
+    $('#'+id).html(html);
+//    tmp.html(html);
+
+    wrapper.appendChild(tmp);
+}
+
+
+</script>
+        <script type="text/javascript">
+
+        $(function(){
+            var semanticTags = ['earth', 'wind', 'fire', 'water', 'air'];
+
+            var dialectTags = ['Aeolic', 'Arcado-Cypriot', 'Beotian', 'Ionic-Attic', 'Lesbian', 'Macedonian', 'Pamphylian', 'Thessalian', 'North-West Greek'];
+
+            $('.semantic_tags').tagit({
+                availableTags: semanticTags
+            });
+
+            $('.dialect_tags').tagit({
+                availableTags: dialectTags
+            });
+            
+        });
+    </script>
+        <style>
+    fieldset {
+    border: 1px solid #eee;
+    padding: 0 1.4em 1.4em 1.4em;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend {
+    width:inherit; /* Or auto */
+    padding:0 10px;
+    border-bottom:none;
+}
+
+/* there's a clash with bootstrap stuff somewhere here */
+ul.tagit, ul.ui-widget, ul.ui-widget-content, ul.ui-corner-all {
+    display:block;
+    width:100%;
+    height:40px;
+    padding:3px 12px;
+    font-size:14px;
+    line-height:1.428571429;
+    color:#555;
+    vertical-align:middle;
+    background-color:#fff;
+    background-image:none;
+    border:1px solid #ccc;
+    border-radius:4px;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+button {
+    border:1px solid #ccc;
+    background-color:#fff;
+    background-image:none;
+    border-radius:4px;
+    -webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
+    
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>LGPN Advanced Search (incorporating fields from linguistic database)</h2>
+            <form>
+                <fieldset id="segment">
+                    <legend>Basic search</legend>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">α</span>
+                                <input type="text" class="form-control" id="gname" placeholder="Ἀγαθοβούλα"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> in</span>
+                                <select class="form-control" id="forms">
+                                    <option>all forms</option>
+                                    <option>Greek (accented)</option>
+                                    <option>Greek (unaccented)</option>
+                                    <option>Latin transliteration</option>
+                                    <option>name variant</option>
+                                    <option>full name</option>
+                                    <option>betacode</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">#</span>
+                                <input type="text" class="form-control" id="gname" placeholder="id"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-map-marker"/>
+                                </span>
+                                <input name="prefix" class="form-control" id="prefix" placeholder="place"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-map-marker"/>
+                                </span>
+                                <input name="prefix" class="form-control" id="prefix" placeholder="code"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"/> start date</span>
+                                <select class="form-control" id="date_nb">
+                                    <option>-400</option>
+                                    <option>-300</option>
+                                    <option>-200</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"/> end date</span>
+                                <select class="form-control" id="date_na">
+                                    <option>-400</option>
+                                    <option>-300</option>
+                                    <option>-200</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <br/>
+                <fieldset id="segment">
+                    <legend>Advanced criteria</legend>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">floruit</span>
+                                <input type="text" class="form-control input-sm" id="gname" placeholder="ii-i BC"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> status</span>
+                                <select class="form-control input-sm" id="forms">
+                                    <option>any</option>
+                                    <option>stat1</option>
+                                    <option>stat2</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">region</span>
+                                <input type="text" class="form-control input-sm" id="gname" placeholder="Baeotia"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">settlement</span>
+                                <input type="text" class="form-control input-sm" id="gname" placeholder="Baeotia"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">deme</span>
+                                <input type="text" class="form-control input-sm" id="gname" placeholder="Baeotia"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <br/>
+                <fieldset id="segment">
+                    <legend>Linguistic criteria</legend>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"/>
+                                </span>
+                                <select class="form-control" id="gender">
+                                    <option>any gender</option>
+                                    <option>f</option>
+                                    <option>m</option>
+                                    <option>a</option>
+                                </select>
+                            </div>
+                        </div><!--
+                    <div class="col-xs-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">dialect</span>
+                            <input type="text" class="dialect_tags tag-control" id="dialect" value="Beotian" placeholder="Enter dialect names separated by space"/>
+                        </div>
+                    </div>
+                    -->
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <span class="input-group-addon  input-sm">
+                                    <span class="glyphicon glyphicon-th-list"/> radical</span>
+                                <input type="text" class="form-control input-sm" id="morpheme" placeholder="Ἀγαθο"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="input-group">
+                                <span class="input-group-addon input-sm">
+                                    <span class="glyphicon glyphicon-th-list"/> in</span>
+                                <select class="form-control input-sm" id="gender">
+                                    <option>base form</option>
+                                    <option>literal form</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="input-group">
+                                <span class="input-group-addon input-sm">
+                                    <span class="glyphicon glyphicon-th-list"/> in</span>
+                                <select class="form-control input-sm" id="gender">
+                                    <option>any position</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon input-sm">
+                                    <span class="glyphicon glyphicon-th-list"/> in function</span>
+                                <select class="form-control  input-sm" id="function">
+                                    <option>Verb</option>
+                                    <option>Noun</option>
+                                    <option>Adjective</option>
+                                    <option>Pronoun</option>
+                                    <option>Adverb</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> covering semantic fields</span>
+                                <input name="tags1[0]" class="semantic_tags" id="tags[0]" value="good"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> containing suffix</span>
+                                <select class="form-control input-sm" id="function">
+                                    <option/>
+                                    <option>α</option>
+                                    <option>αδ</option>
+                                    <option>α(ϝ)</option>
+                                    <option>αινα</option>
+                                    <option>ακ</option>
+                                    <option>αλ</option>
+                                    <option>αλλ</option>
+                                    <option>αν</option>
+                                    <option>ανν</option>
+                                    <option>αξ</option>
+                                    <option>...</option>
+                                    <option>ως</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> in</span>
+                                <select class="form-control input-sm" id="suf pos">
+                                    <option>any position</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!--
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> referenced in</span>
+                                <select class="form-control input-sm" id="suf pos">
+                                    <option>Thgn</option>
+                                    <option>a</option>
+                                    <option>b</option>
+                                    <option>c</option>
+                                    <option>d</option>
+                                </select>
+                            </div>
+                        </div>
+                            <div class="col-xs-3">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-bookmark"/> containing </span>
+                                    <input type="text" class="form-control input-sm" id="a_reference" placeholder="Thgn 163"/>
+                                </div>
+                            </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> in</span>
+                                <select class="form-control input-sm" id="suf pos">
+                                    <option>any</option>
+                                    <option>sources</option>
+                                    <option>lexicographic</option>
+                                    <option>onomastic</option>
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+                        -->
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
