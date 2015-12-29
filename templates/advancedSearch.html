@@ -62,7 +62,7 @@
                     <span class="input-group-addon">
                         <i18n:text key="region">region</i18n:text>
                     </span>
-                    <input type="text" class="form-control input-sm" id="pregion" name="pregion" placeholder="Baeotia" data-template="templates:form-control"/>
+                    <input type="text" class="form-control input-sm" id="pregion" name="pregion" placeholder="e.g. Attica" data-template="templates:form-control"/>
                 </div>
             </div>
             <div class="col-xs-2">
@@ -70,7 +70,7 @@
                     <span class="input-group-addon">
                         <i18n:text key="settlement">city</i18n:text>
                     </span>
-                    <input type="text" class="form-control input-sm" id="psettlement" name="psettlement" placeholder="Baeotia" data-template="templates:form-control"/>
+                    <input type="text" class="form-control input-sm" id="psettlement" name="psettlement" placeholder="e.g. Athens" data-template="templates:form-control"/>
                 </div>
             </div>
             <div class="col-xs-2">
@@ -78,7 +78,7 @@
                     <span class="input-group-addon">
                         <i18n:text key="subarea">subarea</i18n:text>
                     </span>
-                    <input type="text" class="form-control input-sm" id="psubarea" name="psubarea" placeholder="Baeotia" data-template="templates:form-control" disabled="disabled"/>
+                    <input type="text" class="form-control input-sm" id="psubarea" name="psubarea" placeholder="e.g. Acharnai" data-template="templates:form-control" disabled="disabled"/>
                 </div>
             </div>
             <div class="col-xs-2">
@@ -140,13 +140,13 @@
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-user"/>
                     </span>
-                    <select class="form-control" id="gender">
-                        <option>
+                    <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                        <option value="0">
                             <i18n:text key="anyGender">any gender</i18n:text>
                         </option>
-                        <option>f</option>
-                        <option>m</option>
-                        <option>a</option>
+                        <option value="2">f</option>
+                        <option value="1">m</option>
+                        <option value="9">a</option>
                     </select>
                 </div>
             </div>

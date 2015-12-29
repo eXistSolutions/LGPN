@@ -51,7 +51,7 @@ declare function app:prepare-query($node as node(), $model as map(*), $ref as xs
     let $datePredicate := app:datePredicate()
     let $genderPredicate := app:genderPredicate()
 
-    let $predicate-string :=    $placePredicate || $datePredicate
+    let $predicate-string :=    $placePredicate || $datePredicate || $genderPredicate
     
     let $query-string := 
             'collection("' || $config:volumes-root || '")//tei:persName[@nymRef="' || $ref || '"]/parent::tei:person' || $predicate-string
@@ -80,9 +80,9 @@ declare function app:placePredicate() as xs:string? {
 };
 
 declare function app:genderPredicate() as xs:string? {
-    let $pplace:=request:get-parameter('pplace', ())
+    let $gender:=request:get-parameter('pgender', ())
 
-    return if (string($pplace)) then '[.//tei:birth/tei:placeName[.="' || $pplace || '"]]' else ()
+    return if (number($gender)>0) then '[.//tei:sex[@value="' || $gender || '"]]' else ()
 };
 
 
@@ -119,6 +119,22 @@ function app:show-results($node as node(), $model as map(*)) {
     else
         <tr><td>Please enter a query...</td></tr>
 };
+
+declare function app:name-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
+    let $letter := 'Γ'
+(:     let $phrasePredicate := if ($phrase) then concat('[', "ft:query(.,'", $phrase, "')", ']') else ():)
+    
+    for $name in collection($config:volumes-root)//tei:nym[tei:form[@xml:lang='grc-grc-x-noaccent'][starts-with(., $letter)]]
+    order by $name/tei:form[@xml:lang='grc-grc-x-noaccent']
+    return 
+        <tr>
+            <td><a>
+                {attribute href { "index.html?pname=" || $name/tei:form[@xml:lang="grc"]/string() } }
+                {$name/tei:form[@xml:lang="grc"]}</a></td>
+            <td>{count($config:persons//tei:person[tei:persName[@nymRef=concat("#", $name/@xml:id)]]) }</td>
+        </tr>
+};
+
 
 declare function app:download-kml($content as node(), $name as xs:string) {
     (

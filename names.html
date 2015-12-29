@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="page-header">
+        <h1>
+            <i18n:text key="name_catalogue">Name catalogue</i18n:text>
+        </h1>
+    </div>
+    <div class="row i18n:translate?lang=en&amp;catalogues=data/i18n">
+        <div class="col-md-12"/>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <i18n:text key="name">Name</i18n:text>
+                        </th>
+                        <th>
+                            <i18n:text key="hits">Hits</i18n:text>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody data-template="app:name-catalogue"/>
+            </table>
+        </div>
+    </div>
+</div>

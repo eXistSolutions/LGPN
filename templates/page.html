@@ -10,6 +10,21 @@
         <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
+        <style type="text/css">
+        fieldset {
+    border: 1px solid #eee;
+    padding: 0 1.4em 1.4em 1.4em;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend {
+    width:inherit; /* Or auto */
+    padding:0 10px;
+    border-bottom:none;
+}
+
+    </style>
     </head>
     <body id="body">
         <nav class="navbar navbar-default" role="navigation">
@@ -25,12 +40,24 @@
             <div class="navbar-collapse collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="dropdown" id="about">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+                        <a href="index.html">Home</a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="index.html">Home</a>
                             </li>
                         </ul>
+                    </li>
+                    <li id="fr">
+                        <a href="?lang=fr">Fr</a>
+                    </li>
+                    <li id="en">
+                        <a href="?lang=en">En</a>
+                    </li>
+                    <li id="de">
+                        <a href="?lang=de">De</a>
+                    </li>
+                    <li id="names">
+                        <a href="names.html">Name catalogue</a>
                     </li>
                 </ul>
             </div>
