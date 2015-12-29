@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <div class="page-header">
         <h1 data-template="config:app-title">Generated page</h1>
     </div>
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row i18n:translate?lang=en&amp;catalogues=data/i18n">
+        <div class="col-md-12">
+            <form data-template="templates:include" data-template-path="templates/advancedSearch.html"/><!--
             <form class="form form-horizontal" action="" method="GET">
                 <div class="form-group">
-                    <label for="pname" class="col-sm-4 control-label">Name (accented or not):</label>
+                    <label for="pname" class="col-sm-4 control-label"><i18n:text key="nameAccentedOrNot">Name (accented or not):</i18n:text></label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="pname" name="pname" placeholder="Name" data-template="templates:form-control"/>
                     </div>
@@ -15,23 +16,38 @@
                 <div class="form-group">
                     <div class="col-sm-8 col-sm-offset-4">
                         <button type="submit" class="btn btn-primary">
-                            <i class="glyphicon glyphicon-search"/> Search</button>
+                            <i class="glyphicon glyphicon-search"/> <i18n:text key="search">Search</i18n:text></button>
                     </div>
                 </div>
             </form>
+            -->
         </div>
     </div>
+    <br/>
     <div class="row">
         <div class="col-md-12" data-template="app:search">
+            <br/>
+            <div data-template="app:show-query"/>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Sex</th>
-                        <th>Place</th>
-                        <th>Floruit</th>
-                        <th>References</th>
+                        <th>
+                            <i18n:text key="name">Name</i18n:text>
+                        </th>
+                        <th>
+                            <i18n:text key="sex">Sex</i18n:text>
+                        </th>
+                        <th>
+                            <i18n:text key="place">Place</i18n:text>
+                        </th>
+                        <th>KML</th><!--th>KML2</th-->
+                        <th>
+                            <i18n:text key="floruit">Floruit</i18n:text>
+                        </th>
+                        <th>
+                            <i18n:text key="references">References</i18n:text>
+                        </th>
                     </tr>
                 </thead>
                 <tbody data-template="app:show-results"/>
