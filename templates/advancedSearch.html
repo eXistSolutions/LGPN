@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n" class="form form-horizontal i18n:translate?lang=en&amp;catalogues=data/i18n" action="" method="GET">
+    <fieldset id="segment">
+        <legend>
+            <i18n:text key="searchHeading">LGPN Advanced Search</i18n:text>
+        </legend>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">α</span>
+                    <input type="text" class="form-control" name="pname" placeholder="name" data-template="templates:form-control"/>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="in">in</i18n:text>
+                    </span>
+                    <select class="form-control" id="forms" name="nameForms" data-template="templates:form-control">
+                        <option>
+                            <i18n:text key="allForms">all forms</i18n:text>
+                        </option>
+                        <option>
+                            <i18n:text key="greekAccented">Greek (accented)</i18n:text>
+                        </option>
+                        <option>
+                            <i18n:text key="greekUnaccented">Greek (unaccented)</i18n:text>
+                        </option>
+                        <option>
+                            <i18n:text key="latinTransliteration">Latin transliteration</i18n:text>
+                        </option>
+                        <option>
+                            <i18n:text key="nameVariant">name variant</i18n:text>
+                        </option>
+                        <option>
+                            <i18n:text key="fullText">full text</i18n:text>
+                        </option>
+                        <option>betacode</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">#</span>
+                    <input type="text" class="form-control" id="nameId" name="nameId" placeholder="id" data-template="templates:form-control"/>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-map-marker"/>
+                    </span>
+                    <input name="pplace" class="form-control" id="pplace" placeholder="place" data-template="templates:form-control"/>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <i18n:text key="region">region</i18n:text>
+                    </span>
+                    <input type="text" class="form-control input-sm" id="pregion" name="pregion" placeholder="Baeotia" data-template="templates:form-control"/>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <i18n:text key="settlement">city</i18n:text>
+                    </span>
+                    <input type="text" class="form-control input-sm" id="psettlement" name="psettlement" placeholder="Baeotia" data-template="templates:form-control"/>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <i18n:text key="subarea">subarea</i18n:text>
+                    </span>
+                    <input type="text" class="form-control input-sm" id="psubarea" name="psubarea" placeholder="Baeotia" data-template="templates:form-control" disabled="disabled"/>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-map-marker"/>
+                    </span>
+                    <input class="form-control" id="pplaceId" name="pplaceId" placeholder="code" data-template="templates:form-control"/>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"/>
+                        <i18n:text key="dateBetween">date between</i18n:text>
+                    </span>
+                    <input class="form-control" id="pdateStart" name="pdateStart" placeholder="400" data-template="templates:form-control"/>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"/>
+                    </span>
+                    <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
+                        <option>BC</option>
+                        <option>AD</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"/>
+                        <i18n:text key="and">and</i18n:text>
+                    </span>
+                    <input class="form-control" id="pdateEnd" name="pdateEnd" placeholder="300" data-template="templates:form-control"/>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"/>
+                    </span>
+                    <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                        <option>BC</option>
+                        <option>AD</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"/>
+                    </span>
+                    <select class="form-control" id="gender">
+                        <option>
+                            <i18n:text key="anyGender">any gender</i18n:text>
+                        </option>
+                        <option>f</option>
+                        <option>m</option>
+                        <option>a</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"/>
+                        <i18n:text key="status">status</i18n:text>
+                    </span>
+                    <input name="prefix" class="form-control" disabled="disabled"/>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="legalStatus">legal</i18n:text>
+                    </span>
+                    <select class="form-control input-sm" id="forms" disabled="disabled">
+                        <option>any</option>
+                        <option>stat1</option>
+                        <option>stat2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="professionalStatus">professional</i18n:text>
+                    </span>
+                    <select class="form-control input-sm" id="forms" disabled="disabled">
+                        <option>any</option>
+                        <option>stat1</option>
+                        <option>stat2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="civicStatus">civic</i18n:text>
+                    </span>
+                    <select class="form-control input-sm" id="forms" disabled="disabled">
+                        <option>any</option>
+                        <option>stat1</option>
+                        <option>stat2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="religiousStatus">religious</i18n:text>
+                    </span>
+                    <select class="form-control input-sm" id="forms" disabled="disabled">
+                        <option>any</option>
+                        <option>stat1</option>
+                        <option>stat2</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <hr/>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="withPrefix">with prefix</i18n:text>
+                    </span>
+                    <select class="form-control input-sm" id="function" disabled="disabled">
+                        <option/>
+                        <option>α</option>
+                        <option>...</option>
+                        <option>ως</option>
+                    </select>
+                </div>
+            </div><!--
+                    <div class="col-xs-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">dialect</span>
+                            <input type="text" class="dialect_tags tag-control" id="dialect" value="Beotian" placeholder="Enter dialect names separated by space"/>
+                        </div>
+                    </div>
+                    -->
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-2">
+                <div class="input-group">
+                    <span class="input-group-addon  input-sm">
+                        <span class="glyphicon glyphicon-th-list"/>
+                        <i18n:text key="constituent">constituent</i18n:text>
+                    </span>
+                    <input type="text" class="form-control input-sm" id="morpheme" placeholder="Ἀγαθο" disabled="disabled"/>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm">
+                        <span class="glyphicon glyphicon-th-list"/>
+                        <i18n:text key="matching">matching</i18n:text>
+                    </span>
+                    <select class="form-control input-sm" id="gender" disabled="disabled">
+                        <option>
+                            <i18n:text key="literalForm">literal form</i18n:text>
+                        </option>
+                        <option>
+                            <i18n:text key="baseFrom">base form</i18n:text>
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm">
+                        <span class="glyphicon glyphicon-th-list"/>
+                        <i18n:text key="position">position</i18n:text>
+                    </span>
+                    <select class="form-control input-sm" id="gender" disabled="disabled">
+                        <option>
+                            <i18n:text key="any">any</i18n:text>
+                        </option>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <div class="input-group">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="" disabled="disabled"/>
+                        <i18n:text key="verb">Verb</i18n:text>
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="" disabled="disabled"/>
+                        <i18n:text key="noun">Noun</i18n:text>
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="" disabled="disabled"/>
+                        <i18n:text key="adjective">Adjective</i18n:text>
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="" disabled="disabled"/>
+                        <i18n:text key="pronoun">Pronoun</i18n:text>
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="" disabled="disabled"/>
+                        <i18n:text key="adverb">Adverb</i18n:text>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="semanticFields">covering semantic fields</i18n:text>
+                    </span>
+                    <input name="tags1[0]" class="semantic_tags" id="tags[0]" value="good" disabled="disabled"/>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row"/>
+        <br/>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="containingSuffix">containing suffix</i18n:text>
+                    </span>
+                    <select class="form-control input-sm" id="function" disabled="disabled">
+                        <option/>
+                        <option>α</option>
+                        <option>αδ</option>
+                        <option>α(ϝ)</option>
+                        <option>αινα</option>
+                        <option>ακ</option>
+                        <option>αλ</option>
+                        <option>αλλ</option>
+                        <option>αν</option>
+                        <option>ανν</option>
+                        <option>αξ</option>
+                        <option>...</option>
+                        <option>ως</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="position">position</i18n:text>
+                    </span>
+                    <select class="form-control input-sm" id="suf pos" disabled="disabled">
+                        <option>
+                            <i18n:text key="any">any</i18n:text>
+                        </option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-8 col-sm-offset-8">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-search"/>
+                        <i18n:text key="search">Search</i18n:text>
+                    </button>
+                </div>
+            </div>
+        </div><!--
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> referenced in</span>
+                                <select class="form-control input-sm" id="suf pos">
+                                    <option>Thgn</option>
+                                    <option>a</option>
+                                    <option>b</option>
+                                    <option>c</option>
+                                    <option>d</option>
+                                </select>
+                            </div>
+                        </div>
+                            <div class="col-xs-3">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-bookmark"/> containing </span>
+                                    <input type="text" class="form-control input-sm" id="a_reference" placeholder="Thgn 163"/>
+                                </div>
+                            </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> in</span>
+                                <select class="form-control input-sm" id="suf pos">
+                                    <option>any</option>
+                                    <option>sources</option>
+                                    <option>lexicographic</option>
+                                    <option>onomastic</option>
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+                        -->
+    </fieldset>
+</form>
