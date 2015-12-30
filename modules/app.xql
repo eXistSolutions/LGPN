@@ -12,12 +12,13 @@ import module namespace console="http://exist-db.org/xquery/console" at "java:or
 declare 
     %templates:wrap
 function app:search($node as node(), $model as map(*), $pname as xs:string?, $place as xs:string?, $nref as xs:string?) {
-    let $query-string :=
+        let $ref := 
         if ($pname) then
             for $name in collection($config:volumes-root)//tei:form[normalize-unicode(normalize-space(.), 'NFC') = normalize-space($pname)]/..
-            let $ref := "#" || $name/@xml:id
-            return if(string($name/@xml:id)) then app:prepare-query($node, $model, $ref)?query-string else ()
+            return "#" || $name/@xml:id
         else ()
+        
+    let $query-string := app:prepare-query($node, $model, $ref)?query-string
 
     let $result :=
         if ($place) then
@@ -26,7 +27,7 @@ function app:search($node as node(), $model as map(*), $pname as xs:string?, $pl
             let $ref := "#" || $nref
             return
                 collection($config:volumes-root)//tei:persName[@nymRef=$ref]/parent::tei:person
-        else if ($pname) then
+        else if (exists($pname)) then
             if ($query-string) then util:eval($query-string) else () 
         else
             ()
@@ -44,15 +45,15 @@ declare function app:show-query($node as node(), $model as map(*)) {
 
 declare function app:prepare-query($node as node(), $model as map(*), $ref as xs:string?) as map(*) {
 (:     let $phrasePredicate := if ($phrase) then concat('[', "ft:query(.,'", $phrase, "')", ']') else ():)
-    
     let $placePredicate := app:placePredicate()
     let $datePredicate := app:datePredicate()
     let $genderPredicate := app:genderPredicate()
-
+    let $nymPredicate := if ($ref) then '[@nymRef="' || $ref || '"]' else ()
+    
     let $predicate-string :=    $placePredicate || $datePredicate || $genderPredicate
     
     let $query-string := 
-            'collection("' || $config:volumes-root || '")//tei:persName[@nymRef="' || $ref || '"]/parent::tei:person' || $predicate-string
+            'collection("' || $config:volumes-root || '")//tei:persName' || $nymPredicate || '/parent::tei:person' || $predicate-string
     return map { "query-string" := $query-string }
 };
 
@@ -123,17 +124,15 @@ declare function app:name-catalogue($node as node(), $model as map(*), $letter a
 (:    let $letter := 'Γ':)
 
     let $occurrences := 
-        for $n in $config:persons//tei:person/tei:persName[@type="main"][starts-with(normalize-space(.), $letter)]
-        let $id := $n/@nymRef
+        for $n in $config:persons//tei:person/tei:persName[@type="main"][starts-with(replace(normalize-unicode(., 'NFD'), '[\p{M}\p{Sk}]', ''), $letter)]
         let $name := normalize-unicode(normalize-space($n[1]), 'NFC')
-        let $s := replace(normalize-unicode($name, 'NFD'), '[\p{M}\p{Sk}]', '')
-           group by $id
-           order by $n[1]/string()
+           group by $id := $n/@nymRef
+           order by normalize-space($n[1])
         return <n>
             {attribute nymRef { $id } }
             {attribute n { count($n) } }
-            {attribute name { $name } }
-            {attribute sname { $s } }
+            {attribute name { normalize-unicode(normalize-space($n[1]), 'NFC') } }
+            {attribute sname { replace(normalize-unicode($n[1], 'NFD'), '[\p{M}\p{Sk}]', '') } }
             </n>
 
     for $name in $occurrences
