@@ -14,11 +14,9 @@ declare
 function app:search($node as node(), $model as map(*), $pname as xs:string?, $place as xs:string?, $nref as xs:string?) {
     let $query-string :=
         if ($pname) then
-            let $splace := request:get-parameter('pplace', '')
-            let $filters := if (string($splace)) then '[]' else ()
-            for $name in collection($config:volumes-root)//tei:form[. = $pname]/..
+            for $name in collection($config:volumes-root)//tei:form[normalize-unicode(normalize-space(.), 'NFC') = normalize-space($pname)]/..
             let $ref := "#" || $name/@xml:id
-            return app:prepare-query($node, $model, $ref)?query-string
+            return if(string($name/@xml:id)) then app:prepare-query($node, $model, $ref)?query-string else ()
         else ()
 
     let $result :=
@@ -69,12 +67,12 @@ declare function app:placePredicate() as xs:string? {
  : plus 1 to cover the case where region/settlement is not found and it leads to cardinality error for comparison
  :  :)
  
-    let $region_filter := if (string($region)) then '[.//tei:birth/tei:placeName[@key=(1, doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[@type="region"][tei:placeName[./string() ="' || $region || '"]]//tei:place/@xml:id)]]' else ()
+    let $region_filter := if (string($region)) then '[.//tei:birth/tei:placeName[@key=(1, doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[@type="region"][tei:placeName[normalize-space(.) ="' || $region || '"]]//tei:place/@xml:id)]]' else ()
 
-    let $settlement_filter := if (string($settlement)) then '[.//tei:birth/tei:placeName[@key=(1, doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[@type="settlement"][tei:placeName[./string() ="' || $settlement || '"]]//tei:place/@xml:id)]]' else ()
+    let $settlement_filter := if (string($settlement)) then '[.//tei:birth/tei:placeName[@key=(1, doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[@type="settlement"][tei:placeName[normalize-space(.) ="' || $settlement || '"]]//tei:place/@xml:id)]]' else ()
 
  (:    let $place_filter := if (string($pplace)) then '[.//tei:birth/tei:placeName[.="' || $pplace || '"]]' else ():)
-    let $place_filter := if (string($place)) then '[.//tei:birth/tei:placeName[@key=doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[tei:placeName[./string() ="' || $place || '"]]/@xml:id]]' else ()
+    let $place_filter := if (string($place)) then '[.//tei:birth/tei:placeName[@key=doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[tei:placeName[normalize-space(.) ="' || $place || '"]]/@xml:id]]' else ()
 
     return $place_filter || $region_filter || $settlement_filter
 };
@@ -108,31 +106,61 @@ function app:show-results($node as node(), $model as map(*)) {
         return
             <tr>
                 <td class="col-md-1"><a href="?nref={substring($person/tei:persName/@nymRef, 2)}">{substring($person/tei:persName/@nymRef, 2)}</a></td>
-                <td class="col-md-2"><a href="?nref={substring($person/tei:persName/@nymRef, 2)}">{string-join($person/tei:persName/text(), ' ')}</a></td>
+                <td class="col-md-1"><a href="?nref={substring($person/tei:persName/@nymRef, 2)}">{string-join($person/tei:persName/text(), ' ')}</a></td>
                 <td class="col-md-1">{if ($person/tei:sex/@value) then "[m.]" else "[f.]"}</td>
-                <td class="col-md-3"><a href="?place=/{$person/tei:birth/tei:placeName/@key}">{$person/tei:birth/tei:placeName/text()}</a> {if (string($person/tei:birth/tei:placeName/@ref)) then <a target="_blank" href="http://pleiades.stoa.org/places/{substring-after($person/tei:birth/tei:placeName/@ref, 'pleiades:')}"> <span class="glyphicon glyphicon-play"></span></a> else ()}</td>
+                <td class="col-md-1"><a href="?place=/{$person/tei:birth/tei:placeName/@key}">{$person/tei:birth/tei:placeName/text()}</a> {if (string($person/tei:birth/tei:placeName/@ref)) then <a target="_blank" href="http://pleiades.stoa.org/places/{substring-after($person/tei:birth/tei:placeName/@ref, 'pleiades:')}"> <span class="glyphicon glyphicon-play"></span></a> else ()}</td>
 <!--                <td class="col-md-1"><a href="kml.xql?name={$person/tei:persName[@type='main']/string()}">kml</a></td>-->
                 <td class="col-md-1"><a target="_blank" href="kml2.xql?name={$person/tei:persName[@type='main']/string()}">KML</a></td>
-                <td class="col-md-1">{$person/tei:floruit/text()}</td>
-                <td class="col-md-1">{string-join($person/tei:bibl/text(), '; ')}</td>
+                <td class="col-md-1">{$person/tei:floruit/string()}</td>
+                <td class="col-md-3">{string-join($person/tei:bibl/string(), '; ')}</td>
+                <td class="col-md-3">{string-join($person//tei:state/string(), '; ')}</td>
             </tr>
     else
         <tr><td>Please enter a query...</td></tr>
 };
 
 declare function app:name-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
-    let $letter := 'Γ'
-(:     let $phrasePredicate := if ($phrase) then concat('[', "ft:query(.,'", $phrase, "')", ']') else ():)
-    
-    for $name in collection($config:volumes-root)//tei:nym[tei:form[@xml:lang='grc-grc-x-noaccent'][starts-with(., $letter)]]
-    order by $name/tei:form[@xml:lang='grc-grc-x-noaccent']
+(:    let $letter := 'Γ':)
+
+    let $occurrences := 
+        for $n in $config:persons//tei:person/tei:persName[@type="main"][starts-with(normalize-space(.), $letter)]
+        let $id := $n/@nymRef
+        let $name := normalize-unicode(normalize-space($n[1]), 'NFC')
+        let $s := replace(normalize-unicode($name, 'NFD'), '[\p{M}\p{Sk}]', '')
+           group by $id
+           order by $n[1]/string()
+        return <n>
+            {attribute nymRef { $id } }
+            {attribute n { count($n) } }
+            {attribute name { $name } }
+            {attribute sname { $s } }
+            </n>
+
+    for $name in $occurrences
     return 
         <tr>
-            <td><a>
-                {attribute href { "index.html?pname=" || $name/tei:form[@xml:lang="grc"]/string() } }
-                {$name/tei:form[@xml:lang="grc"]}</a></td>
-            <td>{count($config:persons//tei:person[tei:persName[@nymRef=concat("#", $name/@xml:id)]]) }</td>
+            <td class="col-md-2"><a>
+                {attribute href { "index.html?pname=" || $name/@name/string() } }
+                {$name/@name/string()}</a>
+            </td>
+            <td class="col-md-1">{$name/@n/string() }</td>
+            <td class="col-md-8"></td>
         </tr>
+
+ (:       
+        
+        for $name in collection($config:volumes-root)//tei:nym[tei:form[@xml:lang='grc-grc-x-noaccent'][starts-with(., $letter)]]
+        order by $name/tei:form[@xml:lang='grc-grc-x-noaccent']
+            return 
+                <tr>
+                    <td><a>
+                        {attribute href { "index.html?pname=" || $name/tei:form[@xml:lang="grc"]/string() } }
+                        {$name/tei:form[@xml:lang="grc"]}</a>
+                    </td>
+                    <td>{count($config:persons//tei:person[tei:persName[@nymRef=concat("#", $name/@xml:id)]]) }</td>
+                </tr>
+     :)
+   
 };
 
 
