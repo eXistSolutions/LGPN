@@ -121,6 +121,7 @@ function app:show-results($node as node(), $model as map(*)) {
 };
 
 declare function app:name-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
+    (: unicode & space normalization can be skipped once we have data cleaned, which significantly speeds up things :)
         for $n in $config:persons//tei:person/tei:persName[@type="main"][starts-with(replace(normalize-unicode(., 'NFD'), '[\p{M}\p{Sk}]', ''), $letter)]
         let $name := normalize-unicode(normalize-space($n[1]), 'NFC')
            group by $id := $n/@nymRef
@@ -136,7 +137,6 @@ declare function app:name-catalogue($node as node(), $model as map(*), $letter a
         </tr>
 
  (:       
-        
         for $name in collection($config:volumes-root)//tei:nym[tei:form[@xml:lang='grc-grc-x-noaccent'][starts-with(., $letter)]]
         order by $name/tei:form[@xml:lang='grc-grc-x-noaccent']
             return 
@@ -167,7 +167,7 @@ declare function app:profession-catalogue($node as node(), $model as map(*), $le
 };
 
 declare function app:place-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
-    for $n in $config:persons//tei:placeName[starts-with(replace(normalize-unicode(., 'NFD'), '[\p{M}\p{Sk}]', ''), $letter)]
+    for $n in $config:persons//tei:placeName[starts-with(., $letter)]
            group by $id := $n/@key
            order by normalize-space($n[1])
     return 
