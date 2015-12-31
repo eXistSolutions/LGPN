@@ -122,6 +122,7 @@ function app:show-results($node as node(), $model as map(*)) {
 
 declare function app:name-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
     (: unicode & space normalization can be skipped once we have data cleaned, which significantly speeds up things :)
+    (:
         for $n in $config:persons//tei:person/tei:persName[@type="main"][starts-with(replace(normalize-unicode(., 'NFD'), '[\p{M}\p{Sk}]', ''), $letter)]
         let $name := normalize-unicode(normalize-space($n[1]), 'NFC')
            group by $id := $n/@nymRef
@@ -135,8 +136,7 @@ declare function app:name-catalogue($node as node(), $model as map(*), $letter a
             <td class="col-md-1">{count($n) }</td>
             <td class="col-md-8"></td>
         </tr>
-
- (:       
+:)
         for $name in collection($config:volumes-root)//tei:nym[tei:form[@xml:lang='grc-grc-x-noaccent'][starts-with(., $letter)]]
         order by $name/tei:form[@xml:lang='grc-grc-x-noaccent']
             return 
@@ -145,8 +145,9 @@ declare function app:name-catalogue($node as node(), $model as map(*), $letter a
                         {attribute href { "index.html?pname=" || $name/tei:form[@xml:lang="grc"]/string() } }
                         {$name/tei:form[@xml:lang="grc"]}</a>
                     </td>
-                    <td>{count($config:persons//tei:person[tei:persName[@nymRef=concat("#", $name/@xml:id)]]) }</td>
+                    <td>{count($config:persons//tei:persName[@nymRef=concat("#", $name/@xml:id)]/parent::tei:person) }</td>
                 </tr>
+ (:       
      :)
    
 };
