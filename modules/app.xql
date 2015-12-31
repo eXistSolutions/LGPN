@@ -7,6 +7,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 import module namespace templates="http://exist-db.org/xquery/templates" ;
 import module namespace geo="http://lgpn.classics.ox.ac.uk/apps/lgpn/geo" at "geo.xql";
 import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" at "config.xqm";
+import module namespace functx = "http://www.functx.com";
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 
 declare 
@@ -109,8 +110,7 @@ function app:show-results($node as node(), $model as map(*)) {
                 <td class="col-md-1"><a href="?nref={substring($person/tei:persName/@nymRef, 2)}">{substring($person/tei:persName/@nymRef, 2)}</a></td>
                 <td class="col-md-1"><a href="?nref={substring($person/tei:persName/@nymRef, 2)}">{string-join($person/tei:persName/text(), ' ')}</a></td>
                 <td class="col-md-1">{if ($person/tei:sex/@value) then "[m.]" else "[f.]"}</td>
-                <td class="col-md-1"><a href="?place=/{$person/tei:birth/tei:placeName/@key}">{$person/tei:birth/tei:placeName/text()}</a> {if (string($person/tei:birth/tei:placeName/@ref)) then <a target="_blank" href="http://pleiades.stoa.org/places/{substring-after($person/tei:birth/tei:placeName/@ref, 'pleiades:')}"> <span class="glyphicon glyphicon-play"></span></a> else ()}</td>
-<!--                <td class="col-md-1"><a href="kml.xql?name={$person/tei:persName[@type='main']/string()}">kml</a></td>-->
+                <td class="col-md-1"><a href="?pname=&amp;pplace=/{$person/tei:birth/tei:placeName/@key}">{$person/tei:birth/tei:placeName/text()}</a> {if (string($person/tei:birth/tei:placeName/@ref)) then <a target="_blank" href="http://pleiades.stoa.org/places/{substring-after($person/tei:birth/tei:placeName/@ref, 'pleiades:')}"> <span class="glyphicon glyphicon-play"></span></a> else ()}</td>
                 <td class="col-md-1"><a target="_blank" href="kml2.xql?name={$person/tei:persName[@type='main']/string()}">KML</a></td>
                 <td class="col-md-1">{$person/tei:floruit/string()}</td>
                 <td class="col-md-3">{string-join($person/tei:bibl/string(), '; ')}</td>
@@ -121,26 +121,17 @@ function app:show-results($node as node(), $model as map(*)) {
 };
 
 declare function app:name-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
-    let $occurrences := 
         for $n in $config:persons//tei:person/tei:persName[@type="main"][starts-with(replace(normalize-unicode(., 'NFD'), '[\p{M}\p{Sk}]', ''), $letter)]
         let $name := normalize-unicode(normalize-space($n[1]), 'NFC')
            group by $id := $n/@nymRef
            order by normalize-space($n[1])
-        return <n>
-            {attribute nymRef { $id } }
-            {attribute n { count($n) } }
-            {attribute name { normalize-unicode(normalize-space($n[1]), 'NFC') } }
-            {attribute sname { replace(normalize-unicode($n[1], 'NFD'), '[\p{M}\p{Sk}]', '') } }
-            </n>
-
-    for $name in $occurrences
     return 
         <tr>
             <td class="col-md-2"><a>
-                {attribute href { "index.html?pname=" || $name/@name/string() } }
-                {$name/@name/string()}</a>
+                {attribute href { "index.html?pname=" || $name } }
+                {$name}</a>
             </td>
-            <td class="col-md-1">{$name/@n/string() }</td>
+            <td class="col-md-1">{count($n) }</td>
             <td class="col-md-8"></td>
         </tr>
 
@@ -173,9 +164,22 @@ declare function app:profession-catalogue($node as node(), $model as map(*), $le
             <td class="col-md-1">{count($n) }</td>
             <td class="col-md-8"></td>
         </tr>
-
 };
 
+declare function app:place-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
+    for $n in $config:persons//tei:placeName[starts-with(replace(normalize-unicode(., 'NFD'), '[\p{M}\p{Sk}]', ''), $letter)]
+           group by $id := $n/@key
+           order by normalize-space($n[1])
+    return 
+        <tr>
+            <td class="col-md-2"><a>
+                {attribute href { "index.html?pname=&amp;pplace=" || normalize-unicode(normalize-space($n[1]), 'NFC') } }
+                {normalize-unicode(normalize-space($n[1]), 'NFC')}</a>
+            </td>
+            <td class="col-md-1">{count($n) }</td>
+            <td class="col-md-8"></td>
+        </tr>
+};
 
 declare function app:download-kml($content as node(), $name as xs:string) {
     (
@@ -194,4 +198,19 @@ declare function app:show-map($node as node(), $model as map(*), $name as xs:str
         <!-- put the scripting _after_ map container -->
         <script type="text/javascript" src="resources/js/showmap.js"/>
     </div>    
+};
+
+declare function app:generate-dropdown-menu($node as node(), $model as map(*), $list as xs:string, $link as xs:string) {
+    <ul class="dropdown-menu">
+        {
+            for $letter in functx:chars($list)
+            return 
+                <li>
+                <a>
+                    {attribute href {$link || '.html?letter=' || $letter }}
+                    {$letter} 
+                </a>
+                </li>
+        }
+    </ul>  
 };
