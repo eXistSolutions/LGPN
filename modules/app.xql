@@ -43,7 +43,7 @@ declare function app:show-query($node as node(), $model as map(*)) {
   <div>Query {$model?query-string}   </div>
 };
 
-declare function app:prepare-query($node as node(), $model as map(*), $ref as xs:string?) as map(*) {
+declare function app:prepare-query($node as node(), $model as map(*), $ref as xs:string*) as map(*) {
 (:     let $phrasePredicate := if ($phrase) then concat('[', "ft:query(.,'", $phrase, "')", ']') else ():)
     let $placePredicate := app:placePredicate()
     let $datePredicate := app:datePredicate()
@@ -121,8 +121,6 @@ function app:show-results($node as node(), $model as map(*)) {
 };
 
 declare function app:name-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
-(:    let $letter := 'Γ':)
-
     let $occurrences := 
         for $n in $config:persons//tei:person/tei:persName[@type="main"][starts-with(replace(normalize-unicode(., 'NFD'), '[\p{M}\p{Sk}]', ''), $letter)]
         let $name := normalize-unicode(normalize-space($n[1]), 'NFC')
@@ -160,6 +158,22 @@ declare function app:name-catalogue($node as node(), $model as map(*), $letter a
                 </tr>
      :)
    
+};
+
+declare function app:profession-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
+    for $n in $config:persons//tei:person/tei:socecStatus
+       group by $name := $n/string()
+       order by $name
+    return 
+        <tr>
+            <td class="col-md-2"><a>
+                {attribute href { "index.html?socecStatus=" || $name } }
+                {$name}</a>
+            </td>
+            <td class="col-md-1">{count($n) }</td>
+            <td class="col-md-8"></td>
+        </tr>
+
 };
 
 
