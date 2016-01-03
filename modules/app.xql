@@ -113,14 +113,16 @@ function app:show-results($node as node(), $model as map(*)) {
         for $person in $model?result
         return
             <tr>
-                <td class="col-md-1"><a href="?nref={substring($person/tei:persName/@nymRef, 2)}">{substring($person/tei:persName/@nymRef, 2)}</a></td>
+                <td class="col-md-1">{$person/@xml:id/string()}</td>
+                <td class="col-md-1">{substring-before(substring($person/@xml:id, 2) || '-', '-')}</td>
+                <td class="col-md-1">{substring-after($person/@xml:id, '-')}</td>
                 <td class="col-md-1"><a href="?nref={substring($person/tei:persName/@nymRef, 2)}">{string-join($person/tei:persName/text(), ' ')}</a></td>
-                <td class="col-md-1">{if ($person/tei:sex/@value) then "[m.]" else "[f.]"}</td>
+                <td class="col-md-1">{if (number($person/tei:sex/@value)=2) then "[f.]" else "[m.]"}</td>
                 <td class="col-md-1"><a href="?pname=&amp;pplace=/{$person/tei:birth/tei:placeName/@key}">{$person/tei:birth/tei:placeName/text()}</a> {if (string($person/tei:birth/tei:placeName/@ref)) then <a target="_blank" href="http://pleiades.stoa.org/places/{substring-after($person/tei:birth/tei:placeName/@ref, 'pleiades:')}"> <span class="glyphicon glyphicon-play"></span></a> else ()}</td>
                 <td class="col-md-1"><a target="_blank" href="kml2.xql?name={$person/tei:persName[@type='main']/string()}">KML</a></td>
                 <td class="col-md-1">{$person/tei:floruit/string()}</td>
-                <td class="col-md-3">{string-join($person/tei:bibl/string(), '; ')}</td>
-                <td class="col-md-3">{string-join($person//tei:state/string(), '; ')}</td>
+                <td class="col-md-2">{string-join($person/tei:bibl/string(), '; ')}</td>
+                <td class="col-md-2">{string-join($person//tei:state/string(), '; ')}</td>
             </tr>
     else
         <tr><td>Please enter a query...</td></tr>
