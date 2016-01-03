@@ -26,8 +26,6 @@
     <br/>
     <div class="row">
         <div class="col-md-12" data-template="app:search">
-            <br/>
-            <div data-template="app:show-query"/>
             <table id="datatable" class="display table table-striped" cellspacing="0" width="100%">
                 <thead>
                     <tr>
@@ -43,7 +41,6 @@
                         <th>
                             <i18n:text key="place">Place</i18n:text>
                         </th>
-                        <th>KML</th>
                         <th>
                             <i18n:text key="floruit">Floruit</i18n:text>
                         </th>
@@ -57,6 +54,8 @@
                 </thead>
                 <tbody data-template="app:show-results"/>
             </table>
+            <br/>
+            <div data-template="app:show-query"/><!--            <div data-template="app:kml"/> -->
         </div>
     </div>
 </div>

@@ -5,7 +5,6 @@ module namespace app="http://lgpn.classics.ox.ac.uk/apps/lgpn/templates";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 import module namespace templates="http://exist-db.org/xquery/templates" ;
-import module namespace geo="http://lgpn.classics.ox.ac.uk/apps/lgpn/geo" at "geo.xql";
 import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" at "config.xqm";
 import module namespace functx = "http://www.functx.com";
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
@@ -119,7 +118,6 @@ function app:show-results($node as node(), $model as map(*)) {
                 <td class="col-md-1"><a href="?nref={substring($person/tei:persName/@nymRef, 2)}">{string-join($person/tei:persName/text(), ' ')}</a></td>
                 <td class="col-md-1">{if (number($person/tei:sex/@value)=2) then "[f.]" else "[m.]"}</td>
                 <td class="col-md-1"><a href="?pname=&amp;pplace=/{$person/tei:birth/tei:placeName/@key}">{$person/tei:birth/tei:placeName/text()}</a> {if (string($person/tei:birth/tei:placeName/@ref)) then <a target="_blank" href="http://pleiades.stoa.org/places/{substring-after($person/tei:birth/tei:placeName/@ref, 'pleiades:')}"> <span class="glyphicon glyphicon-play"></span></a> else ()}</td>
-                <td class="col-md-1"><a target="_blank" href="kml2.xql?name={$person/tei:persName[@type='main']/string()}">KML</a></td>
                 <td class="col-md-1">{$person/tei:floruit/string()}</td>
                 <td class="col-md-2">{string-join($person/tei:bibl/string(), '; ')}</td>
                 <td class="col-md-2">{string-join($person//tei:state/string(), '; ')}</td>
@@ -193,6 +191,46 @@ declare function app:place-catalogue($node as node(), $model as map(*), $letter 
             <td class="col-md-1">{count($n) }</td>
         </tr>
 };
+
+declare function app:kml($node as node(), $model as map(*)) {
+    (  'distinct-values(' || $model?query-string || '/tei:birth/tei:placeName/@key)',
+    <kml>
+        <Document>
+        <name>LGPN search on name={request:get-parameter('pname', '')}</name>
+{
+  let $a := util:eval('distinct-values(' || $model?query-string || '/tei:birth/tei:placeName/@key)')
+
+for $p in doc("/db/apps/lgpn-data/data/volume0.places.xml")//tei:place[@xml:id=$a]
+    let $pname := $p/tei:placeName/tei:settlement/string()
+    let $rname := $p/parent::tei:place/tei:placeName[1]/string()
+    let $lat := substring-before($p/tei:location[tei:geo][1]/tei:geo, ' ')
+    let $lon := substring-after($p/tei:location[tei:geo][1]/tei:geo, ' ')
+order by $pname
+  
+return 
+    <Placemark id="{$p/@xml:id}">
+
+      <name>{if (string($rname)) then $rname || ' / ' || $pname else $pname}</name>
+      <Point>
+        <coordinates>{$lat},{$lon}</coordinates>
+      </Point>
+      <description>
+      &lt;ul&gt;
+      	&lt;li&gt;
+        	   &lt;a href="?pname=&amp;pplace={$pname}"&gt;{$pname}&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      <br/>
+      </description>
+    </Placemark>
+    
+}
+        </Document>
+    </kml>
+    )
+};
+
+
 
 declare function app:download-kml($content as node(), $name as xs:string) {
     (
