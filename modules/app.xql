@@ -10,9 +10,15 @@ import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" 
 import module namespace functx = "http://www.functx.com";
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 
+
+declare variable $app:SESSION := "shakespeare:results";
+
 declare 
     %templates:wrap
 function app:search($node as node(), $model as map(*), $pname as xs:string?, $place as xs:string?, $nref as xs:string?) {
+        session:create(),
+        let $lang := session:set-attribute($app:SESSION, request:get-parameter('lang', 'en'))
+
         let $ref := 
         if ($pname) then
             for $name in collection($config:volumes-root)//tei:form[normalize-unicode(normalize-space(.), 'NFC') = normalize-space($pname)]/..
@@ -152,19 +158,24 @@ declare function app:name-catalogue($node as node(), $model as map(*), $letter a
    
 };
 
-declare function app:profession-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
+
+declare 
+function app:profession-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
+    <tbody>
+        {
     for $n in $config:persons//tei:person/tei:socecStatus
        group by $name := $n/string()
        order by $name
     return 
         <tr>
-            <td class="col-md-2"><a>
+            <td class="col-md-3"><a>
                 {attribute href { "index.html?socecStatus=" || $name } }
                 {$name}</a>
             </td>
-            <td class="col-md-1">{count($n) }</td>
-            <td class="col-md-8"></td>
+            <td class="col-md-8">{count($n) }</td>
         </tr>
+}
+</tbody>
 };
 
 declare function app:place-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
@@ -178,7 +189,6 @@ declare function app:place-catalogue($node as node(), $model as map(*), $letter 
                 {normalize-unicode(normalize-space($n[1]), 'NFC')}</a>
             </td>
             <td class="col-md-1">{count($n) }</td>
-            <td class="col-md-8"></td>
         </tr>
 };
 
