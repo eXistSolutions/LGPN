@@ -5,6 +5,7 @@ xquery version "3.0";
  : within a module.
  :)
 module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config";
+import module namespace i18n="http://exist-db.org/xquery/i18n/templates" at "i18n-templates.xql"; 
 
 declare namespace templates="http://exist-db.org/xquery/templates";
 
@@ -64,7 +65,8 @@ declare function config:expath-descriptor() as element(expath:package) {
     $config:expath-descriptor
 };
 
-declare %templates:wrap function config:app-title($node as node(), $model as map(*)) as text() {
+declare %templates:wrap function config:app-title($node as node(), $model as map(*)) as node() {
+(:    <i18n:text key="lgpn">{$config:expath-descriptor/expath:title/text()}</i18n:text>:)
     $config:expath-descriptor/expath:title/text()
 };
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n">
     <head>
         <title data-template="config:app-title">App Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -37,65 +37,78 @@ $(document).ready(function() {
 } );
     </script>
     </head>
-    <body id="body">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"/>
-                    <span class="icon-bar"/>
-                    <span class="icon-bar"/>
-                </button>
-                <a data-template="config:app-title" class="navbar-brand" href="./index.html">App Title</a>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown" id="about">
-                        <a href="index.html">Search</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="index.html">Search</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" id="names">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Name catalogue</a>
-                        <ul data-template="app:generate-dropdown-menu" data-template-list="ΑΒΓϜΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ" data-template-link="names" class="dropdown-menu"/>
-                    </li>
-                    <li class="dropdown" id="places">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Place catalogue</a>
-                        <ul data-template="app:generate-dropdown-menu" data-template-list="ABCDEFGHIJKLMNOPRSTUVXYZ" data-template-link="places" class="dropdown-menu"/>
-                    </li>
-                    <li class="dropdown" id="status">
-                        <a href="status.html">Status and profession catalogue</a>
-                    </li>
-                    <li class="dropdown" id="about">
-                        <a href="about.html">About</a>
-                    </li><!-- flag icons http://www.freeiconsweb.net/Other-Vector/fllag-iconslanguage-flag.html License : Creative Commons Attribution 3.0 License -->
-                    <li id="fr">
-                        <a href="?lang=fr">
-                            <img src="resources/img/fr.png" style="width: 30px; margin-top: -4px;" title="fr"/>
-                        </a>
-                    </li>
-                    <li id="en">
-                        <a href="?lang=en">
-                            <img src="resources/img/en.png" style="width: 30px; margin-top: -4px;" title="en"/>
-                        </a>
-                    </li>
-                    <li id="de">
-                        <a href="?lang=de">
-                            <img src="resources/img/de.png" style="width: 30px; margin-top: -4px;" title="de"/>
-                        </a>
-                    </li>
-                </ul>
-            </div><!-- https://pixabay.com/en/athens-greece-acropolis-ruins-315838/ CC0 -->
-            <div style="background-image: url('resources/img/acropolis.jpg'); height: 100px;"/>
-        </nav>
-        <div id="content" class="container"/>
-        <footer>
-            <a class="poweredby" href="http://exist-db.org">
-                <img src="$shared/resources/images/powered-by.svg" alt="Powered by eXist-db"/>
-            </a>
-        </footer>
+    <body id="body" data-template="app:lang">
+        <div class="i18n:translate?lang=fr&amp;catalogues=data/i18n">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"/>
+                        <span class="icon-bar"/>
+                        <span class="icon-bar"/>
+                    </button>
+                    <a data-template="config:app-title" class="navbar-brand" href="./index.html">App Title</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown" id="about">
+                            <a href="index.html">
+                                <i18n:text key="search">Search</i18n:text>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="index.html">
+                                        <i18n:text key="search">Search</i18n:text>Search</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="names">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i18n:text key="nameCatalogue">Name catalogue</i18n:text>
+                            </a>
+                            <ul data-template="app:generate-dropdown-menu" data-template-list="ΑΒΓϜΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ" data-template-link="names" class="dropdown-menu"/>
+                        </li>
+                        <li class="dropdown" id="places">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i18n:text key="placeCatalogue">Place catalogue</i18n:text>
+                            </a>
+                            <ul data-template="app:generate-dropdown-menu" data-template-list="ABCDEFGHIJKLMNOPRSTUVXYZ" data-template-link="places" class="dropdown-menu"/>
+                        </li>
+                        <li class="dropdown" id="status">
+                            <a href="status.html">
+                                <i18n:text key="professionCatalogue">Status and profession catalogue</i18n:text>
+                            </a>
+                        </li>
+                        <li class="dropdown" id="about">
+                            <a href="about.html">
+                                <i18n:text key="about">About</i18n:text>
+                            </a>
+                        </li><!-- flag icons http://www.freeiconsweb.net/Other-Vector/fllag-iconslanguage-flag.html License : Creative Commons Attribution 3.0 License -->
+                        <li id="fr">
+                            <a href="?lang=fr">
+                                <img src="resources/img/fr.png" style="width: 30px; margin-top: -4px;" title="fr"/>
+                            </a>
+                        </li>
+                        <li id="en">
+                            <a href="?lang=en">
+                                <img src="resources/img/en.png" style="width: 30px; margin-top: -4px;" title="en"/>
+                            </a>
+                        </li>
+                        <li id="de">
+                            <a href="?lang=de">
+                                <img src="resources/img/de.png" style="width: 30px; margin-top: -4px;" title="de"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- https://pixabay.com/en/athens-greece-acropolis-ruins-315838/ CC0 -->
+                <div style="background-image: url('resources/img/acropolis.jpg'); height: 100px;"/>
+            </nav>
+            <div id="content" class="container"/>
+            <footer>
+                <a class="poweredby" href="http://exist-db.org">
+                    <img src="$shared/resources/images/powered-by.svg" alt="Powered by eXist-db"/>
+                </a>
+            </footer>
+        </div>
     </body>
 </html>

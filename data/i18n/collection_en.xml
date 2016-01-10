@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalogue xml:lang="en">
+Lexikon der griechischen Personennamen
+    <msg key="lgpn">Lexicon of Greek Personal Names</msg>
     <msg key="searchHeading">LGPN Advanced Search</msg>
+    <msg key="search">Search</msg>
     <msg key="in">in</msg>
     <msg key="greekAccented">Greek (accented)</msg>
     <msg key="greekUnaccented">Greek (unaccented)</msg>
@@ -32,4 +35,9 @@
     <msg key="adverb">Adverb</msg>
     <msg key="semanticFields">covering semanticFields</msg>
     <msg key="containingSuffix">containing suffix</msg>
+    <msg key="nameCatalogue">Name catalogue</msg>
+    <msg key="placeCatalogue">Place catalogue</msg>
+    <msg key="professionCatalogue">Status and profession catalogue</msg>
+    <msg key="about">Status and profession catalogue</msg>
+    <msg key="hits">Results</msg>
 </catalogue>

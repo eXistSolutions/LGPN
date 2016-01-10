@@ -7,16 +7,25 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 import module namespace templates="http://exist-db.org/xquery/templates" ;
 import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" at "config.xqm";
 import module namespace functx = "http://www.functx.com";
+import module namespace i18n="http://exist-db.org/xquery/i18n/templates" at "i18n-templates.xql"; 
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 
+declare function app:lang($node as node(), $model as map(*), $lang as xs:string?) {
+        session:create(),
+        let $lang := session:set-attribute('lang', $lang)
+(:        let $c := console:log('lang aft ' || session:get-attribute('lang')):)
+        return $model
+};
 
-declare variable $app:SESSION := "shakespeare:results";
+
+declare %templates:wrap function app:app-title($node as node(), $model as map(*)) as node() {
+    <i18n:text key="lgpn">{config:app-title($node, $model)}</i18n:text>
+};
+
 
 declare 
     %templates:wrap
 function app:search($node as node(), $model as map(*), $pname as xs:string?, $place as xs:string?, $nref as xs:string?) {
-        session:create(),
-        let $lang := session:set-attribute($app:SESSION, request:get-parameter('lang', 'en'))
 
         let $ref := 
         if ($pname) then
@@ -117,7 +126,7 @@ function app:show-results($node as node(), $model as map(*)) {
                 <td class="col-md-1">{substring-after($person/@xml:id, '-')}</td>
                 <td class="col-md-1"><a href="?nref={substring($person/tei:persName/@nymRef, 2)}">{string-join($person/tei:persName/text(), ' ')}</a></td>
                 <td class="col-md-1">{if (number($person/tei:sex/@value)=2) then "[f.]" else "[m.]"}</td>
-                <td class="col-md-1"><a href="?pname=&amp;pplace=/{$person/tei:birth/tei:placeName/@key}">{$person/tei:birth/tei:placeName/text()}</a> {if (string($person/tei:birth/tei:placeName/@ref)) then <a target="_blank" href="http://pleiades.stoa.org/places/{substring-after($person/tei:birth/tei:placeName/@ref, 'pleiades:')}"> <span class="glyphicon glyphicon-play"></span></a> else ()}</td>
+                <td class="col-md-1"><a href="?pname=&amp;pplace={$person/tei:birth/tei:placeName/string()}">{$person/tei:birth/tei:placeName/string()}</a> {if (string($person/tei:birth/tei:placeName/@ref)) then <a target="_blank" href="http://pleiades.stoa.org/places/{substring-after($person/tei:birth/tei:placeName/@ref, 'pleiades:')}"> <span class="glyphicon glyphicon-play"></span></a> else ()}</td>
                 <td class="col-md-1">{$person/tei:floruit/string()}</td>
                 <td class="col-md-2">{string-join($person/tei:bibl/string(), '; ')}</td>
                 <td class="col-md-2">{string-join($person//tei:state/string(), '; ')}</td>
