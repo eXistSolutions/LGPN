@@ -17,6 +17,27 @@ declare function app:lang($node as node(), $model as map(*), $lang as xs:string?
         return $model
 };
 
+declare function app:datatables($node as node(), $model as map(*), $lang as xs:string?) {
+    
+    let $js := '
+    $(document).ready(function() {
+    $("#datatable").DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "language": {
+            "url": "resources/js/' || $lang || '.json"
+        }
+    } );
+} );
+'
+    return
+        <script>
+            {attribute type {"text/javascript"}}
+            {attribute class {"init"}}
+            {$js}
+                
+            </script>
+};
 
 declare %templates:wrap function app:app-title($node as node(), $model as map(*)) as node() {
     <i18n:text key="lgpn">{config:app-title($node, $model)}</i18n:text>
@@ -88,7 +109,7 @@ declare function app:placePredicate() as xs:string? {
     let $settlement_filter := if (string($settlement)) then '[.//tei:birth/tei:placeName[@key=(1, doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[@type="settlement"][tei:placeName[normalize-space(.) ="' || $settlement || '"]]//tei:place/@xml:id)]]' else ()
 
  (:    let $place_filter := if (string($pplace)) then '[.//tei:birth/tei:placeName[.="' || $pplace || '"]]' else ():)
-    let $place_filter := if (string($place)) then '[.//tei:birth/tei:placeName[@key=doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[tei:placeName[normalize-space(.) ="' || $place || '"]]/@xml:id]]' else ()
+    let $place_filter := if (string($place)) then '[.//tei:birth/tei:placeName[@key=doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:placeName[normalize-space(.) ="' || $place || '"]/parent::tei:place/@xml:id]]' else ()
 
     return $place_filter || $region_filter || $settlement_filter
 };

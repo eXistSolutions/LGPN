@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n">
-    <head>
+    <head data-template="app:lang">
         <title data-template="config:app-title">App Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta data-template="config:app-meta"/>
@@ -26,16 +26,7 @@ legend {
     border-bottom:none;
 }
     </style>
-        <script type="text/javascript" class="init">
-
-$(document).ready(function() {
-    $('#datatable').DataTable( {
-        "paging":   true,
-        "ordering": true,
-        "info":     true
-    } );
-} );
-    </script>
+        <script type="text/javascript" class="init" data-template="app:datatables"/>
     </head>
     <body id="body" data-template="app:lang">
         <div class="i18n:translate?lang=fr&amp;catalogues=data/i18n">
