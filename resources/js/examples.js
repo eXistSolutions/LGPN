@@ -10,7 +10,8 @@ var places = new Bloodhound({
 // options being used
 $('#pplace').typeahead(null, {
   name: 'places',
-  source: places
+  source: places,
+  limit: 500
 });
 
 
@@ -22,7 +23,8 @@ var names = new Bloodhound({
 
 $('#pname').typeahead(null, {
   name: 'names',
-  source: names
+  source: names,
+  limit: 500
 });
 
 
@@ -34,7 +36,8 @@ var settlements = new Bloodhound({
 
 $('#psettlement').typeahead(null, {
   name: 'settlements',
-  source: settlements
+  source: settlements,
+  limit: 100
 });
 
 
@@ -46,7 +49,8 @@ var regions = new Bloodhound({
 
 $('#pregion').typeahead(null, {
   name: 'regions',
-  source: regions
+  source: regions,
+  limit: 100
 });
 
 

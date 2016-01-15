@@ -5,13 +5,13 @@
             <i18n:text key="searchHeading">LGPN Search</i18n:text>
         </legend>
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-4">
                 <div class="input-group input-group">
                     <span class="input-group-addon">α</span>
                     <input type="text" class="form-control" name="pname" id="pname" placeholder="name" data-template="templates:form-control"/>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <div class="input-group input-group">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-tasks"/>
@@ -40,6 +40,24 @@
                     </select>
                 </div>
             </div>
+            <div class="col-xs-3">
+                <div class="input-group input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"/>
+                        <i18n:text key="gender">gender</i18n:text>
+                    </span>
+                    <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                        <option value="0">
+                            <i18n:text key="anyGender">any gender</i18n:text>
+                        </option>
+                        <option value="1">m.</option>
+                        <option value="2">f.</option>
+                        <option value="9">
+                            <i18n:text key="unknown">unknown</i18n:text>
+                        </option>
+                    </select>
+                </div>
+            </div>
             <div class="col-xs-2">
                 <div class="input-group input-group">
                     <span class="input-group-addon">#</span>
@@ -49,12 +67,31 @@
         </div>
         <br/>
         <div class="row">
-            <div class="col-xs-4">
-                <div class="input-group">
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-map-marker"/>
                     </span>
                     <input name="pplace" class="form-control" id="pplace" placeholder="place" data-template="templates:form-control"/>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-tasks"/>
+                        <i18n:text key="in">in</i18n:text>
+                    </span>
+                    <select class="form-control" id="forms" name="nameForms" data-template="templates:form-control">
+                        <option>
+                            <i18n:text key="allForms">all forms</i18n:text>
+                        </option>
+                        <option>
+                            <i18n:text key="modern">modern</i18n:text>
+                        </option>
+                        <option>
+                            <i18n:text key="other">other</i18n:text>
+                        </option>
+                    </select>
                 </div>
             </div>
             <div class="col-xs-2">
@@ -135,35 +172,11 @@
         </div>
         <br/>
         <div class="row">
-            <div class="col-xs-2">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-user"/>
-                    </span>
-                    <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
-                        <option value="0">
-                            <i18n:text key="anyGender">any gender</i18n:text>
-                        </option>
-                        <option value="2">f</option>
-                        <option value="1">m</option>
-                        <option value="9">a</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-xs-1">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-user"/>
-                        <i18n:text key="status">status</i18n:text>
-                    </span>
-                    <input name="prefix" class="form-control" disabled="disabled"/>
-                </div>
-            </div>
-            <div class="col-xs-2">
+            <div class="col-xs-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-tasks"/>
-                        <i18n:text key="legalStatus">legal</i18n:text>
+                        <i18n:text key="profession">profession</i18n:text>
                     </span>
                     <select class="form-control input-sm" id="forms" disabled="disabled">
                         <option>any</option>
@@ -176,7 +189,7 @@
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-tasks"/>
-                        <i18n:text key="professionalStatus">professional</i18n:text>
+                        <i18n:text key="legalStatus">legal status</i18n:text>
                     </span>
                     <select class="form-control input-sm" id="forms" disabled="disabled">
                         <option>any</option>
@@ -185,11 +198,11 @@
                     </select>
                 </div>
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-tasks"/>
-                        <i18n:text key="civicStatus">civic</i18n:text>
+                        <i18n:text key="civicStatus">civic status</i18n:text>
                     </span>
                     <select class="form-control input-sm" id="forms" disabled="disabled">
                         <option>any</option>
@@ -198,11 +211,11 @@
                     </select>
                 </div>
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-tasks"/>
-                        <i18n:text key="religiousStatus">religious</i18n:text>
+                        <i18n:text key="religion">religion</i18n:text>
                     </span>
                     <select class="form-control input-sm" id="forms" disabled="disabled">
                         <option>any</option>
