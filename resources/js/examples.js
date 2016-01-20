@@ -1,5 +1,32 @@
 $(document).ready(function() {
 
+
+var meanings = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: 'modules/json.xqm?type=meanings'
+});
+
+// passing in `null` for the `options` arguments will result in the default
+// options being used
+$('#meaning1').typeahead(null, {
+  name: 'meanings',
+  source: meanings,
+  limit: 500
+});
+
+$('#meaning2').typeahead(null, {
+  name: 'meanings',
+  source: meanings,
+  limit: 500
+});
+
+$('#meaning3').typeahead(null, {
+  name: 'meanings',
+  source: meanings,
+  limit: 500
+});
+
 var places = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.whitespace,
   queryTokenizer: Bloodhound.tokenizers.whitespace,

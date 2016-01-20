@@ -10,20 +10,24 @@ import module namespace functx = "http://www.functx.com";
 import module namespace i18n="http://exist-db.org/xquery/i18n/templates" at "i18n-templates.xql"; 
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 
-declare function app:lang($node as node(), $model as map(*), $lang as xs:string?) {
+declare
+%templates:default("lang", "en") 
+function app:lang($node as node(), $model as map(*), $lang as xs:string?) {
         session:create(),
         let $lang := session:set-attribute('lang', $lang)
-(:        let $c := console:log('lang aft ' || session:get-attribute('lang')):)
+        let $c := console:log('lang aft ' || session:get-attribute('lang'))
         return $model
 };
 
 declare function app:datatables($node as node(), $model as map(*), $lang as xs:string?) {
-    
+    let $quote := "'"
+
     let $js := '
     $(document).ready(function() {
     $("#datatable").DataTable( {
         "paging":   true,
         "ordering": true,
+        "dom": '|| $quote || '<"top"flp<"clear">>rt<"bottom"ifp<"clear">>'|| $quote || ',
         "language": {
             "url": "resources/js/' || $lang || '.json"
         }
@@ -104,9 +108,9 @@ declare function app:placePredicate() as xs:string? {
  : plus 1 to cover the case where region/settlement is not found and it leads to cardinality error for comparison
  :  :)
  
-    let $region_filter := if (string($region)) then '[.//tei:birth/tei:placeName[@key=(1, doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[@type="region"][tei:placeName[normalize-space(.) ="' || $region || '"]]//tei:place/@xml:id)]]' else ()
+    let $region_filter := if (string($region)) then '[.//tei:birth/tei:placeName[@key=(1, doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[@type="region"][tei:placeName[normalize-space(.) ="' || $region || '"]]/descendant-or-self::tei:place/@xml:id)]]' else ()
 
-    let $settlement_filter := if (string($settlement)) then '[.//tei:birth/tei:placeName[@key=(1, doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[@type="settlement"][tei:placeName[normalize-space(.) ="' || $settlement || '"]]//tei:place/@xml:id)]]' else ()
+    let $settlement_filter := if (string($settlement)) then '[.//tei:birth/tei:placeName[@key=(1, doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:place[@type="settlement"][tei:placeName[normalize-space(.) ="' || $settlement || '"]]/descendant-or-self::tei:place/@xml:id)]]' else ()
 
  (:    let $place_filter := if (string($pplace)) then '[.//tei:birth/tei:placeName[.="' || $pplace || '"]]' else ():)
     let $place_filter := if (string($place)) then '[.//tei:birth/tei:placeName[@key=doc("' || $config:volumes-root || "/volume0.places.xml" || '")//tei:placeName[normalize-space(.) ="' || $place || '"]/parent::tei:place/@xml:id]]' else ()

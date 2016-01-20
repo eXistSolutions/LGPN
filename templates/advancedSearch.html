@@ -232,7 +232,7 @@
                 <div class="input-group">
                     <span class="input-group-addon input-sm">
                         <span class="glyphicon glyphicon-tasks"/>
-                        <i18n:text key="withPrefix">with prefix</i18n:text>
+                        <i18n:text key="prefix">with prefix</i18n:text>
                     </span>
                     <select class="form-control input-sm" id="function" disabled="disabled">
                         <option/>
@@ -241,14 +241,7 @@
                         <option>ως</option>
                     </select>
                 </div>
-            </div><!--
-                    <div class="col-xs-6">
-                        <div class="input-group">
-                            <span class="input-group-addon">dialect</span>
-                            <input type="text" class="dialect_tags tag-control" id="dialect" value="Beotian" placeholder="Enter dialect names separated by space"/>
-                        </div>
-                    </div>
-                    -->
+            </div>
         </div>
         <br/>
         <div class="row">
@@ -261,6 +254,15 @@
                     <input type="text" class="form-control input-sm" id="morpheme" placeholder="Ἀγαθο" disabled="disabled"/>
                 </div>
             </div>
+            <div class="col-xs-2">
+                <div class="input-group">
+                    <span class="input-group-addon  input-sm">
+                        <span class="glyphicon glyphicon-th-list"/>
+                        <i18n:text key="radical">root</i18n:text>
+                    </span>
+                    <input type="text" class="form-control input-sm" id="morpheme" placeholder="Ἀγαθ" disabled="disabled"/>
+                </div>
+            </div><!--
             <div class="col-xs-3">
                 <div class="input-group">
                     <span class="input-group-addon input-sm">
@@ -277,6 +279,7 @@
                     </select>
                 </div>
             </div>
+            -->
             <div class="col-xs-2">
                 <div class="input-group">
                     <span class="input-group-addon input-sm">
@@ -328,6 +331,11 @@
                     <input name="tags1[0]" class="semantic_tags" id="tags[0]" value="good" disabled="disabled"/>
                 </div>
             </div>
+            <div class="col-xs-2 col-sm-offset-3">
+                <span>
+                    <span class="glyphicon glyphicon-plus"/>   add root
+                    </span>
+            </div>
         </div>
         <br/>
         <div class="row"/>
@@ -371,6 +379,20 @@
                         <option>3</option>
                         <option>4</option>
                     </select>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-offset-3">
+                <span>
+                    <span class="glyphicon glyphicon-plus"/>   add suffix
+                    </span>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <span class="input-group-addon">dialect</span>
+                    <input type="text" class="dialect_tags tag-control" id="dialect" value="Beotian" placeholder="Enter dialect names separated by space" disabled="disabled"/>
                 </div>
             </div>
         </div>

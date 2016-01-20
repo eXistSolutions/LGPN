@@ -11,6 +11,11 @@ declare option output:media-type "text/javascript";
 let $case := request:get-parameter('type', 'names')
 return
 switch ($case)
+case 'meanings'
+    return
+        let $collection := "/db/apps/lgpn-ling/data/taxonomies/ontology.xml"
+        for $n in doc($collection)//tei:category/@xml:id
+            return $n/string()
 case 'places'
     return
         let $collection := "/db/apps/lgpn-data/data/volume0.places.xml"
@@ -32,4 +37,3 @@ default
         for $n in doc($collection)//tei:form[@xml:lang="grc"]
             order by $n
             return $n/string()
-
