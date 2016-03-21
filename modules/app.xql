@@ -25,6 +25,7 @@ declare function app:datatables($node as node(), $model as map(*), $lang as xs:s
     let $js := '
     $(document).ready(function() {
     $("#datatable").DataTable( {
+        "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
         "paging":   true,
         "ordering": true,
         "dom": '|| $quote || '<"top"flp<"clear">>rt<"bottom"ifp<"clear">>'|| $quote || ',
