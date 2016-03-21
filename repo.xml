@@ -10,6 +10,5 @@
     <target>lgpn</target>
     <prepare>pre-install.xql</prepare>
     <finish/>
-    <permissions user="lgpn" group="lgpn" mode="rw-rw-r--"/>
-    <deployed>2015-12-02T13:10:11.092Z</deployed>
+    <permissions xmlns:repo="http://exist-db.org/xquery/repo" password="" user="lgpn" group="lgpn" mode="rw-rw-r--"/>
 </meta>
