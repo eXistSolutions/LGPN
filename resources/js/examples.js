@@ -54,6 +54,12 @@ $('#pname').typeahead(null, {
   limit: 500
 });
 
+$('#rname').typeahead(null, {
+  name: 'names',
+  source: names,
+  limit: 500
+});
+
 
 var settlements = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.whitespace,
@@ -80,5 +86,40 @@ $('#pregion').typeahead(null, {
   limit: 100
 });
 
+var professions = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: 'modules/json.xqm?type=profession'
+});
 
+$('#profession').typeahead(null, {
+  name: 'professions',
+  source: professions,
+  limit: 100
+});
+
+var office = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: 'modules/json.xqm?type=office'
+});
+
+$('#office').typeahead(null, {
+  name: 'office',
+  source: office,
+  limit: 100
+});
+
+
+var stat = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: 'modules/json.xqm?type=status'
+});
+
+$('#stat').typeahead(null, {
+  name: 'status',
+  source: stat,
+  limit: 100
+});
 });

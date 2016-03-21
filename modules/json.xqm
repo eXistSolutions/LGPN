@@ -11,6 +11,15 @@ declare option output:media-type "text/javascript";
 let $case := request:get-parameter('type', 'names')
 return
 switch ($case)
+case 'profession'
+    return
+        ("doctor", "sculptor", "potter", "merchant", "metal-worker", "mason", "tradesman", "hetaira", "soldier")
+case 'office'
+    return
+        ("eponymous magistrate", "magistrate", "councillor", "general", "proxenos", "priest")
+case 'status'
+    return
+        ("free", "freed", "slave", "threptos/e")
 case 'meanings'
     return
         let $collection := "/db/apps/lgpn-ling/data/taxonomies/ontology.xml"
