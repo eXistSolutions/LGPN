@@ -122,4 +122,17 @@ $('#stat').typeahead(null, {
   source: stat,
   limit: 100
 });
+
+
+var reference = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: 'modules/json.xqm?type=reference'
+});
+
+$('#primaryreference').typeahead(null, {
+  name: 'reference',
+  source: reference,
+  limit: 100
+});
 });

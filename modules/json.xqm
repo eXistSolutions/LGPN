@@ -14,6 +14,9 @@ switch ($case)
 case 'profession'
     return
         ("doctor", "sculptor", "potter", "merchant", "metal-worker", "mason", "tradesman", "hetaira", "soldier")
+case 'reference'
+    return
+        ("MAMA", "REG", "WE", "KP", "IK", "BCH", "Kleinasiatische Denkmäler", "SEG", "Anat. Stud.")
 case 'office'
     return
         ("eponymous magistrate", "magistrate", "councillor", "general", "proxenos", "priest")

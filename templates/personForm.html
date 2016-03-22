@@ -51,9 +51,117 @@
         </fieldset>
         <fieldset id="names">
             <legend>
-                <i18n:text key="nameVariants">Names </i18n:text>
+                <i18n:text key="nameVariants">Primary sources &amp; attestations </i18n:text>
                 <span class="glyphicon glyphicon-plus"/>
             </legend>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-book"/>
+                            <i18n:text key="blah">reference</i18n:text>
+                        </span>
+                        <input class="input-group form-control" id="primaryreference" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-bookmark"/>
+                            <i18n:text key="blah">details</i18n:text>
+                        </span>
+                        <input class="input-group form-control" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-text-horizontal"/>
+                        </span>
+                        <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
+                            <option>inscription on stone</option>
+                            <option>papyri</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"/>
+                            <i18n:text key="blah">&gt;</i18n:text>
+                        </span>
+                        <input class="form-control" id="pdateStart" name="pdateStart" placeholder="400" data-template="templates:form-control"/>
+                        <span class="input-group-addon"/>
+                        <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
+                            <option>BC</option>
+                            <option>AD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"/>
+                            <i18n:text key="notAfter">&lt;</i18n:text>
+                        </span>
+                        <input class="form-control" id="pdateEnd" name="pdateEnd" placeholder="300" data-template="templates:form-control"/>
+                        <span class="input-group-addon"/>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option>BC</option>
+                            <option>AD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-info-sign"/>
+                            <i18n:text key=""/>
+                        </span>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option>literary text</option>
+                            <option>era</option>
+                            <option>context</option>
+                            <option>palaeography</option>
+                            <option>typology</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"/>
+                            <i18n:text key=""/>
+                        </span>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option>document</option>
+                            <option>person</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-check"/>
+                            <i18n:text key=""/>
+                        </span>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option>certain</option>
+                            <option>uncertain</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h4>Attested forms <span class="glyphicon glyphicon-plus"/>
+                    </h4>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xs-2">
                     <div class="input-group input-group">
@@ -94,11 +202,14 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-xs-2">
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-3">
                     <div class="input-group input-group">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-flag"/>
-                            <i18n:text key="type">lang</i18n:text>
+                            <i18n:text key="type">source lang</i18n:text>
                         </span>
                         <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
                             <option value="1">
@@ -109,6 +220,24 @@
                             <option value="9">
                                 <i18n:text key="other">other</i18n:text>
                             </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-flag"/>
+                            <i18n:text key="type">name origin</i18n:text>
+                        </span>
+                        <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                            <option value="1">
+                                <i18n:text key="main">Greek</i18n:text>
+                            </option>
+                            <option value="2">Anatolian</option>
+                            <option value="3">Italian</option>
+                            <option value="3">Semitic</option>
+                            <option value="3">Iranian</option>
+                            <option value="3">Thracian</option>
                         </select>
                     </div>
                 </div>
@@ -130,71 +259,7 @@
                     </div>
                 </div>
             </div>
-        </fieldset>
-        <fieldset id="dates">
-            <legend>
-                <i18n:text key="nameVariants">Dates </i18n:text>
-                <span class="glyphicon glyphicon-plus"/>
-            </legend>
-            <div class="row">
-                <div class="col-xs-3">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"/>
-                            <i18n:text key="blah">&gt;</i18n:text>
-                        </span>
-                        <input class="form-control" id="pdateStart" name="pdateStart" placeholder="400" data-template="templates:form-control"/>
-                        <span class="input-group-addon"/>
-                        <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
-                            <option>BC</option>
-                            <option>AD</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"/>
-                            <i18n:text key="notAfter">&lt;</i18n:text>
-                        </span>
-                        <input class="form-control" id="pdateEnd" name="pdateEnd" placeholder="300" data-template="templates:form-control"/>
-                        <span class="input-group-addon"/>
-                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
-                            <option>BC</option>
-                            <option>AD</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-info-sign"/>
-                            <i18n:text key=""/>
-                        </span>
-                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
-                            <option>literary text</option>
-                            <option>era</option>
-                            <option>context</option>
-                            <option>palaeography</option>
-                            <option>typology</option>
-                        </select>
-                        <span class="input-group-addon"/>
-                        <input class="form-control" id="pdateEnd" name="pdateEnd" placeholder="evidence" data-template="templates:form-control"/>
-                    </div>
-                </div>
-                <div class="col-xs-2">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-check"/>
-                            <i18n:text key=""/>
-                        </span>
-                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
-                            <option>certain</option>
-                            <option>uncertain</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+            <br/>
         </fieldset>
         <fieldset id="places">
             <legend>
@@ -208,6 +273,7 @@
                             <span class="glyphicon glyphicon-tag"/>
                         </span>
                         <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                            <option value="1">citizen of</option>
                             <option value="1">attested at</option>
                             <option value="2">resident at</option>
                             <option value="9">
@@ -295,54 +361,45 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-xs-1">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-plus"/>
-                        </span>
-                    </div>
-                </div>
             </div>
         </fieldset>
         <fieldset id="sources">
             <legend>
-                <i18n:text key="nameVariants">Primary source </i18n:text>
+                <i18n:text key="nameVariants">Status </i18n:text>
             </legend>
             <div class="row">
                 <div class="col-xs-3">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-book"/>
-                            <i18n:text key="blah">reference</i18n:text>
+                            <i18n:text key="blah">profession</i18n:text>
                         </span>
-                        <input class="input-group form-control" ref="TEI:ref"/>
+                        <input class="input-group form-control" id="profession" name="profession" ref="TEI:ref"/>
                     </div>
                 </div>
                 <div class="col-xs-3">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-bookmark"/>
-                            <i18n:text key="blah">details</i18n:text>
+                            <span class="glyphicon glyphicon-book"/>
+                            <i18n:text key="blah">office</i18n:text>
                         </span>
-                        <input class="input-group form-control" ref="TEI:ref"/>
+                        <input class="input-group form-control" id="office" name="office" ref="TEI:ref"/>
                     </div>
                 </div>
                 <div class="col-xs-3">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-text-horizontal"/>
+                            <span class="glyphicon glyphicon-book"/>
+                            <i18n:text key="blah">status</i18n:text>
                         </span>
-                        <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
-                            <option>inscription on stone</option>
-                            <option>papyri</option>
-                        </select>
+                        <input class="input-group form-control" id="stat" name="stat" ref="TEI:ref"/>
                     </div>
                 </div>
             </div>
         </fieldset>
         <fieldset id="references">
             <legend>
-                <i18n:text key="nameVariants">References </i18n:text>
+                <i18n:text key="nameVariants">Secondary sources </i18n:text>
                 <span class="glyphicon glyphicon-plus"/>
             </legend>
             <div class="row">
@@ -394,45 +451,30 @@
                         </select>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-tags"/> comments
+                    </span>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>location</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>date</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>name</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>relationship</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>stemma</label>
+                    </div>
+                </div>
                 <div class="col-xs-1">
                     <trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
                         <label/>
                         <delete nodeset="//TEI:cit[index('r-cit')]"/>
                     </trigger>
-                </div>
-            </div>
-        </fieldset>
-        <fieldset id="sources">
-            <legend>
-                <i18n:text key="nameVariants">Status </i18n:text>
-            </legend>
-            <div class="row">
-                <div class="col-xs-3">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-book"/>
-                            <i18n:text key="blah">profession</i18n:text>
-                        </span>
-                        <input class="input-group form-control" id="profession" name="profession" ref="TEI:ref"/>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-book"/>
-                            <i18n:text key="blah">office</i18n:text>
-                        </span>
-                        <input class="input-group form-control" id="office" name="office" ref="TEI:ref"/>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-book"/>
-                            <i18n:text key="blah">status</i18n:text>
-                        </span>
-                        <input class="input-group form-control" id="stat" name="stat" ref="TEI:ref"/>
-                    </div>
                 </div>
             </div>
         </fieldset>
