@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <revisionDesc>
+            <listChange/>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <listPerson><!-- @sex gender -->
+                <person xml:id="uuid-0001" sex="1"><!-- LGPN volume -->
+                    <bibl>
+                        <ref target="#V1"/>
+                    </bibl><!-- for every primary source with attested name forms -->
+                    <bibl><!--
+                    @target reference
+                    @type type of source/inscription
+                    -->
+                        <ref target="#biblref" type="stone">reference  details</ref><!--
+                    @ana basis for dating: multiple choice 
+                    @type dating provided concerns the document or a person
+                    @notBefore @notAfter dates (year)
+                    -->
+                        <date notBefore="" notAfter="" type="document" ana=""/><!-- for every attested name form persName
+    @type type of the name e.g. main/nickname/Roman name/patronymic/demetic
+    @nymRef regularized form
+    @xml:lang source language of the form e.g. Greek/Latin/Hebrew Greek default
+    @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default
+    @ana case Nom/Gen/etc... Nom default value
+    text content: attested form; using marks system as previously to denote conjectures etc
+ -->
+                        <persName type="main" nymRef="#nA_isci1nhs" xml:lang="gr" ana="#Greek #Nom">Αἰσχίνης</persName>
+                    </bibl>
+                    <birth notAfter="0100" notBefore="0000">
+                        <placeName ref="pleiades:589693" key="LGPN_10090">Andros</placeName>
+                    </birth>
+                    <floruit>?i AD</floruit>
+                    <state key="#relationship">
+                        <label>s. <persName type="relationship" xml:lang="grc" nymRef="#nFilwni1dhs">Φιλωνίδης</persName>
+                        </label>
+                    </state>
+                    <state key="#relationship">
+                        <label>f. <persName type="relationship" xml:lang="grc" nymRef="#nProusi1as">Προυσίας</persName>
+                        </label>
+                    </state>
+                    <bibl type="auxiliary">
+                        <ref target=""/>
+                        <seg/>
+                    </bibl>
+                </person>
+                <listRelation>
+                    <relation type="family" subtype="natural" name="child" active="#p1" passive="#p2 #p3"/>
+                </listRelation>
+            </listPerson>
+        </body>
+    </text>
+</TEI>
