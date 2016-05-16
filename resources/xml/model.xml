@@ -8,48 +8,54 @@
     <text>
         <body>
             <listPerson><!-- @sex gender -->
-                <person xml:id="uuid-0001" sex="1"><!-- LGPN volume -->
-                    <bibl>
-                        <ref target="#V1"/>
-                    </bibl><!-- for every primary source with attested name forms -->
-                    <bibl><!--
-                    @target reference
-                    @type type of source/inscription
-                    -->
-                        <ref target="#biblref" type="stone">reference  details</ref><!--
-                    @ana basis for dating: multiple choice 
-                    @type dating provided concerns the document or a person
-                    @notBefore @notAfter dates (year)
-                    -->
-                        <date notBefore="" notAfter="" type="document" ana=""/><!-- for every attested name form persName
-    @type type of the name e.g. main/nickname/Roman name/patronymic/demetic
-    @nymRef regularized form
-    @xml:lang source language of the form e.g. Greek/Latin/Hebrew Greek default
-    @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default
-    @ana case Nom/Gen/etc... Nom default value
-    text content: attested form; using marks system as previously to denote conjectures etc
- -->
-                        <persName type="main" nymRef="#nA_isci1nhs" xml:lang="gr" ana="#Greek #Nom">Αἰσχίνης</persName>
+                <person xml:id="uuid" sex=""><!-- LGPN volume -->
+                    <bibl type="volume">
+                        <ref target="#V5"/>
+                    </bibl><!-- person specific dating, if derived from context or other sources --><!-- @ana to hold information about the basis of dating: literary text/era/context/paleography/typology --><!-- @cert to hold information about uncertainty -->
+                    <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" cert="" ana=""/><!-- repeatable for every primary source -->
+                    <bibl xml:id="wit1" type="primary"><!--
+                        @target reference
+                        @type type of source/inscription
+                        @subtype subtype of source
+                        -->
+                        <ref target="" type="stone" subtype="">reference  details</ref><!--
+                        Source dating
+                        @ana basis for dating: multiple choice literary text/era/context/paleography/typology
+                        @notBefore @notAfter dates (year)
+                        @cert to hold information about uncertainty
+                        -->
+                        <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" cert="" ana=""/>
                     </bibl>
-                    <birth notAfter="0100" notBefore="0000">
-                        <placeName ref="pleiades:589693" key="LGPN_10090">Andros</placeName>
-                    </birth>
-                    <floruit>?i AD</floruit>
-                    <state key="#relationship">
-                        <label>s. <persName type="relationship" xml:lang="grc" nymRef="#nFilwni1dhs">Φιλωνίδης</persName>
-                        </label>
-                    </state>
-                    <state key="#relationship">
-                        <label>f. <persName type="relationship" xml:lang="grc" nymRef="#nProusi1as">Προυσίας</persName>
-                        </label>
-                    </state>
-                    <bibl type="auxiliary">
+                    <listNym><!-- repeatable for all names used by a person: eg main/nickname/Roman name/patronymic/demetic (@type) --><!-- @nymRef holds normalized form of a name --><!-- @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default -->
+                        <nym type="main" nymRef="" ana=""><!-- repeatable for every attested name form
+                            @xml:lang source language of the form e.g. Greek/Latin/Hebrew Greek default
+                            @ana case Nom/Gen/etc... Nom default value
+                            text content: attested form; using marks system as previously to denote conjectures etc
+                        -->
+                            <form type="attested">
+                                <persName type="main" xml:lang="grc" ana="#Nom" corresp="#w1">Αἰσχίνης</persName>
+                            </form>
+                        </nym>
+                    </listNym><!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
+                    <state type="location" subtype="birth">
+                        <placeName key="" type="ancient" subtype="" cert=""/>
+                    </state><!-- repeatable
+                    @subtype: secondary, dictionary, onomastic
+                    @ana: location, name, date, relationship, stemma -->
+                    <bibl type="auxiliary" subtype="" ana="">
                         <ref target=""/>
-                        <seg/>
+                        <author/>
+                        <seg type="details"/>
+                        <ptr ref=""/>
                     </bibl>
+                    <trait type="profession" key="" ana=""/>
+                    <trait type="office" key="" ana=""/>
+                    <trait type="status" key="" ana=""/>
+                    <trait type="religion" key="" ana=""/>
+                    <trait type="Roman" key="" ana=""/>
                 </person>
                 <listRelation>
-                    <relation type="family" subtype="natural" name="child" active="#p1" passive="#p2 #p3"/>
+                    <relation type="family" subtype="natural" name="" passive=""/>
                 </listRelation>
             </listPerson>
         </body>
