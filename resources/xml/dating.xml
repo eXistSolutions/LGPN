@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="literary_text">literary text</option>
+    <option value="era">era</option>
+    <option value="context">context</option>
+    <option value="palaeography">palaeography</option>
+    <option value="typology">typology</option>
+</data>

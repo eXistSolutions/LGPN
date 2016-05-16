@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="citizen">citizen of</option>
+    <option value="resident">resident of</option>
+    <option value="attested">attested at</option>
+</data>

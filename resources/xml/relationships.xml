@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="child">child of</option>
+    <option value="spouse">spouse of</option>
+    <option value="sibling">sibling of</option>
+    <option value="relative">other relative of</option>
+</data>

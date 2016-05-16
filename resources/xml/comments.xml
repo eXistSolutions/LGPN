@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="location">location</option>
+    <option value="name">name</option>
+    <option value="date">date</option>
+    <option value="relationship">relationship</option>
+    <option value="stemma">stemma</option>
+</data>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="main">main</option>
+    <option value="pseudonym">pseudonym</option>
+    <option value="roman">Roman name</option>
+    <option value="patronymic">patronymic</option>
+</data>
