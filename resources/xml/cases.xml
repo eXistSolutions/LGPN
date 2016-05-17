@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="Nom">Nom</option>
+    <option value="Gen">Gen</option>
+    <option value="Dat">Dat</option>
+    <option value="Acc">Acc</option>
+    <option value="Loc">Loc</option>
+    <option value="Voc">Voc</option>
+</data>
