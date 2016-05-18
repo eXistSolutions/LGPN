@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="grc">Greek</option>
+    <option value="grc-cs">Cypriot Syllabic</option>
+    <option value="la">Latin</option>
+    <option value="anat">Anatolian</option>
+    <option value="car">Carian</option>
+    <option value="lyc">Lycian</option>
+    <option value="sid">Sidetic</option>
+    <option value="pis">Pisidian</option>
+    <option value="phr">Phrygian</option>
+    <option value="arc">Aramaic</option>
+    <option value="arc-n">Nabataean</option>
+    <option value="arc-p">Palmyrene</option>
+    <option value="syr">Syriac</option>
+    <option value="pho">Phoenician</option>
+    <option value="heb">Hebrew</option>
+    <option value="oar">Old Arabic</option>
+    <option value="yem">Himyarite and Sabaean (Yemen)</option>
+    <option value="saf">Safaitic</option>
+    <option value="his">Hismaic</option>
+    <option value="per">Persian</option>
+    <option value="eg">Egyptian</option>
+    <option value="eg-h">Hieroglyphic</option>
+    <option value="eg-c">Coptic</option>
+    <option value="eg-d">Demotic</option>
+</data>

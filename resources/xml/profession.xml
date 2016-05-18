@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="office">
+    <category xml:id="mercenary">
+        <catDesc xml:lang="en">mercenary</catDesc>
+    </category>
+    <category xml:id="soldier">
+        <catDesc xml:lang="en">soldier</catDesc>
+    </category>
+    <category xml:id="athlete">
+        <catDesc xml:lang="en">athlete</catDesc>
+    </category>
+    <category xml:id="actor">
+        <catDesc xml:lang="en">actor</catDesc>
+    </category>
+    <category xml:id="musician">
+        <catDesc xml:lang="en">musician</catDesc>
+    </category>
+    <category xml:id="poet">
+        <catDesc xml:lang="en">poet</catDesc>
+    </category>
+    <category xml:id="philosopher">
+        <catDesc xml:lang="en">philosopher</catDesc>
+    </category>
+    <category xml:id="historian">
+        <catDesc xml:lang="en">historian</catDesc>
+    </category>
+    <category xml:id="orator">
+        <catDesc xml:lang="en">orator</catDesc>
+    </category>
+    <category xml:id="sophist">
+        <catDesc xml:lang="en">sophist</catDesc>
+    </category>
+    <category xml:id="didaskalos">
+        <catDesc xml:lang="en">didaskalos</catDesc>
+    </category>
+    <category xml:id="grammarian">
+        <catDesc xml:lang="en">grammarian</catDesc>
+    </category>
+    <category xml:id="jurist">
+        <catDesc xml:lang="en">jurist</catDesc>
+    </category>
+    <category xml:id="doctor">
+        <catDesc xml:lang="en">doctor</catDesc>
+    </category>
+    <category xml:id="nurse">
+        <catDesc xml:lang="en">nurse</catDesc>
+    </category>
+    <category xml:id="chemist">
+        <catDesc xml:lang="en">chemist</catDesc>
+    </category>
+    <category xml:id="vet">
+        <catDesc xml:lang="en">vet</catDesc>
+    </category>
+    <category xml:id="coin_engraver">
+        <catDesc xml:lang="en">coin engraver</catDesc>
+    </category>
+    <category xml:id="banker">
+        <catDesc xml:lang="en">banker</catDesc>
+    </category>
+    <category xml:id="oikonomos">
+        <catDesc xml:lang="en">oikonomos</catDesc>
+    </category>
+    <category xml:id="pragmateutes">
+        <catDesc xml:lang="en">pragmateutes</catDesc>
+    </category>
+    <category xml:id="shipwright">
+        <catDesc xml:lang="en">shipwright</catDesc>
+    </category>
+    <category xml:id="architect">
+        <catDesc xml:lang="en">architect</catDesc>
+    </category>
+    <category xml:id="surveyor">
+        <catDesc xml:lang="en">surveyor</catDesc>
+    </category>
+    <category xml:id="engineer">
+        <catDesc xml:lang="en">engineer</catDesc>
+    </category>
+    <category xml:id="builder">
+        <catDesc xml:lang="en">builder</catDesc>
+    </category>
+    <category xml:id="quarrier">
+        <catDesc xml:lang="en">quarrier</catDesc>
+    </category>
+    <category xml:id="quarry_master">
+        <catDesc xml:lang="en">quarry master</catDesc>
+    </category>
+    <category xml:id="marble_worker">
+        <catDesc xml:lang="en">marble worker</catDesc>
+    </category>
+    <category xml:id="mason">
+        <catDesc xml:lang="en">mason</catDesc>
+    </category>
+    <category xml:id="sculptor">
+        <catDesc xml:lang="en">sculptor</catDesc>
+    </category>
+    <category xml:id="coroplast">
+        <catDesc xml:lang="en">coroplast</catDesc>
+    </category>
+    <category xml:id="painter">
+        <catDesc xml:lang="en">painter</catDesc>
+    </category>
+    <category xml:id="vase_painter">
+        <catDesc xml:lang="en">vase painter</catDesc>
+    </category>
+    <category xml:id="potter">
+        <catDesc xml:lang="en">potter</catDesc>
+    </category>
+    <category xml:id="lamp_maker">
+        <catDesc xml:lang="en">lamp maker</catDesc>
+    </category>
+    <category xml:id="fabricant">
+        <catDesc xml:lang="en">fabricant (amphoras)</catDesc>
+    </category>
+    <category xml:id="mosaicist">
+        <catDesc xml:lang="en">mosaicist</catDesc>
+    </category>
+    <category xml:id="goldsmith">
+        <catDesc xml:lang="en">goldsmith</catDesc>
+    </category>
+    <category xml:id="gilder">
+        <catDesc xml:lang="en">gilder</catDesc>
+    </category>
+    <category xml:id="metal_worker">
+        <catDesc xml:lang="en">metal worker</catDesc>
+    </category>
+    <category xml:id="bronze_worker">
+        <catDesc xml:lang="en">bronze worker</catDesc>
+    </category>
+    <category xml:id="cutler">
+        <catDesc xml:lang="en">cutler</catDesc>
+    </category>
+    <category xml:id="wood_worker">
+        <catDesc xml:lang="en">wood worker</catDesc>
+    </category>
+    <category xml:id="dyer">
+        <catDesc xml:lang="en">dyer</catDesc>
+    </category>
+    <category xml:id="cloth_worker">
+        <catDesc xml:lang="en">cloth worker</catDesc>
+    </category>
+    <category xml:id="fuller">
+        <catDesc xml:lang="en">fuller</catDesc>
+    </category>
+    <category xml:id="tanner">
+        <catDesc xml:lang="en">tanner</catDesc>
+    </category>
+    <category xml:id="hetaira">
+        <catDesc xml:lang="en">hetaira</catDesc>
+    </category>
+    <category xml:id="cook">
+        <catDesc xml:lang="en">cook</catDesc>
+    </category>
+</taxonomy>

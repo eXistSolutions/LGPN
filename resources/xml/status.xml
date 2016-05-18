@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="status">
+    <category xml:id="slave">
+        <catDesc xml:lang="en">slave</catDesc>
+        <category xml:id="oikogenes">
+            <catDesc xml:lang="en">oikogenes</catDesc>
+        </category>
+        <category xml:id="imperial">
+            <catDesc xml:lang="en">imperial</catDesc>
+        </category>
+        <category xml:id="other">
+            <catDesc xml:lang="en">other</catDesc>
+        </category>
+        <category xml:id="naturalized">
+            <catDesc xml:lang="en">naturalized</catDesc>
+        </category>
+    </category>
+    <category xml:id="slave_freedman">
+        <catDesc xml:lang="en">slave/freedman</catDesc>
+    </category>
+    <category xml:id="freedman">
+        <catDesc xml:lang="en">freedman</catDesc>
+    </category>
+    <category xml:id="imperial_freedman">
+        <catDesc xml:lang="en">imperial freedman</catDesc>
+    </category>
+    <category xml:id="oiketes">
+        <catDesc xml:lang="en">oiketes (Termessos)</catDesc>
+    </category>
+    <category xml:id="synoikos">
+        <catDesc xml:lang="en">synoikos</catDesc>
+    </category>
+    <category xml:id="resident">
+        <catDesc xml:lang="en">resident</catDesc>
+    </category>
+    <category xml:id="metic">
+        <catDesc xml:lang="en">metic</catDesc>
+    </category>
+    <category xml:id="naturalized_metic">
+        <catDesc xml:lang="en">naturalized metic</catDesc>
+    </category>
+    <category xml:id="paroikos">
+        <catDesc xml:lang="en">paroikos</catDesc>
+    </category>
+    <category xml:id="katoikos">
+        <catDesc xml:lang="en">katoikos</catDesc>
+    </category>
+    <category xml:id="epoikos">
+        <catDesc xml:lang="en">epoikos</catDesc>
+    </category>
+    <category xml:id="epidamia">
+        <catDesc xml:lang="en">epidamia (Rhodes)</catDesc>
+    </category>
+    <category xml:id="tes_epigones">
+        <catDesc xml:lang="en">tes epigones</catDesc>
+    </category>
+    <category xml:id="threptos">
+        <catDesc xml:lang="en">threptos/e</catDesc>
+    </category>
+    <category xml:id="tethrammenos">
+        <catDesc xml:lang="en">tethrammenos/e</catDesc>
+    </category>
+    <category xml:id="tethremmenos">
+        <catDesc xml:lang="en">tethremmenos/e/on</catDesc>
+    </category>
+    <category xml:id="thremma">
+        <catDesc xml:lang="en">thremma</catDesc>
+    </category>
+    <category xml:id="thremmation">
+        <catDesc xml:lang="en">thremmation</catDesc>
+    </category>
+    <category xml:id="trofimos">
+        <catDesc xml:lang="en">trofimos</catDesc>
+    </category>
+    <category xml:id="nothos">
+        <catDesc xml:lang="en">nothos</catDesc>
+    </category>
+    <category xml:id="mothax">
+        <catDesc xml:lang="en">mothax (Sparta)</catDesc>
+    </category>
+    <category xml:id="hypomeion">
+        <catDesc xml:lang="en">hypomeion (Sparta)</catDesc>
+    </category>
+    <category xml:id="penestas">
+        <catDesc xml:lang="en">penestas (Thessaly)</catDesc>
+    </category>
+</taxonomy>

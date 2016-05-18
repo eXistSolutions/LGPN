@@ -1,6 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data>
-    <option value="1">inscription on stone</option>
-    <option value="2">papyri</option>
-    <option value="3">stamp</option>
-</data>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="sourceTypes">
+    <category xml:id="coin">
+        <catDesc xml:lang="en">coin</catDesc>
+    </category>
+    <category xml:id="mosaic">
+        <catDesc xml:lang="en">mosaic</catDesc>
+    </category>
+    <category xml:id="stamp">
+        <catDesc xml:lang="en">stamp</catDesc>
+        <category xml:id="official">
+            <catDesc xml:lang="en">official/civic</catDesc>
+        </category>
+        <category xml:id="amphora">
+            <catDesc xml:lang="en">amphora</catDesc>
+        </category>
+        <category xml:id="tile">
+            <catDesc xml:lang="en">tile</catDesc>
+        </category>
+        <category xml:id="pot">
+            <catDesc xml:lang="en">pot</catDesc>
+        </category>
+        <category xml:id="brick">
+            <catDesc xml:lang="en">brick</catDesc>
+        </category>
+        <category xml:id="pithos">
+            <catDesc xml:lang="en">pithos</catDesc>
+        </category>
+        <category xml:id="Other">
+            <catDesc xml:lang="en">Other</catDesc>
+        </category>
+    </category>
+    <category xml:id="bronze_vase">
+        <catDesc xml:lang="en">bronze vase</catDesc>
+    </category>
+    <category xml:id="graffito">
+        <catDesc xml:lang="en">graffito</catDesc>
+        <category xml:id="pot">
+            <catDesc xml:lang="en">pot</catDesc>
+        </category>
+        <category xml:id="pithos">
+            <catDesc xml:lang="en">pithos</catDesc>
+        </category>
+        <category xml:id="stone">
+            <catDesc xml:lang="en">stone</catDesc>
+        </category>
+        <category xml:id="Wall">
+            <catDesc xml:lang="en">Wall</catDesc>
+        </category>
+    </category>
+    <category xml:id="dipinto">
+        <catDesc xml:lang="en">dipinto</catDesc>
+    </category>
+    <category xml:id="ring">
+        <catDesc xml:lang="en">ring</catDesc>
+        <category xml:id="gold">
+            <catDesc xml:lang="en">gold</catDesc>
+        </category>
+        <category xml:id="silver">
+            <catDesc xml:lang="en">silver</catDesc>
+        </category>
+        <category xml:id="bronze">
+            <catDesc xml:lang="en">bronze</catDesc>
+        </category>
+    </category>
+    <category xml:id="figurine">
+        <catDesc xml:lang="en">figurine</catDesc>
+    </category>
+    <category xml:id="bronze">
+        <catDesc xml:lang="en">bronze</catDesc>
+    </category>
+    <category xml:id="terracotta">
+        <catDesc xml:lang="en">terracotta</catDesc>
+    </category>
+    <category xml:id="tablet">
+        <catDesc xml:lang="en">tablet</catDesc>
+        <category xml:id="clay">
+            <catDesc xml:lang="en">clay</catDesc>
+        </category>
+        <category xml:id="wood">
+            <catDesc xml:lang="en">wood</catDesc>
+        </category>
+    </category>
+    <category xml:id="curse_tablet">
+        <catDesc xml:lang="en">curse-tablet</catDesc>
+    </category>
+    <category xml:id="amulet">
+        <catDesc xml:lang="en">amulet</catDesc>
+    </category>
+    <category xml:id="anchor">
+        <catDesc xml:lang="en">anchor</catDesc>
+    </category>
+    <category xml:id="armour">
+        <catDesc xml:lang="en">armour</catDesc>
+    </category>
+    <category xml:id="bone">
+        <catDesc xml:lang="en">bone</catDesc>
+    </category>
+    <category xml:id="bullet">
+        <catDesc xml:lang="en">bullet</catDesc>
+    </category>
+    <category xml:id="gem">
+        <catDesc xml:lang="en">gem</catDesc>
+    </category>
+    <category xml:id="glass">
+        <catDesc xml:lang="en">glass</catDesc>
+    </category>
+    <category xml:id="lamp">
+        <catDesc xml:lang="en">lamp</catDesc>
+    </category>
+    <category xml:id="lead_seal">
+        <catDesc xml:lang="en">lead seal</catDesc>
+    </category>
+    <category xml:id="loomweight">
+        <catDesc xml:lang="en">loomweight</catDesc>
+    </category>
+    <category xml:id="ostraka">
+        <catDesc xml:lang="en">ostraka</catDesc>
+    </category>
+    <category xml:id="ostrakon">
+        <catDesc xml:lang="en">ostrakon</catDesc>
+    </category>
+    <category xml:id="pinax">
+        <catDesc xml:lang="en">pinax</catDesc>
+    </category>
+    <category xml:id="tessera">
+        <catDesc xml:lang="en">tessera</catDesc>
+    </category>
+    <category xml:id="waterpipe">
+        <catDesc xml:lang="en">waterpipe</catDesc>
+        <category xml:id="lead">
+            <catDesc xml:lang="en">lead</catDesc>
+        </category>
+        <category xml:id="terracotta">
+            <catDesc xml:lang="en">terracotta</catDesc>
+        </category>
+    </category>
+    <category xml:id="weight">
+        <catDesc xml:lang="en">weight</catDesc>
+    </category>
+</taxonomy>

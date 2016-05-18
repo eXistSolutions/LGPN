@@ -4,6 +4,6 @@
     <option value="Gen">Gen</option>
     <option value="Dat">Dat</option>
     <option value="Acc">Acc</option>
-    <option value="Loc">Loc</option>
     <option value="Voc">Voc</option>
+    <option value="Abl">Abl</option>
 </data>

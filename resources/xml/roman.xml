@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="dialects">
+    <category xml:id="soldier">
+        <catDesc xml:lang="en">soldier</catDesc>
+    </category>
+    <category xml:id="sailor">
+        <catDesc xml:lang="en">sailor</catDesc>
+    </category>
+    <category xml:id="veteran">
+        <catDesc xml:lang="en">veteran</catDesc>
+    </category>
+    <category xml:id="beneficiarius">
+        <catDesc xml:lang="en">beneficiarius</catDesc>
+    </category>
+    <category xml:id="gladiator">
+        <catDesc xml:lang="en">gladiator</catDesc>
+    </category>
+    <category xml:id="duovir">
+        <catDesc xml:lang="en">duovir</catDesc>
+    </category>
+    <category xml:id="asiarch">
+        <catDesc xml:lang="en">asiarch</catDesc>
+    </category>
+    <category xml:id="senator">
+        <catDesc xml:lang="en">senator</catDesc>
+    </category>
+    <category xml:id="eques">
+        <catDesc xml:lang="en">eques</catDesc>
+    </category>
+    <category xml:id="vir_consularis">
+        <catDesc xml:lang="en">vir consularis</catDesc>
+    </category>
+    <category xml:id="femina_consularis">
+        <catDesc xml:lang="en">femina consularis</catDesc>
+    </category>
+    <category xml:id="comes">
+        <catDesc xml:lang="en">comes</catDesc>
+    </category>
+    <category xml:id="procurator">
+        <catDesc xml:lang="en">procurator</catDesc>
+    </category>
+    <category xml:id="negotiator">
+        <catDesc xml:lang="en">negotiator</catDesc>
+    </category>
+    <category xml:id="emperor">
+        <catDesc xml:lang="en">emperor</catDesc>
+    </category>
+</taxonomy>

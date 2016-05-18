@@ -3,5 +3,8 @@
     <option value="child">child of</option>
     <option value="spouse">spouse of</option>
     <option value="sibling">sibling of</option>
+    <option value="grandchild">grandchild of</option>
+    <option value="nephew">nephew/niece of</option>
+    <option value="cousin">cousin of</option>
     <option value="relative">other relative of</option>
 </data>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="dialects">
+    <category xml:id="priest">
+        <catDesc xml:lang="en">priest/ess</catDesc>
+        <category xml:id="civic">
+            <catDesc xml:lang="en">civic</catDesc>
+        </category>
+        <category xml:id="private">
+            <catDesc xml:lang="en">private</catDesc>
+        </category>
+        <category xml:id="federal">
+            <catDesc xml:lang="en">federal</catDesc>
+        </category>
+    </category>
+    <category xml:id="hieros">
+        <catDesc xml:lang="en">hieros/a</catDesc>
+    </category>
+    <category xml:id="hierodoulos">
+        <catDesc xml:lang="en">hierodoulos/e</catDesc>
+    </category>
+    <category xml:id="archiereus">
+        <catDesc xml:lang="en">archiereus (Imperial cult)</catDesc>
+    </category>
+    <category xml:id="mantis">
+        <catDesc xml:lang="en">mantis</catDesc>
+    </category>
+    <category xml:id="Christian">
+        <catDesc xml:lang="en">Christian</catDesc>
+        <category xml:id="priest">
+            <catDesc xml:lang="en">priest</catDesc>
+        </category>
+        <category xml:id="anagnostes">
+            <catDesc xml:lang="en">anagnostes</catDesc>
+        </category>
+        <category xml:id="deacon">
+            <catDesc xml:lang="en">deacon/ess</catDesc>
+        </category>
+        <category xml:id="archdeacon">
+            <catDesc xml:lang="en">archdeacon</catDesc>
+        </category>
+        <category xml:id="bishop">
+            <catDesc xml:lang="en">bishop</catDesc>
+        </category>
+        <category xml:id="chorepiskopos">
+            <catDesc xml:lang="en">chorepiskopos</catDesc>
+        </category>
+        <category xml:id="archbishop">
+            <catDesc xml:lang="en">archbishop</catDesc>
+        </category>
+        <category xml:id="archimandrite">
+            <catDesc xml:lang="en">archimandrite</catDesc>
+        </category>
+        <category xml:id="hegoumenos">
+            <catDesc xml:lang="en">hegoumenos/e</catDesc>
+        </category>
+        <category xml:id="monk">
+            <catDesc xml:lang="en">monk/nun</catDesc>
+        </category>
+        <category xml:id="patriarch">
+            <catDesc xml:lang="en">patriarch</catDesc>
+        </category>
+        <category xml:id="martyr">
+            <catDesc xml:lang="en">martyr</catDesc>
+        </category>
+        <category xml:id="saint">
+            <catDesc xml:lang="en">saint</catDesc>
+        </category>
+    </category>
+    <category xml:id="Jew">
+        <catDesc xml:lang="en">Jew</catDesc>
+        <category xml:id="presbyter">
+            <catDesc xml:lang="en">presbyter</catDesc>
+        </category>
+        <category xml:id="priest">
+            <catDesc xml:lang="en">priest</catDesc>
+        </category>
+        <category xml:id="deacon">
+            <catDesc xml:lang="en">deacon/ess</catDesc>
+        </category>
+    </category>
+</taxonomy>

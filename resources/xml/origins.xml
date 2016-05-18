@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <option value="greek">Greek</option>
+    <option value="italian">Italian</option>
+    <option value="anatolian">Anatolian</option>
+    <option value="thracian">Thracian</option>
     <option value="semitic">Semitic</option>
+    <option value="iranian">Iranian</option>
+    <option value="egyptian">Egyptian</option>
+    <option value="celtic">Celtic</option>
+    <option value="illyrian">Illyrian</option>
+    <option value="libyan">Libyan</option>
+    <option value="nBlackSea">N. Black Sea</option>
 </data>

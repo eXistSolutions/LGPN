@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="office">
+    <category xml:id="archon">
+        <catDesc xml:lang="en">archon</catDesc>
+        <category xml:id="eponymous">
+            <catDesc xml:lang="en">eponymous</catDesc>
+        </category>
+        <category xml:id="federal">
+            <catDesc xml:lang="en">federal</catDesc>
+        </category>
+        <category xml:id="local">
+            <catDesc xml:lang="en">local</catDesc>
+        </category>
+    </category>
+    <category xml:id="eponymous_magistrate">
+        <catDesc xml:lang="en">eponymous magistrate</catDesc>
+    </category>
+    <category xml:id="stephanephoros">
+        <catDesc xml:lang="en">stephanephoros</catDesc>
+    </category>
+    <category xml:id="strategos">
+        <catDesc xml:lang="en">strategos</catDesc>
+    </category>
+    <category xml:id="demiourgos">
+        <catDesc xml:lang="en">demiourgos</catDesc>
+    </category>
+    <category xml:id="phrourarchos">
+        <catDesc xml:lang="en">phrourarchos (Knidos)</catDesc>
+    </category>
+    <category xml:id="prytanis">
+        <catDesc xml:lang="en">prytanis</catDesc>
+    </category>
+    <category xml:id="prostates">
+        <catDesc xml:lang="en">prostates (Bouthrotos)</catDesc>
+    </category>
+    <category xml:id="agoranomos">
+        <catDesc xml:lang="en">agoranomos</catDesc>
+    </category>
+    <category xml:id="astynomos">
+        <catDesc xml:lang="en">astynomos</catDesc>
+    </category>
+    <category xml:id="tyrant">
+        <catDesc xml:lang="en">tyrant</catDesc>
+    </category>
+    <category xml:id="dynast">
+        <catDesc xml:lang="en">dynast</catDesc>
+    </category>
+    <category xml:id="king">
+        <catDesc xml:lang="en">king</catDesc>
+    </category>
+    <category xml:id="queen">
+        <catDesc xml:lang="en">queen</catDesc>
+    </category>
+    <category xml:id="regent">
+        <catDesc xml:lang="en">regent</catDesc>
+    </category>
+    <category xml:id="satrap">
+        <catDesc xml:lang="en">satrap</catDesc>
+    </category>
+    <category xml:id="lawgiver">
+        <catDesc xml:lang="en">lawgiver</catDesc>
+    </category>
+    <category xml:id="oikist">
+        <catDesc xml:lang="en">oikist</catDesc>
+    </category>
+</taxonomy>
