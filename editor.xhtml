@@ -184,7 +184,6 @@
                     <xf:action ev:event="xforms-submit"><!--
 <xf:setvalue ref="instance('i-default')//TEI:person/@xml:id" value="instance('i-default')//TEI:nym[@type='latin']"/>
 -->
-                        <xf:setvalue ref="instance('i-default')//TEI:person/@xml:id" value="instance('i-default')//TEI:nym[@type='main'][1]/@nymRef"/>
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Saving...</xf:message>
                     </xf:action>
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been
@@ -818,9 +817,10 @@
                 </xf:group>
             </xf:group>
             <br/>
-            <xf:submit class="-btn -btn-default -glyphicon -glyphicon-save" submission="s-save-data">
+            <xf:submit class="-btn -btn-success -glyphicon -glyphicon-save" submission="s-save-data">
                 <xf:label>Save</xf:label>
             </xf:submit>
+            <a href="browse.html" class="btn btn-default glyphicon glyphicon-out">Return to the list of names without saving</a>
         </div>
         <bfc:dialog id="meanings" src="meanings.html">
             <xf:label>Add meaning</xf:label>
