@@ -123,6 +123,18 @@ $('#stat').typeahead(null, {
   limit: 100
 });
 
+var roman = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: 'modules/json.xqm?type=roman'
+});
+
+$('#roman').typeahead(null, {
+  name: 'roman',
+  source: roman,
+  limit: 100
+});
+
 
 var reference = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.whitespace,

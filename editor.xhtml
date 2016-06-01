@@ -160,27 +160,15 @@
                 <xf:instance xmlns="" id="i-roman" src="resources/xml/roman.xml"/>
                 <xf:instance id="i-controller">
                     <data xmlns="">
-                        <morpheme/>
+                        <bibl/>
                     </data>
                 </xf:instance>
                 <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/load.xql?id={bf:appContext('id')}">
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been
                   loaded.</xf:message>
-                    <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message><!--
-<xf:action ev:event="xforms-submit-done">
-                        <xf:action while="instance('i-meanings')/being-reloaded/@grp < count(instance('i-default')//TEI:gramGrp)">
-                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="instance('i-meanings')/being-reloaded/@grp + 1"/>
-                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="1"/>
-                            <xf:send submission="s-reload-meanings"/>
-                        </xf:action>
-                    </xf:action>
-                    -->
+                    <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
                 </xf:submission>
                 <xf:submission id="s-save-data" method="post" replace="none" validate="true" resource="modules/save.xql">
-                    <xf:header>
-                        <xf:name>userid</xf:name>
-                        <xf:value>{bf:appContext('id')}</xf:value>
-                    </xf:header>
                     <xf:action ev:event="xforms-submit"><!--
 <xf:setvalue ref="instance('i-default')//TEI:person/@xml:id" value="instance('i-default')//TEI:nym[@type='latin']"/>
 -->
@@ -197,6 +185,22 @@
                     </script>
                 </xf:action>
             </xf:model>
+            <xf:group id="load-subform-group">
+                <xf:action ev:event="load-subform-event" if="string-length(instance('i-controller')/bibl) &gt; 0">
+                    <xf:load show="embed" targetid="mountpoint">
+                        <xf:resource value="concat('bibl.xhtml?bibl=', instance('i-controller')/bibl,'#xforms')"/>
+                        <xf:extension includeCSS="false" includeScript="false"/>
+                    </xf:load>
+                    <bfc:show dialog="bibl"/>
+                </xf:action>
+                <xf:action ev:event="load-subform-event" if="string-length(instance('i-controller')/bibl) = 0">
+                    <xf:load show="embed" targetid="mountpoint">
+                        <xf:resource value="'bibl.xhtml#xforms'"/>
+                        <xf:extension includeCSS="false" includeScript="false"/>
+                    </xf:load>
+                    <bfc:show dialog="bibl"/>
+                </xf:action>
+            </xf:group>
         </div>
         <div class="container">
             <div class="row">
@@ -593,18 +597,25 @@
                             <div class="row">
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:ref/@target">
-                                        <xf:action ev:event="constituent_autocomplete-callback">
+                                        <xf:action ev:event="reference_autocomplete-callback">
                                             <xf:setvalue ref="." value="event('termValue')"/>
                                         </xf:action>
                                         <xf:label class="input-group-addon glyphicon glyphicon-book">ref</xf:label>
                                         <xf:hint>reference abbreviation</xf:hint>
                                     </xf:input>
-                                    <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                    <input type="hidden" data-function="reference_autocomplete" placeholder="Type to search ..." autocomplete="on"/>
+                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                        <xf:label/>
+                                        <xf:action ev:event="DOMActivate">
+                                            <xf:setvalue ref="instance('i-controller')/bibl" value="instance('i-default')//TEI:bibl[index('r-primarySource')]/TEI:ref/@target"/>
+                                            <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                        </xf:action>
+                                    </xf:trigger>
                                 </div>
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:ref">
                                         <xf:label class="input-group-addon glyphicon glyphicon-list"/>
-                                        <xf:hint>refrence details</xf:hint>
+                                        <xf:hint>reference details</xf:hint>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-3">
@@ -822,8 +833,8 @@
             </xf:submit>
             <a href="browse.html" class="btn btn-default glyphicon glyphicon-out">Return to the list of names without saving</a>
         </div>
-        <bfc:dialog id="meanings" src="meanings.html">
-            <xf:label>Add meaning</xf:label>
+        <bfc:dialog id="bibl" src="bibl.html">
+            <xf:label>Add bibl</xf:label>
             <div id="mountpoint"/>
         </bfc:dialog>
         <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>

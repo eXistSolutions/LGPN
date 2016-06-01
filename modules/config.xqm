@@ -39,6 +39,10 @@ declare variable $config:persons := doc(concat($config:volumes-root, "/volume0.x
 declare variable $config:places := doc(concat($config:volumes-root, "/volume0.places.xml"));
 declare variable $config:persons-root := $config:data-root || "/persons";
 
+declare variable $config:auxiliary-root := $config:volumes-root || "/auxiliary";
+
+declare variable $config:references-root := $config:auxiliary-root || "/references";
+
 declare variable $config:repo-descriptor := doc(concat($config:app-root, "/repo.xml"))/repo:meta;
 
 declare variable $config:expath-descriptor := doc(concat($config:app-root, "/expath-pkg.xml"))/expath:package;

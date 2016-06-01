@@ -11,7 +11,7 @@ let $date := substring-before(xs:string(current-dateTime()), "T")
 let $change := <change xmlns="http://www.tei-c.org/ns/1.0" when="{$date}" resp="{$user}">Edit entry via LGPN-ling interface</change>
 let $data := normalization:normalize(request:get-data()//TEI:TEI)
 let $c := console:log($data)
-let $id := if($data//TEI:person/@xml:id='uuid') then util:uuid() else $data//TEI:person/@xml:id
+let $id := if($data//TEI:person/@xml:id='uuid') then 'P' || util:uuid() else $data//TEI:person/@xml:id
 let $c := console:log($config:persons-root)
 
 let $log := util:log("INFO", "data: " || $data)

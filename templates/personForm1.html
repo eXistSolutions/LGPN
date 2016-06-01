@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n" class="form form-horizontal i18n:translate?lang=fr&amp;catalogues=data/i18n" action="" method="GET">
+    <fieldset id="segment">
+        <legend>
+            <i18n:text key="editPerson">Edit Person</i18n:text>
+        </legend>
+        <div class="row"/>
+        <br/>
+        <fieldset id="names">
+            <legend>
+                <i18n:text key="nameVariants">Id</i18n:text>
+            </legend>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"/> id
+                    </span>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="generated ID" data-template="templates:form-control" disabled="disabled"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"/>
+                            <i18n:text key="gender">gender</i18n:text>
+                        </span>
+                        <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                            <option value="1">m.</option>
+                            <option value="2">f.</option>
+                            <option value="9">
+                                <i18n:text key="unknown">unknown</i18n:text>
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-book"/>
+                            <i18n:text key="volume">volume</i18n:text>
+                        </span>
+                        <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                            <option value="1">V1</option>
+                            <option value="2">V2</option>
+                            <option value="3">V3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset id="names">
+            <legend>
+                <i18n:text key="nameVariants">Primary sources &amp; attestations </i18n:text>
+                <span class="glyphicon glyphicon-plus"/>
+            </legend>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-book"/>
+                            <i18n:text key="blah">reference</i18n:text>
+                        </span>
+                        <input class="input-group form-control" id="primaryreference" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-bookmark"/>
+                            <i18n:text key="blah">details</i18n:text>
+                        </span>
+                        <input class="input-group form-control" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-text-horizontal"/>
+                        </span>
+                        <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
+                            <option>inscription on stone</option>
+                            <option>papyri</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"/>
+                            <i18n:text key="blah">&gt;</i18n:text>
+                        </span>
+                        <input class="form-control" id="pdateStart" name="pdateStart" placeholder="400" data-template="templates:form-control"/>
+                        <span class="input-group-addon"/>
+                        <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
+                            <option>BC</option>
+                            <option>AD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"/>
+                            <i18n:text key="notAfter">&lt;</i18n:text>
+                        </span>
+                        <input class="form-control" id="pdateEnd" name="pdateEnd" placeholder="300" data-template="templates:form-control"/>
+                        <span class="input-group-addon"/>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option>BC</option>
+                            <option>AD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-info-sign"/>
+                            <i18n:text key=""/>
+                        </span>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option>literary text</option>
+                            <option>era</option>
+                            <option>context</option>
+                            <option>palaeography</option>
+                            <option>typology</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"/>
+                            <i18n:text key=""/>
+                        </span>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option>document</option>
+                            <option>person</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-check"/>
+                            <i18n:text key=""/>
+                        </span>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option>certain</option>
+                            <option>uncertain</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h4>Attested forms <span class="glyphicon glyphicon-plus"/>
+                    </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">α</span>
+                        <input type="text" class="form-control" name="pname" id="pname" placeholder="regularized" data-template="templates:form-control"/>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">α</span>
+                        <input type="text" class="form-control" name="aname" id="aname" placeholder="attested" data-template="templates:form-control"/>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-resize-horizontal"/>
+                            <i18n:text key="comment"/>
+                        </span>
+                        <input type="text" class="form-control" name="a" id="a" placeholder="extra text" data-template="templates:form-control"/>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-tag"/>
+                            <i18n:text key="type">type</i18n:text>
+                        </span>
+                        <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                            <option value="0">
+                                <i18n:text key="main">main</i18n:text>
+                            </option>
+                            <option value="1">nickname</option>
+                            <option value="2">Roman name</option>
+                            <option value="9">
+                                <i18n:text key="unknown">other</i18n:text>
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-flag"/>
+                            <i18n:text key="type">source lang</i18n:text>
+                        </span>
+                        <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                            <option value="1">
+                                <i18n:text key="main">Greek</i18n:text>
+                            </option>
+                            <option value="2">Latin</option>
+                            <option value="3">Hebrew</option>
+                            <option value="9">
+                                <i18n:text key="other">other</i18n:text>
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-flag"/>
+                            <i18n:text key="type">name origin</i18n:text>
+                        </span>
+                        <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                            <option value="1">
+                                <i18n:text key="main">Greek</i18n:text>
+                            </option>
+                            <option value="2">Anatolian</option>
+                            <option value="3">Italian</option>
+                            <option value="3">Semitic</option>
+                            <option value="3">Iranian</option>
+                            <option value="3">Thracian</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-tag"/>
+                            <i18n:text key="type">case</i18n:text>
+                        </span>
+                        <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                            <option value="Nom">Nominative</option>
+                            <option value="Voc">Vocative</option>
+                            <option value="Acc">Accusative</option>
+                            <option value="Gen">Genetive</option>
+                            <option value="Dat">Dative</option>
+                            <option value="Abl">Ablative</option>
+                            <option value="Loc">Locative</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br/>
+        </fieldset>
+        <fieldset id="places">
+            <legend>
+                <i18n:text key="nameVariants">Places </i18n:text>
+                <span class="glyphicon glyphicon-plus"/>
+            </legend>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-tag"/>
+                        </span>
+                        <select class="form-control" id="gender" name="pgender" data-template="templates:form-control">
+                            <option value="1">citizen of</option>
+                            <option value="1">attested at</option>
+                            <option value="2">resident at</option>
+                            <option value="9">
+                                <i18n:text key="unknown">other</i18n:text>
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-pencil"/>
+                            <i18n:text key=""/>
+                        </span>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option/>
+                            <option>near</option>
+                            <option>territory</option>
+                            <option>area</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-map-marker"/>
+                        </span>
+                        <input type="text" class="form-control" name="pplace" id="pplace" placeholder="e.g. Tritaia" data-template="templates:form-control"/>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-check"/>
+                            <i18n:text key=""/>
+                        </span>
+                        <select class="form-control" id="pdateEndEra" name="pdateEndEra" data-template="templates:form-control">
+                            <option>certain</option>
+                            <option>uncertain</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset id="names">
+            <legend>
+                <i18n:text key="nameVariants">Relationships </i18n:text>
+                <span class="glyphicon glyphicon-plus"/>
+            </legend>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"/>
+                            <i18n:text key="blah">relationship</i18n:text>
+                        </span>
+                        <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
+                            <option>child of</option>
+                            <option>spouse of</option>
+                            <option>son of</option>
+                            <option>daughter of</option>
+                            <option>father of</option>
+                            <option>mother of</option>
+                            <option>sibling of</option>
+                            <option>other relative of</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"/>
+                        </span>
+                        <input class="form-control" id="rname" name="rname" placeholder="e.g. Νιάς" data-template="templates:form-control"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-text-horizontal"/>
+                        </span>
+                        <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
+                            <option>natural</option>
+                            <option>foster</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset id="sources">
+            <legend>
+                <i18n:text key="nameVariants">Status </i18n:text>
+            </legend>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-book"/>
+                            <i18n:text key="blah">profession</i18n:text>
+                        </span>
+                        <input class="input-group form-control" id="profession" name="profession" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-book"/>
+                            <i18n:text key="blah">office</i18n:text>
+                        </span>
+                        <input class="input-group form-control" id="office" name="office" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-book"/>
+                            <i18n:text key="blah">status</i18n:text>
+                        </span>
+                        <input class="input-group form-control" id="stat" name="stat" ref="TEI:ref"/>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset id="references">
+            <legend>
+                <i18n:text key="nameVariants">Secondary sources </i18n:text>
+                <span class="glyphicon glyphicon-plus"/>
+            </legend>
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-book"/>
+                            <i18n:text key="blah">reference</i18n:text>
+                        </span>
+                        <input class="input-group form-control" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"/>
+                            <i18n:text key="blah">author</i18n:text>
+                        </span>
+                        <input class="input-group form-control" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-bookmark"/>
+                            <i18n:text key="blah">details</i18n:text>
+                        </span>
+                        <input class="input-group form-control" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-link"/>
+                            <i18n:text key="blah">link</i18n:text>
+                        </span>
+                        <input class="input-group form-control" ref="TEI:ref"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-text-horizontal"/>
+                        </span>
+                        <select class="form-control" id="pdateStartEra" name="pdateStartEra" data-template="templates:form-control">
+                            <option>secondary source</option>
+                            <option>onomastic</option>
+                            <option>dictionary</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-tags"/> comments
+                    </span>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>location</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>date</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>name</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>relationship</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""/>stemma</label>
+                    </div>
+                </div>
+                <div class="col-xs-1">
+                    <trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
+                        <label/>
+                        <delete nodeset="//TEI:cit[index('r-cit')]"/>
+                    </trigger>
+                </div>
+            </div>
+        </fieldset>
+        <br/>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-8 col-sm-offset-8">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-search"/>
+                        <i18n:text key="search">Search</i18n:text>
+                    </button>
+                </div>
+            </div>
+        </div><!--
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> referenced in</span>
+                                <select class="form-control input-sm" id="suf pos">
+                                    <option>Thgn</option>
+                                    <option>a</option>
+                                    <option>b</option>
+                                    <option>c</option>
+                                    <option>d</option>
+                                </select>
+                            </div>
+                        </div>
+                            <div class="col-xs-3">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-bookmark"/> containing </span>
+                                    <input type="text" class="form-control input-sm" id="a_reference" placeholder="Thgn 163"/>
+                                </div>
+                            </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks"/> in</span>
+                                <select class="form-control input-sm" id="suf pos">
+                                    <option>any</option>
+                                    <option>sources</option>
+                                    <option>lexicographic</option>
+                                    <option>onomastic</option>
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+                        -->
+    </fieldset>
+</form>
