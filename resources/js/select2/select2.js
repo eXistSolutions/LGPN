@@ -23,7 +23,7 @@ function _termFormatSelection(term) {
 
 
 function destroyAutoComp(autocompletes) {
-    
+
     console.log(autocompletes);
     "use strict";
     var key;
@@ -54,7 +54,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
         var autocomplete = $(this);
         var xformsID = autocomplete.prev('.xfInput').attr('id');
 
-        
+
         if(xformsID !== undefined) {
             autocomplete.select2({
                 handler: undefined,
@@ -65,6 +65,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                 formatSelection: _termFormatSelection,
                 formatNoMatches: "<div>No matches</div>",
                 dropdownCssClass: "bigdrop",
+                containerCssClass: "form-control",
                 allowClear: true,
                 createSearchChoice: function (term) {
                     return {"value": "-1", "id": "Add new entry."};
@@ -108,14 +109,20 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                 } else {
                     var thingy = null;
                     if (e.added !== undefined) {
-                        console.log("helllo???");
+                        //console.log("helllo??? :" + e.added.value);
                         thingy = e.added;
                     }
                     if (thingy !== null) {
                         console.log("CALBBACK:", xformsID);
-                        fluxProcessor.dispatchEventType(xformsID, callbackLabel, {
-                            termValue: thingy.value
-                        });
+                        if(thingy.value === "-1") {
+                           var triggerID = $(".xfTrigger."+acLabel).attr("id");
+                           console.log("Press me: " + triggerID);
+                           fluxProcessor.dispatchEvent(triggerID);
+                        } else {
+                            fluxProcessor.dispatchEventType(xformsID, callbackLabel, {
+                                termValue: thingy.value
+                            });
+                        }
                     }
                 }
             });

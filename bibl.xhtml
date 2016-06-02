@@ -12,7 +12,7 @@
         <div id="xforms">
             <div style="display:none">
                 <xf:model id="model-bibl">
-                    <xf:instance id="i-default">
+                    <xf:instance id="i-bibl-default">
                         <biblFull xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
                             <titleStmt>
                                 <title/>
@@ -34,7 +34,7 @@
                             </publicationStmt>
                         </biblFull>
                     </xf:instance>
-                    <xf:instance id="i-template">
+                    <xf:instance id="i-bibl-template">
                         <biblFull xmlns="http://www.tei-c.org/ns/1.0" xml:id="LGPN2">
                             <titleStmt>
                                 <title/>
@@ -56,21 +56,23 @@
                             </publicationStmt>
                         </biblFull>
                     </xf:instance>
-                    <xf:submission id="s-load-bibl" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/loadBibl.xql?id={bf:appContext('bibl')}">
+                    <xf:submission id="s-load-bibl" method="get" replace="instance" ref="instance('i-bibl-default')" validate="false">
+                        <xf:resource value="concat('modules/loadBibl.xql?id=', substring-before(bf:appContext('bibl'), '#xforms'))"/>
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
-                        <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
+                        <xf:message ev:event="xforms-submit-error">Failed to load bibl data. <xf:output value="substring-before(bf:appContext('bibl'), '#xforms')"/>
+                        </xf:message>
                     </xf:submission>
-                    <xf:submission id="s-save-bibl" method="post" replace="none" ref="instance('i-default')" resource="modules/saveBibl.xql">
+                    <xf:submission id="s-save-bibl" method="post" replace="none" ref="instance('i-bibl-default')" resource="modules/saveBibl.xql">
                         <xf:action ev:event="xforms-submit">
                             <xf:message ev:event="xforms-submit-done" level="ephemeral">Saving...</xf:message>
                         </xf:action>
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
-                        <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
+                        <xf:message ev:event="xforms-submit-error">Failed to save bibl data</xf:message>
                     </xf:submission>
                     <xf:action ev:event="xforms-ready">
                         <xf:send submission="s-load-bibl" if="bf:appContext('bibl') != ''"/>
                         <script>
-                            clearAndInitAutocompletes();    
+                            clearAndInitAutocompletes();
                         </script>
                     </xf:action>
                 </xf:model>

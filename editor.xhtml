@@ -181,7 +181,7 @@
                 <xf:action ev:event="xforms-ready">
                     <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
                     <script>
-                        clearAndInitAutocompletes();    
+                        clearAndInitAutocompletes();
                     </script>
                 </xf:action>
             </xf:model>
@@ -596,15 +596,20 @@
                             <xf:label/>
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:ref/@target">
-                                        <xf:action ev:event="reference_autocomplete-callback">
-                                            <xf:setvalue ref="." value="event('termValue')"/>
-                                        </xf:action>
-                                        <xf:label class="input-group-addon glyphicon glyphicon-book">ref</xf:label>
-                                        <xf:hint>reference abbreviation</xf:hint>
-                                    </xf:input>
-                                    <input type="hidden" data-function="reference_autocomplete" placeholder="Type to search ..." autocomplete="on"/>
-                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                    <div class="input-group">
+                                        <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
+                                        <div>
+                                            <xf:input class="-input-group --form-control" ref="TEI:ref/@target" style="display:none">
+                                                <xf:action ev:event="reference_autocomplete-callback">
+                                                    <xf:setvalue ref="." value="event('termValue')"/>
+                                                </xf:action>
+                                                <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
+                                                <xf:hint>reference abbreviation</xf:hint>
+                                            </xf:input>
+                                            <input type="hidden" data-function="reference_autocomplete" placeholder="Type to search ..." autocomplete="on"/>
+                                        </div>
+                                    </div>
+                                    <xf:trigger class="hidden reference_autocomplete">
                                         <xf:label/>
                                         <xf:action ev:event="DOMActivate">
                                             <xf:setvalue ref="instance('i-controller')/bibl" value="instance('i-default')//TEI:bibl[index('r-primarySource')]/TEI:ref/@target"/>

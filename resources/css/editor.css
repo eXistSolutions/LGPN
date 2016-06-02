@@ -3,9 +3,6 @@ body {
   font-family: "Arial Unicode MS", Helvetica, Arial, sans-serif;
   /* FIX bootstrap for betterform */
 }
-body input {
-  font-family: "Arial Unicode MS", Helvetica, Arial, sans-serif;
-}
 body fieldset {
   border: 1px solid #EEE;
   padding: 0px 1.4em 1.4em;
@@ -78,10 +75,10 @@ body .input-group .tagit li {
 body .xfRequired > .xfLabel::after {
   content: "" !important;
 }
-body .invisible {
-  display: none;
+body .select2-container.form-control {
+  padding: 0px;
+  border: 0px;
 }
-body .dimmed {
-  color: #aaa;
-  font-size: 0.9em;
+body .select2-container.form-control a {
+  height: 32px;
 }
