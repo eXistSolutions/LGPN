@@ -52,10 +52,16 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
     var scope = "input[data-function="+acLabel+"]"
     $(scope).each(function () {
         var autocomplete = $(this);
-        var xformsID = autocomplete.prev('.xfInput').attr('id');
+        var xformsInput = autocomplete.prev('.xfInput');
+        var xformsID = xformsInput.attr('id');
+
 
 
         if(xformsID !== undefined) {
+            var xformsValue = xformsInput.find(".widgetContainer .xfValue").val();
+            //console.log("XFORMS-VALUE: " + xformsValue);
+            autocomplete.val(xformsValue);
+
             autocomplete.select2({
                 handler: undefined,
                 name: bibl,
@@ -67,6 +73,10 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                 dropdownCssClass: "bigdrop",
                 containerCssClass: "form-control",
                 allowClear: true,
+                initSelection: function (element, callback) {
+                    var term = $(element).val();
+                    callback({value: term});
+                },
                 createSearchChoice: function (term) {
                     return {"value": "-1", "id": "Add new entry."};
                 },
@@ -113,10 +123,10 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                         thingy = e.added;
                     }
                     if (thingy !== null) {
-                        console.log("CALBBACK:", xformsID);
+                        //console.log("CALBBACK:", xformsID);
                         if(thingy.value === "-1") {
                            var triggerID = $(".xfTrigger."+acLabel).attr("id");
-                           console.log("Press me: " + triggerID);
+                           //console.log("Press me: " + triggerID);
                            fluxProcessor.dispatchEvent(triggerID);
                         } else {
                             fluxProcessor.dispatchEventType(xformsID, callbackLabel, {
