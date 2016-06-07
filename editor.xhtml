@@ -158,6 +158,7 @@
                 <xf:instance xmlns="" id="i-languages" src="resources/xml/languages.xml"/>
                 <xf:instance xmlns="" id="i-secondaryTypes" src="resources/xml/secondaryTypes.xml"/>
                 <xf:instance xmlns="" id="i-cases" src="resources/xml/cases.xml"/>
+                <xf:instance xmlns="" id="i-linking" src="resources/xml/linking.xml"/>
                 <xf:instance xmlns="" id="i-status" src="resources/xml/status.xml"/>
                 <xf:instance xmlns="" id="i-office" src="resources/xml/office.xml"/>
                 <xf:instance xmlns="" id="i-religion" src="resources/xml/religion.xml"/>
@@ -296,6 +297,14 @@
                     <xf:label>
                         <h3>Names</h3>
                     </xf:label>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <xf:input class="input-group -form-control" ref="TEI:persName">
+                                <xf:label class="input-group-addon glyphicon glyphicon-font"/>
+                                <xf:hint>full attested form</xf:hint>
+                            </xf:input>
+                        </div>
+                    </div>
                     <xf:repeat ref="TEI:listNym/TEI:nym" id="r-name">
                         <xf:label/>
                         <xf:group ref=".">
@@ -316,7 +325,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                     <xf:select1 class="input-group -form-control" ref="@type">
                                         <xf:label class="input-group-addon glyphicon glyphicon-list"/>
                                         <xf:itemset nodeset="instance('i-names')/option">
@@ -335,6 +344,15 @@
                                     </xf:select1>
                                 </div>
                                 <div class="col-xs-2">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:seg[@type='linking']">
+                                        <xf:label class="input-group-addon glyphicon glyphicon-link"/>
+                                        <xf:itemset nodeset="instance('i-linking')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="@value"/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                <div class="col-xs-1">
                                     <xf:input class="input-group -form-control" ref="@n">
                                         <xf:label class="input-group-addon glyphicon glyphicon-font"/>
                                         <xf:hint>position</xf:hint>
@@ -353,15 +371,11 @@
                                     <xf:label/>
                                 </xf:group>
                                 <div class="row">
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-2">
                                         <xf:input class="input-group -form-control" ref="TEI:persName">
-                                            <xf:action ev:event="constituent_autocomplete-callback">
-                                                <xf:setvalue ref="." value="event('termValue')"/>
-                                            </xf:action>
                                             <xf:label class="input-group-addon glyphicon glyphicon-font"/>
                                             <xf:hint>attested name</xf:hint>
                                         </xf:input>
-                                        <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                     </div>
                                     <div class="col-xs-2">
                                         <xf:select1 class="input-group -form-control" ref="TEI:persName/@ana">
