@@ -10,10 +10,16 @@
                 <tr>
                     <th data-template="browse:entries-header" data-template-type="edit"/>
                     <th>
-                        <i18n:text key="id">Id</i18n:text>
+                        <i18n:text key="name">Name</i18n:text>
                     </th>
                     <th>
-                        <i18n:text key="name">Name</i18n:text>
+                        <i18n:text key="place">Place</i18n:text>
+                    </th>
+                    <th>
+                        <i18n:text key="date">Date</i18n:text>
+                    </th>
+                    <th>
+                        <i18n:text key="relations">Relationships</i18n:text>
                     </th>
                     <th>
                         <i18n:text key="update">Update</i18n:text>
@@ -24,8 +30,10 @@
             <tbody>
                 <tr data-template="browse:entries-each">
                     <td data-template="browse:entry-action"/>
-                    <td data-template="browse:entry-id"/>
                     <td data-template="browse:entry-form" data-template-langId="greek"/>
+                    <td data-template="browse:entry-place"/>
+                    <td data-template="browse:entry-date"/>
+                    <td data-template="browse:entry-relatives"/>
                     <td data-template="browse:entry-updated"/>
                     <td data-template="browse:entry-action" data-template-action="delete"/>
                 </tr>

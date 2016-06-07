@@ -97,18 +97,44 @@ declare
     %templates:wrap
 function browse:entry-form($node as node(), $model as map(*), $langId as xs:string) {
     let $entry := $model?entry
-    let $bold := if ($langId='greek') then 'font-weight: bold;' else ()
-
     let $content := data($entry//TEI:nym/@nymRef)
     
     return 
-        <span>
-            {attribute style {$bold}}
-            {$content}
-        </span>
+         <a>
+        {attribute href {'editor.xhtml?id='|| $entry/@xml:id}}
+        {$content}
+        </a>
 };
 
 
+declare
+    %templates:wrap
+function browse:entry-place($node as node(), $model as map(*)) {
+    for $place in $model?entry//TEI:state[@type='location']
+    return 
+        $config:places//TEI:place[@xml:id=$place/TEI:placeName/@key]/TEI:placeName[1]
+};
+
+declare
+    %templates:wrap
+function browse:entry-date($node as node(), $model as map(*)) {
+    let $entry := $model?entry
+    return ()
+};
+
+declare
+    %templates:wrap
+function browse:entry-relatives($node as node(), $model as map(*)) {
+    for $relation in $model?entry/ancestor::TEI:body//TEI:relation
+      let $name := collection($config:persons-root)//TEI:person[@xml:id=$relation/@passive]//TEI:nym/@nymRef/string()
+      let $link := doc($config:app-root || "/resources/xml/relationships.xml")//option[@value=$relation/@name/string()]/string()
+    return 
+        if($relation/@passive/string()) then
+         <a>
+        {attribute href {'editor.xhtml?id='|| $relation/@passive}}
+        {string-join(($link, $name), ' ')}
+        </a> else ()
+};
 
 declare
 function browse:entry-action($node as node(), $model as map(*), $action as xs:string?) {
