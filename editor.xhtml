@@ -276,7 +276,7 @@
                     </div>
                 </div>
             </fieldset>
-            <xf:group ref="//TEI:person"><!-- PRIMARY SOURCES --><!-- NAMES -->
+            <xf:group ref="//TEI:person"><!-- NAMES -->
                 <xf:group class="fieldset">
                     <xf:label>
                         <h3>Names</h3>
@@ -606,7 +606,7 @@
                                                 <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
                                                 <xf:hint>reference abbreviation</xf:hint>
                                             </xf:input>
-                                            <input type="hidden" data-function="reference_autocomplete" placeholder="Type to search ..." autocomplete="on"/>
+                                            <input type="hidden" data-function="reference_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                         </div>
                                     </div>
                                     <xf:trigger class="hidden reference_autocomplete">
@@ -705,9 +705,26 @@
                         <xf:label/>
                         <div class="row">
                             <div class="col-xs-3">
-                                <xf:input class="input-group -form-control" ref="TEI:ref/@target">
-                                    <xf:label class="input-group-addon">reference</xf:label>
-                                </xf:input>
+                                <div class="input-group">
+                                    <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
+                                    <div>
+                                        <xf:input class="-input-group --form-control" ref="TEI:ref/@target" style="display:none">
+                                            <xf:action ev:event="reference_autocomplete-callback">
+                                                <xf:setvalue ref="." value="event('termValue')"/>
+                                            </xf:action>
+                                            <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
+                                            <xf:hint>reference abbreviation</xf:hint>
+                                        </xf:input>
+                                        <input type="hidden" data-function="reference_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                    </div>
+                                </div>
+                                <xf:trigger class="hidden reference_autocomplete">
+                                    <xf:label/>
+                                    <xf:action ev:event="DOMActivate">
+                                        <xf:setvalue ref="instance('i-controller')/bibl" value="instance('i-default')//TEI:bibl[index('r-primarySource')]/TEI:ref/@target"/>
+                                        <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                    </xf:action>
+                                </xf:trigger>
                             </div>
                             <div class="col-xs-3">
                                 <xf:input class="input-group -form-control" ref="TEI:author">
