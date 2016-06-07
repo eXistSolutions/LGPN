@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="page-header">
+        <h1>List of person records</h1>
+    </div>
+    <br/>
+    <div class="row" data-template="browse:entries">
+        <table id="datatable" class="display table table-striped" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th data-template="browse:entries-header" data-template-type="edit"/>
+                    <th>
+                        <i18n:text key="id">Id</i18n:text>
+                    </th>
+                    <th>
+                        <i18n:text key="name">Name</i18n:text>
+                    </th>
+                    <th>
+                        <i18n:text key="update">Update</i18n:text>
+                    </th>
+                    <th data-template="browse:entries-header" data-template-type="delete"/>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-template="browse:entries-each">
+                    <td data-template="browse:entry-action"/>
+                    <td data-template="browse:entry-id"/>
+                    <td data-template="browse:entry-form" data-template-langId="greek"/>
+                    <td data-template="browse:entry-updated"/>
+                    <td data-template="browse:entry-action" data-template-action="delete"/>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

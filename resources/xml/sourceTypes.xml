@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="sourceTypes">
+    <category xml:id="inscr_stone">
+        <catDesc xml:lang="en">inscr. stone</catDesc>
+    </category>
+    <category xml:id="lit_text">
+        <catDesc xml:lang="en">literary text</catDesc>
+    </category>
+    <category xml:id="papyrus">
+        <catDesc xml:lang="en">papyrus</catDesc>
+    </category>
     <category xml:id="coin">
         <catDesc xml:lang="en">coin</catDesc>
     </category>

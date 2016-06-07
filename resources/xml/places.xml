@@ -3,4 +3,6 @@
     <option value="citizen">citizen of</option>
     <option value="resident">resident of</option>
     <option value="attested">attested at</option>
+    <option value="ethnic">ethnic</option>
+    <option value="alternative_origin">alternative origin</option>
 </data>

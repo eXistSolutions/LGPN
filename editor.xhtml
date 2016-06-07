@@ -26,7 +26,7 @@
                         <text>
                             <body>
                                 <listPerson><!-- @sex gender -->
-                                    <person xml:id="uuid" sex=""><!-- LGPN volume -->
+                                    <person xml:id="uuid" sex="" type=""><!-- LGPN volume -->
                                         <bibl type="volume">
                                             <ref target=""/>
                                         </bibl><!-- person specific dating, if derived from context or other sources --><!-- @ana to hold information about the basis of dating: literary text/era/context/paleography/typology --><!-- @cert to hold information about uncertainty -->
@@ -36,7 +36,9 @@
                         @type type of source/inscription
                         @subtype subtype of source
                         -->
-                                            <ref target="" type="stone" subtype=""/><!--
+                                            <ref target="" type="inscr_stone" subtype="">
+                                                <seg type=""/>
+                                            </ref><!--
                         Source dating
                         @ana basis for dating: multiple choice literary text/era/context/paleography/typology
                         @notBefore @notAfter dates (year)
@@ -83,7 +85,7 @@
                 <xf:bind nodeset="//TEI:nym/@nymRef" required="true()" type="xs:string"/>
                 <xf:instance id="i-template">
                     <data xmlns="http://www.tei-c.org/ns/1.0"><!-- @sex gender -->
-                        <person xml:id="uuid" sex="1"><!-- LGPN volume -->
+                        <person xml:id="uuid" sex="1" type=""><!-- LGPN volume -->
                             <bibl type="volume">
                                 <ref target="#V5"/>
                             </bibl><!-- person specific dating, if derived from context or other sources --><!-- @ana to hold information about the basis of dating: literary text/era/context/paleography/typology --><!-- @cert to hold information about uncertainty -->
@@ -93,7 +95,9 @@
                         @type type of source/inscription
                         @subtype subtype of source
                         -->
-                                <ref target="" type="stone" subtype=""/><!--
+                                <ref target="" type="inscr_stone" subtype="">
+                                    <seg type=""/>
+                                </ref><!--
                         Source dating
                         @ana basis for dating: multiple choice literary text/era/context/paleography/typology
                         @notBefore @notAfter dates (year)
@@ -136,6 +140,7 @@
                 </xf:instance>
                 <xf:instance xmlns="" id="i-volumes" src="resources/xml/volumes.xml"/>
                 <xf:instance xmlns="" id="i-genders" src="resources/xml/genders.xml"/>
+                <xf:instance xmlns="" id="i-personType" src="resources/xml/personType.xml"/>
                 <xf:instance xmlns="" id="i-certainty" src="resources/xml/certainty.xml"/>
                 <xf:instance xmlns="" id="i-personDating" src="resources/xml/personDating.xml"/>
                 <xf:instance xmlns="" id="i-dating" src="resources/xml/dating.xml"/>
@@ -158,6 +163,7 @@
                 <xf:instance xmlns="" id="i-religion" src="resources/xml/religion.xml"/>
                 <xf:instance xmlns="" id="i-profession" src="resources/xml/profession.xml"/>
                 <xf:instance xmlns="" id="i-roman" src="resources/xml/roman.xml"/>
+                <xf:instance xmlns="" id="i-other" src="resources/xml/other.xml"/>
                 <xf:instance id="i-controller">
                     <data xmlns="">
                         <bibl/>
@@ -213,18 +219,27 @@
             <fieldset id="general">
                 <legend> General </legend>
                 <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-3">
                         <div class="input-group input-group">
-                            <xf:input class="input-group -form-control" ref="//TEI:person/@xml:id">
+                            <xf:output class="input-group -form-control" ref="//TEI:person/@xml:id">
                                 <xf:label class="input-group-addon glyphicon glyphicon-lock"/>
                                 <xf:hint>id</xf:hint>
-                            </xf:input>
+                            </xf:output>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <xf:select1 class="input-group -form-control" ref="//TEI:person/@sex">
                             <xf:label class="input-group-addon glyphicon glyphicon-user">gender</xf:label>
                             <xf:itemset nodeset="instance('i-genders')/option">
+                                <xf:label ref="."/>
+                                <xf:value ref="@value"/>
+                            </xf:itemset>
+                        </xf:select1>
+                    </div>
+                    <div class="col-xs-3">
+                        <xf:select1 class="input-group -form-control" ref="//TEI:person/@type">
+                            <xf:label class="input-group-addon glyphicon glyphicon-user">type</xf:label>
+                            <xf:itemset nodeset="instance('i-personType')/option">
                                 <xf:label ref="."/>
                                 <xf:value ref="@value"/>
                             </xf:itemset>
@@ -615,7 +630,7 @@
                         <xf:group ref=".">
                             <xf:label/>
                             <div class="row">
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                     <div class="input-group">
                                         <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
                                         <div>
@@ -637,13 +652,13 @@
                                         </xf:action>
                                     </xf:trigger>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:ref">
                                         <xf:label class="input-group-addon glyphicon glyphicon-list"/>
                                         <xf:hint>reference details</xf:hint>
                                     </xf:input>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                     <xf:select1 class="input-group -form-control" ref="TEI:ref/@type">
                                         <xf:label class="input-group-addon glyphicon glyphicon-tag"/>
                                         <xf:itemset nodeset="instance('i-sourceTypes')/TEI:category">
@@ -652,7 +667,7 @@
                                         </xf:itemset>
                                     </xf:select1>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                     <xf:select1 class="input-group -form-control" ref="TEI:ref/@subtype">
                                         <xf:label class="input-group-addon glyphicon glyphicon-tags"/>
                                         <xf:itemset nodeset="instance('i-sourceTypes')/TEI:category/TEI:category">
@@ -660,6 +675,21 @@
                                             <xf:value ref="@xml:id"/>
                                         </xf:itemset>
                                     </xf:select1>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:ref/TEI:seg/@type">
+                                        <xf:label class="input-group-addon glyphicon glyphicon-tags"/>
+                                        <xf:itemset nodeset="instance('i-other')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="@value"/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:input class="input-group -form-control" ref="TEI:ref/TEI:seg">
+                                        <xf:label class="input-group-addon glyphicon glyphicon-edit"/>
+                                        <xf:hint>reading</xf:hint>
+                                    </xf:input>
                                 </div>
                             </div>
                             <br/>
