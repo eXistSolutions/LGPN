@@ -2,6 +2,7 @@
 /*global $, window, document */
 
 var reference_autocompletes = {};
+var nyms_autocompletes = {};
 
 function _formatResult(term, container, query) {
     var markup = '';
@@ -9,6 +10,7 @@ function _formatResult(term, container, query) {
     markup += "<table>";
     markup += "<tr>";
     markup += "<td>" + term.id + "</td>";
+    markup += "<td>" + term.blah + "</td>";
     markup += "<tr>";
     markup += "</table>";
 
@@ -44,6 +46,8 @@ function clearAndInitAutocompletes() {
     "use strict";
     destroyAutoComp(reference_autocompletes);
     initAutoComp('reference_autocomplete', "Search for a reference", 'modules/reference.xq', 'reference_autocomplete-callback', reference_autocompletes);
+    destroyAutoComp(nyms_autocompletes);
+    initAutoComp('nyms_autocomplete', "Search for a name", 'modules/nyms.xq', 'nyms_autocomplete-callback', nyms_autocompletes);
 }
 
 

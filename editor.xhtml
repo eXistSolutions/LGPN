@@ -287,14 +287,26 @@
                             <xf:label/>
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="@nymRef">
-                                        <xf:action ev:event="constituent_autocomplete-callback">
-                                            <xf:setvalue ref="." value="event('termValue')"/>
+                                    <div class="input-group">
+                                        <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
+                                        <div>
+                                            <xf:input class="-input-group --form-control" ref="@nymRef" style="display:none">
+                                                <xf:action ev:event="nyms_autocomplete-callback">
+                                                    <xf:setvalue ref="." value="event('termValue')"/>
+                                                </xf:action>
+                                                <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
+                                                <xf:hint>normalized form</xf:hint>
+                                            </xf:input>
+                                            <input type="hidden" data-function="nyms_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                    <xf:trigger class="hidden reference_autocomplete">
+                                        <xf:label/>
+                                        <xf:action ev:event="DOMActivate">
+                                            <xf:setvalue ref="instance('i-controller')/bibl" value="instance('i-default')//TEI:bibl[index('r-primarySource')]/TEI:ref/@target"/>
+                                            <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                         </xf:action>
-                                        <xf:label class="input-group-addon glyphicon glyphicon-font"/>
-                                        <xf:hint>normalized form</xf:hint>
-                                    </xf:input>
-                                    <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                    </xf:trigger>
                                 </div>
                                 <div class="col-xs-3">
                                     <xf:select1 class="input-group -form-control" ref="@type">
