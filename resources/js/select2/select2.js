@@ -3,6 +3,8 @@
 
 var reference_autocompletes = {};
 var nyms_autocompletes = {};
+var places_autocompletes = {};
+var relatives_autocompletes = {};
 
 function _formatResult(term, container, query) {
     var markup = '';
@@ -48,6 +50,10 @@ function clearAndInitAutocompletes() {
     initAutoComp('reference_autocomplete', "Search for a reference", 'modules/reference.xq', 'reference_autocomplete-callback', reference_autocompletes);
     destroyAutoComp(nyms_autocompletes);
     initAutoComp('nyms_autocomplete', "Search for a name", 'modules/nyms.xq', 'nyms_autocomplete-callback', nyms_autocompletes);
+    destroyAutoComp(places_autocompletes);
+    initAutoComp('places_autocomplete', "Search for a place", 'modules/places.xq', 'places_autocomplete-callback', places_autocompletes);
+    destroyAutoComp(relatives_autocompletes);
+    initAutoComp('relatives_autocomplete', "Search for a relative", 'modules/relatives.xq', 'relatives_autocomplete-callback', relatives_autocompletes);
 }
 
 

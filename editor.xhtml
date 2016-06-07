@@ -300,13 +300,6 @@
                                             <input type="hidden" data-function="nyms_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                         </div>
                                     </div>
-                                    <xf:trigger class="hidden reference_autocomplete">
-                                        <xf:label/>
-                                        <xf:action ev:event="DOMActivate">
-                                            <xf:setvalue ref="instance('i-controller')/bibl" value="instance('i-default')//TEI:bibl[index('r-primarySource')]/TEI:ref/@target"/>
-                                            <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
-                                        </xf:action>
-                                    </xf:trigger>
                                 </div>
                                 <div class="col-xs-3">
                                     <xf:select1 class="input-group -form-control" ref="@type">
@@ -831,6 +824,21 @@
                                         <xf:hint>person</xf:hint>
                                     </xf:input>
                                     <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="input-group">
+                                        <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
+                                        <div>
+                                            <xf:input class="-input-group --form-control" ref="@passive" style="display:none">
+                                                <xf:action ev:event="relatives_autocomplete-callback">
+                                                    <xf:setvalue ref="." value="event('termValue')"/>
+                                                </xf:action>
+                                                <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
+                                                <xf:hint>relative</xf:hint>
+                                            </xf:input>
+                                            <input type="hidden" data-function="relatives_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-xs-3">
                                     <xf:select1 class="input-group -form-control" ref="TEI:placeName/@cert">
