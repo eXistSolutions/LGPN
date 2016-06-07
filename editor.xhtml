@@ -419,6 +419,21 @@
                                     </xf:input>
                                     <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                 </div>
+                                <div class="col-xs-3">
+                                    <div class="input-group">
+                                        <label class="input-group-addon glyphicon glyphicon-map-marker" tooltip="ref"/>
+                                        <div>
+                                            <xf:input class="-input-group --form-control" ref="TEI:placeName/@key" style="display:none">
+                                                <xf:action ev:event="places_autocomplete-callback">
+                                                    <xf:setvalue ref="." value="event('termValue')"/>
+                                                </xf:action>
+                                                <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
+                                                <xf:hint>place</xf:hint>
+                                            </xf:input>
+                                            <input type="hidden" data-function="places_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-xs-2">
                                     <xf:select1 class="input-group -form-control" ref="TEI:placeName/@subtype">
                                         <xf:label class="input-group-addon glyphicon glyphicon-pencil"/>

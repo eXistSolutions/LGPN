@@ -12,7 +12,6 @@ function _formatResult(term, container, query) {
     markup += "<table>";
     markup += "<tr>";
     markup += "<td>" + term.id + "</td>";
-    markup += "<td>" + term.blah + "</td>";
     markup += "<tr>";
     markup += "</table>";
 
