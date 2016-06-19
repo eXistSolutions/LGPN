@@ -12,7 +12,7 @@ declare namespace templates="http://exist-db.org/xquery/templates";
 declare namespace repo="http://exist-db.org/xquery/repo";
 declare namespace expath="http://expath.org/ns/pkg";
 
-declare variable $config:dba-credentials := ("admin", "$impl3");
+declare variable $config:dba-credentials := ("admin", "amiga");
 
 (: 
     Determine the application root collection from the current module load path.
@@ -38,10 +38,14 @@ declare variable $config:volumes-root := "/db/apps/lgpn-data/data";
 declare variable $config:persons := doc(concat($config:volumes-root, "/volume0.xml"));
 declare variable $config:places := doc(concat($config:volumes-root, "/volume0.places.xml"));
 declare variable $config:nyms := doc(concat($config:volumes-root, "/volume0.names.xml"));
-declare variable $config:persons-root := $config:data-root || "/persons";
+
+(:~ New, separated TEI person records stored here, 
+ : each in subcollection of the volume the person first appeared in, eg. V1, V2 etc :)
+declare variable $config:persons-root := $config:volumes-root || "/persons";
 
 declare variable $config:auxiliary-root := $config:volumes-root || "/auxiliary";
 
+(:~ To store bibliographical records :)
 declare variable $config:references-root := $config:auxiliary-root || "/references";
 
 declare variable $config:repo-descriptor := doc(concat($config:app-root, "/repo.xml"))/repo:meta;

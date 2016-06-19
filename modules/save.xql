@@ -12,13 +12,14 @@ let $change := <change xmlns="http://www.tei-c.org/ns/1.0" when="{$date}" resp="
 let $data := normalization:normalize(request:get-data()//TEI:TEI)
 let $c := console:log($data)
 let $id := if($data//TEI:person/@xml:id='uuid') then 'P' || util:uuid() else $data//TEI:person/@xml:id
+let $volume := if($data//TEI:bibl[@type='volume']/TEI:ref/@target/string()) then $data//TEI:bibl[@type='volume']/TEI:ref/@target/string() else 'test'
 let $c := console:log($config:persons-root)
 
 let $log := util:log("INFO", "data: " || $data)
 (:  Run stuff as dba :)
 (:  Store :)
 let $path := system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
-        xmldb:store($config:persons-root, concat($id , ".xml"), $data)
+        xmldb:store($config:persons-root || "/" || $volume, concat($id , ".xml"), $data)
     )
 let $doc := doc($path)
 let $c := console:log($path)

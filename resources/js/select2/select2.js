@@ -68,14 +68,14 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
 
         if(xformsID !== undefined) {
             var xformsValue = xformsInput.find(".widgetContainer .xfValue").val();
-            //console.log("XFORMS-VALUE: " + xformsValue);
+            console.log("XFORMS-VALUE: " + xformsValue);
             autocomplete.val(xformsValue);
 
             autocomplete.select2({
                 handler: undefined,
                 name: bibl,
                 placeholder: phLabel,
-                minimumInputLength: 1,
+                minimumInputLength: 2,
                 formatResult: _formatResult,
                 formatSelection: _termFormatSelection,
                 formatNoMatches: "<div>No matches</div>",
@@ -150,7 +150,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                            fluxProcessor.dispatchEvent(triggerID);
                         } else {
                             if(thingy.xformsValue && thingy.xformsValue !== undefined) {
-                                console.log("xformsValue :" + thingy.xformsValue);
+                                //console.log("xformsValue :" + thingy.xformsValue);
                                 fluxProcessor.dispatchEventType(xformsID, callbackLabel, {
                                     termValue: thingy.xformsValue
                                 });

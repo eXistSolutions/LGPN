@@ -19,7 +19,8 @@ let $data := request:get-parameter('query', '')
                     return 
                     <term>
                         <id>{$m/string()} ({string-join($m/parent::tei:place/ancestor::tei:place/tei:placeName[1]/string(), ' > ')})</id>
-                        <value>{$m/parent::tei:place/@xml:id/string()}</value>
+                        <value>{$m/string()} ({string-join($m/parent::tei:place/ancestor::tei:place/tei:placeName[1]/string(), ' > ')})</value>
+                        <xformsValue>{$m/parent::tei:place/@xml:id/string()}</xformsValue>
                     </term>
                 }
             </result>
