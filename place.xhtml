@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <title>LGPN</title><!--
+        ~ Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com
+        -->
+        <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
+        <link href="resources/js/vendor/select2/select2.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/editor.css"/>
+    </head>
+    <body>
+        <div id="xforms">
+            <div style="display:none">
+                <xf:model id="model-place">
+                    <xf:instance id="i-place-default">
+                        <place xmlns="http://www.tei-c.org/ns/1.0" type="" xml:id="uuid">
+                            <placeName/>
+                            <placeName type="other"/>
+                            <placeName type="modern"/>
+                            <location type="pleiades">
+                                <label/>
+                            </location>
+                            <location cert="">
+                                <geo/>
+                                <alt/>
+                            </location>
+                        </place>
+                    </xf:instance>
+                    <xf:instance id="i-place-template">
+                        <place xmlns="http://www.tei-c.org/ns/1.0" type="" xml:id="uuid">
+                            <placeName/>
+                            <placeName type="other"/>
+                            <placeName type="modern"/>
+                            <location type="pleiades">
+                                <label/>
+                            </location>
+                            <location cert="">
+                                <geo/>
+                                <alt/>
+                            </location>
+                        </place>
+                    </xf:instance>
+                    <xf:submission id="s-load-place" method="get" replace="instance" ref="instance('i-place-default')" validate="false">
+                        <xf:resource value="concat('modules/loadPlace.xql?id=', substring-before(bf:appContext('place'), '#xforms'))"/>
+                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
+                        <xf:message ev:event="xforms-submit-error">Failed to load place data. <xf:output value="substring-before(bf:appContext('place'), '#xforms')"/>
+                        </xf:message>
+                    </xf:submission>
+                    <xf:submission id="s-save-place" method="post" replace="none" ref="instance('i-place-default')" resource="modules/savePlace.xql">
+                        <xf:action ev:event="xforms-submit">
+                            <xf:message ev:event="xforms-submit-done" level="ephemeral">Saving...</xf:message>
+                        </xf:action>
+                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
+                        <xf:message ev:event="xforms-submit-error">Failed to save place data</xf:message>
+                    </xf:submission>
+                    <xf:action ev:event="xforms-ready">
+                        <xf:send submission="s-load-place" if="bf:appContext('place') != ''"/>
+                        <script>
+                            clearAndInitAutocompletes();
+                        </script>
+                    </xf:action>
+                </xf:model>
+            </div>
+            <div>
+                <fieldset id="segment">
+                    <legend>
+                        LGPN place sub-form
+                    </legend>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <xf:input class="input-group -form-control" ref="//TEI:place/@xml:id">
+                                <xf:label class="input-group-addon">id</xf:label>
+                                <xf:hint>id</xf:hint>
+                            </xf:input>
+                        </div>
+                        <div class="col-xs-4">
+                            <xf:input class="input-group -form-control" ref="//TEI:placeName[not(@type)]">
+                                <xf:label class="input-group-addon">name</xf:label>
+                                <xf:hint/>
+                            </xf:input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <xf:input class="input-group -form-control" ref="//TEI:placeName[@type='modern']">
+                                <xf:label class="input-group-addon">modern name</xf:label>
+                                <xf:hint/>
+                            </xf:input>
+                        </div>
+                        <div class="col-xs-4">
+                            <xf:input class="input-group -form-control" ref="//TEI:placeName[@type='other']">
+                                <xf:label class="input-group-addon">name</xf:label>
+                                <xf:hint/>
+                            </xf:input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <xf:input class="input-group  input-group-lg -form-control" ref="//TEI:geo">
+                                <xf:label class="input-group-addon">geocoordinates</xf:label>
+                                <xf:hint>lat lon</xf:hint>
+                            </xf:input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-offset-4">
+                                <xf:submit class="-btn -btn-primary -glyphicon -glyphicon-save" submission="s-save-place">
+                                    <xf:label>Save</xf:label>
+                                </xf:submit>
+                                <xf:trigger class="-bigbtn -btn-primary -glyphicon -glyphicon-trash">
+                                    <xf:label>Cancel</xf:label>
+                                    <script ev:event="DOMActivate" type="text/javascript">dijit.byId("place").hide()</script>
+                                </xf:trigger>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
+        <script src="$shared/resources/scripts/jquery/jquery-ui.min.js" type="text/javascript" charset="utf-8"/>
+        <script type="text/javascript" src="resources/js/editor.js"/>
+        <script type="text/javascript" src="resources/js/vendor/select2/select2.js"/>
+        <script type="text/javascript" src="resources/js/select2/select2.js"/>
+    </body>
+</html>

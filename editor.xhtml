@@ -170,6 +170,7 @@
                 <xf:instance id="i-controller">
                     <data xmlns="">
                         <bibl/>
+                        <place/>
                     </data>
                 </xf:instance>
                 <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/load.xql?id={bf:appContext('id')}">
@@ -208,6 +209,20 @@
                         <xf:extension includeCSS="false" includeScript="false"/>
                     </xf:load>
                     <bfc:show dialog="bibl"/>
+                </xf:action>
+                <xf:action ev:event="load-place-subform-event" if="string-length(instance('i-controller')/place) &gt; 0">
+                    <xf:load show="embed" targetid="mountpoint">
+                        <xf:resource value="concat('place.xhtml?place=', instance('i-controller')/place,'#xforms')"/>
+                        <xf:extension includeCSS="false" includeScript="false"/>
+                    </xf:load>
+                    <bfc:show dialog="place"/>
+                </xf:action>
+                <xf:action ev:event="load-place-subform-event" if="string-length(instance('i-controller')/place) = 0">
+                    <xf:load show="embed" targetid="mountpoint">
+                        <xf:resource value="'place.xhtml#xforms'"/>
+                        <xf:extension includeCSS="false" includeScript="false"/>
+                    </xf:load>
+                    <bfc:show dialog="place"/>
                 </xf:action>
             </xf:group>
         </div>
@@ -461,6 +476,13 @@
                                                 <xf:hint>place</xf:hint>
                                             </xf:input>
                                             <input type="hidden" data-function="places_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                            <xf:trigger class="hidden places_autocomplete">
+                                                <xf:label/>
+                                                <xf:action ev:event="DOMActivate">
+                                                    <xf:setvalue ref="instance('i-controller')/place" value="instance('i-default')//TEI:state[@type='location'][index('r-place')]/TEI:placeName/@key"/>
+                                                    <xf:dispatch name="load-place-subform-event" targetid="load-subform-group"/>
+                                                </xf:action>
+                                            </xf:trigger>
                                         </div>
                                     </div>
                                 </div>
@@ -924,6 +946,10 @@
         </div>
         <bfc:dialog id="bibl" src="bibl.html">
             <xf:label>Add bibl</xf:label>
+            <div id="mountpoint"/>
+        </bfc:dialog>
+        <bfc:dialog id="place" src="place.html">
+            <xf:label>Add place</xf:label>
             <div id="mountpoint"/>
         </bfc:dialog>
         <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
