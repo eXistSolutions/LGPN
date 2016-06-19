@@ -27,7 +27,6 @@ declare function local:new($id) {
                         </biblFull>
 };
 
-
 let $id := request:get-parameter('id', '')
 let $entry := collection($config:references-root)//TEI:biblFull[@xml:id=$id]
 

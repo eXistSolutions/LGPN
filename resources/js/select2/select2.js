@@ -86,9 +86,20 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                     var term = $(element).val();
                     callback({value: term});
                 },
-                createSearchChoice: function (term) {
-                    return {"value": "-1", "id": "Add new entry."};
+                createSearchChoice: function (term,data) {
+                    if(acLabel === 'nyms_autocomplete') {
+                        if ($(data).filter( function() { 
+                                return this.text.localeCompare(term)===0;
+                                }).length===0) {
+                                    return {id:term, value:term};
+                        }
+                    } else {
+                        return {"value": "-1", "id": "Add new entry."};    
+                    }
                 },
+                /*createSearchChoice: function (term) {
+                    
+                },*/
                 id: function (object) {
                     return object.id;
                 },
@@ -138,9 +149,17 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                            //console.log("Press me: " + triggerID);
                            fluxProcessor.dispatchEvent(triggerID);
                         } else {
-                            fluxProcessor.dispatchEventType(xformsID, callbackLabel, {
-                                termValue: thingy.value
-                            });
+                            if(thingy.xformsValue && thingy.xformsValue !== undefined) {
+                                console.log("xformsValue :" + thingy.xformsValue);
+                                fluxProcessor.dispatchEventType(xformsID, callbackLabel, {
+                                    termValue: thingy.xformsValue
+                                });
+                            } else {
+                                console.log("value :" + thingy.value);
+                                fluxProcessor.dispatchEventType(xformsID, callbackLabel, {
+                                    termValue: thingy.value
+                                });
+                            }
                         }
                     }
                 }

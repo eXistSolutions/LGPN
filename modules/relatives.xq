@@ -19,7 +19,8 @@ let $data := request:get-parameter('query', '')
                     return 
                     <term>
                         <id>{$m/@nymRef/string()}</id>
-                        <value>{$m/ancestor::tei:person/@xml:id/string()}</value>
+                        <value>{$m/@nymRef/string()}</value>
+                        <xformsValue>{$m/ancestor::tei:person/@xml:id/string()}</xformsValue>
                     </term>
                 }
             </result>
