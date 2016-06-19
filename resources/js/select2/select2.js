@@ -89,6 +89,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                 createSearchChoice: function (term,data) {
                     if(acLabel === 'nyms_autocomplete') {
                         if ($(data).filter( function() { 
+                                if (this.text) 
                                 return this.text.localeCompare(term)===0;
                                 }).length===0) {
                                     return {id:term, value:term};

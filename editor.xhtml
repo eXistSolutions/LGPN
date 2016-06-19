@@ -424,6 +424,9 @@
                             <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                 <xf:label/>
                                 <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym"/>
+                                <script>
+                                    clearAndInitAutocompletes();
+                                </script>
                             </xf:trigger>
                         </div>
                     </div>
