@@ -3,4 +3,5 @@
     <option value="in"/>
     <option value="near">near</option>
     <option value="territory">territory</option>
+    <option value="area">area</option>
 </data>
