@@ -58,6 +58,12 @@
                                                     <persName xml:lang="greek" ana="Nom" corresp="s1" n=""/>
                                                 </form>
                                             </nym>
+                                            <nym type="Roman" ana="greek" n="1" corresp="s1"><!-- special entry type for Roman names                -->
+                                                <persName type="praenomen"/>
+                                                <persName type="nomen_gentile"/>
+                                                <persName type="filiation" subtype="son"/>
+                                                <persName type="tribe"/>
+                                            </nym>
                                         </listNym><!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
                                         <state type="location" subtype="citizen">
                                             <placeName key="" type="ancient" subtype="" cert="high" corresp="s1"/>
@@ -109,15 +115,21 @@
                             </bibl>
                             <persName type="attested"/>
                             <listNym><!-- repeatable for all names used by a person: eg main/nickname/Roman name/patronymic/demetic (@type) --><!-- @nymRef holds normalized form of a name --><!-- @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default -->
-                                <seg type="linking"/>
                                 <nym type="main" nymRef="" ana="greek" n="2"><!-- repeatable for every attested name form
                             @xml:lang source language of the form e.g. Greek/Latin/Hebrew Greek default
                             @ana case Nom/Gen/etc... Nom default value
                             text content: attested form; using marks system as previously to denote conjectures etc
                         -->
+                                    <seg type="linking"/>
                                     <form type="attested">
                                         <persName type="main" xml:lang="greek" ana="Nom" corresp="s1" n=""/>
                                     </form>
+                                </nym>
+                                <nym type="Roman" ana="greek" n="1" corresp="s1"><!-- special entry type for Roman names                -->
+                                    <persName type="praenomen"/>
+                                    <persName type="nomen_gentile"/>
+                                    <persName type="filiation" subtype="son"/>
+                                    <persName type="tribe"/>
                                 </nym>
                             </listNym><!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
                             <state type="location" subtype="citizen">
@@ -169,6 +181,8 @@
                 <xf:instance xmlns="" id="i-profession" src="resources/xml/profession.xml"/>
                 <xf:instance xmlns="" id="i-roman" src="resources/xml/roman.xml"/>
                 <xf:instance xmlns="" id="i-other" src="resources/xml/other.xml"/>
+                <xf:instance xmlns="" id="i-tribes" src="resources/xml/tribes.xml"/>
+                <xf:instance xmlns="" id="i-filiation" src="resources/xml/filiation.xml"/>
                 <xf:instance id="i-controller">
                     <data xmlns="">
                         <bibl/>
@@ -324,8 +338,8 @@
                             </xf:input>
                         </div>
                     </div>
-                    <xf:repeat ref="TEI:listNym/TEI:nym" id="r-name">
-                        <xf:label/>
+                    <xf:repeat ref="TEI:listNym/TEI:nym[@type!='Roman']" id="r-name">
+                        <xf:label>Name</xf:label>
                         <xf:group ref=".">
                             <xf:label/>
                             <div class="row">
@@ -383,9 +397,9 @@
                                         <xf:delete nodeset="//TEI:nym[index('r-name')]"/>
                                     </xf:trigger>
                                 </div>
-                            </div>
+                            </div><!-- Attested forms -->
                             <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
-                                <xf:label/>
+                                <xf:label>Attested form</xf:label>
                                 <xf:group ref=".">
                                     <xf:label/>
                                 </xf:group>
@@ -434,7 +448,7 @@
                                     <div class="col-xs-1">
                                         <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
                                             <xf:label/>
-                                            <xf:delete nodeset="//TEI:state[index('r-place')]"/>
+                                            <xf:delete nodeset="//TEI:form[index('r-nameForm')]"/>
                                         </xf:trigger>
                                     </div>
                                 </div>
@@ -442,11 +456,120 @@
                         </xf:group>
                     </xf:repeat>
                     <div class="row">
-                        <div class="col-xs-11"/>
+                        <div class="col-xs-10"/>
                         <div class="col-xs-1">
                             <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                 <xf:label/>
-                                <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym"/>
+                                <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='main']"/>
+                                <script>
+                                    clearAndInitAutocompletes();
+                                </script>
+                            </xf:trigger>
+                        </div>
+                    </div><!-- Roman names -->
+                    <xf:repeat ref="TEI:listNym/TEI:nym[@type='Roman']" id="r-rname">
+                        <xf:label>Roman name</xf:label>
+                        <xf:group ref=".">
+                            <xf:label/>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <div class="input-group">
+                                        <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
+                                        <div>
+                                            <xf:input class="-input-group --form-control" ref="TEI:persName[@type='praenomen']" style="display:none">
+                                                <xf:action ev:event="nyms_autocomplete-callback">
+                                                    <xf:setvalue ref="." value="event('termValue')"/>
+                                                </xf:action>
+                                                <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
+                                                <xf:hint>praenomen</xf:hint>
+                                            </xf:input>
+                                            <input type="hidden" data-function="nyms_autocomplete" placeholder="praenomen" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="input-group">
+                                        <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
+                                        <div>
+                                            <xf:input class="-input-group --form-control" ref="TEI:persName[@type='nomen_gentile']" style="display:none">
+                                                <xf:action ev:event="nyms_autocomplete-callback">
+                                                    <xf:setvalue ref="." value="event('termValue')"/>
+                                                </xf:action>
+                                                <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
+                                                <xf:hint>nomen gentile</xf:hint>
+                                            </xf:input>
+                                            <input type="hidden" data-function="nyms_autocomplete" placeholder="n. gentile" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:persName[@type='filiation']/@subtype">
+                                        <xf:label class="input-group-addon glyphicon glyphicon-list"/>
+                                        <xf:itemset nodeset="instance('i-filiation')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="@value"/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="input-group">
+                                        <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
+                                        <div>
+                                            <xf:input class="-input-group --form-control" ref="TEI:persName[@type='filiation']" style="display:none">
+                                                <xf:action ev:event="nyms_autocomplete-callback">
+                                                    <xf:setvalue ref="." value="event('termValue')"/>
+                                                </xf:action>
+                                                <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
+                                                <xf:hint>filiation</xf:hint>
+                                            </xf:input>
+                                            <input type="hidden" data-function="nyms_autocomplete" placeholder="filiation" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:persName[@type='tribe']">
+                                        <xf:label class="input-group-addon glyphicon glyphicon-list"/>
+                                        <xf:itemset nodeset="instance('i-tribes')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="@value"/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                <div class="col-xs-1">
+                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
+                                        <xf:label/>
+                                        <xf:delete nodeset="//TEI:nym[index('r-rname')]"/>
+                                    </xf:trigger>
+                                </div>
+                            </div><!--
+                            <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
+                                <xf:label/>
+                                <xf:group ref=".">
+                                    <xf:label/>
+                                </xf:group>
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <xf:input class="input-group -form-control" ref="TEI:persName">
+                                            <xf:label class="input-group-addon glyphicon glyphicon-font"/>
+                                            <xf:hint>attested name</xf:hint>
+                                        </xf:input>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
+                                            <xf:label/>
+                                            <xf:delete nodeset="//TEI:state[index('r-place')]"/>
+                                        </xf:trigger>
+                                    </div>
+                                </div>
+                            </xf:repeat>
+                            -->
+                        </xf:group>
+                    </xf:repeat>
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                <xf:label>Roman</xf:label>
+                                <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='Roman']"/>
                                 <script>
                                     clearAndInitAutocompletes();
                                 </script>
