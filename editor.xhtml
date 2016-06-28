@@ -55,7 +55,7 @@
                         -->
                                                 <seg type="linking"/>
                                                 <form type="attested">
-                                                    <persName xml:lang="greek" ana="Nom" corresp="s1"/>
+                                                    <persName xml:lang="greek" ana="Nom" corresp="s1" n=""/>
                                                 </form>
                                             </nym>
                                         </listNym><!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
@@ -116,7 +116,7 @@
                             text content: attested form; using marks system as previously to denote conjectures etc
                         -->
                                     <form type="attested">
-                                        <persName type="main" xml:lang="greek" ana="Nom" corresp="s1"/>
+                                        <persName type="main" xml:lang="greek" ana="Nom" corresp="s1" n=""/>
                                     </form>
                                 </nym>
                             </listNym><!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
@@ -317,10 +317,10 @@
                         <h3>Names</h3>
                     </xf:label>
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-xs-12">
                             <xf:input class="input-group -form-control" ref="TEI:persName">
-                                <xf:label class="input-group-addon glyphicon glyphicon-font"/>
-                                <xf:hint>full attested form</xf:hint>
+                                <xf:label class="input-group-addon glyphicon glyphicon-font">final bracket</xf:label>
+                                <xf:hint>full attested form (aka final bracket)</xf:hint>
                             </xf:input>
                         </div>
                     </div>
@@ -414,7 +414,13 @@
                                             </xf:itemset>
                                         </xf:select1>
                                     </div>
-                                    <div class="col-xs-4">
+                                    <div class="col-xs-2">
+                                        <xf:input class="input-group -form-control" ref="TEI:persName/@n">
+                                            <xf:label class="input-group-addon glyphicon glyphicon-pencil"/>
+                                            <xf:hint>line</xf:hint>
+                                        </xf:input>
+                                    </div>
+                                    <div class="col-xs-3">
                                         <div class="input-group">
                                             <xf:select class="input-group -form-control" ref="TEI:persName/@corresp" appearance="full">
                                                 <xf:label class="input-group-addon">source</xf:label>
