@@ -36,9 +36,7 @@
                         @type type of source/inscription
                         @subtype subtype of source
                         -->
-                                            <ref target="" type="inscr_stone" subtype="">
-                                                <seg type=""/>
-                                            </ref><!--
+                                            <ref target="" type="inscr_stone" subtype=""/><!--
                         Source dating
                         @ana basis for dating: multiple choice literary text/era/context/paleography/typology
                         @notBefore @notAfter dates (year)
@@ -103,9 +101,7 @@
                         @type type of source/inscription
                         @subtype subtype of source
                         -->
-                                <ref target="" type="inscr_stone" subtype="">
-                                    <seg type=""/>
-                                </ref><!--
+                                <ref target="" type="inscr_stone" subtype=""/><!--
                         Source dating
                         @ana basis for dating: multiple choice literary text/era/context/paleography/typology
                         @notBefore @notAfter dates (year)
@@ -453,10 +449,28 @@
                                     </div>
                                 </div>
                             </xf:repeat>
+                            <div class="row">
+                                <div class="col-xs-10"/>
+                                <div class="col-xs-1">
+                                    <xf:label>add attested form</xf:label>
+                                </div>
+                                <div class="col-xs-1">
+                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                        <xf:label/>
+                                        <xf:insert context="//TEI:nym[index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form"/>
+                                        <script>
+                                    clearAndInitAutocompletes();
+                                </script>
+                                    </xf:trigger>
+                                </div>
+                            </div>
                         </xf:group>
                     </xf:repeat>
                     <div class="row">
                         <div class="col-xs-10"/>
+                        <div class="col-xs-1">
+                            <xf:label>add name</xf:label>
+                        </div>
                         <div class="col-xs-1">
                             <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                 <xf:label/>
@@ -566,9 +580,13 @@
                         </xf:group>
                     </xf:repeat>
                     <div class="row">
+                        <div class="col-xs-10"/>
+                        <div class="col-xs-1">
+                            <xf:label>add Roman name</xf:label>
+                        </div>
                         <div class="col-xs-1">
                             <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                <xf:label>Roman</xf:label>
+                                <xf:label/>
                                 <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='Roman']"/>
                                 <script>
                                     clearAndInitAutocompletes();
