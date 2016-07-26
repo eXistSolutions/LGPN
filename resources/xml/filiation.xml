@@ -2,4 +2,8 @@
 <data>
     <option value="son">filius</option>
     <option value="daughter">filia</option>
+    <option value="lib">lib.</option>
+    <option value="uios">ὑιός</option>
+    <option value="thugater">θυγάτηρ</option>
+    <option value="apeleutheros">ἀπελεύθερος/α</option>
 </data>
