@@ -10,7 +10,7 @@ import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" 
 declare option output:method "json";
 declare option output:media-type "text/javascript";
 let $data := request:get-parameter('query', '')
-            let $constituents :=  collection($config:persons-root)//tei:person//tei:nym[starts-with(lower-case(.), lower-case($data))]
+            let $constituents :=  collection($config:persons-root)//tei:person//tei:nym[starts-with(lower-case(@nymRef), lower-case($data))]
             return
             <result>
                 <total>{count($constituents)}</total>

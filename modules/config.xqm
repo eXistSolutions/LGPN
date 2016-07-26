@@ -36,7 +36,7 @@ declare variable $config:data-root := $config:app-root || "/data";
 
 declare variable $config:volumes-root := "/db/apps/lgpn-data/data";
 declare variable $config:persons := doc(concat($config:volumes-root, "/volume0.xml"));
-declare variable $config:places := doc(concat($config:volumes-root, "/volume0.places.xml"));
+declare variable $config:places := doc(concat($config:volumes-root, "/places.xml"));
 declare variable $config:nyms := doc(concat($config:volumes-root, "/volume0.names.xml"));
 
 (:~ New, separated TEI person records stored here, 

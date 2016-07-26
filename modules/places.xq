@@ -9,7 +9,7 @@ import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" 
 (: Switch to JSON serialization :)
 declare option output:method "json";
 declare option output:media-type "text/javascript";
-let $data := request:get-parameter('query', '')
+let $data := request:get-parameter('query', 'Tri')
             let $constituents :=  $config:places//tei:place/tei:placeName[1][starts-with(lower-case(.), lower-case($data))]
             return
             <result>

@@ -13,35 +13,38 @@
             <div style="display:none">
                 <xf:model id="model-place">
                     <xf:instance id="i-place-default">
-                        <place xmlns="http://www.tei-c.org/ns/1.0" type="" xml:id="uuid">
-                            <placeName/>
-                            <placeName type="other"/>
-                            <placeName type="modern"/>
-                            <location type="pleiades">
-                                <label/>
-                            </location>
-                            <location cert="">
-                                <geo/>
-                                <alt/>
-                            </location>
-                        </place>
+                        <wrapper xmlns="http://www.tei-c.org/ns/1.0" parent="LGPN_1234">
+                            <place type="settlement" xml:id="uuid">
+                                <placeName/>
+                                <placeName type="other"/>
+                                <placeName type="modern"/>
+                                <location type="pleiades">
+                                    <label/>
+                                </location>
+                                <location cert="">
+                                    <geo/>
+                                    <alt/>
+                                </location>
+                            </place>
+                        </wrapper>
                     </xf:instance>
                     <xf:instance id="i-place-template">
-                        <place xmlns="http://www.tei-c.org/ns/1.0" type="" xml:id="uuid">
-                            <placeName/>
-                            <placeName type="other"/>
-                            <placeName type="modern"/>
-                            <location type="pleiades">
-                                <label/>
-                            </location>
-                            <location cert="">
-                                <geo/>
-                                <alt/>
-                            </location>
-                        </place>
+                        <wrapper xmlns="http://www.tei-c.org/ns/1.0" parent="LGPN_1234">
+                            <place type="settlement" xml:id="uuid">
+                                <placeName/>
+                                <placeName type="other"/>
+                                <placeName type="modern"/>
+                                <location type="pleiades">
+                                    <label/>
+                                </location>
+                                <location cert="">
+                                    <geo/>
+                                    <alt/>
+                                </location>
+                            </place>
+                        </wrapper>
                     </xf:instance>
-                    <xf:submission id="s-load-place" method="get" replace="instance" ref="instance('i-place-default')" validate="false">
-                        <xf:resource value="concat('modules/loadPlace.xql?id=', substring-before(bf:appContext('place'), '#xforms'))"/>
+                    <xf:submission id="s-load-place" method="get" replace="instance" ref="instance('i-place-default')" validate="false" resource="modules/loadPlace.xql?id={substring-before(bf:appContext('place'), '#xforms')}">
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
                         <xf:message ev:event="xforms-submit-error">Failed to load place data. <xf:output value="substring-before(bf:appContext('place'), '#xforms')"/>
                         </xf:message>
@@ -54,7 +57,7 @@
                         <xf:message ev:event="xforms-submit-error">Failed to save place data</xf:message>
                     </xf:submission>
                     <xf:action ev:event="xforms-ready">
-                        <xf:send submission="s-load-place" if="bf:appContext('place') != ''"/>
+                        <xf:send submission="s-load-place"/>
                         <script>
                             clearAndInitAutocompletes();
                         </script>
@@ -67,7 +70,7 @@
                         LGPN place sub-form
                     </legend>
                     <div class="row">
-                        <div class="col-xs-4">
+                        <div class="col-xs-3">
                             <xf:input class="input-group -form-control" ref="//TEI:place/@xml:id">
                                 <xf:label class="input-group-addon">id</xf:label>
                                 <xf:hint>id</xf:hint>
@@ -79,6 +82,28 @@
                                 <xf:hint/>
                             </xf:input>
                         </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <label class="input-group-addon glyphicon glyphicon-map-marker" tooltip="ref">in</label>
+                                <div>
+                                    <xf:input class="-input-group --form-control" ref="//TEI:wrapper/@parent" style="display:none">
+                                        <xf:action ev:event="places_autocomplete-callback">
+                                            <xf:setvalue ref="." value="event('termValue')"/>
+                                        </xf:action>
+                                        <xf:hint>place</xf:hint>
+                                    </xf:input>
+                                    <input type="hidden" data-function="places_autocomplete" placeholder="Type to search ..." autocomplete="off"/><!--
+                                            <xf:trigger class="hidden places_autocomplete">
+                                                <xf:label/>
+                                                <xf:action ev:event="DOMActivate">
+                                                    <xf:setvalue ref="instance('i-controller')/place" value="instance('i-default')//TEI:state[@type='location'][index('r-place')]/TEI:placeName/@key"/>
+                                                    <xf:dispatch name="load-place-subform-event" targetid="load-subform-group"/>
+                                                </xf:action>
+                                            </xf:trigger>
+                                            -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-4">
@@ -89,7 +114,7 @@
                         </div>
                         <div class="col-xs-4">
                             <xf:input class="input-group -form-control" ref="//TEI:placeName[@type='other']">
-                                <xf:label class="input-group-addon">name</xf:label>
+                                <xf:label class="input-group-addon">other name</xf:label>
                                 <xf:hint/>
                             </xf:input>
                         </div>
@@ -99,6 +124,14 @@
                             <xf:input class="input-group  input-group-lg -form-control" ref="//TEI:geo">
                                 <xf:label class="input-group-addon">geocoordinates</xf:label>
                                 <xf:hint>lat lon</xf:hint>
+                            </xf:input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <xf:input class="input-group  input-group-lg -form-control" ref="//TEI:location[@type='pleiades']">
+                                <xf:label class="input-group-addon">pleiades</xf:label>
+                                <xf:hint>pleiades id</xf:hint>
                             </xf:input>
                         </div>
                     </div>

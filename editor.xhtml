@@ -223,14 +223,14 @@
                     <bfc:show dialog="bibl"/>
                 </xf:action>
                 <xf:action ev:event="load-place-subform-event" if="string-length(instance('i-controller')/place) &gt; 0">
-                    <xf:load show="embed" targetid="mountpoint">
+                    <xf:load show="embed" targetid="mountpointPlace">
                         <xf:resource value="concat('place.xhtml?place=', instance('i-controller')/place,'#xforms')"/>
                         <xf:extension includeCSS="false" includeScript="false"/>
                     </xf:load>
                     <bfc:show dialog="place"/>
                 </xf:action>
                 <xf:action ev:event="load-place-subform-event" if="string-length(instance('i-controller')/place) = 0">
-                    <xf:load show="embed" targetid="mountpoint">
+                    <xf:load show="embed" targetid="mountpointPlace">
                         <xf:resource value="'place.xhtml#xforms'"/>
                         <xf:extension includeCSS="false" includeScript="false"/>
                     </xf:load>
@@ -1099,7 +1099,7 @@
         </bfc:dialog>
         <bfc:dialog id="place" src="place.html">
             <xf:label>Add place</xf:label>
-            <div id="mountpoint"/>
+            <div id="mountpointPlace"/>
         </bfc:dialog>
         <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
