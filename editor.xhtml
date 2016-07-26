@@ -30,7 +30,7 @@
                                         <bibl type="volume">
                                             <ref target=""/>
                                         </bibl><!-- person specific dating, if derived from context or other sources --><!-- @ana to hold information about the basis of dating: literary text/era/context/paleography/typology --><!-- @cert to hold information about uncertainty -->
-                                        <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" cert="high" ana=""/><!-- repeatable for every primary source -->
+                                        <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/><!-- repeatable for every primary source -->
                                         <bibl xml:id="s1" type="primary"><!--
                         @target reference
                         @type type of source/inscription
@@ -42,7 +42,7 @@
                         @notBefore @notAfter dates (year)
                         @cert to hold information about uncertainty
                         -->
-                                            <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" cert="high" ana=""/>
+                                            <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
                                         </bibl>
                                         <persName type="attested"/>
                                         <listNym><!-- repeatable for all names used by a person: eg main/nickname/Roman name/patronymic/demetic (@type) --><!-- @nymRef holds normalized form of a name --><!-- @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default -->
@@ -95,7 +95,7 @@
                             <bibl type="volume">
                                 <ref target="#V5"/>
                             </bibl><!-- person specific dating, if derived from context or other sources --><!-- @ana to hold information about the basis of dating: literary text/era/context/paleography/typology --><!-- @cert to hold information about uncertainty -->
-                            <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" cert="high" ana=""/><!-- repeatable for every primary source -->
+                            <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/><!-- repeatable for every primary source -->
                             <bibl xml:id="s2" type="primary"><!--
                         @target reference
                         @type type of source/inscription
@@ -107,7 +107,7 @@
                         @notBefore @notAfter dates (year)
                         @cert to hold information about uncertainty
                         -->
-                                <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" cert="high" ana=""/>
+                                <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
                             </bibl>
                             <persName type="attested"/>
                             <listNym><!-- repeatable for all names used by a person: eg main/nickname/Roman name/patronymic/demetic (@type) --><!-- @nymRef holds normalized form of a name --><!-- @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default -->
@@ -156,6 +156,7 @@
                 <xf:instance xmlns="" id="i-certainty" src="resources/xml/certainty.xml"/>
                 <xf:instance xmlns="" id="i-personDating" src="resources/xml/personDating.xml"/>
                 <xf:instance xmlns="" id="i-dating" src="resources/xml/dating.xml"/>
+                <xf:instance xmlns="" id="i-period" src="resources/xml/datingPeriod.xml"/>
                 <xf:instance xmlns="" id="i-sourceTypes" src="resources/xml/sourceTypes.xml"/>
                 <xf:instance xmlns="" id="i-sourceSubTypes" src="resources/xml/sourceSubTypes.xml"/>
                 <xf:instance xmlns="" id="i-sources" src="resources/xml/sources.xml"/>
@@ -287,6 +288,15 @@
                 </div>
                 <br/>
                 <div class="row">
+                    <div class="col-xs-2">
+                        <xf:select1 class="input-group -form-control" ref="//TEI:birth/@when">
+                            <xf:label class="input-group-addon glyphicon glyphicon-calendar">period</xf:label>
+                            <xf:itemset nodeset="instance('i-period')/option">
+                                <xf:label ref="."/>
+                                <xf:value ref="@value"/>
+                            </xf:itemset>
+                        </xf:select1>
+                    </div>
                     <div class="col-xs-2">
                         <xf:input class="input-group -form-control" ref="//TEI:birth/@notBefore">
                             <xf:label class="input-group-addon glyphicon glyphicon-calendar"/>

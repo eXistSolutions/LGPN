@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="archaic">archaic</option>
+    <option value="hellenistic">hellenistic</option>
+    <option value="imperial">imperial</option>
+    <option value="byzantine">byzantine</option>
+    <option value="heroic">heroic</option>
+    <option value="classical">classical</option>
+    <option value="4B">4BC</option>
+    <option value="3B">3BC</option>
+    <option value="2B">2BC</option>
+    <option value="1B">1BC</option>
+    <option value="1A">1AD</option>
+    <option value="2A">2AD</option>
+    <option value="3A">3AD</option>
+    <option value="4A">4AD</option>
+</data>
