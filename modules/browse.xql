@@ -111,8 +111,9 @@ declare
     %templates:wrap
 function browse:entry-place($node as node(), $model as map(*)) {
     for $place in $model?entry//TEI:state[@type='location']
+    let $key := $place/TEI:placeName/@key
     return 
-        $config:places//TEI:place[@xml:id=$place/TEI:placeName/@key]/TEI:placeName[1]
+        $config:places//TEI:place[@xml:id=$key]/TEI:placeName[1]
 };
 
 declare
