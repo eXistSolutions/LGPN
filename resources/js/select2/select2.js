@@ -156,7 +156,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                                     termValue: thingy.xformsValue
                                 });
                             } else {
-                                console.log("value :" + thingy.value);
+                                //console.log("value :" + thingy.value);
                                 fluxProcessor.dispatchEventType(xformsID, callbackLabel, {
                                     termValue: thingy.value
                                 });
