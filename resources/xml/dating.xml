@@ -5,4 +5,6 @@
     <option value="context">context</option>
     <option value="palaeography">palaeography</option>
     <option value="typology">typology</option>
+    <option value="onomastic">onomastic</option>
+    <option value="eponym">eponym</option>
 </data>
