@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="settlement">settlement</option>
+    <option value="region">region</option>
+    <option value="island">island</option>
+    <option value="deme">deme</option>
+</data>
