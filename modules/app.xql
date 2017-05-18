@@ -33,6 +33,16 @@ declare function app:datatables($node as node(), $model as map(*), $lang as xs:s
             "url": "resources/js/' || $lang || '.json"
         }
     } );
+    $("#servertable").DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": "modules/load-persons.xql",
+        "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
+        "order": [[ 4, "desc" ],[ 1, "asc" ]],
+        "paging":   true,
+        "info":     true
+    } );
+
 } );
 '
     return
@@ -64,6 +74,11 @@ function app:search($node as node(), $model as map(*), $pname as xs:string?, $pl
     let $result :=
         if ($place) then
             collection($config:volumes-root)//tei:placeName[@key=$place]/ancestor::tei:person
+            
+(:                                <state subtype="citizen" type="location">:)
+(:                        <placeName cert="high" corresp="s1" key="P96234789-1fb5-4246-ba6b-a1f948a1bac6" subtype="territory" type="ancient"/>:)
+(:                    </state>:)
+
         else if ($nref) then
             let $ref := "#" || $nref
             return
@@ -214,13 +229,13 @@ function app:profession-catalogue($node as node(), $model as map(*), $letter as 
 };
 
 declare function app:place-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {
-    for $n in $config:persons//tei:placeName[starts-with(., $letter)]
-           group by $id := $n/@key
+    for $n in $config:places//tei:placeName[starts-with(., $letter)]
+           group by $id := $n/parent::tei:place/@xml:id
            order by normalize-space($n[1])
     return 
         <tr>
             <td class="col-md-2"><a>
-                {attribute href { "index.html?pname=&amp;pplace=" || normalize-unicode(normalize-space($n[1]), 'NFC') } }
+                {attribute href { "index.html?pname=&amp;pplace=" || $config:places//id($id)/normalize-unicode(normalize-space(tei:placeName[1]), 'NFC') } }
                 {normalize-unicode(normalize-space($n[1]), 'NFC')}</a>
             </td>
             <td class="col-md-1">{count($n) }</td>
