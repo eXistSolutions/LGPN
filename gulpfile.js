@@ -22,30 +22,41 @@ var fs =                    require('fs'),
     output  = {
         'html':              '.',
         'templates':         'templates',
-        'css':               'resources/css'
+        'css':               'resources/css',
+        'vendor_css':        'resources/css'
     }
     ;
 
 // *************  existDB configuration *************** //
 
-var localConnectionOptions = {};
+// var localConnectionOptions = {};
+//
+// if (fs.existsSync('./local.node-exist.json')) {
+//     localConnectionOptions = require('./local.node-exist.json');
+//     console.log('read from localConnectionOptions', localConnectionOptions)
+// }
+//
+// var exClient = exist.createClient(localConnectionOptions);
+//
+// var targetConfiguration = {
+//     target: '/db/apps/lgpn/'
+// };
 
-if (fs.existsSync('./local.node-exist.json')) {
-    localConnectionOptions = require('./local.node-exist.json');
-    console.log('read from localConnectionOptions', localConnectionOptions)
-}
+exist.defineMimeTypes({
+    'application/xml': ['odd']
+});
 
-var exClient = exist.createClient(localConnectionOptions);
+var exClient = exist.createClient({
+    host: 'localhost',
+    port: '8080',
+    path: '/exist/xmlrpc',
+    basic_auth: { user: 'admin', pass: '' }
+});
 
 var targetConfiguration = {
-    target: '/db/apps/lgpn/'
+    target: '/db/apps/lgpn/',
+    html5AsBinary: true
 };
-
-// *************  clean (unused) *************** //
-
-gulp.task('clean', function() {
-    console.log('does nothing right now')
-});
 
 // ****************  Styles ****************** //
 
@@ -56,7 +67,6 @@ gulp.task('build:styles', function(){
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(output.css))
 });
-
 
 gulp.task('deploy:styles', ['build:styles'], function () {
     console.log('deploying less and css files');
@@ -70,6 +80,20 @@ gulp.task('watch:styles', function () {
     gulp.watch(input.styles, ['deploy:styles'])
 });
 
+// Fonts //
+
+gulp.task('fonts:copy', function () {
+    return gulp.src([
+            'bower_components/bootstrap-less/fonts/**/*'
+        ])
+        .pipe(gulp.dest('resources/fonts'))
+})
+
+gulp.task('fonts:deploy', ['fonts:copy'], function () {
+    return gulp.src('resources/fonts/*', {base: '.'})
+        .pipe(exClient.newer(targetConfiguration))
+        .pipe(exClient.dest(targetConfiguration))
+})
 
 // *************  Templates *************** //
 
@@ -100,18 +124,17 @@ gulp.task('watch:html', function () {
     gulp.watch(input.html, ['deploy:html'])
 });
 
-
-
 // *************  General Tasks *************** //
 
 
 // Watch and deploy all changed files
-gulp.task('watch', ['watch:html']);
+gulp.task('watch', ['watch:html', 'watch:styles']);
 
+gulp.task('build', ['build:styles']);
 
 // Deploy files to existDB
-gulp.task('deploy', ['build:styles'], function () {
-    console.log('deploying files to local existdb')
+gulp.task('deploy', ['build:styles', 'fonts:copy'], function () {
+    console.log('deploying files to local existdb');
     return gulp.src([
             'templates/**/*.html',
             '*.html',
