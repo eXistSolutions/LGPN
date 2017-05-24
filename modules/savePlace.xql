@@ -8,25 +8,46 @@ import module namespace normalization="http://lgpn.classics.ox.ac.uk/apps/lgpn/n
 
 declare function local:updatePlace($data) {
     let $places := $config:places
-    let $parent := $data/descendant-or-self::TEI:wrapper/@parent
+    let $parent := $data//TEI:place/@ref
     let $id := $data//TEI:place/@xml:id
 
     let $replacement := $data//TEI:place
-(:    let $c:=console:log('parent ' || $parent):)
-(:    let $c:=console:log($data):)
-(:    :)
+
     return
         if($places//TEI:place[@xml:id=$id]) 
             then
-            system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
-                update replace $places//TEI:place[@xml:id=$id] with normalization:normalize($replacement)
-            )
+                system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
+                    update replace collection($config:places-root)//TEI:place[@xml:id=$id] with normalization:normalize($replacement)
+                )
+(:  todo: add listChange/change   :)
             else
-                if($parent) then
-                    system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
-                        update insert normalization:normalize($replacement) into $places//TEI:place[@xml:id=$parent]
-                    )
-                else ()
+                system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
+                xmldb:store($config:places-root, concat($id , ".xml"), local:wrap($replacement))
+(:                        update insert normalization:normalize($replacement) into $places//TEI:place[@xml:id=$parent]:)
+            )
+};
+
+declare function local:wrap($data) {
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Lexicon of Greek Personal Names</title>
+            </titleStmt>
+        </fileDesc>
+        <revisionDesc>
+            <listChange>
+                <change when="{current-date()}" resp="#lgpn">Generate entry from TEI export</change>
+            </listChange>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <listPlace>{$data}</listPlace>
+        </body>
+    </text>
+</TEI>
+
 };
 
 let $data := request:get-data()
