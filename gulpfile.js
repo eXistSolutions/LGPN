@@ -17,7 +17,7 @@ var fs =                    require('fs'),
     input = {
         'html':             ['*.html', '*.xhtml'],
         'templates':         'templates/**/*.html',
-        'css':               'resources/css/editor.less'
+        'css':               'resources/css/style.less'
     },
     output  = {
         'html':              '.',
@@ -136,6 +136,7 @@ gulp.task('build', ['build:styles']);
 gulp.task('deploy', ['build:styles', 'fonts:copy'], function () {
     console.log('deploying files to local existdb');
     return gulp.src([
+            'resources/css/style.css',
             'templates/**/*.html',
             '*.html',
             '*.xhtml'

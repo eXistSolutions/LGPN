@@ -2,5 +2,5 @@ build
 .*
 !.gitignore
 /node_modules/
-/resources/css/editor.css
 /bower_components/
+/resources/css/style.css
