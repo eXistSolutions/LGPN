@@ -17,7 +17,7 @@ var fs =                    require('fs'),
     input = {
         'html':             ['*.html', '*.xhtml'],
         'templates':         'templates/**/*.html',
-        'css':               'resources/css/style.less'
+        'css':               'resources/css/less/style.less'
     },
     output  = {
         'html':              '.',
@@ -77,7 +77,7 @@ gulp.task('deploy:styles', ['build:styles'], function () {
 
 gulp.task('watch:styles', function () {
     console.log('watching less files');
-    gulp.watch(input.styles, ['deploy:styles'])
+    gulp.watch('resources/css/less/**/*.less', ['deploy:styles'])
 });
 
 // Fonts //
