@@ -146,7 +146,7 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
         
         let $place := 
             for $p in $i//tei:state[@type='location']/tei:placeName/@key
-                return data($config:places//id($p)/tei:placeName[1])
+                return string-join($config:places//id($p)/tei:placeName[@subtype ne 'minor'], '-')
                 
         let $rels := 
             for $relation in $i/ancestor::tei:body//tei:relation
