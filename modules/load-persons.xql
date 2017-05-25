@@ -87,8 +87,10 @@ let $offset := 0
 let $qs := normalize-unicode(upper-case($search), "NFD")
 
 (: search also in place names :)
-let $places:= if ($qs) then $config:places//tei:placeName[contains(., $qs)]/parent::tei:place else ()
+let $places:= if ($qs) then collection($config:places-root)//tei:placeName[contains(upper-case(.), $qs)]/parent::tei:place else ()
 let $qp := if($places) then ' or .//tei:placeName/@key=("' || string-join($places/@xml:id, '", "') || '") ' else ''
+
+let $c:=console:log('places ' || count($places))
 
 (: search in nym/@nymRef attributes :)
 let $nyms := if($qs) then ' or .//tei:nym[contains(upper-case(normalize-unicode(@nymRef, "NFD")), "' || $qs || '")] ' else ''
