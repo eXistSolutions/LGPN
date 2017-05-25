@@ -87,13 +87,23 @@ gulp.task('fonts:copy', function () {
             'bower_components/bootstrap-less/fonts/**/*'
         ])
         .pipe(gulp.dest('resources/fonts'))
-})
+});
 
 gulp.task('fonts:deploy', ['fonts:copy'], function () {
     return gulp.src('resources/fonts/*', {base: '.'})
         .pipe(exClient.newer(targetConfiguration))
         .pipe(exClient.dest(targetConfiguration))
-})
+});
+
+// scripts //
+
+gulp.task('scripts:deploy', function () {
+    return gulp.src('resources/js/*.js', {base: '.'})
+        .pipe(exClient.newer(targetConfiguration))
+        .pipe(exClient.dest(targetConfiguration))
+});
+
+
 
 // *************  Templates *************** //
 
@@ -133,10 +143,11 @@ gulp.task('watch', ['watch:html', 'watch:styles']);
 gulp.task('build', ['build:styles']);
 
 // Deploy files to existDB
-gulp.task('deploy', ['build:styles', 'fonts:copy'], function () {
+gulp.task('deploy', ['build:styles', 'fonts:copy', 'scripts:deploy'], function () {
     console.log('deploying files to local existdb');
     return gulp.src([
             'resources/css/style.css',
+            'resources/js/*.js',
             'templates/**/*.html',
             '*.html',
             '*.xhtml'
