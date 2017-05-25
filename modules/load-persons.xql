@@ -90,7 +90,8 @@ let $qs := normalize-unicode(upper-case($search), "NFD")
 let $places:= if ($qs) then $config:places//tei:placeName[contains(., $qs)]/parent::tei:place else ()
 let $qp := if($places) then ' or .//tei:placeName/@key=("' || string-join($places/@xml:id, '", "') || '") ' else ''
 
-  (:let $c:=console:log($qp):)
+(: search in nym/@nymRef attributes :)
+let $nyms := if($qs) then ' or .//tei:nym[contains(upper-case(normalize-unicode(@nymRef, "NFD")), "' || $qs || '")] ' else ''
 
 let $collection := 'collection($config:persons-root)//tei:person'
 ||
@@ -98,7 +99,7 @@ let $collection := 'collection($config:persons-root)//tei:person'
             or 
         contains(upper-case(replace(normalize-unicode(., "NFD"), "[\p{M}\p{Sk}]", "")), "' || $qs || '")'
         
-        || $qp || '
+        || $qp || $nyms || '
 ]
 '
 
