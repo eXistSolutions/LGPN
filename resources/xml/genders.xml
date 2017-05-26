@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-    <option value="1">m.</option>
-    <option value="2">f.</option>
+    <option value="1">male</option>
+    <option value="2">female</option>
     <option value="9">unknown</option>
 </data>
