@@ -17,13 +17,15 @@ var fs =                    require('fs'),
     input = {
         'html':             ['*.html', '*.xhtml'],
         'templates':         'templates/**/*.html',
-        'css':               'resources/css/less/style.less'
+        'css':               'resources/css/less/style.less',
+        'xml':               'resources/xml/*.xml'
     },
     output  = {
         'html':              '.',
         'templates':         'templates',
         'css':               'resources/css',
-        'vendor_css':        'resources/css'
+        'vendor_css':        'resources/css',
+        'xml':               'resources/xml'
     }
     ;
 
@@ -132,6 +134,14 @@ gulp.task('deploy:html', function () {
 // Watch HTML pages
 gulp.task('watch:html', function () {
     gulp.watch(input.html, ['deploy:html'])
+});
+
+// *************  XML Pages *************** //
+
+gulp.task('xml:deploy', function () {
+    return gulp.src(input.xml, {base: './'})
+        .pipe(exClient.newer(targetConfiguration))
+        .pipe(exClient.dest(targetConfiguration))
 });
 
 // *************  General Tasks *************** //
