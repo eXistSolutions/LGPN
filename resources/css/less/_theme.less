@@ -44,8 +44,34 @@ footer .poweredby img { width: 120px; }
   background-color: #0097cf;
 }
 
-// Bootstrap overrides
+// Icons next to inputs
 .input-group-addon {
-  background-color: @colorIconBlueGrey;
-  //color: @contrast-color;
+  span {
+    color: @colorGraduateNavyBlue;
+  }
+}
+
+// Bootstrap overrides
+
+// Icon containers next to inputs
+.input-group-addon {
+  background-color: transparent;
+  border-color: transparent;
+  top: 0;
+}
+
+// Labels on the left of inputs
+.control-label {
+  line-height: 20px;
+  text-align: right;
+}
+
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.col-sm-2.control-label,
+.input-group-addon {
+  padding-left: 0;
 }

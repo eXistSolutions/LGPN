@@ -21,26 +21,12 @@
 .tp-width-sidebar {
   .make-xs-column(12);
 }
-/*
-.tp-width-main {
-  .make-xs-column(12);
-  .make-md-column(9);
-  .make-lg-column(9);
-}
-
-.tp-width-sidebar {
-  .make-xs-column(12);
-  .make-md-column(3);
-  .make-lg-column(3);
-}
-*/
 
 .tp-width-half {
   .make-xs-column(12);
   .make-md-column(6);
   .make-lg-column(6);
 }
-
 
 .large-4 {
   @media only screen and (min-width: @large-screen-min) {
@@ -71,9 +57,9 @@
 }
 
 .tp-column-4 {
-@extend .large-4;
-@extend .medium-6;
-@extend .tp-column;
+  &:extend(.large-4);
+  &:extend(.medium-6);
+  &:extend(.tp-column);
 }
 
 .tp-column-6 {
@@ -84,9 +70,9 @@
 }
 
 .tp-column-fullwidth {
-@extend .small-12;
-@extend .tp-columns;
-@extend .tp-column;
+  &:extend(.small-12);
+  &:extend(.tp-columns);
+  &:extend(.tp-column);
 }
 
 // Rows

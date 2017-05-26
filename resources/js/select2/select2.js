@@ -80,7 +80,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                 formatSelection: _termFormatSelection,
                 formatNoMatches: "<div>No matches</div>",
                 dropdownCssClass: "bigdrop",
-                containerCssClass: "form-control",
+                //containerCssClass: "form-control",
                 allowClear: true,
                 initSelection: function (element, callback) {
                     var term = $(element).val();

@@ -1,0 +1,22 @@
+// xform overrides
+.widgetContainer {
+  display: block;
+  height: @input-height;
+  select {
+    height: @input-height;
+  }
+  input[type=checkbox] {
+    @checkboxmargin: (@input-height - 14px) / 2; // checkbox height = 14px
+    margin: @checkboxmargin 0;
+  }
+}
+
+.xfControl {
+  font-family: @font-family-default;
+}
+
+.bfCheckBoxGroup {
+  .xfSelectorItem {
+    margin: 0 2rem 0 0;
+  }
+}
