@@ -82,9 +82,9 @@
                         <div class="col-xs-4">
                             <xf:select1 class="input-group -form-control" ref="@type">
                                 <xf:label class="input-group-addon glyphicon glyphicon-flag"/>
-                                <xf:itemset nodeset="instance('i-placeTypes')/option">
-                                    <xf:label ref="."/>
-                                    <xf:value ref="@value"/>
+                                <xf:itemset nodeset="instance('i-placeTypes')//TEI:category">
+                                    <xf:label ref="TEI:catDesc"/>
+                                    <xf:value ref="@xml:id"/>
                                 </xf:itemset>
                             </xf:select1>
                         </div>
