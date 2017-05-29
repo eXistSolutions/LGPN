@@ -18,6 +18,7 @@ var fs =                    require('fs'),
         'html':             ['*.html', '*.xhtml'],
         'templates':         'templates/**/*.html',
         'css':               'resources/css/less/style.less',
+        'scripts':           'resources/js/**/*',
         'xml':               'resources/xml/*.xml'
     },
     output  = {
@@ -25,6 +26,7 @@ var fs =                    require('fs'),
         'templates':         'templates',
         'css':               'resources/css',
         'vendor_css':        'resources/css',
+        'scripts':           'resources/js/**/*',
         'xml':               'resources/xml'
     }
     ;
@@ -99,12 +101,16 @@ gulp.task('fonts:deploy', ['fonts:copy'], function () {
 
 // scripts //
 
-gulp.task('scripts:deploy', function () {
-    return gulp.src('resources/js/*.js', {base: '.'})
+gulp.task('deploy:scripts', function () {
+    return gulp.src(input.scripts, {base: '.'})
         .pipe(exClient.newer(targetConfiguration))
         .pipe(exClient.dest(targetConfiguration))
 });
 
+// Watch templates
+gulp.task('watch:scripts', function () {
+    gulp.watch(input.templates, ['deploy:scripts'])
+});
 
 
 // *************  Templates *************** //
@@ -148,16 +154,16 @@ gulp.task('xml:deploy', function () {
 
 
 // Watch and deploy all changed files
-gulp.task('watch', ['watch:html', 'watch:styles']);
+gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts']);
 
 gulp.task('build', ['build:styles']);
 
 // Deploy files to existDB
-gulp.task('deploy', ['build:styles', 'fonts:copy', 'scripts:deploy'], function () {
+gulp.task('deploy', ['build:styles', 'fonts:copy', 'deploy:scripts'], function () {
     console.log('deploying files to local existdb');
     return gulp.src([
             'resources/css/style.css',
-            'resources/js/*.js',
+            'resources/js/**/*.js',
             'templates/**/*.html',
             '*.html',
             '*.xhtml'
