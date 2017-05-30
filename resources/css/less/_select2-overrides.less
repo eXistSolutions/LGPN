@@ -19,12 +19,14 @@
 }
 
 .select2-drop {
-  border-radius: 4px;
+  border-radius: 0;
+  border: none;
   color: @text-color;
   box-shadow: none;
   padding-top: 4px;
   &-active {
     border: 1px solid #ccc;
+    border-top: none;
   }
 }
 
@@ -58,4 +60,16 @@
   border: 1px solid #ccc;
   font-family: @font-family-default;
   font-size: inherit;
+}
+
+.select2-container .select2-choice .select2-arrow {
+  border: none;
+  background: none;
+  background-image: none;
+  width: 20px;
+
+  i.glyphicon {
+    top: 6px;
+    color: @text-color;
+  }
 }
