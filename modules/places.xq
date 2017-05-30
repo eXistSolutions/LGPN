@@ -10,7 +10,7 @@ import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" 
 declare option output:method "json";
 declare option output:media-type "text/javascript";
 let $data := request:get-parameter('query', 'Tri')
-            let $constituents :=  $config:places//tei:place/tei:placeName[1][starts-with(lower-case(.), lower-case($data))]
+            let $constituents :=  $config:places//tei:placeName[contains(lower-case(.), lower-case($data))]
             return
             <result>
                 <total>{count($constituents)}</total>
