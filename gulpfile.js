@@ -159,7 +159,7 @@ gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts']);
 gulp.task('build', ['build:styles']);
 
 // Deploy files to existDB
-gulp.task('deploy', ['build:styles', 'fonts:copy', 'deploy:scripts'], function () {
+gulp.task('deploy', ['build:styles', 'fonts:copy', 'deploy:scripts', 'xml:deploy'], function () {
     console.log('deploying files to local existdb');
     return gulp.src([
             'resources/css/style.css',
