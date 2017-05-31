@@ -82,6 +82,41 @@ footer .poweredby img { width: 120px; }
   margin-right: 4px;
 }
 
+button,
+.btn {
+  &:focus,
+  &:active {
+    outline: none !important;
+  }
+}
+
+// Bootstrap-style add/delete button
+.tp-delete {
+  .btn-default {
+    background-color: lighten(@colorRed, 20%);
+    color: @contrast-color;
+    &:hover {
+      background-color: @colorRed;
+    }
+    &:active {
+      background-color: darken(@colorRed, 20%);
+    }
+  }
+}
+
+.tp-add {
+  .btn-default {
+    background-color: lighten(@colorGreen, 20%);
+    color: @contrast-color;
+    &:hover {
+      background-color: @colorGreen;
+    }
+    &:active {
+      background-color: darken(@colorGreen, 20%);
+    }
+  }
+}
+
 // single button with label text to the left (but without extra icon) in a form row
 .tp-button-row {
   > .xfTrigger {
