@@ -344,7 +344,7 @@
                                     </xf:input>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Check</label>
+                                    <label class="col-sm-2 control-label">Certainty</label>
                                     <xf:select1 class="input-group col-sm-8 -form-control" ref="//TEI:birth/@cert">
                                         <xf:label class="input-group-addon">
                                             <i class="glyphicon glyphicon-check"/>
@@ -419,7 +419,7 @@
                                                                     </xf:label>
                                                                     <xf:hint>normalized form</xf:hint>
                                                                 </xf:input>
-                                                            <input type="hidden" class="input-group col-sm-8" data-function="nyms_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                                            <input type="hidden" class="input-group col-sm-8" data-function="nyms_autocomplete" placeholder="Type to search name" autocomplete="off"/>
                                                         </div>
                                                     </div>
                                                     <div class="tp-row">
@@ -630,7 +630,7 @@
                                                         <xf:hint>praenomen</xf:hint>
                                                     </xf:input>
 
-                                                    <input type="hidden" class="input-group col-sm-8" data-function="nyms_autocomplete" placeholder="praenomen" autocomplete="off"/>
+                                                    <input type="hidden" class="input-group col-sm-8" data-function="nyms_autocomplete" placeholder="Type to search praenomen" autocomplete="off"/>
                                                 </div>
                                              </div>
 
@@ -646,7 +646,7 @@
                                                         </xf:label>
                                                         <xf:hint>nomen gentile</xf:hint>
                                                     </xf:input>
-                                                    <input type="hidden" class="input-group col-sm-8" data-function="nyms_autocomplete" placeholder="n. gentile" autocomplete="off"/>
+                                                    <input type="hidden" class="input-group col-sm-8" data-function="nyms_autocomplete" placeholder="Type to search nomen gentile" autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <div class="tp-row">
@@ -656,7 +656,6 @@
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-list"/>
                                                         </xf:label>
-
                                                         <xf:itemset nodeset="instance('i-filiation')/option">
                                                             <xf:label ref="."/>
                                                             <xf:value ref="@value"/>
@@ -676,7 +675,7 @@
                                                         </xf:label>
                                                         <xf:hint>filiation</xf:hint>
                                                     </xf:input>
-                                                    <input type="hidden" class="input-group col-sm-8" data-function="nyms_autocomplete" placeholder="filiation" autocomplete="off"/>
+                                                    <input type="hidden" class="input-group col-sm-8" data-function="nyms_autocomplete" placeholder="Type to search filiation" autocomplete="off"/>
                                                 </div>
                                             </div>
 
@@ -889,7 +888,7 @@
                                                                 <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
                                                                 <xf:hint>place</xf:hint>
                                                             </xf:input>
-                                                            <input type="hidden" data-function="places_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                                            <input type="hidden" data-function="places_autocomplete" placeholder="Type to search place" autocomplete="off"/>
                                                             <xf:trigger class="hidden places_autocomplete">
                                                                 <xf:label/>
                                                                 <xf:action ev:event="DOMActivate">
@@ -1180,7 +1179,7 @@
                                                             <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
                                                             <xf:hint>reference abbreviation</xf:hint>
                                                         </xf:input>
-                                                        <input type="hidden" data-function="reference_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                                        <input type="hidden" data-function="reference_autocomplete" placeholder="Type to search reference abbreviation" autocomplete="off"/>
                                                     </div>
                                                 </div>
                                                 <xf:trigger class="hidden reference_autocomplete">
@@ -1297,7 +1296,7 @@
                                                             <xf:label class="input-group-addon -glyphicon -glyphicon-book">ref</xf:label>
                                                             <xf:hint>relative</xf:hint>
                                                         </xf:input>
-                                                        <input type="hidden" data-function="relatives_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                                        <input type="hidden" data-function="relatives_autocomplete" placeholder="Type to search relative" autocomplete="off"/>
                                                     </div>
                                                 </div>
                                             </div>
