@@ -532,7 +532,7 @@
                                                                 </div>
                                                                 <div class="tp-row">
                                                                     <div class="form-group">
-                                                                        <label class="col-sm-2 control-label">Languages</label>
+                                                                        <label class="col-sm-2 control-label">Language</label>
                                                                         <xf:select1 class="input-group col-sm-8 -form-control" ref="TEI:persName/@xml:lang">
                                                                             <xf:label class="input-group-addon">
                                                                                 <i class="glyphicon glyphicon-globe"/>
@@ -651,7 +651,7 @@
                                             </div>
                                             <div class="tp-row">
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Filiation</label>
+                                                    <label class="col-sm-2 control-label">Relationship</label>
                                                     <xf:select1 class="input-group col-sm-8 -form-control" ref="TEI:persName[@type='filiation']/@subtype">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-list"/>
@@ -665,7 +665,7 @@
                                             </div>
                                             <div class="tp-row">
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label" tooltip="ref">Search filiation</label>
+                                                    <label class="col-sm-2 control-label" tooltip="ref">Search relationship</label>
                                                     <xf:input ref="TEI:persName[@type='filiation']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
