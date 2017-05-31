@@ -26,9 +26,17 @@
   .xfControl {
     clear: none;
   }
+  .xfLabel {
+    &:extend(.input-group-addon);
+  }
+}
+
+span.xfControl {
+  display: none;
 }
 
 // Label for repeat groups
 .xfGroupLabel {
   font-weight: bold;
 }
+

@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
     </head>
     <body>
-        <div style="display:none">
+        <div class="hidden">
             <xf:model id="model-1">
                 <xf:instance id="i-default">
                     <TEI xmlns="http://www.tei-c.org/ns/1.0">
@@ -386,7 +386,7 @@
                                 <!-- NAME -->
                                 <xf:group>
                                     <xf:label class="tp-row tp-form-header">
-                                        <h3 class="col-xs-2">Name</h3>
+                                        <h4 class="col-xs-2">Name</h4>
                                     </xf:label>
 
                                     <div class="tp-row">
@@ -410,7 +410,7 @@
                                                     <div class="tp-row">
                                                         <div class="form-group">
                                                             <label class="col-sm-2 control-label">Search name</label>
-                                                                <xf:input ref="@nymRef" style="display:none">
+                                                                <xf:input ref="@nymRef" class="hidden">
                                                                     <xf:action ev:event="nyms_autocomplete-callback">
                                                                         <xf:setvalue ref="." value="event('termValue')"/>
                                                                     </xf:action>
@@ -620,7 +620,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Praenomen</label>
-                                                    <xf:input ref="TEI:persName[@type='praenomen']" style="display:none">
+                                                    <xf:input ref="TEI:persName[@type='praenomen']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -637,7 +637,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Nomen gentile</label>
-                                                    <xf:input ref="TEI:persName[@type='nomen_gentile']" style="display:none">
+                                                    <xf:input ref="TEI:persName[@type='nomen_gentile']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -667,7 +667,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Search filiation</label>
-                                                    <xf:input ref="TEI:persName[@type='filiation']" style="display:none">
+                                                    <xf:input ref="TEI:persName[@type='filiation']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -743,7 +743,7 @@
                                                     <div class="input-group">
                                                         <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
                                                         <div>
-                                                            <xf:input class="-input-group --form-control" ref="TEI:ref/@target" style="display:none">
+                                                            <xf:input class="-input-group --form-control hidden" ref="TEI:ref/@target">
                                                                 <xf:action ev:event="reference_autocomplete-callback">
                                                                     <xf:setvalue ref="." value="event('termValue')"/>
                                                                 </xf:action>
@@ -882,7 +882,7 @@
                                                     <div class="input-group">
                                                         <label class="input-group-addon glyphicon glyphicon-map-marker" tooltip="ref"/>
                                                         <div>
-                                                            <xf:input class="-input-group --form-control" ref="TEI:placeName/@key" style="display:none">
+                                                            <xf:input class="-input-group --form-control hidden" ref="TEI:placeName/@key">
                                                                 <xf:action ev:event="places_autocomplete-callback">
                                                                     <xf:setvalue ref="." value="event('termValue')"/>
                                                                 </xf:action>
@@ -1173,7 +1173,7 @@
                                                 <div class="input-group">
                                                     <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
                                                     <div>
-                                                        <xf:input class="-input-group --form-control" ref="TEI:ref/@target" style="display:none">
+                                                        <xf:input class="-input-group --form-control hidden" ref="TEI:ref/@target">
                                                             <xf:action ev:event="reference_autocomplete-callback">
                                                                 <xf:setvalue ref="." value="event('termValue')"/>
                                                             </xf:action>
@@ -1290,7 +1290,7 @@
                                                 <div class="input-group">
                                                     <label class="input-group-addon glyphicon glyphicon-book" tooltip="ref"/>
                                                     <div>
-                                                        <xf:input class="-input-group --form-control" ref="@passive" style="display:none">
+                                                        <xf:input class="-input-group --form-control hidden" ref="@passive">
                                                             <xf:action ev:event="relatives_autocomplete-callback">
                                                                 <xf:setvalue ref="." value="event('termValue')"/>
                                                             </xf:action>
