@@ -47,6 +47,25 @@ footer .poweredby img { width: 120px; }
   }
 }
 
+.tp-section {
+  background-color: @color-body-bg;
+}
+
+.tp-width-main {
+  background-color: @color-form-bg;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  &:last-of-type {
+    @media (min-width: @screen-sm-min) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .tp-row:last-of-type .form-group:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
 // Bootstrap overrides
 
 // Icon containers next to inputs
@@ -128,6 +147,40 @@ footer .poweredby img { width: 120px; }
   }
 }
 
+// Save/delete buttons in last section
+.tp-section-save {
+  .form-horizontal > .col-sm-6 {
+    @media (max-width: @screen-sm) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .tp-button-row > div {
+    padding-left: 26px;
+  }
+  .btn {
+    width: @button-size;
+    height: @button-size;
+    padding: 0;
+  }
+  .tp-button-cancel {
+    display: inline-block;
+  }
+  // Text in cancel button
+  .control-label {
+    span {
+      display: block;
+      text-align: left;
+      @media (min-width: @screen-sm-min) {
+        text-align: right;
+      }
+      &:nth-of-type(2) {
+        font-weight: normal;
+      }
+    }
+  }
+}
+
 // Headline in subform
 .tp-form-header {
   h3, h4 {
@@ -151,4 +204,9 @@ footer .poweredby img { width: 120px; }
   height: 60px;
   background-color: @color-body-bg;
   margin: 0 -15px;
+}
+
+// Bootstrap red color override
+.btn-danger {
+  &:extend(.tp-delete);
 }
