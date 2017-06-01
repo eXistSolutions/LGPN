@@ -5,8 +5,8 @@ declare namespace TEI = "http://www.tei-c.org/ns/1.0";
 import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" at "config.xqm";
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 declare function local:new($id) {
-                        <wrapper xmlns="http://www.tei-c.org/ns/1.0" parent="">
-                        <place type="settlement" xml:id="{$id}" xmlns="http://www.tei-c.org/ns/1.0">
+                        <wrapper xmlns="http://www.tei-c.org/ns/1.0">
+                        <place type="settlement" xml:id="{$id}" ref="LGPN_10020">
                             <placeName type="" subtype="" cert="" xml:lang=""/>
                             <placeName type="" subtype="" cert="" xml:lang=""/>
                             <placeName type="" subtype="" cert="" xml:lang=""/>

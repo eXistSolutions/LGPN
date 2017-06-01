@@ -87,28 +87,20 @@ let $offset := 0
 let $qs := normalize-unicode(upper-case($search), "NFD")
 
 (: search also in place names :)
-let $places:= if ($qs) then $config:places//tei:placeName[contains(., $qs)]/parent::tei:place else ()
+let $places:= if ($qs) then collection($config:places-root)//tei:placeName[contains(upper-case(.), $qs)]/parent::tei:place else ()
 let $qp := if($places) then ' or .//tei:placeName/@key=("' || string-join($places/@xml:id, '", "') || '") ' else ''
 
-  (:let $c:=console:log($qp):)
+(: search in nym/@nymRef attributes :)
+let $nyms := if($qs) then ' or .//tei:nym[contains(upper-case(replace(normalize-unicode(@nymRef, "NFD"), "[\p{M}\p{Sk}]", "")), "' || $qs || '")] ' else ''
 
 let $collection := 'collection($config:persons-root)//tei:person'
 ||
 '[contains(upper-case(normalize-unicode(., "NFD")), "'|| $qs || '") 
             or 
         contains(upper-case(replace(normalize-unicode(., "NFD"), "[\p{M}\p{Sk}]", "")), "' || $qs || '")'
-        
-        || $qp || '
+        || $qp || $nyms || '
 ]
 '
-
-(:        or contains(upper-case(doc($config:volumes-root || "/volume0.places.xml")//id(@xml:id)), "'|| $qs || '"):)
-
- (:tei:orth[:)
-(:        contains(upper-case(normalize-unicode(., "NFD")), "'|| $qs || '") :)
-(:            or :)
-(:        contains(upper-case(replace(normalize-unicode(., "NFD"), "[\p{M}\p{Sk}]", "")), "'|| $qs || '"):)
-(:        ]/ancestor::tei:entry//tei:gramGrp':)
 
 
 let $roff:=$offset+number($ordInd)
@@ -145,7 +137,7 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
         
         let $place := 
             for $p in $i//tei:state[@type='location']/tei:placeName/@key
-                return data($config:places//id($p)/tei:placeName[1])
+                return string-join($config:places//id($p)/tei:placeName[@subtype ne 'minor'], '-')
                 
         let $rels := 
             for $relation in $i/ancestor::tei:body//tei:relation

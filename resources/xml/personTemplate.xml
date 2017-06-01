@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.tei-c.org/ns/1.0">
+    <person xml:id="uuid" sex="1" type="">
+        <bibl type="volume">
+            <ref target="#V5"/>
+        </bibl>
+        <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
+        <bibl xml:id="s2" type="primary">
+            <ref target="" type="inscr_stone" subtype=""/>
+            <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
+        </bibl>
+        <persName type="attested"/>
+        <listNym>
+            <nym type="main" nymRef="" ana="greek" n="2">
+                <seg type="linking"/>
+                <form type="attested">
+                    <persName type="main" xml:lang="greek" ana="Nom" corresp="s1" n=""/>
+                </form>
+            </nym>
+            <nym type="Roman" ana="greek" n="1" corresp="s1">
+                <!-- special entry type for Roman names                -->
+                <persName type="praenomen"/>
+                <persName type="nomen_gentile"/>
+                <persName type="filiation" subtype="son"/>
+                <persName type="tribe"/>
+            </nym>
+        </listNym>
+        <state type="location" subtype="citizen">
+            <placeName key="" type="ancient" subtype="" cert="high" corresp="s1"/>
+        </state>
+        <bibl type="auxiliary" subtype="" ana="">
+            <ref target=""/>
+            <author/>
+            <seg type="details"/>
+            <ptr ref=""/>
+        </bibl>
+        <trait type="profession" key="" ana=""/>
+        <trait type="office" key="" ana=""/>
+        <trait type="status" key="" ana=""/>
+        <trait type="religion" key="" ana=""/>
+        <trait type="Roman" key="" ana=""/>
+    </person>
+    <listRelation>
+        <relation type="family" subtype="natural" name="child" passive=""/>
+    </listRelation>
+</data>
