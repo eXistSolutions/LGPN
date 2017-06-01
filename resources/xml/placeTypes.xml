@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data>
-    <option value="settlement">settlement</option>
-    <option value="region">region</option>
-    <option value="island">island</option>
-    <option value="deme">deme</option>
-</data>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="locations">
+    <category xml:id="settlement" type="geographical">
+        <catDesc xml:lang="en">settlement</catDesc>
+    </category>
+    <category xml:id="region" type="geographical">
+        <catDesc xml:lang="en">region</catDesc>
+    </category>
+    <category xml:id="island" type="geographical">
+        <catDesc xml:lang="en">island</catDesc>
+    </category>
+    <category xml:id="deme" type="geographical">
+        <catDesc xml:lang="en">deme</catDesc>
+    </category>
+    <category xml:id="tribe" type="social">
+        <catDesc xml:lang="en">tribe</catDesc>
+    </category>
+</taxonomy>

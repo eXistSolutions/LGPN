@@ -9,5 +9,7 @@
     <option value="V5b">V5b</option>
     <option value="V5c">V5c</option>
     <option value="V6">V6</option>
+    <option value="Egypt">Egypt</option>
+    <option value="Other">Other</option>
     <option value="test">test</option>
 </data>

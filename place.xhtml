@@ -13,8 +13,8 @@
             <div style="display:none">
                 <xf:model id="model-place">
                     <xf:instance id="i-place-default">
-                        <wrapper xmlns="http://www.tei-c.org/ns/1.0" parent="LGPN_1234">
-                            <place type="settlement" xml:id="uuid">
+                        <wrapper xmlns="http://www.tei-c.org/ns/1.0">
+                            <place type="settlement" xml:id="uuid" ref="LGPN_Syria">
                                 <placeName type="" subtype="" cert="" xml:lang=""/>
                                 <location type="pleiades">
                                     <label/>
@@ -27,8 +27,8 @@
                         </wrapper>
                     </xf:instance>
                     <xf:instance id="i-place-template">
-                        <wrapper xmlns="http://www.tei-c.org/ns/1.0" parent="LGPN_1234">
-                            <place type="settlement" xml:id="uuid">
+                        <wrapper xmlns="http://www.tei-c.org/ns/1.0">
+                            <place type="settlement" xml:id="uuid" ref="LGPN_Syria">
                                 <placeName type="" subtype="" cert="" xml:lang=""/>
                                 <location type="pleiades">
                                     <label/>
@@ -71,19 +71,20 @@
                     <legend>
                         LGPN place sub-form
                     </legend>
+            <xf:group ref="//TEI:place">
                     <div class="row">
                         <div class="col-xs-3">
-                            <xf:input class="input-group -form-control" ref="//TEI:place/@xml:id">
+                            <xf:input class="input-group -form-control" ref="@xml:id">
                                 <xf:label class="input-group-addon">id</xf:label>
                                 <xf:hint>id</xf:hint>
                             </xf:input>
                         </div>
                         <div class="col-xs-4">
-                            <xf:select1 class="input-group -form-control" ref="//TEI:place/@type">
+                            <xf:select1 class="input-group -form-control" ref="@type">
                                 <xf:label class="input-group-addon glyphicon glyphicon-flag"/>
-                                <xf:itemset nodeset="instance('i-placeTypes')/option">
-                                    <xf:label ref="."/>
-                                    <xf:value ref="@value"/>
+                                <xf:itemset nodeset="instance('i-placeTypes')//TEI:category">
+                                    <xf:label ref="TEI:catDesc"/>
+                                    <xf:value ref="@xml:id"/>
                                 </xf:itemset>
                             </xf:select1>
                         </div>
@@ -91,7 +92,7 @@
                             <div class="input-group">
                                 <label class="input-group-addon glyphicon glyphicon-map-marker" tooltip="ref">in</label>
                                 <div>
-                                    <xf:input class="-input-group --form-control" ref="//TEI:wrapper/@parent" style="display:none">
+                                    <xf:input class="-input-group --form-control" ref="@ref" style="display:none">
                                         <xf:action ev:event="places_autocomplete-callback">
                                             <xf:setvalue ref="." value="event('termValue')"/>
                                         </xf:action>
@@ -180,8 +181,7 @@
                         <div class="col-xs-1">
                                 <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                         <xf:label/>
-                                        <xf:insert context="//TEI:place" nodeset="TEI:placeName" origin="instance('i-place-template')//TEI:placeName"/>
-
+                                        <xf:insert context="." ref="TEI:placeName" origin="instance('i-place-template')//TEI:placeName"/>
                                 </xf:trigger>
                         </div>
                     </div>
@@ -203,6 +203,7 @@
                             </xf:input>
                         </div>
                     </div>
+                    </xf:group>
                     <div class="row">
                         <div class="form-group">
                             <div class="col-sm-offset-4">
