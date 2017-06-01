@@ -129,12 +129,7 @@ footer .poweredby img { width: 120px; }
   }
 }
 
-// single button with label text to the left (but without extra icon) in a form row
 .tp-button-row {
-  > .xfTrigger {
-    padding-left: 30px; // shift button to the right to fill the icon gap
-  }
-
   .glyphicon {
     margin-right: 0;
     top: 3px;
@@ -142,9 +137,29 @@ footer .poweredby img { width: 120px; }
 }
 
 .tp-repeat-buttons {
+  @media (min-width: @screen-sm-min) {
+    padding-top: 15px;
+  }
   .tp-button-row:not(:nth-of-type(2)) {
     &:extend(.form-group);
   }
+  .control-label {
+    &:extend(.col-xs-12);
+    &:extend(.col-sm-9);
+    &:extend(.col-md-10);
+
+    @media (max-width: @screen-sm) {
+      padding-left: 0;
+      text-align: left;
+    }
+  }
+}
+
+#C226 > div.tp-row.tp-repeat-buttons,
+#C687 > div.tp-row.tp-repeat-buttons,
+#C951 > div.tp-row.tp-repeat-buttons {
+  padding-top: 30px;
+  padding-bottom: 15px;
 }
 
 // Save/delete buttons in last section
@@ -196,12 +211,12 @@ footer .poweredby img { width: 120px; }
 }
 
 .tp-divider {
-  border-bottom: 1px solid @colorIconBlueGrey;
-  margin: 30px 0;
+  border-bottom: @default-border;
+  margin: 15px 0 30px;
 }
 
 .tp-section-divider {
-  height: 60px;
+  height: 30px;
   background-color: @color-body-bg;
   margin: 0 -15px;
 }
