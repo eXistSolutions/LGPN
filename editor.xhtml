@@ -175,9 +175,9 @@
                                         <xf:label class="input-group-addon">
                                             <i class="glyphicon glyphicon-calendar"/>
                                         </xf:label>
-                                        <xf:itemset nodeset="instance('i-period')/option">
-                                            <xf:label ref="."/>
-                                            <xf:value ref="@value"/>
+                                        <xf:itemset nodeset="instance('i-period')/TEI:category">
+                                            <xf:label ref="./TEI:catDesc/TEI:date"/>
+                                            <xf:value ref="@xml:id"/>
                                         </xf:itemset>
                                     </xf:select1>
                                 </div>
