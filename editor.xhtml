@@ -240,11 +240,6 @@
                         <section class="form-horizontal" id="names">
                             <xf:group ref="//TEI:person"><!-- NAMES -->
                                 <!-- NAME -->
-                                <xf:group>
-                                    <xf:label class="tp-row tp-form-header">
-                                        <h4 class="col-md-2">Name</h4>
-                                    </xf:label>
-
                                     <div class="tp-row">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Final Bracket</label>
@@ -256,6 +251,25 @@
                                             </xf:input>
                                         </div>
                                     </div>
+                                <xf:group>
+                                    <xf:label class="tp-row tp-form-header">
+                                        <h4 class="col-md-2">Nym</h4>
+                                    </xf:label>
+                                                        <div class="col-xs-6 col-sm-3">
+                                                            <div class="tp-button-row tp-add">
+                                                                <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add nym</label>
+                                                                <xf:trigger class="-btn -btn-default">
+                                                                    <xf:label class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-plus"/>
+                                                                    </xf:label>
+                                                                    <xf:insert context="instance('i-default')//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type!='Roman']"/>
+                                                                    <script>
+                                                                        clearAndInitAutocompletes();
+                                                                    </script>
+                                                                </xf:trigger>
+                                                            </div>
+                                                        </div>
+
 
                                     <div class="tp-row">
                                         <div class="form-group">
@@ -265,7 +279,7 @@
                                                     <xf:label/>
                                                     <div class="tp-row">
                                                         <div class="form-group">
-                                                            <label class="col-sm-2 control-label">Search name</label>
+                                                            <label class="col-sm-2 control-label">Select name</label>
                                                                 <xf:input ref="@nymRef" class="hidden">
                                                                     <xf:action ev:event="nyms_autocomplete-callback">
                                                                         <xf:setvalue ref="." value="event('termValue')"/>
@@ -280,7 +294,7 @@
                                                     </div>
                                                     <div class="tp-row">
                                                         <div class="form-group">
-                                                            <label class="col-sm-2 control-label">Type of Name</label>
+                                                            <label class="col-sm-2 control-label">Type</label>
                                                             <xf:select1 class="col-sm-8 input-group -form-control" ref="@type">
                                                                 <xf:label class="input-group-addon">
                                                                     <i class="glyphicon glyphicon-list"/>
@@ -294,7 +308,7 @@
                                                     </div>
                                                     <div class="tp-row">
                                                         <div class="form-group">
-                                                            <label class="col-sm-2 control-label">Origin of name</label>
+                                                            <label class="col-sm-2 control-label">Origin</label>
                                                             <xf:select1 class="input-group -form-control col-sm-8" ref="@ana">
                                                                 <xf:label class="input-group-addon">
                                                                     <i class="glyphicon glyphicon-flag"/>
@@ -324,12 +338,13 @@
                                                     <div class="tp-row tp-repeat-buttons">
                                                         <div class="col-xs-6 col-sm-3">
                                                             <div class="tp-button-row tp-add">
-                                                                <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add name</label>
+                                                                <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add nym</label>
                                                                 <xf:trigger class="-btn -btn-default">
                                                                     <xf:label class="input-group-addon">
                                                                         <i class="glyphicon glyphicon-plus"/>
                                                                     </xf:label>
-                                                                    <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type!='Roman']"/>
+                                                                    <xf:insert context="instance('i-default')//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type!='Roman']"/>
+
                                                                     <script>
                                                                         clearAndInitAutocompletes();
                                                                     </script>
@@ -338,12 +353,12 @@
                                                         </div>
                                                         <div class="col-xs-6 col-sm-4 col-sm-offset-3">
                                                             <div class="tp-button-row tp-delete">
-                                                                <label class="col-xs-12 col-sm-10 control-label">Delete name</label>
+                                                                <label class="col-xs-12 col-sm-10 control-label">Delete nυμ</label>
                                                                 <xf:trigger class="-btn -btn-default">
                                                                     <xf:label class="input-group-addon">
                                                                         <i class="glyphicon glyphicon-trash"/>
                                                                     </xf:label>
-                                                                    <xf:delete nodeset="//TEI:nym[index('r-name')]"/>
+                                                                    <xf:delete nodeset="instance('i-default')//TEI:listNym/TEI:nym[@type!='Roman'][index('r-name')]"/>
                                                                 </xf:trigger>
                                                             </div>
                                                         </div>
