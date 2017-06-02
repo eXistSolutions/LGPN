@@ -17,7 +17,7 @@
                 <person xml:id="uuid" sex="" type="">
                     <!-- LGPN volume -->
                     <bibl type="volume">
-                        <ref target=""/>
+                        <ref target="V6"/>
                     </bibl>
                     <!-- person specific dating, if derived from context or other sources -->
                     <!-- @ana to hold information about the basis of dating: literary text/era/context/paleography/typology -->
@@ -50,7 +50,7 @@
                         -->
                             <seg type="linking"/>
                             <form type="attested">
-                                <persName xml:lang="greek" ana="Nom" corresp="s1" n=""/>
+                                <persName xml:lang="grc" ana="Nom" corresp="s1" n=""/>
                             </form>
                         </nym>
                         <nym type="Roman" ana="greek" n="1" corresp="s1">

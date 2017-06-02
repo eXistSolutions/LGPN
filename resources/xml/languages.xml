@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <option value="grc">Greek</option>
-    <option value="grc-cs">Cypriot Syllabic</option>
     <option value="la">Latin</option>
+    <option value="grc-cs">Cypriot Syllabic</option>
     <option value="anat">Anatolian</option>
     <option value="car">Carian</option>
     <option value="lyc">Lycian</option>
