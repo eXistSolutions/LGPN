@@ -367,11 +367,25 @@
                                                     <div class="tp-divider col-xs-12"/>
 
                                                     <div class="tp-row">
-                                                        <!-- Attested forms -->
-                                                        <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
                                                             <xf:label class="tp-row tp-form-header">
                                                                 <h4 class="col-md-2">Attested Form</h4>
                                                             </xf:label>
+                                                            <div class="col-xs-2 col-sm-2">
+                                                                <div class="tp-button-row tp-add">
+                                                                    <label class="col-xs-12 col-sm-9 col-md-10 control-label"/>
+                                                                    <xf:trigger class="-btn -btn-default">
+                                                                        <xf:label class="input-group-addon">
+                                                                            <i class="glyphicon glyphicon-plus"/>
+                                                                        </xf:label>
+                                                                        <xf:insert context="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='attested']"/>
+                                                                        <script>
+                                                                            clearAndInitAutocompletes();
+                                                                        </script>
+                                                                    </xf:trigger>
+                                                                </div>
+                                                            </div>
+                                                        <!-- Attested forms -->
+                                                        <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
                                                             <xf:group ref=".">
                                                                 <xf:label/>
                                                             </xf:group>
@@ -389,7 +403,7 @@
                                                                 </div>
                                                                 <div class="tp-row">
                                                                     <div class="form-group">
-                                                                        <label class="col-sm-2 control-label">Casus</label>
+                                                                        <label class="col-sm-2 control-label">Case</label>
                                                                         <xf:select1 class="input-group col-sm-8 -form-control" ref="TEI:persName/@ana">
                                                                             <xf:label class="input-group-addon">
                                                                                 <i class="glyphicon glyphicon-pencil"/>
@@ -453,7 +467,7 @@
                                                                         <xf:label class="input-group-addon">
                                                                             <i class="glyphicon glyphicon-plus"/>
                                                                         </xf:label>
-                                                                        <xf:insert context="//TEI:nym[@type!='Roman'][index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='attested']"/>
+                                                                        <xf:insert context="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='attested']"/>
                                                                         <script>
                                                                             clearAndInitAutocompletes();
                                                                         </script>
@@ -467,7 +481,7 @@
                                                                         <xf:label class="input-group-addon">
                                                                             <i class="glyphicon glyphicon-trash"/>
                                                                         </xf:label>
-                                                                        <xf:delete nodeset="//TEI:nym[@type!='Roman'][index('r-name')]/TEI:form[index('r-nameForm')]"/>
+                                                                        <xf:delete nodeset="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]/TEI:form[index('r-nameForm')]"/>
                                                                     </xf:trigger>
                                                                 </div>
                                                             </div>
