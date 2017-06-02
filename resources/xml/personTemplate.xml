@@ -11,7 +11,7 @@
         </bibl>
         <persName type="attested"/>
         <listNym>
-            <nym type="main" nymRef="" ana="greek" n="2">
+            <nym type="main" nymRef="" ana="greek" n="2" cert="high">
                 <seg type="linking"/>
                 <form type="attested">
                     <persName type="main" xml:lang="grc" ana="Nom" corresp="s1" n=""/>

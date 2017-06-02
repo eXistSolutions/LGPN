@@ -228,6 +228,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                                                <div class="col-xs-2">
+                                    <xf:select1 class="input-group -form-control" ref="@cert">
+                                        <xf:label class="input-group-addon glyphicon glyphicon-check"/>
+                                        <xf:itemset nodeset="instance('i-certainty')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="@value"/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+
                                 <div class="col-xs-2">
                                     <xf:select1 class="input-group -form-control" ref="@type">
                                         <xf:label class="input-group-addon glyphicon glyphicon-list"/>
