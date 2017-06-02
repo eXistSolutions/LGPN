@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
-      xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls"
-      xmlns:xf="http://www.w3.org/2002/xforms" data-template="templates:surround"
-      data-template-with="templates/page.html" data-template-at="content">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -15,150 +12,9 @@
     <body>
         <div class="hidden">
             <xf:model id="model-1">
-                <xf:instance id="i-default">
-                    <TEI xmlns="http://www.tei-c.org/ns/1.0">
-                        <teiHeader>
-                            <fileDesc>
-                                <titleStmt>
-                                    <title>Lexicon of Greek Personal Names</title>
-                                </titleStmt>
-                            </fileDesc>
-                            <revisionDesc>
-                                <listChange/>
-                            </revisionDesc>
-                        </teiHeader>
-                        <text>
-                            <body>
-                            <listPerson><!-- @sex gender -->
-                                <person xml:id="uuid" sex="" type=""><!-- LGPN volume -->
-                                    <bibl type="volume">
-                                        <ref target=""/>
-                                    </bibl><!-- person specific dating, if derived from context or other sources --><!-- @ana to hold information about the basis of dating: literary text/era/context/paleography/typology --><!-- @cert to hold information about uncertainty -->
-                                    <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high"
-                                           ana=""/><!-- repeatable for every primary source -->
-                                    <bibl xml:id="s1" type="primary"><!--
-                                @target reference
-                                @type type of source/inscription
-                                @subtype subtype of source
-                                -->
-                                        <ref target="" type="inscr_stone" subtype=""/><!--
-                                Source dating
-                                @ana basis for dating: multiple choice literary text/era/context/paleography/typology
-                                @notBefore @notAfter dates (year)
-                                @cert to hold information about uncertainty
-                                -->
-                                        <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high"
-                                              ana=""/>
-                                    </bibl>
-                                    <persName type="attested"/>
-                                    <listNym><!-- repeatable for all names used by a person: eg main/nickname/Roman name/patronymic/demetic (@type) --><!-- @nymRef holds normalized form of a name --><!-- @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default -->
-                                        <nym type="main" nymRef="" ana="greek" n="1"><!-- repeatable for every attested name form
-                                    @xml:lang source language of the form e.g. Greek/Latin/Hebrew Greek default
-                                    @ana case Nom/Gen/etc... Nom default value
-                                    text content: attested form; using marks system as previously to denote conjectures etc
-                                -->
-                                            <seg type="linking"/>
-                                            <form type="attested">
-                                                <persName xml:lang="greek" ana="Nom" corresp="s1" n=""/>
-                                            </form>
-                                        </nym>
-                                        <nym type="Roman" ana="greek" n="1"
-                                             corresp="s1"><!-- special entry type for Roman names                -->
-                                            <persName type="praenomen"/>
-                                            <persName type="nomen_gentile"/>
-                                            <persName type="filiation" subtype="son"/>
-                                            <persName type="tribe"/>
-                                        </nym>
-                                    </listNym><!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
-                                    <state type="location" subtype="citizen">
-                                        <placeName key="" type="ancient" subtype="" cert="high" corresp="s1"/>
-                                    </state><!-- repeatable
-                            @subtype: secondary, dictionary, onomastic
-                            @ana: location, name, date, relationship, stemma -->
-                                    <bibl type="auxiliary" subtype="secondary" ana="">
-                                        <ref target=""/>
-                                        <author/>
-                                        <seg type="details"/>
-                                        <ptr ref=""/>
-                                    </bibl>
-                                    <trait type="profession" key="" ana=""/>
-                                    <trait type="office" key="" ana=""/>
-                                    <trait type="status" key="" ana=""/>
-                                    <trait type="religion" key="" ana=""/>
-                                    <trait type="Roman" key="" ana=""/>
-                                </person>
-                                <listRelation>
-                                    <relation type="family" subtype="natural" name="child" passive=""/>
-                                </listRelation>
-                            </listPerson>
-                            </body>
-                        </text>
-                    </TEI>
-                </xf:instance>
+                <xf:instance xmlns="" id="i-default" src="resources/xml/teiPersonTemplate.xml"/>
                 <xf:bind nodeset="//TEI:nym/@nymRef" required="true()" type="xs:string"/>
-                <xf:instance id="i-template">
-                    <data xmlns="http://www.tei-c.org/ns/1.0"><!-- @sex gender -->
-                        <person xml:id="uuid" sex="1" type=""><!-- LGPN volume -->
-                            <bibl type="volume">
-                                <ref target="#V5"/>
-                            </bibl><!-- person specific dating, if derived from context or other sources --><!-- @ana to hold information about the basis of dating: literary text/era/context/paleography/typology --><!-- @cert to hold information about uncertainty -->
-                            <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high"
-                                   ana=""/><!-- repeatable for every primary source -->
-                            <bibl xml:id="s2" type="primary"><!--
-                                @target reference
-                                @type type of source/inscription
-                                @subtype subtype of source
-                                -->
-                                <ref target="" type="inscr_stone" subtype=""/><!--
-                                Source dating
-                                @ana basis for dating: multiple choice literary text/era/context/paleography/typology
-                                @notBefore @notAfter dates (year)
-                                @cert to hold information about uncertainty
-                                -->
-                                <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
-                            </bibl>
-                            <persName type="attested"/>
-                            <listNym><!-- repeatable for all names used by a person: eg main/nickname/Roman name/patronymic/demetic (@type) --><!-- @nymRef holds normalized form of a name --><!-- @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default -->
-                                <nym type="main" nymRef="" ana="greek" n="2"><!-- repeatable for every attested name form
-                                    @xml:lang source language of the form e.g. Greek/Latin/Hebrew Greek default
-                                    @ana case Nom/Gen/etc... Nom default value
-                                    text content: attested form; using marks system as previously to denote conjectures etc
-                                -->
-                                    <seg type="linking"/>
-                                    <form type="attested">
-                                        <persName type="main" xml:lang="greek" ana="Nom" corresp="s1" n=""/>
-                                    </form>
-                                </nym>
-                                <nym type="Roman" ana="greek" n="1"
-                                     corresp="s1"><!-- special entry type for Roman names                -->
-                                    <persName type="praenomen"/>
-                                    <persName type="nomen_gentile"/>
-                                    <persName type="filiation" subtype="son"/>
-                                    <persName type="tribe"/>
-                                </nym>
-                            </listNym><!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
-                            <state type="location" subtype="citizen">
-                                <placeName key="" type="ancient" subtype="" cert="high" corresp="s1"/>
-                            </state><!-- repeatable
-                            @subtype: secondary, dictionary, onomastic
-                            @ana: location, name, date, relationship, stemma -->
-                            <bibl type="auxiliary" subtype="" ana="">
-                                <ref target=""/>
-                                <author/>
-                                <seg type="details"/>
-                                <ptr ref=""/>
-                            </bibl>
-                            <trait type="profession" key="" ana=""/>
-                            <trait type="office" key="" ana=""/>
-                            <trait type="status" key="" ana=""/>
-                            <trait type="religion" key="" ana=""/>
-                            <trait type="Roman" key="" ana=""/>
-                        </person>
-                        <listRelation>
-                            <relation type="family" subtype="natural" name="child" passive=""/>
-                        </listRelation>
-                    </data>
-                </xf:instance>
+                <xf:instance xmlns="" id="i-template" src="resources/xml/personTemplate.xml"/>
                 <xf:instance xmlns="" id="i-volumes" src="resources/xml/volumes.xml"/>
                 <xf:instance xmlns="" id="i-genders" src="resources/xml/genders.xml"/>
                 <xf:instance xmlns="" id="i-personType" src="resources/xml/personType.xml"/>
@@ -195,8 +51,7 @@
                         <place/>
                     </data>
                 </xf:instance>
-                <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false"
-                               resource="modules/load.xql?id={bf:appContext('id')}">
+                <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/load.xql?id={bf:appContext('id')}">
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been
                         loaded.
                     </xf:message>
@@ -494,7 +349,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="tp-divider col-xs-12"></div>
+                                                    <div class="tp-divider col-xs-12"/>
 
                                                     <div class="tp-row">
                                                         <!-- Attested forms -->
@@ -604,7 +459,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="tp-divider col-xs-12"></div>
+                                                    <div class="tp-divider col-xs-12"/>
 
                                                 </xf:group>
                                             </xf:repeat>
@@ -705,7 +560,7 @@
                                                 <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Roman name</label>
                                                 <div id="C690" class="xfControl xfTrigger aDefault mediatypeText xfEnabled xfOptional xfReadWrite xfValid" widgetid="C690">
                                                     <button id="C690-value" name="t_C690" class="xfValue btn btn-default" tabindex="" title="Add Roman name">
-                                                        <i class="glyphicon glyphicon-plus"></i>
+                                                        <i class="glyphicon glyphicon-plus"/>
                                                     </button>
                                                 </div>
                                             </div>
@@ -715,7 +570,7 @@
                                                 <label class="col-xs-12 col-sm-10 control-label">Delete Roman name</label>
                                                 <div id="C687" class="xfControl xfTrigger aDefault mediatypeText xfEnabled xfOptional xfReadWrite xfValid" widgetid="C687">
                                                     <button id="C687-value" name="t_C687" class="xfValue btn btn-default" tabindex="" title="Delete Roman name">
-                                                        <i class="glyphicon glyphicon-trash"></i>
+                                                        <i class="glyphicon glyphicon-trash"/>
                                                     </button>
                                                 </div>
                                             </div>
@@ -723,7 +578,7 @@
                                     </div>
                                 </xf:group>
 
-                                <div class="tp-section-divider"></div>
+                                <div class="tp-section-divider"/>
 
                                 <!-- Primary Sources -->
                                 <xf:group>
@@ -902,7 +757,7 @@
                                     </div>
                                 </xf:group>
 
-                                <div class="tp-section-divider"></div>
+                                <div class="tp-section-divider"/>
 
                                 <!-- PLACES -->
                                 <xf:group>
@@ -1023,7 +878,7 @@
                                     </div>
                                 </xf:group>
 
-                                <div class="tp-section-divider"></div>
+                                <div class="tp-section-divider"/>
 
                                 <h3>Status</h3>
 
@@ -1085,7 +940,7 @@
                                     </xf:group>
                                 </xf:repeat>
 
-                                <div class="tp-divider col-xs-12"></div>
+                                <div class="tp-divider col-xs-12"/>
 
                                 <xf:repeat ref="//TEI:trait[@type='profession']" id="r-profession">
                                     <xf:label/>
@@ -1144,7 +999,7 @@
                                     </xf:group>
                                 </xf:repeat>
 
-                                <div class="tp-divider col-xs-12"></div>
+                                <div class="tp-divider col-xs-12"/>
 
                                 <xf:repeat ref="//TEI:trait[@type='office']" id="r-office">
                                     <xf:label/>
@@ -1204,7 +1059,7 @@
                                     </xf:group>
                                 </xf:repeat>
 
-                                <div class="tp-divider col-xs-12"></div>
+                                <div class="tp-divider col-xs-12"/>
 
                                 <xf:repeat ref="//TEI:trait[@type='religion']" id="r-religion">
                                     <xf:label/>
@@ -1263,7 +1118,7 @@
                                     </xf:group>
                                 </xf:repeat>
 
-                                <div class="tp-divider col-xs-12"></div>
+                                <div class="tp-divider col-xs-12"/>
 
                                 <xf:repeat ref="//TEI:trait[@type='Roman']" id="r-Roman">
                                     <xf:label/>
@@ -1323,7 +1178,7 @@
                                     </xf:group>
                                 </xf:repeat>
 
-                                <div class="tp-section-divider"></div>
+                                <div class="tp-section-divider"/>
 
                                 <!-- SECONDARY SOURCES -->
                                 <xf:group class="fieldset">
@@ -1573,8 +1428,9 @@
                                 </label>
                                 <div class="tp-button-row tp-delete">
                                     <div class="tp-button-cancel">
-                                        <button class="btn btn-default"><i class="glyphicon glyphicon-log-out"/>
-                                            <a href="browse.html"></a>
+                                        <button class="btn btn-default">
+                                            <i class="glyphicon glyphicon-log-out"/>
+                                            <a href="browse.html"/>
                                         </button>
                                     </div>
                                 </div>
