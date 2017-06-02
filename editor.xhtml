@@ -36,6 +36,7 @@
                 <xf:instance xmlns="" id="i-secondaryTypes" src="resources/xml/secondaryTypes.xml"/>
                 <xf:instance xmlns="" id="i-cases" src="resources/xml/cases.xml"/>
                 <xf:instance xmlns="" id="i-linking" src="resources/xml/linking.xml"/>
+                <xf:instance xmlns="" id="i-biblLinking" src="resources/xml/biblLinking.xml"/>
                 <xf:instance xmlns="" id="i-status" src="resources/xml/status.xml"/>
                 <xf:instance xmlns="" id="i-office" src="resources/xml/office.xml"/>
                 <xf:instance xmlns="" id="i-religion" src="resources/xml/religion.xml"/>
@@ -535,6 +536,8 @@
                                         </xf:itemset>
                                     </xf:select1>
                                 </div>
+                                <!--
+                                this belongs to the attested form, not bibl
                                 <div class="col-xs-2">
                                     <xf:select1 class="input-group -form-control" ref="TEI:ref/TEI:seg/@type">
                                         <xf:label class="input-group-addon glyphicon glyphicon-tags"/>
@@ -550,6 +553,7 @@
                                         <xf:hint>reading</xf:hint>
                                     </xf:input>
                                 </div>
+                                -->
                             </div>
                             <br/>
                             <div class="row">
@@ -576,7 +580,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-11">
+                                <div class="col-xs-8">
                                     <div class="input-group">
                                         <xf:select class="input-group -form-control" ref="TEI:date/@ana" appearance="full">
                                             <xf:label class="input-group-addon">dating</xf:label>
@@ -586,6 +590,16 @@
                                             </xf:itemset>
                                         </xf:select>
                                     </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:select1 class="input-group -form-control" ref="@ana">
+                                        <xf:label class="input-group-addon">link</xf:label>
+                                        <xf:label class="input-group-addon glyphicon glyphicon-tag"/>
+                                        <xf:itemset nodeset="instance('i-biblLinking')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="@value"/>
+                                        </xf:itemset>
+                                    </xf:select1>
                                 </div>
                                 <div class="col-xs-1">
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">

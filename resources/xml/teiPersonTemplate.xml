@@ -24,7 +24,7 @@
                     <!-- @cert to hold information about uncertainty -->
                     <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
                     <!-- repeatable for every primary source -->
-                    <bibl xml:id="s1" type="primary"><!--
+                    <bibl type="primary" ana=""><!--
                         @target reference
                         @type type of source/inscription
                         @subtype subtype of source
