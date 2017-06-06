@@ -237,7 +237,7 @@
                 <div class="tp-row">
                     <h2 class="tp-width-sidebar">Names</h2>
                     <div class="tp-width-main">
-                        <fieldset class="form-horizontal" id="names">
+                        <section class="form-horizontal" id="names">
                             <xf:group ref="//TEI:person">
                                 <!-- NAMES -->
                                     <div class="tp-row">
@@ -328,7 +328,6 @@
                                                                         <i class="glyphicon glyphicon-plus"/>
                                                                     </xf:label>
                                                                     <xf:insert context="instance('i-default')//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type!='Roman']"/>
-
                                                                     <script>
                                                                         clearAndInitAutocompletes();
                                                                     </script>
@@ -472,7 +471,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Praenomen</label>
-                                                    <xf:input ref="TEI:persName[@type='praenomen']" style="display:none;">
+                                                    <xf:input ref="TEI:persName[@type='praenomen']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -489,7 +488,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Nomen gentile</label>
-                                                    <xf:input ref="TEI:persName[@type='nomen_gentile']" style="display:none;">
+                                                    <xf:input ref="TEI:persName[@type='nomen_gentile']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -518,7 +517,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Search relationship</label>
-                                                    <xf:input ref="TEI:persName[@type='filiation']" style="display:none;">
+                                                    <xf:input ref="TEI:persName[@type='filiation']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -545,18 +544,20 @@
                                                     </xf:select1>
                                                 </div>
                                             </div>
-
                                         </xf:group>
 
                                         <div class="tp-row tp-repeat-buttons">
                                             <div class="col-xs-6 col-sm-3">
                                                 <div class="tp-button-row tp-add">
                                                     <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Roman name</label>
-                                                    <xf:trigger class="-btn -btn-default ">
+                                                    <xf:trigger class="-btn -btn-default">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='Roman']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
@@ -572,6 +573,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                 <div class="tp-section-divider"/>
                                     </xf:repeat>
 
@@ -589,7 +591,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Reference Abbr.</label>
-                                                    <xf:input style="display:none;" ref="TEI:ref/@target">
+                                                    <xf:input class="hidden" ref="TEI:ref/@target">
                                                         <xf:action ev:event="reference_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -735,6 +737,9 @@
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type='primary']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
@@ -780,7 +785,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Search Place</label>
-                                                    <xf:input style="display:none;" ref="TEI:placeName/@key">
+                                                    <xf:input class="hidden" ref="TEI:placeName/@key">
                                                         <xf:action ev:event="places_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -853,6 +858,9 @@
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:state" origin="instance('i-template')//TEI:state[@type='location']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
@@ -916,6 +924,9 @@
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='status']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
@@ -976,6 +987,9 @@
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='status']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
@@ -1035,6 +1049,9 @@
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='office']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
@@ -1095,6 +1112,9 @@
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='religion']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
@@ -1154,6 +1174,9 @@
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='Roman']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
@@ -1185,7 +1208,7 @@
                                         <div class="tp-row">
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label" tooltip="ref">Reference Abbr.</label>
-                                                <xf:input style="display:none;" ref="TEI:ref/@target">
+                                                <xf:input class="hidden" ref="TEI:ref/@target">
                                                     <xf:action ev:event="reference_autocomplete-callback">
                                                         <xf:setvalue ref="." value="event('termValue')"/>
                                                     </xf:action>
@@ -1271,6 +1294,9 @@
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type = 'auxiliary']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
@@ -1290,7 +1316,7 @@
                                     </xf:repeat>
                                 </xf:group>
                             </xf:group>
-                        </fieldset>
+                        </section>
                     </div>
                 </div>
             </section>
@@ -1342,7 +1368,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Search Relative</label>
-                                                    <xf:input style="display:none;" ref="@passive">
+                                                    <xf:input class="hidden" ref="@passive">
                                                         <xf:action ev:event="relatives_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -1377,6 +1403,9 @@
                                                         <i class="glyphicon glyphicon-plus"/>
                                                     </xf:label>
                                                     <xf:insert context="//TEI:listRelation" nodeset="TEI:relation" origin="instance('i-template')//TEI:relation"/>
+                                                    <script>
+                                                        clearAndInitAutocompletes();
+                                                    </script>
                                                 </xf:trigger>
                                             </div>
                                         </div>
