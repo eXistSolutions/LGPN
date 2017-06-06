@@ -238,8 +238,8 @@
                     <h2 class="tp-width-sidebar">Names</h2>
                     <div class="tp-width-main">
                         <fieldset class="form-horizontal" id="names">
-                            <xf:group ref="//TEI:person"><!-- NAMES -->
-                                <!-- NAME -->
+                            <xf:group ref="//TEI:person">
+                                <!-- NAMES -->
                                     <div class="tp-row">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Final Bracket</label>
@@ -251,30 +251,15 @@
                                             </xf:input>
                                         </div>
                                     </div>
+
+                                <!-- NAME -->
                                 <xf:group>
-                                    <xf:label class="tp-row tp-form-header">
-                                        <h4 class="col-md-2">Nym</h4>
-                                    </xf:label>
-                                    <div class="col-xs-6 col-sm-3">
-                                        <div class="tp-button-row tp-add">
-                                            <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add nym</label>
-                                            <xf:trigger class="-btn -btn-default">
-                                                <xf:label class="input-group-addon">
-                                                    <i class="glyphicon glyphicon-plus"/>
-                                                </xf:label>
-                                                <xf:insert context="instance('i-default')//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type!='Roman']"/>
-                                                <script>
-                                                    clearAndInitAutocompletes();
-                                                </script>
-                                            </xf:trigger>
-                                        </div>
-                                    </div>
-
-
                                     <div class="tp-row">
                                         <div class="form-group">
                                             <xf:repeat ref="TEI:listNym/TEI:nym[@type!='Roman']" id="r-name">
-                                                <xf:label/>
+                                                <xf:label class="tp-row tp-form-header">
+                                                    <h4 class="col-md-2">Nym</h4>
+                                                </xf:label>
                                                 <xf:group ref=".">
                                                     <xf:label/>
                                                     <div class="tp-row">
@@ -363,119 +348,118 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="tp-section-divider"/>
+                                                </xf:group>
 
-                                                    <div class="tp-divider col-xs-12"/>
-
-                                                    <div class="tp-row">
+                                                <!-- Attested forms -->
+                                                <div class="">
+                                                    <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
                                                         <xf:label class="tp-row tp-form-header">
                                                             <h4 class="col-md-2">Attested Form</h4>
                                                         </xf:label>
-                                                        <!-- Attested forms -->
-                                                        <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
-                                                            <xf:group ref=".">
-                                                                <xf:label/>
-                                                            </xf:group>
-                                                            <div class="form-group">
-                                                                <div class="tp-row">
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-2 control-label">Attested form</label>
-                                                                        <xf:input class="col-sm-8 input-group -form-control" ref="TEI:persName">
-                                                                            <xf:label class="input-group-addon">
-                                                                                <i class="glyphicon glyphicon-font"/>
-                                                                            </xf:label>
-                                                                            <xf:hint>Attested name</xf:hint>
-                                                                        </xf:input>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="tp-row">
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-2 control-label">Case</label>
-                                                                        <xf:select1 class="input-group col-sm-8 -form-control" ref="TEI:persName/@ana">
-                                                                            <xf:label class="input-group-addon">
-                                                                                <i class="glyphicon glyphicon-pencil"/>
-                                                                            </xf:label>
-                                                                            <xf:itemset nodeset="instance('i-cases')/option">
-                                                                                <xf:label ref="."/>
-                                                                                <xf:value ref="@value"/>
-                                                                            </xf:itemset>
-                                                                        </xf:select1>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="tp-row">
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-2 control-label">Language</label>
-                                                                        <xf:select1 class="input-group col-sm-8 -form-control" ref="TEI:persName/@xml:lang">
-                                                                            <xf:label class="input-group-addon">
-                                                                                <i class="glyphicon glyphicon-globe"/>
-                                                                            </xf:label>
-                                                                            <xf:itemset nodeset="instance('i-languages')/option">
-                                                                                <xf:label ref="."/>
-                                                                                <xf:value ref="@value"/>
-                                                                            </xf:itemset>
-                                                                        </xf:select1>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="tp-row">
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-2 control-label">Line</label>
-                                                                        <xf:input class="col-sm-8 input-group -form-control" ref="TEI:persName/@n">
-                                                                            <xf:label class="input-group-addon">
-                                                                                <i class="glyphicon glyphicon-pencil"/>
-                                                                            </xf:label>
-                                                                            <xf:hint>line</xf:hint>
-                                                                        </xf:input>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="tp-row">
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-2 control-label">Source</label>
-                                                                        <xf:select class="input-group col-sm-8" ref="TEI:persName/@corresp" appearance="full">
-                                                                            <xf:label class="input-group-addon">
-                                                                                <i class="glyphicon glyphicon-check"/>
-                                                                            </xf:label>
-                                                                            <xf:itemset nodeset="instance('i-sources')//option">
-                                                                                <xf:label ref="."/>
-                                                                                <xf:value ref="@value"/>
-                                                                            </xf:itemset>
-                                                                        </xf:select>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="tp-row tp-repeat-buttons">
-                                                                <div class="col-xs-6 col-sm-3">
-                                                                    <div class="tp-button-row tp-add">
-                                                                        <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add attested form</label>
-                                                                        <xf:trigger class="-btn -btn-default">
-                                                                            <xf:label class="input-group-addon">
-                                                                                <i class="glyphicon glyphicon-plus"/>
-                                                                            </xf:label>
-                                                                            <xf:insert context="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='attested']"/>
-                                                                            <script>
-                                                                                clearAndInitAutocompletes();
-                                                                            </script>
-                                                                        </xf:trigger>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-6 col-sm-4 col-sm-offset-3">
-                                                                    <div class="tp-button-row tp-delete">
-                                                                        <label class="col-xs-12 col-sm-10 control-label">Delete attested form</label>
-                                                                        <xf:trigger class="-btn -btn-default">
-                                                                            <xf:label class="input-group-addon">
-                                                                                <i class="glyphicon glyphicon-trash"/>
-                                                                            </xf:label>
-                                                                            <xf:delete nodeset="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]/TEI:form[index('r-nameForm')]"/>
-                                                                        </xf:trigger>
-                                                                    </div>
+                                                        <xf:group ref=".">
+                                                            <xf:label/>
+                                                        </xf:group>
+                                                        <div class="form-group">
+                                                            <div class="tp-row">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label">Attested form</label>
+                                                                    <xf:input class="col-sm-8 input-group -form-control" ref="TEI:persName">
+                                                                        <xf:label class="input-group-addon">
+                                                                            <i class="glyphicon glyphicon-font"/>
+                                                                        </xf:label>
+                                                                        <xf:hint>Attested name</xf:hint>
+                                                                    </xf:input>
                                                                 </div>
                                                             </div>
-                                                        </xf:repeat>
-                                                    </div>
+                                                            <div class="tp-row">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label">Case</label>
+                                                                    <xf:select1 class="input-group col-sm-8 -form-control" ref="TEI:persName/@ana">
+                                                                        <xf:label class="input-group-addon">
+                                                                            <i class="glyphicon glyphicon-pencil"/>
+                                                                        </xf:label>
+                                                                        <xf:itemset nodeset="instance('i-cases')/option">
+                                                                            <xf:label ref="."/>
+                                                                            <xf:value ref="@value"/>
+                                                                        </xf:itemset>
+                                                                    </xf:select1>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tp-row">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label">Language</label>
+                                                                    <xf:select1 class="input-group col-sm-8 -form-control" ref="TEI:persName/@xml:lang">
+                                                                        <xf:label class="input-group-addon">
+                                                                            <i class="glyphicon glyphicon-globe"/>
+                                                                        </xf:label>
+                                                                        <xf:itemset nodeset="instance('i-languages')/option">
+                                                                            <xf:label ref="."/>
+                                                                            <xf:value ref="@value"/>
+                                                                        </xf:itemset>
+                                                                    </xf:select1>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tp-row">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label">Line</label>
+                                                                    <xf:input class="col-sm-8 input-group -form-control" ref="TEI:persName/@n">
+                                                                        <xf:label class="input-group-addon">
+                                                                            <i class="glyphicon glyphicon-pencil"/>
+                                                                        </xf:label>
+                                                                        <xf:hint>line</xf:hint>
+                                                                    </xf:input>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tp-row">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label">Source</label>
+                                                                    <xf:select class="input-group col-sm-8" ref="TEI:persName/@corresp" appearance="full">
+                                                                        <xf:label class="input-group-addon">
+                                                                            <i class="glyphicon glyphicon-check"/>
+                                                                        </xf:label>
+                                                                        <xf:itemset nodeset="instance('i-sources')//option">
+                                                                            <xf:label ref="."/>
+                                                                            <xf:value ref="@value"/>
+                                                                        </xf:itemset>
+                                                                    </xf:select>
+                                                                </div>
+                                                            </div>
 
-                                                    <div class="tp-divider col-xs-12"/>
+                                                        </div>
+                                                        <div class="tp-row tp-repeat-buttons">
+                                                            <div class="col-xs-6 col-sm-3">
+                                                                <div class="tp-button-row tp-add">
+                                                                    <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add attested form</label>
+                                                                    <xf:trigger class="-btn -btn-default">
+                                                                        <xf:label class="input-group-addon">
+                                                                            <i class="glyphicon glyphicon-plus"/>
+                                                                        </xf:label>
+                                                                        <xf:insert context="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='attested']"/>
+                                                                        <script>
+                                                                            clearAndInitAutocompletes();
+                                                                        </script>
+                                                                    </xf:trigger>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                                                <div class="tp-button-row tp-delete">
+                                                                    <label class="col-xs-12 col-sm-10 control-label">Delete attested form</label>
+                                                                    <xf:trigger class="-btn -btn-default">
+                                                                        <xf:label class="input-group-addon">
+                                                                            <i class="glyphicon glyphicon-trash"/>
+                                                                        </xf:label>
+                                                                        <xf:delete nodeset="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]/TEI:form[index('r-nameForm')]"/>
+                                                                    </xf:trigger>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                                </xf:group>
+                                                        <div class="tp-section-divider"/>
+                                                    </xf:repeat>
+                                                </div>
                                             </xf:repeat>
+
                                         </div>
                                     </div>
 
@@ -565,35 +549,36 @@
                                             </div>
 
                                         </xf:group>
+
+                                        <div class="tp-row tp-repeat-buttons">
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div class="tp-button-row tp-add">
+                                                    <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Roman name</label>
+                                                    <xf:trigger class="-btn -btn-default ">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-plus"/>
+                                                        </xf:label>
+                                                        <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='Roman']"/>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                                <div class="tp-button-row tp-delete">
+                                                    <label class="col-xs-12 col-sm-10 control-label">Delete Roman name</label>
+                                                    <xf:trigger class="-btn -btn-default">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-trash"/>
+                                                        </xf:label>
+                                                        <xf:delete nodeset="//TEI:nym[index('r-rname')]"/>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <div class="tp-section-divider"/>
                                     </xf:repeat>
 
-                                    <div class="tp-row tp-repeat-buttons">
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="tp-button-row tp-add">
-                                                <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Roman name</label>
-                                                <xf:trigger class="-btn -btn-default ">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-plus"/>
-                                                    </xf:label>
-                                                    <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='Roman']"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-4 col-sm-offset-3">
-                                            <div class="tp-button-row tp-delete">
-                                                <label class="col-xs-12 col-sm-10 control-label">Delete Roman name</label>
-                                                <xf:trigger class="-btn -btn-default">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-trash"/>
-                                                    </xf:label>
-                                                    <xf:delete nodeset="//TEI:nym[index('r-rname')]"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </xf:group>
 
-                                <div class="tp-section-divider"/>
 
                                 <!-- Primary Sources -->
                                 <xf:group>
