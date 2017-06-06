@@ -986,7 +986,7 @@
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
-                                                        <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='status']"/>
+                                                        <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='profession']"/>
                                                         <script>
                                                             clearAndInitAutocompletes();
                                                         </script>
@@ -1000,7 +1000,7 @@
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-trash"/>
                                                         </xf:label>
-                                                        <xf:delete nodeset="//TEI:trait[@type='status'][index('r-status')]"/>
+                                                        <xf:delete nodeset="//TEI:trait[@type='profession'][index('r-profession')]"/>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
