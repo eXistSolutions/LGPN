@@ -261,7 +261,6 @@
                                                     <h4 class="col-md-2">Nym</h4>
                                                 </xf:label>
                                                 <xf:group ref=".">
-                                                    <xf:label/>
                                                     <div class="tp-row">
                                                         <div class="form-group">
                                                             <label class="col-sm-2 control-label">Select name</label>
@@ -470,7 +469,6 @@
                                         </xf:label>
 
                                         <xf:group ref=".">
-                                            <xf:label/>
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" tooltip="ref">Praenomen</label>
@@ -582,11 +580,10 @@
 
                                 <!-- Primary Sources -->
                                 <xf:group>
-                                    <xf:label>
-                                        <h3>Primary sources</h3>
-                                    </xf:label>
                                     <xf:repeat ref="TEI:bibl[@type='primary']" id="r-primarySource">
-                                        <xf:label/>
+                                        <xf:label>
+                                            <h3>Primary sources</h3>
+                                        </xf:label>
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
@@ -729,43 +726,41 @@
                                                 </div>
                                             </div>
                                         </xf:group>
+                                        <div class="tp-row tp-repeat-buttons">
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div class="tp-button-row tp-add">
+                                                    <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Source</label>
+                                                    <xf:trigger class="-btn -btn-default ">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-plus"/>
+                                                        </xf:label>
+                                                        <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type='primary']"/>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                                <div class="tp-button-row tp-delete">
+                                                    <label class="col-xs-12 col-sm-10 control-label">Delete Source</label>
+                                                    <xf:trigger class="-btn -btn-default">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-trash"/>
+                                                        </xf:label>
+                                                        <xf:delete nodeset="//TEI:bibl[@type='primary'][index('r-primarySource')]"/>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tp-section-divider"/>
                                     </xf:repeat>
-
-                                    <div class="tp-row tp-repeat-buttons">
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="tp-button-row tp-add">
-                                                <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Source</label>
-                                                <xf:trigger class="-btn -btn-default ">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-plus"/>
-                                                    </xf:label>
-                                                    <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type='primary']"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-4 col-sm-offset-3">
-                                            <div class="tp-button-row tp-delete">
-                                                <label class="col-xs-12 col-sm-10 control-label">Delete Source</label>
-                                                <xf:trigger class="-btn -btn-default">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-trash"/>
-                                                    </xf:label>
-                                                    <xf:delete nodeset="//TEI:bibl[@type='primary'][index('r-primarySource')]"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </xf:group>
 
-                                <div class="tp-section-divider"/>
 
                                 <!-- PLACES -->
                                 <xf:group>
-                                    <xf:label>
-                                        <h3>Places</h3>
-                                    </xf:label>
                                     <xf:repeat ref="TEI:state[@type='location']" id="r-place">
-                                        <xf:label/>
+                                        <xf:label class="tp-row tp-form-header">
+                                            <h3 class="col-md-2">Places</h3>
+                                        </xf:label>
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
@@ -849,36 +844,36 @@
                                                 </div>
                                             </div>
                                         </xf:group>
+                                        <div class="tp-row tp-repeat-buttons">
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div class="tp-button-row tp-add">
+                                                    <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add place</label>
+                                                    <xf:trigger class="-btn -btn-default ">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-plus"/>
+                                                        </xf:label>
+                                                        <xf:insert context="//TEI:person" nodeset="TEI:state" origin="instance('i-template')//TEI:state[@type='location']"/>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                                <div class="tp-button-row tp-delete">
+                                                    <label class="col-xs-12 col-sm-10 control-label">Delete place</label>
+                                                    <xf:trigger class="-btn -btn-default">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-trash"/>
+                                                        </xf:label>
+                                                        <xf:delete nodeset="//TEI:state[index('r-place')]"/>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tp-section-divider"/>
                                     </xf:repeat>
 
-                                    <div class="tp-row tp-repeat-buttons">
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="tp-button-row tp-add">
-                                                <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add place</label>
-                                                <xf:trigger class="-btn -btn-default ">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-plus"/>
-                                                    </xf:label>
-                                                    <xf:insert context="//TEI:person" nodeset="TEI:state" origin="instance('i-template')//TEI:state[@type='location']"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-6 col-sm-4 col-sm-offset-3">
-                                            <div class="tp-button-row tp-delete">
-                                                <label class="col-xs-12 col-sm-10 control-label">Delete place</label>
-                                                <xf:trigger class="-btn -btn-default">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-trash"/>
-                                                    </xf:label>
-                                                    <xf:delete nodeset="//TEI:state[index('r-place')]"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </xf:group>
 
-                                <div class="tp-section-divider"/>
 
                                 <h3>Status</h3>
 
@@ -1181,12 +1176,11 @@
                                 <div class="tp-section-divider"/>
 
                                 <!-- SECONDARY SOURCES -->
-                                <xf:group class="fieldset">
-                                    <xf:label>
-                                        <h3>Secondary sources</h3>
-                                    </xf:label>
+                                <xf:group>
                                     <xf:repeat ref="TEI:bibl[@type = 'auxiliary']" id="r-auxiliary">
-                                        <xf:label/>
+                                        <xf:label>
+                                            <h3>Secondary sources</h3>
+                                        </xf:label>
 
                                         <div class="tp-row">
                                             <div class="form-group">
@@ -1268,32 +1262,32 @@
                                                 </xf:select>
                                             </div>
                                         </div>
-                                    </xf:repeat>
+                                        <div class="tp-row tp-repeat-buttons">
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div class="tp-button-row tp-add">
+                                                    <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add</label>
+                                                    <xf:trigger class="-btn -btn-default ">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-plus"/>
+                                                        </xf:label>
+                                                        <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type = 'auxiliary']"/>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                                <div class="tp-button-row tp-delete">
+                                                    <label class="col-xs-12 col-sm-10 control-label">Delete</label>
+                                                    <xf:trigger class="-btn -btn-default">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-trash"/>
+                                                        </xf:label>
+                                                        <xf:delete nodeset="//TEI:bibl[@type = 'auxiliary'][index('r-auxiliary')]"/>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <div class="tp-row tp-repeat-buttons">
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="tp-button-row tp-add">
-                                                <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add</label>
-                                                <xf:trigger class="-btn -btn-default ">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-plus"/>
-                                                    </xf:label>
-                                                    <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type = 'auxiliary']"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-4 col-sm-offset-3">
-                                            <div class="tp-button-row tp-delete">
-                                                <label class="col-xs-12 col-sm-10 control-label">Delete</label>
-                                                <xf:trigger class="-btn -btn-default">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-trash"/>
-                                                    </xf:label>
-                                                    <xf:delete nodeset="//TEI:bibl[@type = 'auxiliary'][index('r-auxiliary')]"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </xf:repeat>
                                 </xf:group>
                             </xf:group>
                         </fieldset>
@@ -1310,10 +1304,11 @@
                         <fieldset class="form-horizontal">
                             <xf:group ref="//TEI:listRelation"><!-- RELATIONSHIPS -->
                                 <xf:group class="fieldset">
-                                    <xf:label/>
 
                                     <xf:repeat ref="TEI:relation" id="r-relation">
-                                        <xf:label/>
+                                        <xf:label class="tp-row tp-form-header">
+                                            <h4 class="col-md-2">Relationship</h4>
+                                        </xf:label>
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
