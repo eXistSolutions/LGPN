@@ -744,6 +744,18 @@
                                                     </xf:select>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Linking</label>
+                                                <xf:select1 class="input-group col-sm-8 -form-control" ref="@ana">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-tag"/>
+                                                    </xf:label>
+                                                    <xf:itemset nodeset="instance('i-biblLinking')/option">
+                                                        <xf:label ref="."/>
+                                                        <xf:value ref="@value"/>
+                                                    </xf:itemset>
+                                                </xf:select1>
+                                            </div>
                                         </xf:group>
                                         <div class="tp-row tp-repeat-buttons">
                                             <div class="col-xs-6 col-sm-3">
