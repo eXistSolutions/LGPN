@@ -2,19 +2,19 @@
 <data xmlns="http://www.tei-c.org/ns/1.0">
     <person xml:id="uuid" sex="1" type="">
         <bibl type="volume">
-            <ref target="#V5"/>
+            <ref target="V6"/>
         </bibl>
         <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
-        <bibl xml:id="s2" type="primary">
+        <bibl type="primary" ana="">
             <ref target="" type="inscr_stone" subtype=""/>
             <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
         </bibl>
         <persName type="attested"/>
         <listNym>
-            <nym type="main" nymRef="" ana="greek" n="2">
+            <nym type="main" nymRef="" ana="greek" n="2" cert="high">
                 <seg type="linking"/>
                 <form type="attested">
-                    <persName type="main" xml:lang="greek" ana="Nom" corresp="s1" n=""/>
+                    <persName type="main" xml:lang="grc" ana="Nom" corresp="s1" n=""/>
                 </form>
             </nym>
             <nym type="Roman" ana="greek" n="1" corresp="s1">

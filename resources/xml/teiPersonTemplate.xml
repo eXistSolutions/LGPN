@@ -17,14 +17,14 @@
                 <person xml:id="uuid" sex="" type="">
                     <!-- LGPN volume -->
                     <bibl type="volume">
-                        <ref target=""/>
+                        <ref target="V6"/>
                     </bibl>
                     <!-- person specific dating, if derived from context or other sources -->
                     <!-- @ana to hold information about the basis of dating: literary text/era/context/paleography/typology -->
                     <!-- @cert to hold information about uncertainty -->
                     <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
                     <!-- repeatable for every primary source -->
-                    <bibl xml:id="s1" type="primary"><!--
+                    <bibl type="primary" ana=""><!--
                         @target reference
                         @type type of source/inscription
                         @subtype subtype of source
@@ -42,7 +42,7 @@
                         <!-- repeatable for all names used by a person: eg main/nickname/Roman name/patronymic/demetic (@type) -->
                         <!-- @nymRef holds normalized form of a name -->
                         <!-- @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default -->
-                        <nym type="main" nymRef="" ana="greek" n="1">
+                        <nym type="main" nymRef="" ana="greek" n="1" cert="high">
                             <!-- repeatable for every attested name form
                             @xml:lang source language of the form e.g. Greek/Latin/Hebrew Greek default
                             @ana case Nom/Gen/etc... Nom default value
@@ -50,7 +50,7 @@
                         -->
                             <seg type="linking"/>
                             <form type="attested">
-                                <persName xml:lang="greek" ana="Nom" corresp="s1" n=""/>
+                                <persName xml:lang="grc" ana="Nom" corresp="s1" n=""/>
                             </form>
                         </nym>
                         <nym type="Roman" ana="greek" n="1" corresp="s1">
