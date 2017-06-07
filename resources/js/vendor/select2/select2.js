@@ -1234,7 +1234,8 @@ the specific language governing permissions and limitations under the Apache Lic
                 container = this.container,
                 offset = container.offset(),
                 height = container.outerHeight(false),
-                width = container.outerWidth(false),
+                // hard coded value for subtracting left icon (label) width from container width:
+                width = container.outerWidth(false) - 31,
                 dropHeight = $dropdown.outerHeight(false),
                 $window = $(window),
                 windowWidth = $window.width(),
@@ -1242,7 +1243,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 viewPortRight = $window.scrollLeft() + windowWidth,
                 viewportBottom = $window.scrollTop() + windowHeight,
                 dropTop = offset.top + height,
-                dropLeft = offset.left,
+                dropLeft = Math.round(offset.left) + 31, // hard coded value for left icon (label) offset
                 enoughRoomBelow = dropTop + dropHeight <= viewportBottom,
                 enoughRoomAbove = (offset.top - dropHeight) >= $window.scrollTop(),
                 dropWidth = $dropdown.outerWidth(false),
@@ -1250,7 +1251,7 @@ the specific language governing permissions and limitations under the Apache Lic
                     return dropLeft + dropWidth <= viewPortRight;
                 },
                 enoughRoomOnLeft = function() {
-                    return offset.left + viewPortRight + container.outerWidth(false)  > dropWidth;
+                    return offset.left + viewPortRight + container.outerWidth(false) > dropWidth;
                 },
                 aboveNow = $dropdown.hasClass("select2-drop-above"),
                 bodyOffset,
@@ -1959,9 +1960,10 @@ the specific language governing permissions and limitations under the Apache Lic
             var container = $(document.createElement("div")).attr({
                 "class": "select2-container"
             }).html([
-                "<a href='javascript:void(0)' class='select2-choice' tabindex='-1'>",
+                "<label class='input-group-addon'><i class='glyphicon glyphicon-book'/></label>",
+                "<a href='javascript:void(0)' class='select2-choice form-control' tabindex='-1'>",
                 "   <span class='select2-chosen'>&#160;</span><abbr class='select2-search-choice-close'></abbr>",
-                "   <span class='select2-arrow' role='presentation'><b role='presentation'></b></span>",
+                "   <span class='select2-arrow' role='presentation'><i class='glyphicon glyphicon-triangle-bottom'/></span>",
                 "</a>",
                 "<label for='' class='select2-offscreen'></label>",
                 "<input class='select2-focusser select2-offscreen' type='text' aria-haspopup='true' role='button' />",

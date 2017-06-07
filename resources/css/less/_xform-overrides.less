@@ -1,0 +1,55 @@
+// xform overrides
+.widgetContainer {
+  display: block;
+  height: @input-height;
+  select {
+    height: @input-height;
+  }
+  input[type=checkbox] {
+    @checkboxmargin: (@input-height - 14px) / 2; // checkbox height = 14px
+    margin: @checkboxmargin 0;
+  }
+}
+
+.xfControl {
+  font-family: @font-family-default;
+}
+
+.bfCheckBoxGroup {
+  .xfSelectorItem {
+    margin: 0 2rem 0 0;
+  }
+}
+
+.xfRepeatItem {
+  padding: 0;
+  .xfControl {
+    clear: none;
+  }
+  .xfLabel {
+    &:extend(.input-group-addon);
+  }
+}
+
+span.xfControl {
+  display: none;
+}
+
+// Label for repeat groups
+.xfGroupLabel {
+  font-weight: bold;
+}
+
+// checkbox groups
+.xfItemset {
+  display: inline-block;
+  .xfSelectorItem {
+    display: inline-block;
+  }
+}
+
+// tundra.css override:
+// prevent replicant contents from being clipped
+.dijitContentPane {
+  overflow: visible;
+}

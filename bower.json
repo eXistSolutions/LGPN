@@ -1,0 +1,18 @@
+{
+  "name": "lgpn",
+  "description": "Lexicon of Greek Personal Names",
+  "main": "gulpfile.js",
+  "license": "ISC",
+  "homepage": "https://github.com/eXistSolutions/LGPN",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-less": "^3.3.4"
+  }
+}
