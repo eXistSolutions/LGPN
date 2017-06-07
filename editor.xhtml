@@ -280,6 +280,21 @@
                                                     </div>
                                                     <div class="tp-row">
                                                         <div class="form-group">
+                                                            <label class="col-sm-2 control-label">Certainty</label>
+                                                            <xf:select1 class="input-group col-sm-8 -form-control" ref="//TEI:listNym//@cert">
+                                                                <xf:label class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-check"/>
+                                                                </xf:label>
+                                                                <xf:itemset nodeset="instance('i-certainty')/option">
+                                                                    <xf:label ref="."/>
+                                                                    <xf:value ref="@value"/>
+                                                                </xf:itemset>
+                                                            </xf:select1>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tp-row">
+                                                        <div class="form-group">
                                                             <label class="col-sm-2 control-label">Type</label>
                                                             <xf:select1 class="col-sm-8 input-group -form-control" ref="@type">
                                                                 <xf:label class="input-group-addon">
