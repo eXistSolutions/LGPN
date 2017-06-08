@@ -123,7 +123,7 @@
                     <div class="tp-width-main">
                         <fieldset class="form-horizontal" id="general">
                             <div class="tp-row">
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <label class="col-sm-2 control-label">ID</label>
                                     <xf:output class="input-group col-sm-8 -form-control" ref="//TEI:person/@xml:id">
                                         <xf:label class="input-group-addon">
@@ -132,7 +132,7 @@
                                         <xf:hint>id</xf:hint>
                                     </xf:output>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <label class="col-sm-2 control-label">Gender</label>
                                     <xf:select1 class="input-group col-sm-8 -form-control" ref="//TEI:person/@sex">
                                         <xf:label class="input-group-addon">
@@ -144,7 +144,7 @@
                                         </xf:itemset>
                                     </xf:select1>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <label class="col-sm-2 control-label">Type</label>
                                     <xf:select1 class="input-group col-sm-8 -form-control" ref="//TEI:person/@type">
                                         <xf:label class="input-group-addon">
@@ -156,7 +156,7 @@
                                         </xf:itemset>
                                     </xf:select1>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <label class="col-sm-2 control-label">Volume</label>
                                     <xf:select1 class="input-group col-sm-8 -form-control" ref="//TEI:bibl[@type='volume']/TEI:ref/@target">
                                         <xf:label class="input-group-addon">
@@ -168,9 +168,7 @@
                                         </xf:itemset>
                                     </xf:select1>
                                 </div>
-                            </div>
-                            <div class="tp-row">
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <label class="col-sm-2 control-label">Period</label>
                                     <xf:select1 class="input-group col-sm-8 -form-control" ref="//TEI:birth/@when">
                                         <xf:label class="input-group-addon">
@@ -182,26 +180,7 @@
                                         </xf:itemset>
                                     </xf:select1>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Date</label>
-                                    <xf:input class="input-group col-sm-8 -form-control" ref="//TEI:birth/@notBefore">
-                                        <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-calendar"/>
-                                        </xf:label>
-
-                                        <xf:hint>not before</xf:hint>
-                                    </xf:input>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Date</label>
-                                    <xf:input class="input-group col-sm-8 -form-control" ref="//TEI:birth/@notAfter">
-                                        <xf:label class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"/>
-                                        </xf:label>
-                                        <xf:hint>not after</xf:hint>
-                                    </xf:input>
-                                </div>
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <label class="col-sm-2 control-label">Certainty</label>
                                     <xf:select1 class="input-group col-sm-8 -form-control" ref="//TEI:birth/@cert">
                                         <xf:label class="input-group-addon">
@@ -213,7 +192,27 @@
                                         </xf:itemset>
                                     </xf:select1>
                                 </div>
-                                <div class="form-group">
+
+                                <div class="form-group col-md-6">
+                                    <label class="col-sm-2 control-label">Date</label>
+                                    <xf:input class="input-group col-sm-8 -form-control" ref="//TEI:birth/@notBefore">
+                                        <xf:label class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"/>
+                                        </xf:label>
+
+                                        <xf:hint>not before</xf:hint>
+                                    </xf:input>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="col-sm-2 control-label">Date</label>
+                                    <xf:input class="input-group col-sm-8 -form-control" ref="//TEI:birth/@notAfter">
+                                        <xf:label class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"/>
+                                        </xf:label>
+                                        <xf:hint>not after</xf:hint>
+                                    </xf:input>
+                                </div>
+                                <div class="form-group col-md-6">
                                     <label class="col-sm-2 control-label">Person</label>
                                     <div class="">
                                         <xf:select class="input-group col-sm-8" ref="//TEI:birth/@ana" appearance="full">
