@@ -1,11 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="xar" name="lgpn">
+<project default="xar" name="lgpn" basedir=".">
     <xmlproperty file="expath-pkg.xml"/>
+    <xmlproperty file="build.properties.xml" semanticAttributes="true" keepRoot="false"/>
     <property name="project.version" value="${package(version)}"/>
     <property name="project.app" value="lgpn"/>
     <property name="build.dir" value="build"/>
-    <target name="xar">
+
+    <target name="clean">
+        <echo message="Deleting xar files..."/>
+        <delete dir="${build.dir}"/>
         <mkdir dir="${build.dir}"/>
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/** node_modules/** bower_components/** package.json gulpfile.js .*"/>
     </target>
+
+    <target name="copy">
+        <copy todir="${build.dir}/${app.name}-${app.version}">
+            <fileset dir="${basedir}" excludes="${build.dir}/**,build.properties.xml,bower.json,build.xml,README.md,.idea/,.editorconfig,.existdb.json,expath-pkg.xml.tmpl,repo.xml.tmpl,bower_components/**,node_modules/**,package.json,local.node-exist.json,gulpfile.js"/>
+        </copy>
+        <copy todir="${build.dir}/${app.name}-${app.version}" overwrite="true" verbose="true">
+            <fileset file="expath-pkg.xml.tmpl"/>
+            <fileset file="repo.xml.tmpl"/>
+            <filterset>
+                <filter token="name" value="${app.name}"/>
+                <filter token="version" value="${app.version}"/>
+                <filter token="url" value="${app.url}"/>
+                <filter token="description" value="${app.description}"/>
+                <filter token="website" value="${app.website}"/>
+            </filterset>
+            <globmapper from="*.tmpl" to="*"/>
+        </copy>
+    </target>
+
+    <target name="xar" depends="clean, copy" description="main target to create application XAR file">
+        <zip basedir="${build.dir}/${app.name}-${app.version}" destfile="${build.dir}/${app.name}-${app.version}.xar"/>
+    </target>
+
+    <!-- Update all packages and start gulp automation -->
+    <target name="update">
+        <echo message="Calling npm update..."/>
+        <exec executable="${npm}" outputproperty="npm.output">
+            <arg line="run-script"/>
+            <arg line="update"/>
+        </exec>
+        <echo message="${npm.output}"/>
+    </target>
+
+    <!-- Check & install new packages where required and start gulp automation -->
+    <target name="start">
+        <echo message="Calling npm start..."/>
+        <exec executable="${npm}" outputproperty="npm.output">
+            <arg line="start"/>
+        </exec>
+        <echo message="${npm.output}"/>
+    </target>
+
+    <!-- Start gulp build automation -->
+    <target name="gulp" description="Generate output files and sync static files from dependent packages">
+        <echo message="Calling gulp ..."/>
+        <exec executable="${npm}" outputproperty="npm.output">
+            <arg line="run-script"/>
+            <arg line="gulp"/>
+        </exec>
+        <echo message="${npm.output}"/>
+    </target>
+
 </project>

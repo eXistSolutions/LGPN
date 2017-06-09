@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <app>
+        <name>LGPN</name>
+        <description>List of Greek Personal Names</description>
+        <version>1.1.1</version>
+        <url>http://lgpn.classics.ox.ac.uk/apps/lgpn</url>
+    </app>
+    <user>
+        <lgpn>
+            <name>lgpn</name>
+        </lgpn>
+    </user>
+    <npm>/usr/local/bin/npm</npm>
+    <gulp>gulp</gulp>
+  <!--/usr/local/bin/gulp-->
+</root>

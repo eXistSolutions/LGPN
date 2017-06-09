@@ -4,7 +4,9 @@
   "description": "Lexicon of Greek Personal Names",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "npm update && bower update && gulp",
+    "start": "npm install --quiet && bower install --quiet && gulp"
   },
   "repository": {
     "type": "git",
