@@ -6,10 +6,18 @@
     <property name="project.app" value="lgpn"/>
     <property name="build.dir" value="build"/>
 
-    <target name="clean">
+    <target name="all" depends="xar"/>
+
+    <target name="rebuild" depends="clean,all"/>
+
+    <target name="clean" description="Clean output directories">
         <echo message="Deleting xar files..."/>
-        <delete dir="${build.dir}"/>
-        <mkdir dir="${build.dir}"/>
+        <delete>
+            <fileset dir="${build.dir}">
+                <include name="*.xar"/>
+            </fileset>
+        </delete>
+    </target>
     </target>
 
     <target name="copy">
@@ -21,9 +29,8 @@
             <fileset file="repo.xml.tmpl"/>
             <filterset>
                 <filter token="name" value="${app.name}"/>
-                <filter token="version" value="${app.version}"/>
-                <filter token="url" value="${app.url}"/>
                 <filter token="description" value="${app.description}"/>
+                <filter token="version" value="${app.version}"/>
                 <filter token="website" value="${app.website}"/>
             </filterset>
             <globmapper from="*.tmpl" to="*"/>
