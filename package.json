@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "update": "npm update && bower update && gulp",
-    "start": "npm install --quiet && bower install --quiet && gulp"
+    "start": "npm install --quiet && bower install --quiet && gulp",
+    "gulp": "gulp default"
   },
   "repository": {
     "type": "git",
