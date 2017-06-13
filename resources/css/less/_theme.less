@@ -244,6 +244,8 @@ footer .poweredby img { width: 120px; }
   &:extend(.form-group);
   .make-md-column(6);
   min-height: @input-height;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 // Responsive input with search dropdown
@@ -253,4 +255,31 @@ footer .poweredby img { width: 120px; }
   float: none;
   padding-left: 0;
   padding-right: 0;
+}
+
+// Label for full-width input in 2 column section
+.tp-label-1-row-2-col {
+  &:extend(.control-label);
+  .make-sm-column(2);
+  .make-md-column(1);
+  padding-left: 0;
+  vertical-align: top;
+  @media (min-width: 768px) {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+  }
+}
+
+// Full-width input in 2 column section
+.tp-input-1-row-2-col {
+  &:extend(.input-group);
+  min-height: 1px;
+  @media (min-width: 768px) {
+    float: left;
+    width: 75%;
+  }
+  @media (min-width: 992px) {
+    width: 87.6666%;
+  }
 }

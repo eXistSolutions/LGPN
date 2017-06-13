@@ -122,112 +122,107 @@
                     <h2 class="tp-width-sidebar">General</h2>
                     <div class="tp-width-main">
                         <fieldset class="form-horizontal" id="general">
-                            <div class="tp-row">
-                                <div class="tp-form-group-col">
-                                    <label class="tp-label">ID</label>
-                                    <xf:output class="tp-input -form-control" ref="//TEI:person/@xml:id">
+                            <div class="form-group">
+                                <label class="tp-label-1-row-2-col">ID</label>
+                                <xf:output class="input-group -form-control tp-input-1-row-2-col col-sm-10" ref="//TEI:person/@xml:id">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-lock"/>
+                                    </xf:label>
+                                    <xf:hint>id</xf:hint>
+                                </xf:output>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Volume</label>
+                                <xf:select1 class="tp-input -form-control" ref="//TEI:bibl[@type='volume']/TEI:ref/@target">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-book"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-volumes')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@value"/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Gender</label>
+                                <xf:select1 class="tp-input -form-control" ref="//TEI:person/@sex">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-genders')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@value"/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Period</label>
+                                <xf:select1 class="tp-input -form-control" ref="//TEI:birth/@when">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-period')/TEI:category">
+                                        <xf:label ref="./TEI:catDesc/TEI:date"/>
+                                        <xf:value ref="@xml:id"/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Type</label>
+                                <xf:select1 class="tp-input -form-control" ref="//TEI:person/@type">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-personType')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@value"/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Date</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:birth/@notBefore">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"/>
+                                    </xf:label>
+
+                                    <xf:hint>not before</xf:hint>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Date</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:birth/@notAfter">
+                                    <xf:label class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"/>
+                                    </xf:label>
+                                    <xf:hint>not after</xf:hint>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Person</label>
+                                <div class="">
+                                    <xf:select class="tp-input" ref="//TEI:birth/@ana" appearance="full">
                                         <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-lock"/>
+                                            <i class="glyphicon glyphicon-calendar"/>
                                         </xf:label>
-                                        <xf:hint>id</xf:hint>
-                                    </xf:output>
+                                        <xf:itemset nodeset="instance('i-personDating')//option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="@value"/>
+                                        </xf:itemset>
+                                    </xf:select>
                                 </div>
                             </div>
-                            <div class="tp-row">
-                                <div class="tp-form-group-col">
-                                    <label class="tp-label">Volume</label>
-                                    <xf:select1 class="tp-input -form-control" ref="//TEI:bibl[@type='volume']/TEI:ref/@target">
-                                        <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-book"/>
-                                        </xf:label>
-                                        <xf:itemset nodeset="instance('i-volumes')/option">
-                                            <xf:label ref="."/>
-                                            <xf:value ref="@value"/>
-                                        </xf:itemset>
-                                    </xf:select1>
-                                </div>
-                                <div class="tp-form-group-col">
-                                    <label class="tp-label">Gender</label>
-                                    <xf:select1 class="tp-input -form-control" ref="//TEI:person/@sex">
-                                        <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-user"/>
-                                        </xf:label>
-                                        <xf:itemset nodeset="instance('i-genders')/option">
-                                            <xf:label ref="."/>
-                                            <xf:value ref="@value"/>
-                                        </xf:itemset>
-                                    </xf:select1>
-                                </div>
-                                <div class="tp-form-group-col">
-                                    <label class="tp-label">Period</label>
-                                    <xf:select1 class="tp-input -form-control" ref="//TEI:birth/@when">
-                                        <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-calendar"/>
-                                        </xf:label>
-                                        <xf:itemset nodeset="instance('i-period')/TEI:category">
-                                            <xf:label ref="./TEI:catDesc/TEI:date"/>
-                                            <xf:value ref="@xml:id"/>
-                                        </xf:itemset>
-                                    </xf:select1>
-                                </div>
-                                <div class="tp-form-group-col">
-                                    <label class="tp-label">Type</label>
-                                    <xf:select1 class="tp-input -form-control" ref="//TEI:person/@type">
-                                        <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-user"/>
-                                        </xf:label>
-                                        <xf:itemset nodeset="instance('i-personType')/option">
-                                            <xf:label ref="."/>
-                                            <xf:value ref="@value"/>
-                                        </xf:itemset>
-                                    </xf:select1>
-                                </div>
-                                <div class="tp-form-group-col">
-                                    <label class="tp-label">Date</label>
-                                    <xf:input class="tp-input -form-control" ref="//TEI:birth/@notBefore">
-                                        <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-calendar"/>
-                                        </xf:label>
-
-                                        <xf:hint>not before</xf:hint>
-                                    </xf:input>
-                                </div>
-                                <div class="tp-form-group-col">
-                                    <label class="tp-label">Date</label>
-                                    <xf:input class="tp-input -form-control" ref="//TEI:birth/@notAfter">
-                                        <xf:label class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"/>
-                                        </xf:label>
-                                        <xf:hint>not after</xf:hint>
-                                    </xf:input>
-                                </div>
-                                <div class="tp-form-group-col">
-                                    <label class="tp-label">Person</label>
-                                    <div class="">
-                                        <xf:select class="tp-input" ref="//TEI:birth/@ana" appearance="full">
-                                            <xf:label class="input-group-addon">
-                                                <i class="glyphicon glyphicon-calendar"/>
-                                            </xf:label>
-                                            <xf:itemset nodeset="instance('i-personDating')//option">
-                                                <xf:label ref="."/>
-                                                <xf:value ref="@value"/>
-                                            </xf:itemset>
-                                        </xf:select>
-                                    </div>
-                                </div>
-                                <div class="tp-form-group-col">
-                                    <label class="tp-label">Certainty</label>
-                                    <xf:select1 class="tp-input -form-control" ref="//TEI:birth/@cert">
-                                        <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-check"/>
-                                        </xf:label>
-                                        <xf:itemset nodeset="instance('i-certainty')/option">
-                                            <xf:label ref="."/>
-                                            <xf:value ref="@value"/>
-                                        </xf:itemset>
-                                    </xf:select1>
-                                </div>
-
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Certainty</label>
+                                <xf:select1 class="tp-input -form-control" ref="//TEI:birth/@cert">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-check"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-certainty')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@value"/>
+                                    </xf:itemset>
+                                </xf:select1>
                             </div>
                         </fieldset>
                     </div>
