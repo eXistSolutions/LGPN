@@ -225,3 +225,31 @@ footer .poweredby img { width: 120px; }
 .btn-danger {
   &:extend(.tp-delete);
 }
+
+// Labels in form groups
+.tp-label {
+  .make-sm-column(2);
+  &:extend(.control-label);
+  padding-left: 0;
+  vertical-align: top;
+  @media (min-width: 768px) {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+  }
+}
+
+// Responsive 50% width form group columns
+.tp-form-group-col {
+  &:extend(.form-group);
+  .make-md-column(6);
+}
+
+// Responsive input with search dropdown
+.tp-input {
+  &:extend(.input-group);
+  .make-sm-column(8);
+  float: none;
+  padding-left: 0;
+  padding-right: 0;
+}
