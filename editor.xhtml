@@ -692,6 +692,20 @@
 -->
                                             <div class="tp-row">
                                                 <div class="form-group">
+                                                    <label class="tp-label">Period</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="TEI:date/@when">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-calendar"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-period')/TEI:category">
+                                                            <xf:label ref="./TEI:catDesc/TEI:date"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                            </div>
+                                            <div class="tp-row">
+                                                <div class="form-group">
                                                     <label class="tp-label">Date</label>
                                                     <xf:input class="tp-input -form-control" ref="TEI:date/@notBefore">
                                                         <xf:label class="input-group-addon">
