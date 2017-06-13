@@ -147,18 +147,6 @@
                                     </xf:select1>
                                 </div>
                                 <div class="tp-form-group-col">
-                                    <label class="tp-label">Period</label>
-                                    <xf:select1 class="tp-input -form-control" ref="//TEI:birth/@when">
-                                        <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-calendar"/>
-                                        </xf:label>
-                                        <xf:itemset nodeset="instance('i-period')/TEI:category">
-                                            <xf:label ref="./TEI:catDesc/TEI:date"/>
-                                            <xf:value ref="@xml:id"/>
-                                        </xf:itemset>
-                                    </xf:select1>
-                                </div>
-                                <div class="tp-form-group-col">
                                     <label class="tp-label">Gender</label>
                                     <xf:select1 class="tp-input -form-control" ref="//TEI:person/@sex">
                                         <xf:label class="input-group-addon">
@@ -167,6 +155,18 @@
                                         <xf:itemset nodeset="instance('i-genders')/option">
                                             <xf:label ref="."/>
                                             <xf:value ref="@value"/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                <div class="tp-form-group-col">
+                                    <label class="tp-label">Period</label>
+                                    <xf:select1 class="tp-input -form-control" ref="//TEI:birth/@when">
+                                        <xf:label class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"/>
+                                        </xf:label>
+                                        <xf:itemset nodeset="instance('i-period')/TEI:category">
+                                            <xf:label ref="./TEI:catDesc/TEI:date"/>
+                                            <xf:value ref="@xml:id"/>
                                         </xf:itemset>
                                     </xf:select1>
                                 </div>
