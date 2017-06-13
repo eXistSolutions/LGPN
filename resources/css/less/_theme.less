@@ -243,12 +243,13 @@ footer .poweredby img { width: 120px; }
 .tp-form-group-col {
   &:extend(.form-group);
   .make-md-column(6);
+  min-height: @input-height;
 }
 
 // Responsive input with search dropdown
 .tp-input {
   &:extend(.input-group);
-  .make-sm-column(8);
+  .make-sm-column(9);
   float: none;
   padding-left: 0;
   padding-right: 0;
