@@ -102,33 +102,6 @@ footer .poweredby img { width: 120px; }
   margin-right: 4px;
 }
 
-// Bootstrap-style add/delete button
-.tp-delete {
-  .btn-default {
-    background-color: lighten(@colorRed, 20%);
-    color: @contrast-color;
-    &:hover {
-      background-color: @colorRed;
-    }
-    &:active {
-      background-color: darken(@colorRed, 20%);
-    }
-  }
-}
-
-.tp-add {
-  .btn-default {
-    background-color: lighten(@colorGreen, 20%);
-    color: @contrast-color;
-    &:hover {
-      background-color: @colorGreen;
-    }
-    &:active {
-      background-color: darken(@colorGreen, 20%);
-    }
-  }
-}
-
 .tp-button-row {
   .glyphicon {
     margin-right: 0;
@@ -153,6 +126,25 @@ footer .poweredby img { width: 120px; }
       text-align: left;
     }
   }
+  label,
+  &> div {
+    position: relative;
+    min-height: 1px;
+    @media (min-width: 768px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  &> div {
+      width: 50%;
+      float: left;
+  }
+  label {
+    display: block;
+    @media (min-width: 768px) {
+      float: left;
+    }
+  }
 }
 
 #C226 > div.tp-row.tp-repeat-buttons,
@@ -160,6 +152,70 @@ footer .poweredby img { width: 120px; }
 #C951 > div.tp-row.tp-repeat-buttons {
   padding-top: 30px;
   padding-bottom: 15px;
+}
+
+// Bootstrap-style add/delete button
+.tp-repeat-button-left {
+  label {
+    text-align: left;
+    @media (min-width: 768px) {
+      width: 40%;
+      text-align: right;
+    }
+    @media (min-width: 992px) {
+      width: 32%;
+    }
+  }
+}
+
+.tp-repeat-button-right {
+  &> div {
+    @media (min-width: 768px) {
+        margin-left: 30%;
+        margin-right: 0;
+    }
+  }
+  &> div > div {
+    margin-left: auto;
+    @media (min-width: 768px) {
+      margin-left: 0;
+    }
+  }
+  label {
+    text-align: right;
+    @media (min-width: 768px) {
+      width: 68%;
+    }
+    @media (min-width: 992px) {
+      width: 81%;
+    }
+  }
+}
+
+.tp-delete {
+  .btn-default {
+    background-color: lighten(@colorRed, 20%);
+    color: @contrast-color;
+    &:hover {
+      background-color: @colorRed;
+    }
+    &:active {
+      background-color: darken(@colorRed, 20%);
+    }
+  }
+}
+
+.tp-add {
+  .btn-default {
+    background-color: lighten(@colorGreen, 20%);
+    color: @contrast-color;
+    &:hover {
+      background-color: @colorGreen;
+    }
+    &:active {
+      background-color: darken(@colorGreen, 20%);
+    }
+  }
 }
 
 // Save/delete buttons in last section
@@ -237,6 +293,9 @@ footer .poweredby img { width: 120px; }
     margin-bottom: 0;
     padding-top: 7px;
   }
+  @media (min-width: 992px) {
+    width: 27%;
+  }
 }
 
 // Responsive 50% width form group columns
@@ -251,23 +310,31 @@ footer .poweredby img { width: 120px; }
 // Responsive input with search dropdown
 .tp-input {
   &:extend(.input-group);
-  .make-sm-column(9);
   float: none;
   padding-left: 0;
   padding-right: 0;
+  @media (min-width: 768px) {
+    float: left;
+    width: 75%;
+  }
+  @media (min-width: 992px) {
+    width: 64%;
+  }
 }
 
 // Label for full-width input in 2 column section
 .tp-label-1-row-2-col {
   &:extend(.control-label);
   .make-sm-column(2);
-  .make-md-column(1);
   padding-left: 0;
   vertical-align: top;
   @media (min-width: 768px) {
     text-align: right;
     margin-bottom: 0;
     padding-top: 7px;
+  }
+  @media (min-width: 992px) {
+    width: 13.666%;
   }
 }
 
@@ -280,6 +347,6 @@ footer .poweredby img { width: 120px; }
     width: 75%;
   }
   @media (min-width: 992px) {
-    width: 87.6666%;
+    width: 81.6666%;
   }
 }
