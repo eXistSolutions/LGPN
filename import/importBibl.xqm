@@ -181,7 +181,7 @@ declare function local:decodeNonGreek($input as xs:string?) {
                  attribute type {$type}
                 }
                 <abbr>{$abbreviation}</abbr>
-                <bibl>{$bibl}</bibl>
+                <bibl>{normalize-space(string-join($bibl, ' '))}</bibl>
             </bibl>
         
     let $bibl := <listBibl xmlns="http://www.tei-c.org/ns/1.0">{$list}</listBibl>

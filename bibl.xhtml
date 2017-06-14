@@ -13,49 +13,13 @@
             <div style="display:none">
                 <xf:model id="model-bibl">
                     <xf:instance id="i-bibl-default">
-                        <biblFull xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
-                            <titleStmt>
-                                <title/>
-                                <title type="sub"/>
-                                <title type="abbr"/>
-                                <respStmt>
-                                    <resp>author</resp>
-                                    <name/>
-                                </respStmt>
-                                <respStmt>
-                                    <resp>author</resp>
-                                    <name/>
-                                </respStmt>
-                            </titleStmt>
-                            <publicationStmt>
-                                <publisher/>
-                                <pubPlace/>
-                                <date/>
-                            </publicationStmt>
-                        </biblFull>
+                        <bibl xmlns="http://www.tei-c.org/ns/1.0" xml:id="id">
+                            <abbr/>
+                            <bibl/>
+                        </bibl>
                     </xf:instance>
-                    <xf:instance id="i-bibl-template">
-                        <biblFull xmlns="http://www.tei-c.org/ns/1.0" xml:id="LGPN2">
-                            <titleStmt>
-                                <title/>
-                                <title type="sub"/>
-                                <title type="abbr"/>
-                                <respStmt>
-                                    <resp>author</resp>
-                                    <name/>
-                                </respStmt>
-                                <respStmt>
-                                    <resp>author</resp>
-                                    <name/>
-                                </respStmt>
-                            </titleStmt>
-                            <publicationStmt>
-                                <publisher/>
-                                <pubPlace/>
-                                <date/>
-                            </publicationStmt>
-                        </biblFull>
-                    </xf:instance>
+                    <xf:instance xmlns="" id="i-patterns" src="resources/xml/patterns.xml"/>
+                    <xf:instance xmlns="" id="i-biblTypes" src="resources/xml/biblTypes.xml"/>
                     <xf:submission id="s-load-bibl" method="get" replace="instance" ref="instance('i-bibl-default')" validate="false">
                         <xf:resource value="concat('modules/loadBibl.xql?id=', substring-before(bf:appContext('bibl'), '#xforms'))"/>
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
@@ -78,88 +42,65 @@
                 </xf:model>
             </div>
             <div>
-                <fieldset id="segment">
-                    <legend>
-                        LGPN bibliographic references sub-form
-                    </legend>
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <xf:input class="input-group -form-control" ref="//TEI:biblFull/@xml:id">
-                                <xf:label class="input-group-addon">id</xf:label>
-                                <xf:hint>id</xf:hint>
-                            </xf:input>
-                        </div>
-                        <div class="col-xs-4">
-                            <xf:input class="input-group -form-control" ref="//TEI:title[@type='abbr']">
-                                <xf:label class="input-group-addon">abbr</xf:label>
-                                <xf:hint/>
-                            </xf:input>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <xf:input class="input-group input-group-lg -form-control" ref="//TEI:title[not(@type)]">
-                                <xf:label class="input-group-addon">title</xf:label>
-                                <xf:hint/>
-                            </xf:input>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <xf:input class="input-group  input-group-lg -form-control" ref="//TEI:title[@type='sub']">
-                                <xf:label class="input-group-addon">subtitle</xf:label>
-                                <xf:hint>subtitle</xf:hint>
-                            </xf:input>
-                        </div>
-                    </div>
-                    <br/>
-                    <xf:group ref=".">
-                        <xf:repeat ref="//TEI:respStmt" id="r-resp">
-                            <xf:group ref=".">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <xf:select1 class="input-group input-group-xs -form-control" ref="TEI:resp" selection="closed" appearance="minimal">
-                                            <xf:label class="input-group-addon">role</xf:label>
-                                            <xf:item>
-                                                <xf:label>author</xf:label>
-                                                <xf:value>author</xf:value>
-                                            </xf:item>
-                                            <xf:item>
-                                                <xf:label>editor</xf:label>
-                                                <xf:value>editor</xf:value>
-                                            </xf:item>
-                                        </xf:select1>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <xf:input class="input-group -form-control" ref="TEI:name">
-                                            <xf:label class="input-group-addon">name</xf:label>
-                                            <xf:hint/>
-                                        </xf:input>
-                                    </div>
+            <section class="tp-section">
+                <div class="tp-row">
+                    <h2 class="tp-width-sidebar">LGPN bibliographic references sub-form</h2>
+                    <div class="tp-width-main">
+                        <fieldset class="form-horizontal" id="general">
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Id</label>
+                                    <xf:input class="input-group -form-control" ref="//TEI:bibl/@xml:id">
+                                        <xf:hint>id</xf:hint>
+                                    </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Abbr</label>
+                                    <xf:input class="input-group -form-control" ref="//TEI:bibl/TEI:abbr">
+                                        <xf:hint>abbr</xf:hint>
+                                    </xf:input>
+                            </div>
+                            <div class="form-group">
+                                <label class="tp-label-1-row-2-col">Full rref</label>
+                                <xf:input class="input-group -form-control tp-input-1-row-2-col col-sm-10" ref="//TEI:bibl/TEI:bibl">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-book"/>
+                                    </xf:label>
+                                    <xf:hint>id</xf:hint>
+                                </xf:input>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="tp-label-1-row-2-col">Patterns</label>
+                                <div class="">
+                                    <xf:select class="tp-input" ref="//TEI:bibl/@ana" appearance="full">
+                                        <xf:label class="input-group-addon">
+                                            <i class="glyphicon glyphicon-check"/>
+                                        </xf:label>
+                                        <xf:itemset nodeset="instance('i-patterns')/TEI:category">
+                                            <xf:label ref="@xml:id"/>
+                                            <xf:value ref="@xml:id"/>
+                                        </xf:itemset>
+                                    </xf:select>
                                 </div>
-                            </xf:group>
-                        </xf:repeat>
-                    </xf:group>
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <xf:input class="input-group -form-control" ref="//TEI:publicationStmt/TEI:publisher">
-                                <xf:label class="input-group-addon">publisher</xf:label>
-                                <xf:hint/>
-                            </xf:input>
-                        </div>
-                        <div class="col-xs-3">
-                            <xf:input class="input-group -form-control" ref="//TEI:publicationStmt/TEI:pubPlace">
-                                <xf:label class="input-group-addon">place</xf:label>
-                                <xf:hint/>
-                            </xf:input>
-                        </div>
-                        <div class="col-xs-3">
-                            <xf:input class="input-group -form-control" ref="//TEI:publicationStmt/TEI:date">
-                                <xf:label class="input-group-addon">year</xf:label>
-                                <xf:hint/>
-                            </xf:input>
-                        </div>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Type</label>
+                                <xf:select1 class="tp-input -form-control" ref="//TEI:bibl/@type">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-book"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-biblTypes')/TEI:category">
+                                        <xf:label ref="@xml:id"/>
+                                        <xf:value ref="@xml:id"/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+
+                        </fieldset>
                     </div>
+                </div>
+            </section>    
+
                     <div class="row">
                         <div class="form-group">
                             <div class="col-sm-offset-4">
@@ -173,7 +114,6 @@
                             </div>
                         </div>
                     </div>
-                </fieldset>
             </div>
         </div>
         <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>

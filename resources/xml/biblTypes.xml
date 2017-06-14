@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="biblTypes">
+    <category xml:id="LGPN">
+        <catDesc>
+            abbreviations defined in LGPN
+        </catDesc>
+    </category>
+    <category xml:id="LSJ">
+        <catDesc>
+            abbreviations defined in LSJ or other well known lexicons
+        </catDesc>
+    </category>
+</taxonomy>
