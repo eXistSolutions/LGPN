@@ -350,7 +350,7 @@
                                         </xf:group>
 
                                         <!-- Attested forms -->
-                                        <div class="">
+                                        <div>
                                             <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
                                                 <xf:label class="tp-row tp-form-header">
                                                     <h4 class="col-md-2">Attested Form</h4>
@@ -453,10 +453,9 @@
                                         <xf:label class="tp-row tp-form-header">
                                             <h4 class="col-md-2">Roman Name</h4>
                                         </xf:label>
-
-                                        <xf:group ref=".">
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                        <div class="tp-row">
+                                            <xf:group ref=".">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label" tooltip="ref">Praenomen</label>
                                                     <xf:input ref="TEI:persName[@type='praenomen']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
@@ -467,13 +466,9 @@
                                                         </xf:label>
                                                         <xf:hint>praenomen</xf:hint>
                                                     </xf:input>
-
                                                     <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search praenomen" autocomplete="off"/>
                                                 </div>
-                                             </div>
-
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label" tooltip="ref">Nomen gentile</label>
                                                     <xf:input ref="TEI:persName[@type='nomen_gentile']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
@@ -486,9 +481,7 @@
                                                     </xf:input>
                                                     <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search nomen gentile" autocomplete="off"/>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Relationship</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:persName[@type='filiation']/@subtype">
                                                         <xf:label class="input-group-addon">
@@ -500,9 +493,7 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label" tooltip="ref">Search relationship</label>
                                                     <xf:input ref="TEI:persName[@type='filiation']" class="hidden">
                                                         <xf:action ev:event="nyms_autocomplete-callback">
@@ -515,10 +506,7 @@
                                                     </xf:input>
                                                     <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search filiation" autocomplete="off"/>
                                                 </div>
-                                            </div>
-
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label" tooltip="ref">Tribes</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:persName[@type='tribe']">
                                                         <xf:label class="input-group-addon">
@@ -530,13 +518,13 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-                                        </xf:group>
+                                            </xf:group>
+                                        </div>
 
                                         <div class="tp-row tp-repeat-buttons">
-                                            <div class="col-xs-6 col-sm-3">
+                                            <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Roman name</label>
+                                                    <label>Add Roman name</label>
                                                     <xf:trigger class="-btn -btn-default">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
@@ -548,9 +536,9 @@
                                                     </xf:trigger>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                            <div class="tp-repeat-button-right">
                                                 <div class="tp-button-row tp-delete">
-                                                    <label class="col-xs-12 col-sm-10 control-label">Delete Roman name</label>
+                                                    <label>Delete Roman name</label>
                                                     <xf:trigger class="-btn -btn-default">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-trash"/>
