@@ -401,6 +401,8 @@
                                                             <xf:hint>line</xf:hint>
                                                         </xf:input>
                                                     </div>
+                                                </div>
+                                                <div class="tp-row">
                                                     <div class="form-group">
                                                         <label class="tp-label-1-row-2-col">Source</label>
                                                         <xf:select class="tp-input-1-row-2-col" ref="TEI:persName/@corresp" appearance="full">
@@ -564,7 +566,7 @@
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label" tooltip="ref">Reference Abbr.</label>
                                                     <xf:input class="hidden" ref="TEI:ref/@target">
                                                         <xf:action ev:event="reference_autocomplete-callback">
@@ -585,10 +587,8 @@
                                                         </xf:action>
                                                     </xf:trigger>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
-                                                    <label class="tp-label">Reference Details</label>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Ref. Details</label>
                                                     <xf:input class="tp-input -form-control" ref="TEI:ref">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-list"/>
@@ -596,9 +596,7 @@
                                                         <xf:hint>reference details</xf:hint>
                                                     </xf:input>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Category items</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:ref/@type">
                                                         <xf:label class="input-group-addon">
@@ -610,10 +608,8 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
-                                                    <label class="tp-label">Category materials</label>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Materials</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:ref/@subtype">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-tags"/>
@@ -624,36 +620,7 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-<!--
-                                            <div class="tp-row">
-                                                <div class="form-group">
-                                                    <label class="tp-label">tbd</label>
-                                                    <xf:select1 class="tp-input -form-control" ref="TEI:ref/TEI:seg/@type">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-tag"/>
-                                                        </xf:label>
-                                                        <xf:itemset nodeset="instance('i-other')/option">
-                                                            <xf:label ref="."/>
-                                                            <xf:value ref="@value"/>
-                                                        </xf:itemset>
-                                                    </xf:select1>
-                                                </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
-                                                    <label class="tp-label">Reading</label>
-                                                    <xf:input class="tp-input -form-control" ref="TEI:ref/TEI:seg">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-edit"/>
-                                                        </xf:label>
-                                                        <xf:hint>reading</xf:hint>
-                                                    </xf:input>
-                                                </div>
-                                            </div>
--->
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Period</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:date/@when">
                                                         <xf:label class="input-group-addon">
@@ -665,9 +632,7 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Date</label>
                                                     <xf:input class="tp-input -form-control" ref="TEI:date/@notBefore">
                                                         <xf:label class="input-group-addon">
@@ -676,9 +641,7 @@
                                                         <xf:hint>not before</xf:hint>
                                                     </xf:input>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Date</label>
                                                     <xf:input class="tp-input -form-control" ref="TEI:date/@notAfter">
                                                         <xf:label class="input-group-addon">
@@ -687,9 +650,7 @@
                                                         <xf:hint>not after</xf:hint>
                                                     </xf:input>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Certainty</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:date/@cert">
                                                         <xf:label class="input-group-addon">
@@ -701,11 +662,23 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Linking</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@ana">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-biblLinking')/option">
+                                                            <xf:label ref="."/>
+                                                            <xf:value ref="@value"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
                                             </div>
                                             <div class="tp-row">
                                                 <div class="form-group">
-                                                    <label class="tp-label">Dating</label>
-                                                    <xf:select class="tp-input" ref="TEI:date/@ana" appearance="full">
+                                                    <label class="tp-label-1-row-2-col">Dating</label>
+                                                    <xf:select class="tp-input-1-row-2-col" ref="TEI:date/@ana" appearance="full">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-calendar"/>
                                                         </xf:label>
@@ -716,23 +689,11 @@
                                                     </xf:select>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="tp-label">Linking</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@ana">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tag"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-biblLinking')/option">
-                                                        <xf:label ref="."/>
-                                                        <xf:value ref="@value"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
                                         </xf:group>
                                         <div class="tp-row tp-repeat-buttons">
-                                            <div class="col-xs-6 col-sm-3">
+                                            <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Source</label>
+                                                    <label>Add Source</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
@@ -744,9 +705,9 @@
                                                     </xf:trigger>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                            <div class="tp-repeat-button-right">
                                                 <div class="tp-button-row tp-delete">
-                                                    <label class="col-xs-12 col-sm-10 control-label">Delete Source</label>
+                                                    <label>Delete Source</label>
                                                     <xf:trigger class="-btn -btn-default">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-trash"/>
