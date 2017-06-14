@@ -358,76 +358,67 @@
                                                 <xf:group ref=".">
                                                     <xf:label/>
                                                 </xf:group>
-                                                <div class="form-group">
-                                                    <div class="tp-row">
-                                                        <div class="form-group">
-                                                            <label class="tp-label">Attested form</label>
-                                                            <xf:input class="tp-input -form-control" ref="TEI:persName">
-                                                                <xf:label class="input-group-addon">
-                                                                    <i class="glyphicon glyphicon-font"/>
-                                                                </xf:label>
-                                                                <xf:hint>Attested name</xf:hint>
-                                                            </xf:input>
-                                                        </div>
+                                                <div class="tp-row">
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Attested form</label>
+                                                        <xf:input class="tp-input -form-control" ref="TEI:persName">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-font"/>
+                                                            </xf:label>
+                                                            <xf:hint>Attested name</xf:hint>
+                                                        </xf:input>
                                                     </div>
-                                                    <div class="tp-row">
-                                                        <div class="form-group">
-                                                            <label class="tp-label">Case</label>
-                                                            <xf:select1 class="tp-input -form-control" ref="TEI:persName/@ana">
-                                                                <xf:label class="input-group-addon">
-                                                                    <i class="glyphicon glyphicon-pencil"/>
-                                                                </xf:label>
-                                                                <xf:itemset nodeset="instance('i-cases')/option">
-                                                                    <xf:label ref="."/>
-                                                                    <xf:value ref="@value"/>
-                                                                </xf:itemset>
-                                                            </xf:select1>
-                                                        </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Case</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="TEI:persName/@ana">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-pencil"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-cases')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
                                                     </div>
-                                                    <div class="tp-row">
-                                                        <div class="form-group">
-                                                            <label class="tp-label">Language</label>
-                                                            <xf:select1 class="tp-input -form-control" ref="TEI:persName/@xml:lang">
-                                                                <xf:label class="input-group-addon">
-                                                                    <i class="glyphicon glyphicon-globe"/>
-                                                                </xf:label>
-                                                                <xf:itemset nodeset="instance('i-languages')/option">
-                                                                    <xf:label ref="."/>
-                                                                    <xf:value ref="@value"/>
-                                                                </xf:itemset>
-                                                            </xf:select1>
-                                                        </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Language</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="TEI:persName/@xml:lang">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-globe"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-languages')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
                                                     </div>
-                                                    <div class="tp-row">
-                                                        <div class="form-group">
-                                                            <label class="tp-label">Line</label>
-                                                            <xf:input class="tp-input -form-control" ref="TEI:persName/@n">
-                                                                <xf:label class="input-group-addon">
-                                                                    <i class="glyphicon glyphicon-pencil"/>
-                                                                </xf:label>
-                                                                <xf:hint>line</xf:hint>
-                                                            </xf:input>
-                                                        </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Line</label>
+                                                        <xf:input class="tp-input -form-control" ref="TEI:persName/@n">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-pencil"/>
+                                                            </xf:label>
+                                                            <xf:hint>line</xf:hint>
+                                                        </xf:input>
                                                     </div>
-                                                    <div class="tp-row">
-                                                        <div class="form-group">
-                                                            <label class="tp-label">Source</label>
-                                                            <xf:select class="tp-input" ref="TEI:persName/@corresp" appearance="full">
-                                                                <xf:label class="input-group-addon">
-                                                                    <i class="glyphicon glyphicon-check"/>
-                                                                </xf:label>
-                                                                <xf:itemset nodeset="instance('i-sources')//option">
-                                                                    <xf:label ref="."/>
-                                                                    <xf:value ref="@value"/>
-                                                                </xf:itemset>
-                                                            </xf:select>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label class="tp-label-1-row-2-col">Source</label>
+                                                        <xf:select class="tp-input-1-row-2-col" ref="TEI:persName/@corresp" appearance="full">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-check"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-sources')//option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select>
                                                     </div>
                                                 </div>
+
                                                 <div class="tp-row tp-repeat-buttons">
-                                                    <div class="col-xs-6 col-sm-3">
+                                                    <div class="tp-repeat-button-left">
                                                         <div class="tp-button-row tp-add">
-                                                            <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add attested form</label>
+                                                            <label>Add attested form</label>
                                                             <xf:trigger class="-btn -btn-default">
                                                                 <xf:label class="input-group-addon">
                                                                     <i class="glyphicon glyphicon-plus"/>
@@ -439,9 +430,9 @@
                                                             </xf:trigger>
                                                         </div>
                                                     </div>
-                                                    <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                                    <div class="tp-repeat-button-right">
                                                         <div class="tp-button-row tp-delete">
-                                                            <label class="col-xs-12 col-sm-10 control-label">Delete attested form</label>
+                                                            <label>Delete attested form</label>
                                                             <xf:trigger class="-btn -btn-default">
                                                                 <xf:label class="input-group-addon">
                                                                     <i class="glyphicon glyphicon-trash"/>
