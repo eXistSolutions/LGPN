@@ -731,7 +731,7 @@
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Place</label>
                                                     <xf:select1 class="tp-input -form-control" ref="@subtype">
                                                         <xf:label class="input-group-addon">
@@ -743,9 +743,7 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label" tooltip="ref">Search Place</label>
                                                     <xf:input class="hidden" ref="TEI:placeName/@key">
                                                         <xf:action ev:event="places_autocomplete-callback">
@@ -766,9 +764,7 @@
                                                         </xf:action>
                                                     </xf:trigger>
                                                 </div>
-                                                </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Reference Details</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:placeName/@subtype">
                                                         <xf:label class="input-group-addon">
@@ -780,9 +776,7 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Certainty</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:placeName/@cert">
                                                         <xf:label class="input-group-addon">
@@ -798,8 +792,8 @@
 
                                             <div class="tp-row">
                                                 <div class="form-group">
-                                                    <label class="tp-label">Source</label>
-                                                    <xf:select class="tp-input" ref="TEI:placeName/@corresp" appearance="full">
+                                                    <label class="tp-label-1-row-2-col">Source</label>
+                                                    <xf:select class="tp-input-1-row-2-col" ref="TEI:placeName/@corresp" appearance="full">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-check"/>
                                                         </xf:label>
@@ -812,9 +806,9 @@
                                             </div>
                                         </xf:group>
                                         <div class="tp-row tp-repeat-buttons">
-                                            <div class="col-xs-6 col-sm-3">
+                                            <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add place</label>
+                                                    <label>Add place</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
@@ -827,9 +821,9 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                            <div class="tp-repeat-button-right">
                                                 <div class="tp-button-row tp-delete">
-                                                    <label class="col-xs-12 col-sm-10 control-label">Delete place</label>
+                                                    <label>Delete place</label>
                                                     <xf:trigger class="-btn -btn-default">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-trash"/>
