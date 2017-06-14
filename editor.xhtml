@@ -1286,7 +1286,7 @@
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Relationship</label>
                                                     <xf:select1 class="tp-input -form-control" ref="@name">
                                                         <xf:label class="input-group-addon">
@@ -1298,9 +1298,7 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Relationship Types</label>
                                                     <xf:select1 class="tp-input -form-control" ref="@subtype">
                                                         <xf:label class="input-group-addon">
@@ -1312,9 +1310,7 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label" tooltip="ref">Search Relative</label>
                                                     <xf:input class="hidden" ref="@passive">
                                                         <xf:action ev:event="relatives_autocomplete-callback">
@@ -1327,9 +1323,7 @@
                                                     </xf:input>
                                                     <input type="hidden" class="tp-input" data-function="relatives_autocomplete" placeholder="Type to search relative" autocomplete="off"/>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
+                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Person</label>
                                                     <xf:input class="tp-input -form-control" ref=".">
                                                         <xf:label class="input-group-addon">
@@ -1343,9 +1337,9 @@
                                     </xf:repeat>
 
                                     <div class="tp-row tp-repeat-buttons">
-                                        <div class="col-xs-6 col-sm-3">
+                                        <div class="tp-repeat-button-left">
                                             <div class="tp-button-row tp-add">
-                                                <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Relationship</label>
+                                                <label>Add Relationship</label>
                                                 <xf:trigger class="-btn -btn-default ">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-plus"/>
@@ -1357,9 +1351,9 @@
                                                 </xf:trigger>
                                             </div>
                                         </div>
-                                        <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                        <div class="tp-repeat-button-right">
                                             <div class="tp-button-row tp-delete">
-                                                <label class="col-xs-12 col-sm-10 control-label">Delete Relationship</label>
+                                                <label>Delete Relationship</label>
                                                 <xf:trigger class="-btn -btn-default">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-trash"/>
