@@ -220,33 +220,21 @@ footer .poweredby img { width: 120px; }
 
 // Save/delete buttons in last section
 .tp-section-save {
-  .form-horizontal > .col-sm-6 {
-    @media (max-width: @screen-sm) {
-      margin-bottom: 2rem;
-    }
-  }
-
-  .tp-button-row > div {
-    padding-left: 26px;
-  }
   .btn {
     width: @button-size;
     height: @button-size;
     padding: 0;
   }
   .tp-button-cancel {
-    display: inline-block;
+    display: table;
   }
   // Text in cancel button
-  .control-label {
+  label {
     span {
       display: block;
-      text-align: left;
-      @media (min-width: @screen-sm-min) {
-        text-align: right;
-      }
       &:nth-of-type(2) {
         font-weight: normal;
+        line-height: 1rem;
       }
     }
   }
