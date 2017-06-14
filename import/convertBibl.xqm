@@ -50,7 +50,7 @@ let $list :=
             </bibl>
 
 
-    let $lBibl := <listBibl xmlns="http://www.tei-c.org/ns/1.0" xml:id='v6'>{$list}</listBibl>
+    let $lBibl := <listBibl xmlns="http://www.tei-c.org/ns/1.0" xml:id='V6'>{$list}</listBibl>
 
     return
-        xmldb:store("/db/apps/lgpn-data/data/auxiliary/references", "references-v6.xml", $lBibl)
+        xmldb:store("/db/apps/lgpn-data/data/auxiliary/references", "references-V6.xml", $lBibl)
