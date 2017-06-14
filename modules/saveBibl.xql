@@ -6,7 +6,7 @@ import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" 
 import module namespace normalization="http://lgpn.classics.ox.ac.uk/apps/lgpn/normalization" at "normalization.xql";
 
 declare function local:updateBibl($data) {
-    let $bibls := doc($config:references-root || '/references.xml')
+    let $bibls := collection($config:references-root)
     let $id := $data//TEI:abbr/parent::TEI:bibl/@xml:id
     
     let $replacement := $data//TEI:abbr/parent::TEI:bibl
@@ -19,7 +19,7 @@ declare function local:updateBibl($data) {
                 )
             else
                 system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
-                    update insert normalization:normalize($replacement) into $bibls//TEI:listBibl
+                    update insert normalization:normalize($replacement) into $bibls//TEI:listBibl[@xml:id='V6']
                 )
 };
 

@@ -184,7 +184,7 @@ declare function local:decodeNonGreek($input as xs:string?) {
                 <bibl>{normalize-space(string-join($bibl, ' '))}</bibl>
             </bibl>
         
-    let $bibl := <listBibl xmlns="http://www.tei-c.org/ns/1.0">{$list}</listBibl>
+    let $bibl := <listBibl xmlns="http://www.tei-c.org/ns/1.0" xml:id='v5c'>{$list}</listBibl>
 
     return
-        xmldb:store("/db/apps/lgpn-data/data/auxiliary/references", "references.xml", $bibl)
+        xmldb:store("/db/apps/lgpn-data/data/auxiliary/references", "references-V5c.xml", $bibl)

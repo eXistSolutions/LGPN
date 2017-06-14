@@ -12,6 +12,6 @@ declare function local:new($id) {
 };
 
 let $id := request:get-parameter('id', '')
-let $entry := doc($config:references-root || "/references.xml")/id($id)
+let $entry := collection($config:references-root)/id($id)
 
 return if ($entry) then $entry else local:new($id)
