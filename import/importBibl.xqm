@@ -79,7 +79,7 @@ declare function local:greekAccents($match) {
 };
 
 declare function local:breathingMarks($match) {
-    normalize-space(normalize-unicode($match//fn:group[@nr='1']/string() || $local:greekAccents($match//fn:group[@nr='2'])))
+    normalize-unicode($match//fn:group[@nr='2']/string() || $local:greekAccents($match//fn:group[@nr='1']/string()))
 };
 
 declare function local:dollars($match) {
