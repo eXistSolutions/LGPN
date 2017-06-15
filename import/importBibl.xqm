@@ -69,20 +69,17 @@ declare function local:trim($input as xs:string?) {
     return if ($sections//fn:non-match/string()) then (string-join($sections//fn:non-match, '')) else ()
 };
 
-declare function local:accents($match) {
-    normalize-space(normalize-unicode($match//fn:group[@nr='1'] || $local:greekAccents($match//fn:group[@nr='3']/string())))
-};
-
 declare function local:greekAccents($match) {
-    let $acc :=    normalize-space(normalize-unicode($local:greekAccents($match//fn:group[@nr='2']/string()) || $match//fn:group[@nr='1']))
-        return if (count(analyze-string($acc, '(\d)')//fn:match)) then 
+    let $acc := normalize-space(normalize-unicode($match//fn:group[@nr='1'] || $local:greekAccents($match//fn:group[@nr='2']/string())))
+    return 
+        if (count(analyze-string($acc, '(\d)')//fn:match)) then 
             local:resolveGreekAccents($acc) 
         else 
             $acc
 };
 
 declare function local:breathingMarks($match) {
-    normalize-space(normalize-unicode($local:greekAccents($match//fn:group[@nr='1']/string()) || $match//fn:group[@nr='2']))
+    normalize-space(normalize-unicode($match//fn:group[@nr='1']/string() || $local:greekAccents($match//fn:group[@nr='2'])))
 };
 
 declare function local:dollars($match) {
@@ -120,7 +117,29 @@ declare function local:resolveBreathingMarks($input) {
 };
 
 declare function local:decode($input) {
-    if (starts-with($input, '%')) then
+    if (starts-with($input, '+')) then
+        '+' || local:decode(substring($input, 2))
+    else if (starts-with($input, '(')) then
+        '(' || local:decode(substring($input, 2))
+    else if (starts-with($input, '[')) then
+        '[' || local:decode(substring($input, 2))
+    else if (starts-with($input, "'")) then
+        "'" || local:decode(substring($input, 2))
+    else if (starts-with($input, "<")) then
+        "<" || local:decode(substring($input, 2))
+    else if (starts-with($input, "?")) then
+        "?" || local:decode(substring($input, 2))
+    else if (starts-with($input, "`")) then
+        "`" || local:decode(substring($input, 2))
+    else if (ends-with($input, ">")) then
+        local:decode(substring($input, 1, string-length($input)-1)) || ">"
+    else if (ends-with($input, "'")) then
+        local:decode(substring($input, 1, string-length($input)-1)) || "'"
+    else if (ends-with($input, "]")) then
+        local:decode(substring($input, 1, string-length($input)-1)) || "]"
+    else if (ends-with($input, ")")) then
+        local:decode(substring($input, 1, string-length($input)-1)) || ")"
+    else if (starts-with($input, '%')) then
         local:resolveBreathingMarks(local:resolveGreekAccents(local:decodeGreek(substring($input, 2))))
     else
         local:decodeNonGreek($input)
@@ -165,14 +184,14 @@ declare function local:decodeNonGreek($input as xs:string?) {
             let $sections:=analyze-string($i/td[5], '^(\d+)(#?)(\$?)([^\(]*)(\(.*\))')
             let $type:= if ($sections//fn:group[@nr='3']/string()) then 'LSJ' else 'LGPN'
             let $patterns:= (local:trim($i/td[3]), local:trim($i/td[4]))
-            let $abbreviation := local:decodeNonGreek(local:trim($i/td[2]))
-            let $bibl :=
+            let $abbreviation := 
+                for $token in tokenize(local:trim($i/td[2]), '\s')
+                return 
+                    local:decode($token) 
+            let $bibl := 
                 for $token in tokenize(local:trim($i/td[5]), '\s')
                 return 
-                    if (starts-with($token, '+')) then 
-                        '+' || local:decode(substring($token, 2)) 
-                    else
-                        local:decode($token) 
+                    local:decode($token) 
         return 
             <bibl xmlns="http://www.tei-c.org/ns/1.0">
                 {attribute xml:id {$id},
@@ -180,7 +199,7 @@ declare function local:decodeNonGreek($input as xs:string?) {
                  attribute ana {string-join($patterns, ' ')},
                  attribute type {$type}
                 }
-                <abbr>{$abbreviation}</abbr>
+                <abbr>{normalize-space(string-join($abbreviation, ' '))}</abbr>
                 <bibl>{normalize-space(string-join($bibl, ' '))}</bibl>
             </bibl>
         
