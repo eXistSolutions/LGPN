@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <head>
-        <title>LGPN</title><!--
-        ~ Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com
-        -->
-        <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <title>LGPN</title><!--~ Copyright (c) 2015. existsolutions - http://www.existsolutions.com-->
         <link href="resources/js/vendor/select2/select2.css" rel="stylesheet"/>
-        <link rel="stylesheet" type="text/css" href="resources/css/editor.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
     </head>
-    <body>
+    <body class="bibl">
         <div id="xforms">
-            <div style="display:none">
+            <div class="hidden">
                 <xf:model id="model-bibl">
                     <xf:instance id="i-bibl-default">
                         <bibl xmlns="http://www.tei-c.org/ns/1.0" xml:id="id" ana="" n="" type="LGPN">
@@ -41,86 +42,131 @@
                     </xf:action>
                 </xf:model>
             </div>
-            <div>
-            <section class="tp-section">
+
+            <header>
                 <div class="tp-row">
-                    <h2 class="tp-width-sidebar">LGPN bibliographic references sub-form</h2>
-                    <div class="tp-width-main">
-                        <fieldset class="form-horizontal" id="general">
-                            <div class="tp-form-group-col">
-                                <label class="tp-label">Id</label>
-                                    <xf:input class="input-group -form-control" ref="//TEI:bibl/@xml:id">
-                                        <xf:hint>id</xf:hint>
-                                    </xf:input>
-                            </div>
-                            <div class="tp-form-group-col">
-                                <label class="tp-label">Abbr</label>
-                                    <xf:input class="input-group -form-control" ref="//TEI:bibl/TEI:abbr">
-                                        <xf:hint>abbr</xf:hint>
-                                    </xf:input>
-                            </div>
-                            <div class="form-group">
-                                <label class="tp-label-1-row-2-col">Full rref</label>
-                                <xf:input class="input-group -form-control tp-input-1-row-2-col col-sm-10" ref="//TEI:bibl/TEI:bibl">
-                                    <xf:label class="input-group-addon">
-                                        <i class="glyphicon glyphicon-book"/>
-                                    </xf:label>
-                                    <xf:hint>id</xf:hint>
-                                </xf:input>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="tp-label-1-row-2-col">Patterns</label>
-                                <div class="">
-                                    <xf:select class="tp-input" ref="//TEI:bibl/@ana" appearance="full">
-                                        <xf:label class="input-group-addon">
-                                            <i class="glyphicon glyphicon-check"/>
-                                        </xf:label>
-                                        <xf:itemset nodeset="instance('i-patterns')/TEI:category">
-                                            <xf:label ref="@xml:id"/>
-                                            <xf:value ref="@xml:id"/>
-                                        </xf:itemset>
-                                    </xf:select>
-                                </div>
-                            </div>
-                            <div class="tp-form-group-col">
-                                <label class="tp-label">Type</label>
-                                <xf:select1 class="tp-input -form-control" ref="//TEI:bibl/@type">
-                                    <xf:label class="input-group-addon">
-                                        <i class="glyphicon glyphicon-book"/>
-                                    </xf:label>
-                                    <xf:itemset nodeset="instance('i-biblTypes')/TEI:category">
-                                        <xf:label ref="@xml:id"/>
-                                        <xf:value ref="@xml:id"/>
-                                    </xf:itemset>
-                                </xf:select1>
-                            </div>
-
-                        </fieldset>
-                    </div>
+                    <h1 class="tp-column-fullwidth tp-headline">LGPN Bibliographic References Subform</h1>
                 </div>
-            </section>    
+            </header>
 
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-sm-offset-4">
-                                <xf:submit class="-btn -btn-primary -glyphicon -glyphicon-save" submission="s-save-bibl">
-                                    <xf:label>Save</xf:label>
-                                </xf:submit>
-                                <xf:trigger class="-bigbtn -btn-primary -glyphicon -glyphicon-trash">
-                                    <xf:label>Cancel</xf:label>
-                                    <script ev:event="DOMActivate" type="text/javascript">dijit.byId("bibl").hide()</script>
-                                </xf:trigger>
-                            </div>
+            <main>
+                <section class="tp-section">
+                    <div class="tp-row">
+                        <div class="tp-width-main">
+                            <fieldset class="form-horizontal">
+                                <div class="tp-row">
+                                    <div class="tp-form-group-col">
+                                        <label class="tp-label">Id</label>
+                                        <xf:input class="tp-input -form-control" ref="//TEI:bibl/@xml:id">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-pencil"/>
+                                            </xf:label>
+                                            <xf:hint>id</xf:hint>
+                                        </xf:input>
+                                    </div>
+
+                                    <div class="tp-form-group-col">
+                                        <label class="tp-label">Abbreviation</label>
+                                        <xf:input class="tp-input -form-control" ref="//TEI:bibl/TEI:abbr">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-book"/>
+                                            </xf:label>
+                                            <xf:hint>abbr</xf:hint>
+                                        </xf:input>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="tp-label-1-row-2-col">Full reference</label>
+                                        <xf:input class="tp-input-1-row-2-col -form-control" ref="//TEI:bibl/TEI:bibl">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-book"/>
+                                            </xf:label>
+                                            <xf:hint>id</xf:hint>
+                                        </xf:input>
+                                    </div>
+                                </div>
+
+                                <div class="tp-row">
+                                    <div class="tp-form-group-col">
+                                        <label class="tp-label">Patterns</label>
+                                        <xf:select class="tp-input -form-control" ref="//TEI:bibl/@ana" appearance="full">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-check"/>
+                                            </xf:label>
+                                            <xf:itemset nodeset="instance('i-patterns')/TEI:category">
+                                                <xf:label ref="@xml:id"/>
+                                                <xf:value ref="@xml:id"/>
+                                            </xf:itemset>
+                                        </xf:select>
+                                    </div>
+                                </div>
+                                <div class="tp-row">
+                                    <div class="tp-form-group-col">
+                                        <label class="tp-label">Type</label>
+                                        <xf:select1 class="tp-input -form-control" ref="//TEI:bibl/@type">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-book"/>
+                                            </xf:label>
+                                            <xf:itemset nodeset="instance('i-biblTypes')/TEI:category">
+                                                <xf:label ref="@xml:id"/>
+                                                <xf:value ref="@xml:id"/>
+                                            </xf:itemset>
+                                        </xf:select1>
+                                    </div>
+                                </div>
+
+                            </fieldset>
                         </div>
                     </div>
-            </div>
+
+                </section>
+
+                <section class="tp-section tp-section-save">
+                    <div class="tp-row">
+                        <h2 class="tp-width-sidebar">Save Form</h2>
+                        <div class="tp-width-main">
+                            <fieldset class="form-horizontal">
+
+                                <div class="tp-row tp-repeat-buttons">
+                                    <div class="tp-repeat-button-left">
+                                        <div class="tp-button-row tp-add">
+                                            <label>Save form</label>
+                                            <xf:submit class="-btn -btn-default" submission="s-save-data">
+                                                <xf:label class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-save"/>
+                                                </xf:label>
+                                            </xf:submit>
+                                        </div>
+                                    </div>
+
+                                    <div class="tp-repeat-button-right">
+                                        <div class="tp-button-row tp-delete">
+                                            <label>
+                                                <span>Cancel form</span>
+                                            </label>
+                                            <xf:trigger class="-btn -btn-default">
+                                                <xf:label class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-trash"/>
+                                                </xf:label>
+                                                <xf:action ev:event="xforms-value-changed">
+                                                    <script ev:event="DOMActivate" type="text/javascript">dijit.byId("bibl").hide()</script>
+                                                </xf:action>
+
+                                            </xf:trigger>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </section>
+            </main>
         </div>
-        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
+
+        <script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
-        <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
+        <script type="text/javascript" src="resources/js/bootstrap-3.4.4.min.js"/>
         <script src="$shared/resources/scripts/jquery/jquery-ui.min.js" type="text/javascript" charset="utf-8"/>
-        <script type="text/javascript" src="resources/js/editor.js"/>
         <script type="text/javascript" src="resources/js/vendor/select2/select2.js"/>
         <script type="text/javascript" src="resources/js/select2/select2.js"/>
     </body>
