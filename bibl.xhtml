@@ -87,9 +87,9 @@
                                 </div>
 
                                 <div class="tp-row">
-                                    <div class="tp-form-group-col">
-                                        <label class="tp-label">Patterns</label>
-                                        <xf:select class="tp-input -form-control" ref="//TEI:bibl/@ana" appearance="full">
+                                    <div class="form-group">
+                                        <label class="tp-label-1-row-2-col">Patterns</label>
+                                        <xf:select class="tp-input-1-row-2-col tp-checkbox-cols" ref="//TEI:bibl/@ana" appearance="full">
                                             <xf:label class="input-group-addon">
                                                 <i class="glyphicon glyphicon-check"/>
                                             </xf:label>
@@ -100,6 +100,7 @@
                                         </xf:select>
                                     </div>
                                 </div>
+
                                 <div class="tp-row">
                                     <div class="tp-form-group-col">
                                         <label class="tp-label">Type</label>
@@ -144,15 +145,16 @@
                                             <label>
                                                 <span>Cancel form</span>
                                             </label>
-                                            <xf:trigger class="-btn -btn-default">
-                                                <xf:label class="input-group-addon">
-                                                    <i class="glyphicon glyphicon-trash"/>
-                                                </xf:label>
-                                                <xf:action ev:event="xforms-value-changed">
-                                                    <script ev:event="DOMActivate" type="text/javascript">dijit.byId("bibl").hide()</script>
-                                                </xf:action>
-
-                                            </xf:trigger>
+                                            <div class="tp-button-cancel">
+                                                <xf:trigger class="-btn -btn-default">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-trash"/>
+                                                    </xf:label>
+                                                    <xf:action ev:event="xforms-value-changed">
+                                                        <script ev:event="DOMActivate" type="text/javascript">dijit.byId("bibl").hide()</script>
+                                                    </xf:action>
+                                                </xf:trigger>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
