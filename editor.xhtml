@@ -19,6 +19,7 @@
                 <xf:instance xmlns="" id="i-genders" src="resources/xml/genders.xml"/>
                 <xf:instance xmlns="" id="i-personType" src="resources/xml/personType.xml"/>
                 <xf:instance xmlns="" id="i-certainty" src="resources/xml/certainty.xml"/>
+                <xf:instance xmlns="" id="i-datingCertainty" src="resources/xml/datingCertainty.xml"/>
                 <xf:instance xmlns="" id="i-personDating" src="resources/xml/personDating.xml"/>
                 <xf:instance xmlns="" id="i-dating" src="resources/xml/dating.xml"/>
                 <xf:instance xmlns="" id="i-period" src="resources/xml/datingPeriod.xml"/>
@@ -218,7 +219,7 @@
                                     <xf:label class="input-group-addon">
                                         <i class="glyphicon glyphicon-check"/>
                                     </xf:label>
-                                    <xf:itemset nodeset="instance('i-certainty')/option">
+                                    <xf:itemset nodeset="instance('i-datingCertainty')/option">
                                         <xf:label ref="."/>
                                         <xf:value ref="@value"/>
                                     </xf:itemset>
@@ -656,7 +657,7 @@
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-check"/>
                                                         </xf:label>
-                                                        <xf:itemset nodeset="instance('i-certainty')/option">
+                                                        <xf:itemset nodeset="instance('i-datingCertainty')/option">
                                                             <xf:label ref="."/>
                                                             <xf:value ref="@value"/>
                                                         </xf:itemset>
