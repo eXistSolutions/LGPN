@@ -169,18 +169,6 @@
                                 </xf:select1>
                             </div>
                             <div class="tp-form-group-col">
-                                <label class="tp-label">Type</label>
-                                <xf:select1 class="tp-input -form-control" ref="//TEI:person/@type">
-                                    <xf:label class="input-group-addon">
-                                        <i class="glyphicon glyphicon-user"/>
-                                    </xf:label>
-                                    <xf:itemset nodeset="instance('i-personType')/option">
-                                        <xf:label ref="."/>
-                                        <xf:value ref="@value"/>
-                                    </xf:itemset>
-                                </xf:select1>
-                            </div>
-                            <div class="tp-form-group-col">
                                 <label class="tp-label">Date</label>
                                 <xf:input class="tp-input -form-control" ref="//TEI:birth/@notBefore">
                                     <xf:label class="input-group-addon">
@@ -188,15 +176,6 @@
                                     </xf:label>
 
                                     <xf:hint>not before</xf:hint>
-                                </xf:input>
-                            </div>
-                            <div class="tp-form-group-col">
-                                <label class="tp-label">Date</label>
-                                <xf:input class="tp-input -form-control" ref="//TEI:birth/@notAfter">
-                                    <xf:label class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"/>
-                                    </xf:label>
-                                    <xf:hint>not after</xf:hint>
                                 </xf:input>
                             </div>
                             <div class="tp-form-group-col">
@@ -212,6 +191,27 @@
                                         </xf:itemset>
                                     </xf:select>
                                 </div>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Date</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:birth/@notAfter">
+                                    <xf:label class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"/>
+                                    </xf:label>
+                                    <xf:hint>not after</xf:hint>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Type</label>
+                                <xf:select1 class="tp-input -form-control" ref="//TEI:person/@type">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-personType')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@value"/>
+                                    </xf:itemset>
+                                </xf:select1>
                             </div>
                             <div class="tp-form-group-col">
                                 <label class="tp-label">Certainty</label>
@@ -643,15 +643,6 @@
                                                     </xf:input>
                                                 </div>
                                                 <div class="tp-form-group-col">
-                                                    <label class="tp-label">Date</label>
-                                                    <xf:input class="tp-input -form-control" ref="TEI:date/@notAfter">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-calendar"/>
-                                                        </xf:label>
-                                                        <xf:hint>not after</xf:hint>
-                                                    </xf:input>
-                                                </div>
-                                                <div class="tp-form-group-col">
                                                     <label class="tp-label">Certainty</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:date/@cert">
                                                         <xf:label class="input-group-addon">
@@ -662,6 +653,15 @@
                                                             <xf:value ref="@value"/>
                                                         </xf:itemset>
                                                     </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Date</label>
+                                                    <xf:input class="tp-input -form-control" ref="TEI:date/@notAfter">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-calendar"/>
+                                                        </xf:label>
+                                                        <xf:hint>not after</xf:hint>
+                                                    </xf:input>
                                                 </div>
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Linking</label>
