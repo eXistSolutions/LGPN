@@ -13,7 +13,8 @@
         <div class="hidden">
             <xf:model id="model-1">
                 <xf:instance xmlns="" id="i-default" src="resources/xml/teiPersonTemplate.xml"/>
-                <xf:bind nodeset="//TEI:nym/@nymRef" required="true()" type="xs:string"/>
+                <xf:bind ref="//TEI:nym[@type ne 'Roman']/@nymRef" constraint="string-length(.) &gt; 0" type="xs:string"/>
+                <xf:bind ref="//TEI:bibl[@type='primary']/TEI:ref[index('r-primarySource')]" constraint="not(boolean-from-string(instance('i-biblPattern')/validate))"/>
                 <xf:instance xmlns="" id="i-template" src="resources/xml/personTemplate.xml"/>
                 <xf:instance xmlns="" id="i-volumes" src="resources/xml/volumes.xml"/>
                 <xf:instance xmlns="" id="i-genders" src="resources/xml/genders.xml"/>
@@ -53,6 +54,16 @@
                         <place/>
                     </data>
                 </xf:instance>
+                <xf:instance id="i-biblPattern">
+                    <data xmlns="">
+                        <validate/>
+                    </data>
+                </xf:instance>
+                <xf:submission id="validatePattern" method="get" replace="instance" ref="instance('i-biblPattern')" validate="false" resource="modules/validatePattern.xql?biblId={instance('i-default')//TEI:bibl[@type='primary']/TEI:ref[index('r-primarySource')]/@target}">
+                    <!--<?biblId={instance('i-default')//TEI:bibl[@type='primary'][index('r-primarySource')]}">-->
+                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Ok.</xf:message>
+                    <xf:message ev:event="xforms-submit-error">Boo.</xf:message>
+                </xf:submission>
                 <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/load.xql?id={bf:appContext('id')}">
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been
                         loaded.
@@ -260,7 +271,7 @@
                                            <div class="tp-row">
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Select name</label>
-                                                        <xf:input ref="@nymRef" class="hidden">
+                                                        <xf:input ref="@nymRef" class="-custom-alert">
                                                             <xf:action ev:event="nyms_autocomplete-callback">
                                                                 <xf:setvalue ref="." value="event('termValue')"/>
                                                             </xf:action>
@@ -268,9 +279,15 @@
                                                                 <i class="glyphicon glyphicon-book"/>
                                                             </xf:label>
                                                             <xf:hint>normalized form</xf:hint>
+                                                            <xf:alert>blah</xf:alert>
                                                         </xf:input>
                                                     <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search name" autocomplete="off"/>
-                                                </div>
+<!--
+<xf:output ref="@nymRef">
+                                                    <xf:label> </xf:label>
+                                                        <xf:alert>blllah</xf:alert>
+                                                    </xf:output>
+-->                                                </div>
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Certainty</label>
                                                     <xf:select1 class="tp-input -form-control" ref="//TEI:listNym//@cert">
@@ -595,6 +612,10 @@
                                                             <i class="glyphicon glyphicon-list"/>
                                                         </xf:label>
                                                         <xf:hint>reference details</xf:hint>
+                                                        <xf:action ev:event="xforms-value-changed">
+                                                            <xf:send submission="validatePattern"/>
+                                                        </xf:action>
+                                                        <xf:alert>Boo</xf:alert>
                                                     </xf:input>
                                                 </div>
                                                 <div class="tp-form-group-col">
@@ -864,7 +885,7 @@
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-tags"/>
                                                     </xf:label>
-                                                    <xf:itemset nodeset="instance('i-status')/TEI:category/TEI:category">
+                                                    <xf:itemset nodeset="instance('i-status')/TEI:category[@xml:id=current()/../@key]/TEI:category">
                                                         <xf:label ref="TEI:catDesc"/>
                                                         <xf:value ref="@xml:id"/>
                                                     </xf:itemset>
