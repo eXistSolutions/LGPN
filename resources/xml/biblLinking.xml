@@ -2,5 +2,6 @@
 <data>
     <option value=""/>
     <option value="equal">=</option>
+    <option value="equal2">;=</option>
     <option value="correction">+</option>
 </data>
