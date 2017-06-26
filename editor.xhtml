@@ -880,7 +880,7 @@
                                                 </xf:select1>
                                             </div>
                                             <div class="tp-form-group-col">
-                                                <label class="tp-label">Categories</label>
+                                                <label class="tp-label">Subcategory</label>
                                                 <xf:select1 class="tp-input -form-control" ref="@ana">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-tags"/>
@@ -943,12 +943,12 @@
                                                 </xf:select1>
                                             </div>
                                             <div class="tp-form-group-col">
-                                                <label class="tp-label">Categories</label>
+                                                <label class="tp-label">Subcategory</label>
                                                 <xf:select1 class="tp-input -form-control" ref="@ana">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-tags"/>
                                                     </xf:label>
-                                                    <xf:itemset nodeset="instance('i-profession')/TEI:category/TEI:category">
+                                                    <xf:itemset nodeset="instance('i-profession')/TEI:category[@xml:id=current()/../@key]/TEI:category">
                                                         <xf:label ref="TEI:catDesc"/>
                                                         <xf:value ref="@xml:id"/>
                                                     </xf:itemset>
@@ -1005,12 +1005,12 @@
                                                 </xf:select1>
                                             </div>
                                             <div class="tp-form-group-col">
-                                                <label class="tp-label">Categories</label>
+                                                <label class="tp-label">Subcategory</label>
                                                 <xf:select1 class="tp-input -form-control" ref="@ana">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-tags"/>
                                                     </xf:label>
-                                                    <xf:itemset nodeset="instance('i-office')/TEI:category/TEI:category">
+                                                    <xf:itemset nodeset="instance('i-office')/TEI:category[@xml:id=current()/../@key]/TEI:category">
                                                         <xf:label ref="TEI:catDesc"/>
                                                         <xf:value ref="@xml:id"/>
                                                     </xf:itemset>
@@ -1068,12 +1068,12 @@
                                                 </xf:select1>
                                             </div>
                                             <div class="tp-form-group-col">
-                                                <label class="tp-label">Categories</label>
+                                                <label class="tp-label">Subcategory</label>
                                                 <xf:select1 class="tp-input -form-control" ref="@ana">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-tags"/>
                                                     </xf:label>
-                                                    <xf:itemset nodeset="instance('i-religion')/TEI:category/TEI:category">
+                                                    <xf:itemset nodeset="instance('i-religion')/TEI:category[@xml:id=current()/../@key]/TEI:category">
                                                         <xf:label ref="TEI:catDesc"/>
                                                         <xf:value ref="@xml:id"/>
                                                     </xf:itemset>
@@ -1130,12 +1130,12 @@
                                                 </xf:select1>
                                             </div>
                                             <div class="tp-form-group-col">
-                                                <label class="tp-label">Categories</label>
+                                                <label class="tp-label">Subcategory</label>
                                                 <xf:select1 class="tp-input -form-control" ref="@ana">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-tags"/>
                                                     </xf:label>
-                                                    <xf:itemset nodeset="instance('i-roman')/TEI:category/TEI:category">
+                                                    <xf:itemset nodeset="instance('i-roman')/TEI:category[@xml:id=current()/../@key]/TEI:category">
                                                         <xf:label ref="TEI:catDesc"/>
                                                         <xf:value ref="@xml:id"/>
                                                     </xf:itemset>
