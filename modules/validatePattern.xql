@@ -7,4 +7,5 @@ import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" 
 
 let $bibl := request:get-parameter('biblId', '')
 
-return if($bibl='ALG') then <validate>true</validate> else <validate>{$bibl}</validate>
+(:return if($bibl='ALG') then <validate>true</validate> else <validate>{$bibl}</validate>:)
+return <validate>true</validate>
