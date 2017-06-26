@@ -468,11 +468,26 @@
                                         </div>
                                     </xf:repeat>
 
+<!-- Heading for Roman names section visible even if there are none -->
+                                    <div class="tp-row">
+                                            <h4 class="tp-row tp-form-header col-md-2">Roman Name</h4>
+                                                <div class="tp-button-row tp-add">
+                                                    <label>Add Roman name</label>
+                                                    <xf:trigger class="-btn -btn-default">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-plus"/>
+                                                        </xf:label>
+                                                        <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='Roman']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
+                                                    </xf:trigger>
+                                                </div>
+                                    </div>
+<!-- Roman names heading end -->
+                                    
                                     <!-- Roman names -->
                                     <xf:repeat ref="TEI:listNym/TEI:nym[@type='Roman']" id="r-rname">
-                                        <xf:label class="tp-row tp-form-header">
-                                            <h4 class="col-md-2">Roman Name</h4>
-                                        </xf:label>
                                         <div class="tp-row">
                                             <xf:group ref=".">
                                                 <div class="tp-form-group-col">
@@ -1176,6 +1191,26 @@
 
                                 <div class="tp-section-divider"/>
 
+
+<!-- Heading for secondary sources section visible even if there are none -->
+                                    <div class="tp-row">
+                                            <h3 class="tp-form-header">Secondary sources</h3>
+                                                <div class="tp-button-row tp-add">
+                                                    <label>Add source</label>
+                                                    <xf:trigger class="-btn -btn-default ">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-plus"/>
+                                                        </xf:label>
+                                                        <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type = 'auxiliary']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
+                                                    </xf:trigger>
+                                                </div>
+                                    </div>
+<!-- secondary sources heading end -->
+
+
                                 <!-- SECONDARY SOURCES -->
                                 <xf:group>
                                     <xf:repeat ref="TEI:bibl[@type = 'auxiliary']" id="r-auxiliary">
@@ -1291,6 +1326,7 @@
                 </div>
             </section>
             <!-- // end section names -->
+                                <div class="tp-section-divider"/>
 
             <!-- begin section relationships -->
             <section class="tp-section">
