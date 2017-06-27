@@ -134,26 +134,38 @@ footer .poweredby img { width: 120px; }
   &> div {
     position: relative;
     min-height: 1px;
-    @media (min-width: 768px) {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
   }
   &> div {
-      width: 100%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
   }
   label {
     height: @input-height;
     line-height: @input-height;
-    display: block;
-    @media (min-width: 768px) {
-      float: left;
-    }
   }
-  h4 {
+  h3, h4 {
+    display: none;
     margin: 0;
     line-height: @input-height;
+    width: 50%;
+    position: relative;
+    float: left;
+    min-height: 1px;
+    padding-right: 0;
+    padding-left: 0;
   }
+  .xfRepeatIndex h3,
+  .xfRepeatIndex h4 {
+    display: inline-block;
+  }
+}
+
+.tp-repeat-add {
+  //padding-left: 15px;
+  //padding-right: 15px;
+  max-width: 62.5rem;
+  margin: 0;
 }
 
 #C226 > div.tp-row.tp-repeat-buttons,
@@ -166,38 +178,26 @@ footer .poweredby img { width: 120px; }
 // Bootstrap-style add/delete button
 .tp-repeat-button-left {
   &> div {
-    @media (min-width: 768px) {
-      margin-left: 60%;
-      margin-right: 0;
-    }
+    //display: table;
+    margin-left: auto;
+    margin-right: 0;
     @media (min-width: 992px) {
-      margin-left: 65%;
-    }
-  }
-
-  label {
-    text-align: right;
-    @media (min-width: 768px) {
-      width: 68%;
-    }
-    @media (min-width: 992px) {
-      width: 81%;
+      //margin-left: 70%;
+      padding-top: 4px;
     }
   }
 }
 
 .tp-repeat-button-right {
   &> div {
-    @media (min-width: 768px) {
-        margin-left: 60%;
-        margin-right: 0;
-    }
+    margin-left: auto;
+    margin-right: 0;
     @media (min-width: 992px) {
-        margin-left: 65%;
+        //margin-left: 64%;
     }
   }
   &> div > div {
-    margin-left: auto;
+    padding-left: 15px;
     @media (min-width: 768px) {
       margin-left: 0;
     }
@@ -211,6 +211,24 @@ footer .poweredby img { width: 120px; }
       width: 81%;
     }
   }
+}
+
+.tp-delete,
+.tp-add {
+  display: table;
+  margin-left: auto;
+  margin-right: 0;
+
+  label {
+    display: table-cell;
+    text-align: right;
+    width: auto;
+  }
+  .xfControl {
+    display: table-cell;
+    padding-left: 15px;
+  }
+
 }
 
 .tp-delete {
@@ -267,7 +285,7 @@ footer .poweredby img { width: 120px; }
     text-align: left;
     padding-left: 0;
     @media (min-width: @screen-sm-min) {
-      text-align: center;
+     // text-align: center;
     }
     @media (min-width: @screen-md-min) {
       text-align: right;
@@ -324,10 +342,10 @@ footer .poweredby img { width: 120px; }
   padding-right: 0;
   @media (min-width: 768px) {
     float: left;
-    width: 75%;
+    width: 83%;
   }
   @media (min-width: 992px) {
-    width: 64%;
+    width: 72%;
   }
 }
 
@@ -353,9 +371,11 @@ footer .poweredby img { width: 120px; }
   min-height: 1px;
   @media (min-width: 768px) {
     float: left;
-    width: 75%;
+    width: 83%;
   }
   @media (min-width: 992px) {
-    width: 81.6666%;
+    width: 85.7%;
   }
 }
+
+

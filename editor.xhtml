@@ -124,7 +124,6 @@
             <div class="tp-row">
                 <h1 class="tp-column-fullwidth tp-headline">LGPN Person Input Form</h1>
             </div>
-
         </header>
 
         <main>
@@ -262,10 +261,30 @@
 
                                 <!-- NAME -->
                                 <xf:group>
+                                    <xf:label class="tp-form-header">
+                                        <h3 class="col-md-2">Nym</h3>
+                                    </xf:label>
+
                                     <xf:repeat ref="TEI:listNym/TEI:nym[@type!='Roman']" id="r-name">
-                                        <xf:label class="tp-row tp-form-header">
-                                            <h4 class="col-md-2">Nym</h4>
-                                        </xf:label>
+                                        <div class="tp-row tp-repeat-add">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Nym</h4>
+                                            </xf:label>
+                                            <div class="tp-repeat-button-left">
+                                                <div class="tp-button-row tp-add">
+                                                    <label>Add nym</label>
+                                                    <xf:trigger class="-btn -btn-default">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-plus"/>
+                                                        </xf:label>
+                                                        <xf:insert context="instance('i-default')//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type!='Roman']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <xf:group ref=".">
                                            <div class="tp-row">
@@ -338,20 +357,6 @@
                                                 </div>
                                            </div>
                                             <div class="tp-row tp-repeat-buttons">
-                                                <div class="tp-repeat-button-left">
-                                                    <div class="tp-button-row tp-add">
-                                                        <label>Add nym</label>
-                                                        <xf:trigger class="-btn -btn-default">
-                                                            <xf:label class="input-group-addon">
-                                                                <i class="glyphicon glyphicon-plus"/>
-                                                            </xf:label>
-                                                            <xf:insert context="instance('i-default')//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type!='Roman']"/>
-                                                            <script>
-                                                                clearAndInitAutocompletes();
-                                                            </script>
-                                                        </xf:trigger>
-                                                    </div>
-                                                </div>
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
                                                         <label>Delete nym</label>
@@ -369,10 +374,29 @@
 
                                         <!-- Attested forms -->
                                         <div>
+                                            <xf:label class="tp-form-header">
+                                                <h4 class="col-md-2">Attested Form</h4>
+                                            </xf:label>
                                             <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
-                                                <xf:label class="tp-row tp-form-header">
-                                                    <h4 class="col-md-2">Attested Form</h4>
-                                                </xf:label>
+                                                <div class="tp-row tp-repeat-add">
+                                                    <xf:label class="tp-row tp-form-header">
+                                                        <h4>Attested Form</h4>
+                                                    </xf:label>
+                                                    <div class="tp-repeat-button-left">
+                                                        <div class="tp-button-row tp-add">
+                                                            <label>Add attested form</label>
+                                                            <xf:trigger class="-btn -btn-default">
+                                                                <xf:label class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-plus"/>
+                                                                </xf:label>
+                                                                <xf:insert context="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='attested']"/>
+                                                                <script>
+                                                                    clearAndInitAutocompletes();
+                                                                </script>
+                                                            </xf:trigger>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <xf:group ref=".">
                                                     <xf:label/>
                                                 </xf:group>
@@ -436,20 +460,6 @@
                                                 </div>
 
                                                 <div class="tp-row tp-repeat-buttons">
-                                                    <div class="tp-repeat-button-left">
-                                                        <div class="tp-button-row tp-add">
-                                                            <label>Add attested form</label>
-                                                            <xf:trigger class="-btn -btn-default">
-                                                                <xf:label class="input-group-addon">
-                                                                    <i class="glyphicon glyphicon-plus"/>
-                                                                </xf:label>
-                                                                <xf:insert context="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='attested']"/>
-                                                                <script>
-                                                                    clearAndInitAutocompletes();
-                                                                </script>
-                                                            </xf:trigger>
-                                                        </div>
-                                                    </div>
                                                     <div class="tp-repeat-button-right">
                                                         <div class="tp-button-row tp-delete">
                                                             <label>Delete attested form</label>
@@ -468,27 +478,29 @@
                                         </div>
                                     </xf:repeat>
 
-<!-- Heading for Roman names section visible even if there are none -->
-                                    <div class="tp-row">
-                                            <h4 class="tp-row tp-form-header col-md-2">Roman Name</h4>
-                                                <div class="tp-button-row tp-add">
-                                                    <label>Add Roman name</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-plus"/>
-                                                        </xf:label>
-                                                        <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='Roman']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
-                                                    </xf:trigger>
-                                                </div>
-                                    </div>
-<!-- Roman names heading end -->
-                                    
                                     <!-- Roman names -->
                                     <xf:repeat ref="TEI:listNym/TEI:nym[@type='Roman']" id="r-rname">
                                         <div class="tp-row">
+                                            <div class="tp-row tp-repeat-add">
+                                                <xf:label class="tp-form-header">
+                                                    <h4>Roman Name</h4>
+                                                </xf:label>
+                                                <div class="tp-repeat-button-left">
+                                                    <div class="tp-button-row tp-add">
+                                                        <label>Add Roman name</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-plus"/>
+                                                            </xf:label>
+                                                            <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='Roman']"/>
+                                                            <script>
+                                                                clearAndInitAutocompletes();
+                                                            </script>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <xf:group ref=".">
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label" tooltip="ref">Praenomen</label>
@@ -557,20 +569,6 @@
                                         </div>
 
                                         <div class="tp-row tp-repeat-buttons">
-                                            <div class="tp-repeat-button-left">
-                                                <div class="tp-button-row tp-add">
-                                                    <label>Add Roman name</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-plus"/>
-                                                        </xf:label>
-                                                        <xf:insert context="//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type='Roman']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
                                             <div class="tp-repeat-button-right">
                                                 <div class="tp-button-row tp-delete">
                                                     <label>Delete Roman name</label>
@@ -583,8 +581,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                <div class="tp-section-divider"/>
+                                        <div class="tp-section-divider"/>
                                     </xf:repeat>
 
                                 </xf:group>
@@ -593,9 +590,25 @@
                                 <!-- Primary Sources -->
                                 <xf:group>
                                     <xf:repeat ref="TEI:bibl[@type='primary']" id="r-primarySource">
-                                        <xf:label>
-                                            <h3>Primary sources</h3>
-                                        </xf:label>
+                                        <div class="tp-row tp-repeat-add">
+                                            <xf:label>
+                                                <h3>Primary sources</h3>
+                                            </xf:label>
+                                            <div class="tp-repeat-button-left">
+                                                <div class="tp-button-row tp-add">
+                                                    <label>Add Source</label>
+                                                    <xf:trigger class="-btn -btn-default ">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-plus"/>
+                                                        </xf:label>
+                                                        <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type='primary']"/>
+                                                        <script>
+                                                            clearAndInitAutocompletes();
+                                                        </script>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
@@ -728,20 +741,6 @@
                                             </div>
                                         </xf:group>
                                         <div class="tp-row tp-repeat-buttons">
-                                            <div class="tp-repeat-button-left">
-                                                <div class="tp-button-row tp-add">
-                                                    <label>Add Source</label>
-                                                    <xf:trigger class="-btn -btn-default ">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-plus"/>
-                                                        </xf:label>
-                                                        <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type='primary']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
                                             <div class="tp-repeat-button-right">
                                                 <div class="tp-button-row tp-delete">
                                                     <label>Delete Source</label>
