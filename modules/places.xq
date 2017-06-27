@@ -17,7 +17,7 @@ declare function local:place-ancestors($id) {
 };
 
 let $data := request:get-parameter('query', 'Tri')
-            let $constituents :=  $config:places//tei:placeName[@subtype='minor'][contains(lower-case(.), lower-case($data))]
+            let $constituents :=  $config:places//tei:placeName[@subtype!='minor'][contains(lower-case(.), lower-case($data))]
             return
             <result>
                 <total>{count($constituents)}</total>
