@@ -110,11 +110,15 @@ footer .poweredby img { width: 120px; }
 }
 
 .tp-repeat-buttons {
-  @media (min-width: @screen-sm-min) {
-    padding-top: 15px;
-  }
   .tp-button-row:not(:nth-of-type(2)) {
     &:extend(.form-group);
+  }
+}
+
+.tp-repeat-buttons,
+.tp-repeat-add {
+  @media (min-width: @screen-sm-min) {
+    padding: 20px 0;
   }
   .control-label {
     &:extend(.col-xs-12);
@@ -139,10 +143,16 @@ footer .poweredby img { width: 120px; }
       width: 100%;
   }
   label {
+    height: @input-height;
+    line-height: @input-height;
     display: block;
     @media (min-width: 768px) {
       float: left;
     }
+  }
+  h4 {
+    margin: 0;
+    line-height: @input-height;
   }
 }
 
@@ -155,14 +165,23 @@ footer .poweredby img { width: 120px; }
 
 // Bootstrap-style add/delete button
 .tp-repeat-button-left {
-  label {
-    text-align: left;
+  &> div {
     @media (min-width: 768px) {
-      width: 40%;
-      text-align: right;
+      margin-left: 60%;
+      margin-right: 0;
     }
     @media (min-width: 992px) {
-      width: 32%;
+      margin-left: 65%;
+    }
+  }
+
+  label {
+    text-align: right;
+    @media (min-width: 768px) {
+      width: 68%;
+    }
+    @media (min-width: 992px) {
+      width: 81%;
     }
   }
 }
