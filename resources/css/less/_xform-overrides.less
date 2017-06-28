@@ -60,3 +60,23 @@ span.xfControl {
 .dijitContentPane {
   overflow: visible;
 }
+
+// Alert messages in "select2" inputs, hide xform css, show only its alertbox
+.tp-validation {
+  div.xfInvalid,
+  div.r-auxiliary-5 {
+    position: absolute;
+    top: -31px;
+    left: 153px;
+    z-index: 15;
+
+    label.xfLabel.aDefault.xfEnabled {
+      display: none;
+    }
+  }
+
+  input.custom-alert {
+    opacity: 0;
+    width: 0;
+  }
+}
