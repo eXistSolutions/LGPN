@@ -124,7 +124,6 @@
             <div class="tp-row">
                 <h1 class="tp-column-fullwidth tp-headline">LGPN Person Input Form</h1>
             </div>
-
         </header>
 
         <main>
@@ -262,10 +261,32 @@
 
                                 <!-- NAME -->
                                 <xf:group>
-                                    <xf:repeat ref="TEI:listNym/TEI:nym[@type!='Roman']" id="r-name">
-                                        <xf:label class="tp-row tp-form-header">
-                                            <h4 class="col-md-2">Nym</h4>
+                                    <div class="tp-row tp-repeat-add">
+                                        <xf:label class="tp-form-header">
+                                            <h3>Nym</h3>
                                         </xf:label>
+                                        <div class="tp-repeat-button-left">
+                                            <div class="tp-button-row tp-add">
+                                                <label>Add nym</label>
+                                                <xf:trigger class="-btn -btn-default">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-plus"/>
+                                                    </xf:label>
+                                                    <xf:insert context="instance('i-default')//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type!='Roman']"/>
+                                                    <script>
+                                                        clearAndInitAutocompletes();
+                                                    </script>
+                                                </xf:trigger>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <xf:repeat ref="TEI:listNym/TEI:nym[@type!='Roman']" id="r-name">
+                                        <div class="tp-row tp-repeat-headline">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Nym Replicant</h4>
+                                            </xf:label>
+                                        </div>
 
                                         <xf:group ref=".">
                                            <div class="tp-row">
@@ -338,20 +359,6 @@
                                                 </div>
                                            </div>
                                             <div class="tp-row tp-repeat-buttons">
-                                                <div class="tp-repeat-button-left">
-                                                    <div class="tp-button-row tp-add">
-                                                        <label>Add nym</label>
-                                                        <xf:trigger class="-btn -btn-default">
-                                                            <xf:label class="input-group-addon">
-                                                                <i class="glyphicon glyphicon-plus"/>
-                                                            </xf:label>
-                                                            <xf:insert context="instance('i-default')//TEI:listNym" nodeset="TEI:nym" origin="instance('i-template')//TEI:nym[@type!='Roman']"/>
-                                                            <script>
-                                                                clearAndInitAutocompletes();
-                                                            </script>
-                                                        </xf:trigger>
-                                                    </div>
-                                                </div>
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
                                                         <label>Delete nym</label>
@@ -369,10 +376,32 @@
 
                                         <!-- Attested forms -->
                                         <div>
-                                            <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
-                                                <xf:label class="tp-row tp-form-header">
-                                                    <h4 class="col-md-2">Attested Form</h4>
+                                            <div class="tp-row tp-repeat-add">
+                                                <xf:label class="tp-form-header">
+                                                    <h3>Attested Form</h3>
                                                 </xf:label>
+                                                <div class="tp-repeat-button-left">
+                                                    <div class="tp-button-row tp-add">
+                                                        <label>Add attested form</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-plus"/>
+                                                            </xf:label>
+                                                            <xf:insert context="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='attested']"/>
+                                                            <script>
+                                                                clearAndInitAutocompletes();
+                                                            </script>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
+                                                <div class="tp-row tp-repeat-headline">
+                                                    <xf:label class="tp-form-header">
+                                                        <h4>Attested Form Replicant</h4>
+                                                    </xf:label>
+                                                </div>
                                                 <xf:group ref=".">
                                                     <xf:label/>
                                                 </xf:group>
@@ -436,20 +465,6 @@
                                                 </div>
 
                                                 <div class="tp-row tp-repeat-buttons">
-                                                    <div class="tp-repeat-button-left">
-                                                        <div class="tp-button-row tp-add">
-                                                            <label>Add attested form</label>
-                                                            <xf:trigger class="-btn -btn-default">
-                                                                <xf:label class="input-group-addon">
-                                                                    <i class="glyphicon glyphicon-plus"/>
-                                                                </xf:label>
-                                                                <xf:insert context="instance('i-default')//TEI:nym[@type!='Roman'][index('r-name')]" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='attested']"/>
-                                                                <script>
-                                                                    clearAndInitAutocompletes();
-                                                                </script>
-                                                            </xf:trigger>
-                                                        </div>
-                                                    </div>
                                                     <div class="tp-repeat-button-right">
                                                         <div class="tp-button-row tp-delete">
                                                             <label>Delete attested form</label>
@@ -469,79 +484,11 @@
                                     </xf:repeat>
 
                                     <!-- Roman names -->
-                                    <xf:repeat ref="TEI:listNym/TEI:nym[@type='Roman']" id="r-rname">
-                                        <xf:label class="tp-row tp-form-header">
-                                            <h4 class="col-md-2">Roman Name</h4>
-                                        </xf:label>
-                                        <div class="tp-row">
-                                            <xf:group ref=".">
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label" tooltip="ref">Praenomen</label>
-                                                    <xf:input ref="TEI:persName[@type='praenomen']" class="hidden">
-                                                        <xf:action ev:event="nyms_autocomplete-callback">
-                                                            <xf:setvalue ref="." value="event('termValue')"/>
-                                                        </xf:action>
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-book"/>
-                                                        </xf:label>
-                                                        <xf:hint>praenomen</xf:hint>
-                                                    </xf:input>
-                                                    <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search praenomen" autocomplete="off"/>
-                                                </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label" tooltip="ref">Nomen gentile</label>
-                                                    <xf:input ref="TEI:persName[@type='nomen_gentile']" class="hidden">
-                                                        <xf:action ev:event="nyms_autocomplete-callback">
-                                                            <xf:setvalue ref="." value="event('termValue')"/>
-                                                        </xf:action>
-                                                        <xf:label class="input-group-addon">ref
-                                                            <i class="glyphicon glyphicon-book"/>
-                                                        </xf:label>
-                                                        <xf:hint>nomen gentile</xf:hint>
-                                                    </xf:input>
-                                                    <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search nomen gentile" autocomplete="off"/>
-                                                </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Relationship</label>
-                                                    <xf:select1 class="tp-input -form-control" ref="TEI:persName[@type='filiation']/@subtype">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-list"/>
-                                                        </xf:label>
-                                                        <xf:itemset nodeset="instance('i-filiation')/option">
-                                                            <xf:label ref="."/>
-                                                            <xf:value ref="@value"/>
-                                                        </xf:itemset>
-                                                    </xf:select1>
-                                                </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label" tooltip="ref">Search relationship</label>
-                                                    <xf:input ref="TEI:persName[@type='filiation']" class="hidden">
-                                                        <xf:action ev:event="nyms_autocomplete-callback">
-                                                            <xf:setvalue ref="." value="event('termValue')"/>
-                                                        </xf:action>
-                                                        <xf:label class="input-group-addon">ref
-                                                            <i class="glyphicon glyphicon-book"/>
-                                                        </xf:label>
-                                                        <xf:hint>filiation</xf:hint>
-                                                    </xf:input>
-                                                    <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search filiation" autocomplete="off"/>
-                                                </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label" tooltip="ref">Tribes</label>
-                                                    <xf:select1 class="tp-input -form-control" ref="TEI:persName[@type='tribe']">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-list"/>
-                                                        </xf:label>
-                                                        <xf:itemset nodeset="instance('i-tribes')/option">
-                                                            <xf:label ref="."/>
-                                                            <xf:value ref="@value"/>
-                                                        </xf:itemset>
-                                                    </xf:select1>
-                                                </div>
-                                            </xf:group>
-                                        </div>
-
-                                        <div class="tp-row tp-repeat-buttons">
+                                    <div>
+                                        <div class="tp-row tp-repeat-add">
+                                            <xf:label class="tp-form-header">
+                                                <h3>Roman Name</h3>
+                                            </xf:label>
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
                                                     <label>Add Roman name</label>
@@ -556,31 +503,132 @@
                                                     </xf:trigger>
                                                 </div>
                                             </div>
-                                            <div class="tp-repeat-button-right">
-                                                <div class="tp-button-row tp-delete">
-                                                    <label>Delete Roman name</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-trash"/>
-                                                        </xf:label>
-                                                        <xf:delete nodeset="//TEI:nym[@type='Roman'][index('r-rname')]"/>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
                                         </div>
 
-                                <div class="tp-section-divider"/>
-                                    </xf:repeat>
+                                        <xf:repeat ref="TEI:listNym/TEI:nym[@type='Roman']" id="r-rname">
+                                            <div class="tp-row">
+                                                <div class="tp-row tp-repeat-headline">
+                                                    <xf:label class="tp-form-header">
+                                                        <h4 class="col-md-6">Roman Name Replicant</h4>
+                                                    </xf:label>
+                                                </div>
+
+                                                <xf:group ref=".">
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label" tooltip="ref">Praenomen</label>
+                                                        <xf:input ref="TEI:persName[@type='praenomen']" class="hidden">
+                                                            <xf:action ev:event="nyms_autocomplete-callback">
+                                                                <xf:setvalue ref="." value="event('termValue')"/>
+                                                            </xf:action>
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-book"/>
+                                                            </xf:label>
+                                                            <xf:hint>praenomen</xf:hint>
+                                                        </xf:input>
+                                                        <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search praenomen" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label" tooltip="ref">Nomen gentile</label>
+                                                        <xf:input ref="TEI:persName[@type='nomen_gentile']" class="hidden">
+                                                            <xf:action ev:event="nyms_autocomplete-callback">
+                                                                <xf:setvalue ref="." value="event('termValue')"/>
+                                                            </xf:action>
+                                                            <xf:label class="input-group-addon">ref
+                                                                <i class="glyphicon glyphicon-book"/>
+                                                            </xf:label>
+                                                            <xf:hint>nomen gentile</xf:hint>
+                                                        </xf:input>
+                                                        <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search nomen gentile" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Relationship</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="TEI:persName[@type='filiation']/@subtype">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-list"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-filiation')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label" tooltip="ref">Search relationship</label>
+                                                        <xf:input ref="TEI:persName[@type='filiation']" class="hidden">
+                                                            <xf:action ev:event="nyms_autocomplete-callback">
+                                                                <xf:setvalue ref="." value="event('termValue')"/>
+                                                            </xf:action>
+                                                            <xf:label class="input-group-addon">ref
+                                                                <i class="glyphicon glyphicon-book"/>
+                                                            </xf:label>
+                                                            <xf:hint>filiation</xf:hint>
+                                                        </xf:input>
+                                                        <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search filiation" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label" tooltip="ref">Tribes</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="TEI:persName[@type='tribe']">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-list"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-tribes')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                </xf:group>
+                                            </div>
+
+                                            <div class="tp-row tp-repeat-buttons">
+                                                <div class="tp-repeat-button-right">
+                                                    <div class="tp-button-row tp-delete">
+                                                        <label>Delete Roman name</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-trash"/>
+                                                            </xf:label>
+                                                            <xf:delete nodeset="//TEI:nym[@type='Roman'][index('r-rname')]"/>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tp-section-divider"/>
+                                        </xf:repeat>
+                                    </div>
 
                                 </xf:group>
 
 
                                 <!-- Primary Sources -->
                                 <xf:group>
-                                    <xf:repeat ref="TEI:bibl[@type='primary']" id="r-primarySource">
-                                        <xf:label>
+                                    <div class="tp-row tp-repeat-add">
+                                        <xf:label class="tp-form-header">
                                             <h3>Primary sources</h3>
                                         </xf:label>
+                                        <div class="tp-repeat-button-left">
+                                            <div class="tp-button-row tp-add">
+                                                <label>Add Source</label>
+                                                <xf:trigger class="-btn -btn-default">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-plus"/>
+                                                    </xf:label>
+                                                    <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type='primary']"/>
+                                                    <script>
+                                                        clearAndInitAutocompletes();
+                                                    </script>
+                                                </xf:trigger>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <xf:repeat ref="TEI:bibl[@type='primary']" id="r-primarySource">
+                                        <div class="tp-row tp-repeat-headline">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Primary Sources Replicant</h4>
+                                            </xf:label>
+                                        </div>
+
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
@@ -713,20 +761,6 @@
                                             </div>
                                         </xf:group>
                                         <div class="tp-row tp-repeat-buttons">
-                                            <div class="tp-repeat-button-left">
-                                                <div class="tp-button-row tp-add">
-                                                    <label>Add Source</label>
-                                                    <xf:trigger class="-btn -btn-default ">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-plus"/>
-                                                        </xf:label>
-                                                        <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type='primary']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
                                             <div class="tp-repeat-button-right">
                                                 <div class="tp-button-row tp-delete">
                                                     <label>Delete Source</label>
@@ -746,10 +780,32 @@
 
                                 <!-- PLACES -->
                                 <xf:group>
-                                    <xf:repeat ref="TEI:state[@type='location']" id="r-place">
-                                        <xf:label class="tp-row tp-form-header">
-                                            <h3 class="col-md-2">Places</h3>
+                                    <div class="tp-row tp-repeat-add">
+                                        <xf:label class="tp-form-header">
+                                            <h3>Places</h3>
                                         </xf:label>
+                                        <div class="tp-repeat-button-left">
+                                            <div class="tp-button-row tp-add">
+                                                <label>Add place</label>
+                                                <xf:trigger class="-btn -btn-default ">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-plus"/>
+                                                    </xf:label>
+                                                    <xf:insert context="//TEI:person" nodeset="TEI:state" origin="instance('i-template')//TEI:state[@type='location']"/>
+                                                    <script>
+                                                        clearAndInitAutocompletes();
+                                                    </script>
+                                                </xf:trigger>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <xf:repeat ref="TEI:state[@type='location']" id="r-place">
+                                        <div class="tp-row tp-repeat-headline">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Places Replicant</h4>
+                                            </xf:label>
+                                        </div>
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
@@ -828,21 +884,6 @@
                                             </div>
                                         </xf:group>
                                         <div class="tp-row tp-repeat-buttons">
-                                            <div class="tp-repeat-button-left">
-                                                <div class="tp-button-row tp-add">
-                                                    <label>Add place</label>
-                                                    <xf:trigger class="-btn -btn-default ">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-plus"/>
-                                                        </xf:label>
-                                                        <xf:insert context="//TEI:person" nodeset="TEI:state" origin="instance('i-template')//TEI:state[@type='location']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
-
                                             <div class="tp-repeat-button-right">
                                                 <div class="tp-button-row tp-delete">
                                                     <label>Delete place</label>
@@ -857,434 +898,472 @@
                                         </div>
                                         <div class="tp-section-divider"/>
                                     </xf:repeat>
-
                                 </xf:group>
 
-
-                                <h3>Status</h3>
-
-                                <xf:repeat ref="//TEI:trait[@type='status']" id="r-status">
-                                    <xf:label/>
-                                    <xf:group ref=".">
-                                        <div class="tp-row">
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Status</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@key">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tag"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-status')/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Subcategory</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@ana">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tags"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-status')/TEI:category[@xml:id=current()/../@key]/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                        </div>
-
-                                        <div class="tp-row tp-repeat-buttons">
+                                <section class="status-section">
+                                    <section class="tp-row tp-repeat-add">
+                                        <xf:label class="tp-form-header">
+                                            <h3 class="status-headline">Status</h3>
+                                        </xf:label>
+                                        <div class="tp-row status-button-container">
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label>Add Status</label>
+                                                    <label><span>Add </span>Status</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='status']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
+                                                        <script>clearAndInitAutocompletes();</script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
-                                            <div class="tp-repeat-button-right">
-                                                <div class="tp-button-row tp-delete">
-                                                    <label>Delete Status</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-trash"/>
-                                                        </xf:label>
-                                                        <xf:delete nodeset="//TEI:trait[@type='status'][index('r-status')]"/>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </xf:group>
-                                </xf:repeat>
-
-                                <div class="tp-divider col-xs-12"/>
-
-                                <xf:repeat ref="//TEI:trait[@type='profession']" id="r-profession">
-                                    <xf:label/>
-                                    <xf:group ref=".">
-                                        <div class="tp-row">
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Profession</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@key">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tag"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-profession')/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Subcategory</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@ana">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tags"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-profession')/TEI:category[@xml:id=current()/../@key]/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                        </div>
-
-                                        <div class="tp-row tp-repeat-buttons">
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label>Add Profession</label>
+                                                    <label><span>Add </span>Profession</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='profession']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
+                                                        <script>clearAndInitAutocompletes();</script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
-                                            <div class="tp-repeat-button-right">
-                                                <div class="tp-button-row tp-delete">
-                                                    <label>Delete Profession</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-trash"/>
-                                                        </xf:label>
-                                                        <xf:delete nodeset="//TEI:trait[@type='profession'][index('r-profession')]"/>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </xf:group>
-                                </xf:repeat>
-
-                                <div class="tp-divider col-xs-12"/>
-
-                                <xf:repeat ref="//TEI:trait[@type='office']" id="r-office">
-                                    <xf:label/>
-                                    <xf:group ref=".">
-                                        <div class="tp-row">
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Office</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@key">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tag"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-office')/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Subcategory</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@ana">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tags"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-office')/TEI:category[@xml:id=current()/../@key]/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                        </div>
-
-                                        <div class="tp-row tp-repeat-buttons">
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label>Add Office</label>
+                                                    <label><span>Add </span>Profession</label>
+                                                    <xf:trigger class="-btn -btn-default ">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-plus"/>
+                                                        </xf:label>
+                                                        <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='profession']"/>
+                                                        <script>clearAndInitAutocompletes();</script>
+                                                    </xf:trigger>
+                                                </div>
+                                            </div>
+                                            <div class="tp-repeat-button-left">
+                                                <div class="tp-button-row tp-add">
+                                                    <label><span>Add </span>Office</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='office']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
+                                                        <script>clearAndInitAutocompletes();</script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
-                                            <div class="tp-repeat-button-right">
-                                                <div class="tp-button-row tp-delete">
-                                                    <label>Delete Office</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-trash"/>
-                                                        </xf:label>
-                                                        <xf:delete nodeset="//TEI:trait[@type='office'][index('r-office')]"/>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </xf:group>
-                                </xf:repeat>
-
-                                <div class="tp-divider col-xs-12"/>
-
-                                <xf:repeat ref="//TEI:trait[@type='religion']" id="r-religion">
-                                    <xf:label/>
-                                    <xf:group ref=".">
-                                        <div class="tp-row">
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Religion</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@key">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tag"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-religion')/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Subcategory</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@ana">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tags"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-religion')/TEI:category[@xml:id=current()/../@key]/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                        </div>
-
-                                        <div class="tp-row tp-repeat-buttons">
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label>Add Religion</label>
+                                                    <label><span>Add </span>Religion</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='religion']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
+                                                        <script>clearAndInitAutocompletes();</script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
-                                            <div class="tp-repeat-button-right">
-                                                <div class="tp-button-row tp-delete">
-                                                    <label>Delete Religion</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-trash"/>
-                                                        </xf:label>
-                                                        <xf:delete nodeset="//TEI:trait[@type='religion'][index('r-religion')]"/>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </xf:group>
-                                </xf:repeat>
-
-                                <div class="tp-divider col-xs-12"/>
-
-                                <xf:repeat ref="//TEI:trait[@type='Roman']" id="r-Roman">
-                                    <xf:label/>
-                                    <xf:group ref=".">
-                                        <div class="tp-row">
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Roman World</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@key">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tag"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-roman')/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Subcategory</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@ana">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-tags"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-roman')/TEI:category[@xml:id=current()/../@key]/TEI:category">
-                                                        <xf:label ref="TEI:catDesc"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                        </div>
-
-                                        <div class="tp-row tp-repeat-buttons">
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label>Add Category</label>
+                                                    <label><span>Add </span>Category</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
                                                         </xf:label>
                                                         <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='Roman']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
-                                            <div class="tp-repeat-button-right">
-                                                <div class="tp-button-row tp-delete">
-                                                    <label>Delete Category</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-trash"/>
-                                                        </xf:label>
-                                                        <xf:delete nodeset="//TEI:trait[@type='Roman'][index('r-Roman')]"/>
+                                                        <script>clearAndInitAutocompletes();</script>
                                                     </xf:trigger>
                                                 </div>
                                             </div>
                                         </div>
+                                    </section>
 
-                                    </xf:group>
-                                </xf:repeat>
+                                    <div class="tp-section-divider"/>
+
+                                    <xf:repeat ref="//TEI:trait[@type='status']" id="r-status">
+                                        <div class="tp-row tp-repeat-headline">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Status Replicant</h4>
+                                            </xf:label>
+                                        </div>
+
+                                        <xf:group ref=".">
+                                            <div class="tp-row">
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Status</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@key">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-status')/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Subcategory</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@ana">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tags"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-status')/TEI:category[@xml:id=current()/../@key]/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                            </div>
+
+                                            <div class="tp-row tp-repeat-buttons">
+                                                <div class="tp-repeat-button-right">
+                                                    <div class="tp-button-row tp-delete">
+                                                        <label>Delete Status</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-trash"/>
+                                                            </xf:label>
+                                                            <xf:delete nodeset="//TEI:trait[@type='status'][index('r-status')]"/>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </xf:group>
+                                    </xf:repeat>
+
+                                    <div class="tp-section-divider"/>
+
+                                    <xf:repeat ref="//TEI:trait[@type='profession']" id="r-profession">
+                                        <div class="tp-row tp-repeat-headline">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Profession Replicant</h4>
+                                            </xf:label>
+                                        </div>
+                                        <xf:group ref=".">
+                                            <div class="tp-row">
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Profession</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@key">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-profession')/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Subcategory</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@ana">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tags"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-profession')/TEI:category[@xml:id=current()/../@key]/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                            </div>
+
+                                            <div class="tp-row tp-repeat-buttons">
+                                                <div class="tp-repeat-button-right">
+                                                    <div class="tp-button-row tp-delete">
+                                                        <label>Delete Profession</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-trash"/>
+                                                            </xf:label>
+                                                            <xf:delete nodeset="//TEI:trait[@type='profession'][index('r-profession')]"/>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </xf:group>
+                                    </xf:repeat>
+
+                                    <div class="tp-section-divider"/>
+
+                                    <xf:repeat ref="//TEI:trait[@type='office']" id="r-office">
+                                        <div class="tp-row tp-repeat-headline">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Office Replicant</h4>
+                                            </xf:label>
+                                        </div>
+                                        <xf:group ref=".">
+                                            <div class="tp-row">
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Office</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@key">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-office')/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Subcategory</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@ana">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tags"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-office')/TEI:category[@xml:id=current()/../@key]/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                            </div>
+
+                                            <div class="tp-row tp-repeat-buttons">
+                                                <div class="tp-repeat-button-right">
+                                                    <div class="tp-button-row tp-delete">
+                                                        <label>Delete Office</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-trash"/>
+                                                            </xf:label>
+                                                            <xf:delete nodeset="//TEI:trait[@type='office'][index('r-office')]"/>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </xf:group>
+                                    </xf:repeat>
+
+                                    <div class="tp-section-divider"/>
+
+                                    <xf:repeat ref="//TEI:trait[@type='religion']" id="r-religion">
+                                        <div class="tp-row tp-repeat-headline">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Religion Replicant</h4>
+                                            </xf:label>
+                                        </div>
+                                        <xf:group ref=".">
+                                            <div class="tp-row">
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Religion</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@key">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-religion')/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Subcategory</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@ana">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tags"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-religion')/TEI:category[@xml:id=current()/../@key]/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                            </div>
+
+                                            <div class="tp-row tp-repeat-buttons">
+                                                <div class="tp-repeat-button-right">
+                                                    <div class="tp-button-row tp-delete">
+                                                        <label>Delete Religion</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-trash"/>
+                                                            </xf:label>
+                                                            <xf:delete nodeset="//TEI:trait[@type='religion'][index('r-religion')]"/>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </xf:group>
+                                    </xf:repeat>
+
+                                    <div class="tp-section-divider"/>
+
+                                    <xf:repeat ref="//TEI:trait[@type='Roman']" id="r-Roman">
+                                        <div class="tp-row tp-repeat-headline">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Roman World Replicant</h4>
+                                            </xf:label>
+                                        </div>
+                                        <xf:group ref=".">
+                                            <div class="tp-row">
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Roman World</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@key">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-roman')/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Subcategory</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@ana">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tags"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-roman')/TEI:category[@xml:id=current()/../@key]/TEI:category">
+                                                            <xf:label ref="TEI:catDesc"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                            </div>
+
+                                            <div class="tp-row tp-repeat-buttons">
+                                                <div class="tp-repeat-button-right">
+                                                    <div class="tp-button-row tp-delete">
+                                                        <label>Delete Category</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-trash"/>
+                                                            </xf:label>
+                                                            <xf:delete nodeset="//TEI:trait[@type='Roman'][index('r-Roman')]"/>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </xf:group>
+                                    </xf:repeat>
+                                </section>
 
                                 <div class="tp-section-divider"/>
 
+
                                 <!-- SECONDARY SOURCES -->
-                                <xf:group>
-                                    <xf:repeat ref="TEI:bibl[@type = 'auxiliary']" id="r-auxiliary">
-                                        <xf:label>
+                                <section class="secondary-sources">
+                                    <div class="tp-row tp-repeat-add">
+                                        <xf:label class="tp-form-header">
                                             <h3>Secondary sources</h3>
                                         </xf:label>
-
-                                        <div class="tp-row">
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label" tooltip="ref">Reference Abbr.</label>
-                                                <xf:input class="hidden" ref="TEI:ref/@target">
-                                                    <xf:action ev:event="reference_autocomplete-callback">
-                                                        <xf:setvalue ref="." value="event('termValue')"/>
-                                                    </xf:action>
-                                                    <xf:label class="input-group-addon">ref
-                                                        <i class="glyphicon glyphicon-search"/>
+                                        <div class="tp-repeat-button-left">
+                                            <div class="tp-button-row tp-add">
+                                                <label>Add Source</label>
+                                                <xf:trigger class="-btn -btn-default">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-plus"/>
                                                     </xf:label>
-                                                    <xf:hint>reference abbreviation</xf:hint>
-                                                </xf:input>
-                                                <input type="hidden" class="tp-input" data-function="reference_autocomplete" placeholder="Type to search reference abbreviation" autocomplete="off"/>
-                                                <xf:trigger class="hidden reference_autocomplete">
-                                                    <xf:label/>
-                                                    <xf:action ev:event="DOMActivate">
-                                                        <xf:setvalue ref="instance('i-controller')/bibl" value="instance('i-default')//TEI:bibl[index('r-primarySource')]/TEI:ref/@target"/>
-                                                        <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
-                                                    </xf:action>
+                                                    <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type = 'auxiliary']"/>
+                                                    <script>clearAndInitAutocompletes();</script>
                                                 </xf:trigger>
                                             </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Author</label>
-                                                <xf:input class="tp-input -form-control" ref="TEI:author">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-user"/>
-                                                    </xf:label>
-                                                </xf:input>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Details</label>
-                                                <xf:input class="tp-input -form-control" ref="TEI:seg[@type='details']">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-list-alt"/>
-                                                    </xf:label>
-                                                </xf:input>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Link</label>
-                                                <xf:input class="tp-input -form-control" ref="TEI:ptr/@ref">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-link"/>
-                                                    </xf:label>
-                                                </xf:input>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Secondary Types</label>
-                                                <xf:select1 class="tp-input -form-control" ref="@subtype">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-book"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-secondaryTypes')/option">
-                                                        <xf:label ref="."/>
-                                                        <xf:value ref="@value"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
                                         </div>
-                                        <div class="tp-row">
-                                            <div class="form-group">
-                                                <label class="tp-label-1-row-2-col">Source</label>
-                                                <xf:select class="tp-input-1-row-2-col" ref="@ana" appearance="full">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-check"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-comments')//option">
-                                                        <xf:label ref="."/>
-                                                        <xf:value ref="@value"/>
-                                                    </xf:itemset>
-                                                </xf:select>
-                                            </div>
-                                        </div>
-                                        <div class="tp-row tp-repeat-buttons">
-                                            <div class="tp-repeat-button-left">
-                                                <div class="tp-button-row tp-add">
-                                                    <label>Add</label>
-                                                    <xf:trigger class="-btn -btn-default ">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-plus"/>
-                                                        </xf:label>
-                                                        <xf:insert context="//TEI:person" nodeset="TEI:bibl" origin="instance('i-template')//TEI:bibl[@type = 'auxiliary']"/>
-                                                        <script>
-                                                            clearAndInitAutocompletes();
-                                                        </script>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
-                                            <div class="tp-repeat-button-right">
-                                                <div class="tp-button-row tp-delete">
-                                                    <label>Delete</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-trash"/>
-                                                        </xf:label>
-                                                        <xf:delete nodeset="//TEI:bibl[@type = 'auxiliary'][index('r-auxiliary')]"/>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
 
-                                    </xf:repeat>
-                                </xf:group>
+                                    <xf:group>
+                                        <xf:repeat ref="TEI:bibl[@type = 'auxiliary']" id="r-auxiliary">
+                                            <div class="tp-row tp-repeat-headline">
+                                                <xf:label class="tp-form-header">
+                                                    <h4>Secondary Sources Replicant</h4>
+                                                </xf:label>
+                                            </div>
+
+                                            <div class="tp-row">
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label" tooltip="ref">Reference Abbr.</label>
+                                                    <xf:input class="hidden" ref="TEI:ref/@target">
+                                                        <xf:action ev:event="reference_autocomplete-callback">
+                                                            <xf:setvalue ref="." value="event('termValue')"/>
+                                                        </xf:action>
+                                                        <xf:label class="input-group-addon">ref
+                                                            <i class="glyphicon glyphicon-search"/>
+                                                        </xf:label>
+                                                        <xf:hint>reference abbreviation</xf:hint>
+                                                    </xf:input>
+                                                    <input type="hidden" class="tp-input" data-function="reference_autocomplete" placeholder="Type to search reference abbreviation" autocomplete="off"/>
+                                                    <xf:trigger class="hidden reference_autocomplete">
+                                                        <xf:label/>
+                                                        <xf:action ev:event="DOMActivate">
+                                                            <xf:setvalue ref="instance('i-controller')/bibl" value="instance('i-default')//TEI:bibl[index('r-primarySource')]/TEI:ref/@target"/>
+                                                            <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                                        </xf:action>
+                                                    </xf:trigger>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Author</label>
+                                                    <xf:input class="tp-input -form-control" ref="TEI:author">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-user"/>
+                                                        </xf:label>
+                                                    </xf:input>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Details</label>
+                                                    <xf:input class="tp-input -form-control" ref="TEI:seg[@type='details']">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-list-alt"/>
+                                                        </xf:label>
+                                                    </xf:input>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Link</label>
+                                                    <xf:input class="tp-input -form-control" ref="TEI:ptr/@ref">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-link"/>
+                                                        </xf:label>
+                                                    </xf:input>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Secondary Types</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@subtype">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-book"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-secondaryTypes')/option">
+                                                            <xf:label ref="."/>
+                                                            <xf:value ref="@value"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                            </div>
+                                            <div class="tp-row">
+                                                <div class="form-group">
+                                                    <label class="tp-label-1-row-2-col">Source</label>
+                                                    <xf:select class="tp-input-1-row-2-col" ref="@ana" appearance="full">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-check"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-comments')//option">
+                                                            <xf:label ref="."/>
+                                                            <xf:value ref="@value"/>
+                                                        </xf:itemset>
+                                                    </xf:select>
+                                                </div>
+                                            </div>
+                                            <div class="tp-row tp-repeat-buttons">
+                                                <div class="tp-repeat-button-right">
+                                                    <div class="tp-button-row tp-delete">
+                                                        <label>Delete</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-trash"/>
+                                                            </xf:label>
+                                                            <xf:delete nodeset="//TEI:bibl[@type = 'auxiliary'][index('r-auxiliary')]"/>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </xf:repeat>
+                                    </xf:group>
+                                </section>
+                                <!-- // end secondary sources -->
                             </xf:group>
                         </section>
                     </div>
@@ -1300,11 +1379,32 @@
                         <fieldset class="form-horizontal">
                             <xf:group ref="//TEI:listRelation"><!-- RELATIONSHIPS -->
                                 <xf:group class="fieldset">
+                                    <div class="tp-row tp-repeat-add">
+                                        <xf:label class="tp-form-header">
+                                            <h3>Relationship</h3>
+                                        </xf:label>
+                                        <div class="tp-repeat-button-left">
+                                            <div class="tp-button-row tp-add">
+                                                <label>Add Relationship</label>
+                                                <xf:trigger class="-btn -btn-default ">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-plus"/>
+                                                    </xf:label>
+                                                    <xf:insert context="//TEI:listRelation" nodeset="TEI:relation" origin="instance('i-template')//TEI:relation"/>
+                                                    <script>
+                                                        clearAndInitAutocompletes();
+                                                    </script>
+                                                </xf:trigger>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <xf:repeat ref="TEI:relation" id="r-relation">
-                                        <xf:label class="tp-row tp-form-header">
-                                            <h4 class="col-md-2">Relationship</h4>
-                                        </xf:label>
+                                        <div class="tp-row tp-repeat-headline">
+                                            <xf:label class="tp-form-header">
+                                                <h4>Relationship Replicant</h4>
+                                            </xf:label>
+                                        </div>
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
@@ -1356,35 +1456,20 @@
                                                 </div>
                                             </div>
                                         </xf:group>
-                                    <div class="tp-row tp-repeat-buttons">
-                                        <div class="tp-repeat-button-left">
-                                            <div class="tp-button-row tp-add">
-                                                <label>Add Relationship</label>
-                                                <xf:trigger class="-btn -btn-default ">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-plus"/>
-                                                    </xf:label>
-                                                    <xf:insert context="//TEI:listRelation" nodeset="TEI:relation" origin="instance('i-template')//TEI:relation"/>
-                                                    <script>
-                                                        clearAndInitAutocompletes();
-                                                    </script>
-                                                </xf:trigger>
+                                        <div class="tp-row tp-repeat-buttons">
+                                            <div class="tp-repeat-button-right">
+                                                <div class="tp-button-row tp-delete">
+                                                    <label>Delete Relationship</label>
+                                                    <xf:trigger class="-btn -btn-default">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-trash"/>
+                                                        </xf:label>
+                                                        <xf:delete nodeset="//TEI:relation[index('r-relation')]"/>
+                                                    </xf:trigger>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="tp-repeat-button-right">
-                                            <div class="tp-button-row tp-delete">
-                                                <label>Delete Relationship</label>
-                                                <xf:trigger class="-btn -btn-default">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-trash"/>
-                                                    </xf:label>
-                                                    <xf:delete nodeset="//TEI:relation[index('r-relation')]"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-                                    </div>
                                     </xf:repeat>
-
                                 </xf:group>
                             </xf:group>
                         </fieldset>

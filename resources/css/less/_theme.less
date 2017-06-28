@@ -54,15 +54,16 @@ footer .poweredby img { width: 120px; }
 .tp-width-main {
   background-color: @color-form-bg;
   padding-top: 2rem;
-  padding-bottom: 2rem;
   &:last-of-type {
     @media (min-width: @screen-sm-min) {
       margin-bottom: 2rem;
     }
   }
+}
 
-  .tp-row:last-of-type .form-group:last-of-type {
-    //margin-bottom: 0;
+.tp-section-save {
+  .tp-width-main {
+    padding-bottom: 2rem;
   }
 }
 
@@ -110,11 +111,15 @@ footer .poweredby img { width: 120px; }
 }
 
 .tp-repeat-buttons {
-  @media (min-width: @screen-sm-min) {
-    padding-top: 15px;
-  }
   .tp-button-row:not(:nth-of-type(2)) {
     &:extend(.form-group);
+  }
+}
+
+.tp-repeat-buttons,
+.tp-repeat-add {
+  @media (min-width: @screen-sm-min) {
+    padding: 0 0 10px 0;
   }
   .control-label {
     &:extend(.col-xs-12);
@@ -130,21 +135,64 @@ footer .poweredby img { width: 120px; }
   &> div {
     position: relative;
     min-height: 1px;
-    @media (min-width: 768px) {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
   }
   &> div {
-      width: 50%;
-      float: left;
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
   }
   label {
-    display: block;
-    @media (min-width: 768px) {
-      float: left;
-    }
+    height: @input-height;
+    line-height: @input-height;
   }
+  h3, h4 {
+    margin: 0;
+    line-height: @input-height;
+    width: 50%;
+    position: relative;
+    float: left;
+    min-height: 1px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .xfRepeatIndex h3,
+  .xfRepeatIndex h4 {
+    display: inline-block;
+  }
+}
+
+// Hide headline in original container and it only in replicant
+// Due to xform/betterform dynamic styling here applied with hard coded, static selectors!
+#C701,
+#C807,
+#C1192,
+#C1755,
+#C2414,
+#C2416,
+#C2502,
+#C1877,
+#C1891,
+#C1993,
+#C2173,
+#C2257,
+#C2308,
+#C2399,
+#C2487 {
+  &> .tp-repeat-headline {
+    display: none !important;
+  }
+}
+#C976 > div:nth-child(2) > div {
+  display: none;
+}
+
+.tp-repeat-headline {
+  display: inline;
+}
+
+.tp-repeat-add {
+  max-width: 62.5rem;
+  margin: 0;
 }
 
 #C226 > div.tp-row.tp-repeat-buttons,
@@ -156,27 +204,22 @@ footer .poweredby img { width: 120px; }
 
 // Bootstrap-style add/delete button
 .tp-repeat-button-left {
-  label {
-    text-align: left;
-    @media (min-width: 768px) {
-      width: 40%;
-      text-align: right;
-    }
+  &> div {
+    margin-left: auto;
+    margin-right: 0;
     @media (min-width: 992px) {
-      width: 32%;
+      padding-top: 4px;
     }
   }
 }
 
 .tp-repeat-button-right {
   &> div {
-    @media (min-width: 768px) {
-        margin-left: 30%;
-        margin-right: 0;
-    }
+    margin-left: auto;
+    margin-right: 0;
   }
   &> div > div {
-    margin-left: auto;
+    padding-left: 15px;
     @media (min-width: 768px) {
       margin-left: 0;
     }
@@ -189,6 +232,23 @@ footer .poweredby img { width: 120px; }
     @media (min-width: 992px) {
       width: 81%;
     }
+  }
+}
+
+.tp-delete,
+.tp-add {
+  display: table;
+  margin-left: auto;
+  margin-right: 0;
+
+  label {
+    display: table-cell;
+    text-align: right;
+    width: auto;
+  }
+  .xfControl {
+    display: table-cell;
+    padding-left: 15px;
   }
 }
 
@@ -205,6 +265,33 @@ footer .poweredby img { width: 120px; }
   }
 }
 
+// Special for add buttons and headline and margins in Status section
+.status-section {
+  .xfGroup {
+    margin-top: 20px;
+  }
+  .tp-repeat-buttons {
+    padding: 10px 0 0;
+  }
+}
+
+.tp-repeat-add h3.status-headline {
+  float: none;
+}
+.tp-repeat-add>div.status-button-container {
+  width: 100%;
+  .tp-repeat-button-left {
+    .make-xs-column(6);
+    .make-sm-column(4);
+    padding-bottom: 20px;
+    span {
+      @media (max-width: @screen-xs) {
+        display: none;
+      }
+    }
+  }
+}
+
 .tp-add {
   .btn-default {
     background-color: lighten(@colorGreen, 20%);
@@ -216,6 +303,11 @@ footer .poweredby img { width: 120px; }
       background-color: darken(@colorGreen, 20%);
     }
   }
+}
+
+// secondary-sources
+.secondary-sources {
+  padding-top: 20px;
 }
 
 // Save/delete buttons in last section
@@ -238,16 +330,29 @@ footer .poweredby img { width: 120px; }
       }
     }
   }
+  .tp-repeat-buttons>div {
+    float: left !important;
+    @media (min-width: 768px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  .tp-add {
+    margin-left: 13%;
+  }
+  @media (min-width: 992px) {
+    .tp-repeat-button-left label {
+      width: 50%;
+    }
+  }
 }
 
 // Headline in subform
 .tp-form-header {
   h3, h4 {
+    .make-xs-column(4);
     text-align: left;
     padding-left: 0;
-    @media (min-width: @screen-sm-min) {
-      text-align: center;
-    }
     @media (min-width: @screen-md-min) {
       text-align: right;
     }
@@ -303,10 +408,10 @@ footer .poweredby img { width: 120px; }
   padding-right: 0;
   @media (min-width: 768px) {
     float: left;
-    width: 75%;
+    width: 83%;
   }
   @media (min-width: 992px) {
-    width: 64%;
+    width: 72%;
   }
 }
 
@@ -332,9 +437,11 @@ footer .poweredby img { width: 120px; }
   min-height: 1px;
   @media (min-width: 768px) {
     float: left;
-    width: 75%;
+    width: 83%;
   }
   @media (min-width: 992px) {
-    width: 81.6666%;
+    width: 85.7%;
   }
 }
+
+
