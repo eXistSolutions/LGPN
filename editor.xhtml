@@ -596,6 +596,7 @@
 
                                 </xf:group>
 
+                                <div class="tp-section-divider"/>
 
                                 <!-- Primary Sources -->
                                 <xf:group>
@@ -906,7 +907,7 @@
                                         <div class="tp-row status-button-container">
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label><span>Add </span>Status</label>
+                                                    <label>Status</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
@@ -918,7 +919,7 @@
                                             </div>
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label><span>Add </span>Profession</label>
+                                                    <label>Profession</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
@@ -930,19 +931,7 @@
                                             </div>
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label><span>Add </span>Profession</label>
-                                                    <xf:trigger class="-btn -btn-default ">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-plus"/>
-                                                        </xf:label>
-                                                        <xf:insert context="//TEI:person" nodeset="TEI:trait" origin="instance('i-template')//TEI:trait[@type='profession']"/>
-                                                        <script>clearAndInitAutocompletes();</script>
-                                                    </xf:trigger>
-                                                </div>
-                                            </div>
-                                            <div class="tp-repeat-button-left">
-                                                <div class="tp-button-row tp-add">
-                                                    <label><span>Add </span>Office</label>
+                                                    <label>Office</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
@@ -954,7 +943,7 @@
                                             </div>
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label><span>Add </span>Religion</label>
+                                                    <label>Religion</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
@@ -966,7 +955,7 @@
                                             </div>
                                             <div class="tp-repeat-button-left">
                                                 <div class="tp-button-row tp-add">
-                                                    <label><span>Add </span>Category</label>
+                                                    <label>Roman world</label>
                                                     <xf:trigger class="-btn -btn-default ">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-plus"/>
@@ -979,9 +968,8 @@
                                         </div>
                                     </section>
 
-                                    <div class="tp-section-divider"/>
-
                                     <xf:repeat ref="//TEI:trait[@type='status']" id="r-status">
+                                        <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
                                                 <h4>Status</h4>
@@ -1032,9 +1020,8 @@
                                         </xf:group>
                                     </xf:repeat>
 
-                                    <div class="tp-section-divider"/>
-
                                     <xf:repeat ref="//TEI:trait[@type='profession']" id="r-profession">
+                                        <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
                                                 <h4>Profession</h4>
@@ -1084,9 +1071,8 @@
                                         </xf:group>
                                     </xf:repeat>
 
-                                    <div class="tp-section-divider"/>
-
                                     <xf:repeat ref="//TEI:trait[@type='office']" id="r-office">
+                                        <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
                                                 <h4>Office</h4>
@@ -1137,9 +1123,8 @@
                                         </xf:group>
                                     </xf:repeat>
 
-                                    <div class="tp-section-divider"/>
-
                                     <xf:repeat ref="//TEI:trait[@type='religion']" id="r-religion">
+                                        <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
                                                 <h4>Religion</h4>
@@ -1189,9 +1174,8 @@
                                         </xf:group>
                                     </xf:repeat>
 
-                                    <div class="tp-section-divider"/>
-
                                     <xf:repeat ref="//TEI:trait[@type='Roman']" id="r-Roman">
+                                        <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
                                                 <h4>Roman World</h4>
