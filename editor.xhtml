@@ -14,6 +14,8 @@
             <xf:model id="model-1">
                 <xf:instance xmlns="" id="i-default" src="resources/xml/teiPersonTemplate.xml"/>
                 <xf:bind ref="//TEI:nym[@type ne 'Roman']/@nymRef" constraint="string-length(.) &gt; 0" type="xs:string"/>
+                <xf:bind ref="//TEI:bibl[@type='primary'][index('r-primarySource')]/TEI:ref/@target" constraint="string-length(.) &gt; 0" type="xs:string"/>
+                <xf:bind ref="//TEI:bibl[index('r-primarySource')]/TEI:ref/@target" constraint="string-length(.) &gt; 0" type="xs:string"/>
                 <xf:bind ref="//TEI:bibl[@type='primary']/TEI:ref[index('r-primarySource')]" constraint="not(boolean-from-string(instance('i-biblPattern')/validate))"/>
                 <xf:instance xmlns="" id="i-template" src="resources/xml/personTemplate.xml"/>
                 <xf:instance xmlns="" id="i-volumes" src="resources/xml/volumes.xml"/>
@@ -284,31 +286,26 @@
                                     <xf:repeat ref="TEI:listNym/TEI:nym[@type!='Roman']" id="r-name">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
-                                                <h4>Nym Replicant</h4>
+                                                <h4>Nym</h4>
                                             </xf:label>
                                         </div>
 
                                         <xf:group ref=".">
-                                           <div class="tp-row">
-                                                <div class="tp-form-group-col">
+                                            <div class="tp-row">
+                                                <div class="tp-form-group-col tp-validation">
                                                     <label class="tp-label">Select name</label>
-                                                        <xf:input ref="@nymRef" class="-custom-alert">
-                                                            <xf:action ev:event="nyms_autocomplete-callback">
-                                                                <xf:setvalue ref="." value="event('termValue')"/>
-                                                            </xf:action>
-                                                            <xf:label class="input-group-addon">
-                                                                <i class="glyphicon glyphicon-book"/>
-                                                            </xf:label>
-                                                            <xf:hint>normalized form</xf:hint>
-                                                            <xf:alert>blah</xf:alert>
-                                                        </xf:input>
+                                                    <xf:input ref="@nymRef" class="-custom-alert">
+                                                        <xf:action ev:event="nyms_autocomplete-callback">
+                                                            <xf:setvalue ref="." value="event('termValue')"/>
+                                                        </xf:action>
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-book"/>
+                                                        </xf:label>
+                                                        <xf:hint>normalized form</xf:hint>
+                                                        <xf:alert>Please insert a term</xf:alert>
+                                                    </xf:input>
                                                     <input type="hidden" class="tp-input" data-function="nyms_autocomplete" placeholder="Type to search name" autocomplete="off"/>
-<!--
-<xf:output ref="@nymRef">
-                                                    <xf:label> </xf:label>
-                                                        <xf:alert>blllah</xf:alert>
-                                                    </xf:output>
--->                                                </div>
+                                                </div>
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Certainty</label>
                                                     <xf:select1 class="tp-input -form-control" ref="//TEI:listNym/TEI:nym/@cert">
@@ -399,7 +396,7 @@
                                             <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
                                                 <div class="tp-row tp-repeat-headline">
                                                     <xf:label class="tp-form-header">
-                                                        <h4>Attested Form Replicant</h4>
+                                                        <h4>Attested Form</h4>
                                                     </xf:label>
                                                 </div>
                                                 <xf:group ref=".">
@@ -509,7 +506,7 @@
                                             <div class="tp-row">
                                                 <div class="tp-row tp-repeat-headline">
                                                     <xf:label class="tp-form-header">
-                                                        <h4 class="col-md-6">Roman Name Replicant</h4>
+                                                        <h4 class="col-md-6">Roman Name</h4>
                                                     </xf:label>
                                                 </div>
 
@@ -625,16 +622,16 @@
                                     <xf:repeat ref="TEI:bibl[@type='primary']" id="r-primarySource">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
-                                                <h4>Primary Sources Replicant</h4>
+                                                <h4>Primary Sources</h4>
                                             </xf:label>
                                         </div>
 
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
-                                                <div class="tp-form-group-col">
+                                                <div class="tp-form-group-col tp-validation">
                                                     <label class="tp-label" tooltip="ref">Reference Abbr.</label>
-                                                    <xf:input class="hidden" ref="TEI:ref/@target">
+                                                    <xf:input class="-custom-alert" ref="TEI:ref/@target">
                                                         <xf:action ev:event="reference_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -642,6 +639,7 @@
                                                             <i class="glyphicon glyphicon-book"/>
                                                         </xf:label>
                                                         <xf:hint>reference abbreviation</xf:hint>
+                                                        <xf:alert>Please insert term</xf:alert>
                                                     </xf:input>
                                                     <input type="hidden" class="tp-input" data-function="reference_autocomplete" placeholder="Type to search reference abbreviation" autocomplete="off"/>
 
@@ -803,7 +801,7 @@
                                     <xf:repeat ref="TEI:state[@type='location']" id="r-place">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
-                                                <h4>Places Replicant</h4>
+                                                <h4>Places</h4>
                                             </xf:label>
                                         </div>
                                         <xf:group ref=".">
@@ -986,7 +984,7 @@
                                     <xf:repeat ref="//TEI:trait[@type='status']" id="r-status">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
-                                                <h4>Status Replicant</h4>
+                                                <h4>Status</h4>
                                             </xf:label>
                                         </div>
 
@@ -1039,7 +1037,7 @@
                                     <xf:repeat ref="//TEI:trait[@type='profession']" id="r-profession">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
-                                                <h4>Profession Replicant</h4>
+                                                <h4>Profession</h4>
                                             </xf:label>
                                         </div>
                                         <xf:group ref=".">
@@ -1091,7 +1089,7 @@
                                     <xf:repeat ref="//TEI:trait[@type='office']" id="r-office">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
-                                                <h4>Office Replicant</h4>
+                                                <h4>Office</h4>
                                             </xf:label>
                                         </div>
                                         <xf:group ref=".">
@@ -1144,7 +1142,7 @@
                                     <xf:repeat ref="//TEI:trait[@type='religion']" id="r-religion">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
-                                                <h4>Religion Replicant</h4>
+                                                <h4>Religion</h4>
                                             </xf:label>
                                         </div>
                                         <xf:group ref=".">
@@ -1196,7 +1194,7 @@
                                     <xf:repeat ref="//TEI:trait[@type='Roman']" id="r-Roman">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
-                                                <h4>Roman World Replicant</h4>
+                                                <h4>Roman World</h4>
                                             </xf:label>
                                         </div>
                                         <xf:group ref=".">
@@ -1246,7 +1244,6 @@
 
                                 <div class="tp-section-divider"/>
 
-
                                 <!-- SECONDARY SOURCES -->
                                 <section class="secondary-sources">
                                     <div class="tp-row tp-repeat-add">
@@ -1271,14 +1268,14 @@
                                         <xf:repeat ref="TEI:bibl[@type = 'auxiliary']" id="r-auxiliary">
                                             <div class="tp-row tp-repeat-headline">
                                                 <xf:label class="tp-form-header">
-                                                    <h4>Secondary Sources Replicant</h4>
+                                                    <h4>Secondary Sources</h4>
                                                 </xf:label>
                                             </div>
 
                                             <div class="tp-row">
-                                                <div class="tp-form-group-col">
+                                                <div class="tp-form-group-col tp-validation">
                                                     <label class="tp-label" tooltip="ref">Reference Abbr.</label>
-                                                    <xf:input class="hidden" ref="TEI:ref/@target">
+                                                    <xf:input class="-custom-alert" ref="TEI:ref/@target">
                                                         <xf:action ev:event="reference_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -1286,6 +1283,7 @@
                                                             <i class="glyphicon glyphicon-search"/>
                                                         </xf:label>
                                                         <xf:hint>reference abbreviation</xf:hint>
+                                                        <xf:alert>Please insert term</xf:alert>
                                                     </xf:input>
                                                     <input type="hidden" class="tp-input" data-function="reference_autocomplete" placeholder="Type to search reference abbreviation" autocomplete="off"/>
                                                     <xf:trigger class="hidden reference_autocomplete">
@@ -1402,7 +1400,7 @@
                                     <xf:repeat ref="TEI:relation" id="r-relation">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
-                                                <h4>Relationship Replicant</h4>
+                                                <h4>Relationship</h4>
                                             </xf:label>
                                         </div>
                                         <xf:group ref=".">
