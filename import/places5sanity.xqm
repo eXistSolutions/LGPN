@@ -14,7 +14,6 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
     
 <a>
     {
-        doc('/db/apps/lgpn-data/data/auxiliary/references/places-V5C.xml')//tei:placeName[../tei:town/string() !=''][../tei:deme/string() =''][./string()!=../tei:town/string()]/parent::tei:place
+        collection('/db/apps/lgpn-data/data/temp')//tei:place
     }
     </a>
-        
