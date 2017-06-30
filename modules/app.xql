@@ -235,12 +235,43 @@ declare function app:place-catalogue($node as node(), $model as map(*), $letter 
     return 
         <tr>
             <td class="col-md-2"><a>
-                {attribute href { "index.html?pname=&amp;pplace=" || $config:places//id($id)/normalize-unicode(normalize-space(tei:placeName[1]), 'NFC') } }
-                {normalize-unicode(normalize-space($n[1]), 'NFC')}</a>
+                {attribute href { "place.xhtml?place=" || $id }}
+                {normalize-space($n[1])}</a>
             </td>
-            <td class="col-md-1">{count($n) }</td>
+            <td class="col-md-1">{count(collection($config:persons-root)//tei:placeName[@key=$id]/ancestor::tei:person)}</td>
         </tr>
 };
+
+
+(:declare function app:place-catalogue($node as node(), $model as map(*), $letter as xs:string?)  {:)
+(:    if ($letter!='') then:)
+(:        :)
+(:        for $n in $config:places//tei:placeName[starts-with(., $letter)]:)
+(:               let $id := $n/parent::tei:place/@xml:id:)
+(:               order by $n:)
+(:        return :)
+(:            app:place-catalogue-item($n, $id):)
+(:    else :)
+(:        for $n in $config:places//tei:placeName:)
+(:               let $id := $n/parent::tei:place/@xml:id:)
+(:               order by $n:)
+(:        return :)
+(:            app:place-catalogue-item($n, $id):)
+(:};:)
+(::)
+(:declare function app:place-catalogue-item($n, $id) {:)
+(:            <tr>:)
+(:                <td class="col-md-2"><a>:)
+(:                    {attribute href { "index.html?pname=&amp;pplace=" || 'aa':)
+(:(:                    $config:places//id($id)/normalize-unicode(normalize-space(tei:placeName[1]), 'NFC') :):)
+(:                        :)
+(:                    } }:)
+(:                    {normalize-unicode(normalize-space($n[1]), 'NFC')}</a>:)
+(:                </td>:)
+(:                <td class="col-md-1">{count(collection($config:persons-root)//tei:placeName[@key=$id]/ancestor::tei:person)}</td>:)
+(:            </tr>:)
+(:};:)
+
 
 declare function app:kml($node as node(), $model as map(*)) {
     (  'distinct-values(' || $model?query-string || '/tei:birth/tei:placeName/@key)',
