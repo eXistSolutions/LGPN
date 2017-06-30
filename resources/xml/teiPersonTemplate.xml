@@ -53,13 +53,6 @@
                                 <persName xml:lang="grc" ana="Nom" corresp="s1" n=""/>
                             </form>
                         </nym>
-                        <nym type="Roman" ana="greek" n="1" corresp="s1">
-                            <!-- special entry type for Roman names                -->
-                            <persName type="praenomen"/>
-                            <persName type="nomen_gentile"/>
-                            <persName type="filiation" subtype="son"/>
-                            <persName type="tribe"/>
-                        </nym>
                     </listNym>
                     <!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
                     <state type="location" subtype="citizen">
@@ -68,17 +61,6 @@
                     <!-- repeatable
                     @subtype: secondary, dictionary, onomastic
                     @ana: location, name, date, relationship, stemma -->
-                    <bibl type="auxiliary" subtype="secondary" ana="">
-                        <ref target=""/>
-                        <author/>
-                        <seg type="details"/>
-                        <ptr ref=""/>
-                    </bibl>
-                    <trait type="profession" key="" ana=""/>
-                    <trait type="office" key="" ana=""/>
-                    <trait type="status" key="" ana=""/>
-                    <trait type="religion" key="" ana=""/>
-                    <trait type="Roman" key="" ana=""/>
                 </person>
                 <listRelation>
                     <relation type="family" subtype="natural" name="child" passive=""/>
