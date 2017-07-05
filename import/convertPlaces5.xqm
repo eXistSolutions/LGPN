@@ -114,9 +114,9 @@ let $a:=local:setRegions()
 
   let $alterName :=
         if ($type='tribe' and not($node/tei:placeName/string()=$node/tei:polis/string())) then
-                    <placeName type="{if (contains($node/tei:polis/string(), '(mod.)')) then 'modern' else ''}" subtype="minor" cert="" xml:lang="">{replace($node/tei:polis/string(), '\(mod\.\)', '')}</placeName>
+                    <placeName xmlns="http://www.tei-c.org/ns/1.0" type="{if (contains($node/tei:polis/string(), '(mod.)')) then 'modern' else ''}" subtype="minor" cert="" xml:lang="">{replace($node/tei:polis/string(), '\(mod\.\)', '')}</placeName>
         else if ($type='suspicious') then
-                    <placeName type="other" subtype="minor" cert="" xml:lang="">{string-join($node/*[not(local-name()='placeName')]/string(), ' ')}</placeName>
+                    <placeName xmlns="http://www.tei-c.org/ns/1.0" type="other" subtype="minor" cert="" xml:lang="">{string-join($node/*[not(local-name()='placeName')]/string(), ' ')}</placeName>
         else                     
             ()
 
@@ -141,10 +141,10 @@ let $a:=local:setRegions()
                       attribute ref {$ref},
                     <placeName type="{$modern}" subtype="" cert="" xml:lang="">{$placeName}</placeName>,
                     $alterName
-(:                    ,:)
-(:                    <location type="pleiades"><label/></location>,:)
-(:                    <location cert="high"><geo/></location>,:)
-(:                    <trait type="population"><num/></trait>   :)
+                    ,
+                    <location type="pleiades"><label/></location>,
+                    <location cert="high"><geo/></location>,
+                    <trait type="population"><num/></trait>   
               }
 }
             </listPlace>
