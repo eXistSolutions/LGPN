@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="patterns">
+    <category xml:id="BP1">
+        <catDesc>takes everything uncritically</catDesc>
+    </category>
+    <category xml:id="BP2">
+        <catDesc>looks for p for pages or pl (for plates)</catDesc>
+    </category>
+    <category xml:id="BP3">
+        <catDesc>no longer used</catDesc>
+    </category>
+    <category xml:id="BRACKPAT">
+        <catDesc/>
+    </category>
+    <category xml:id="FASCICULEPAT">
+        <catDesc/>
+    </category>
+    <category xml:id="FRAGMENTPAT">
+        <catDesc/>
+    </category>
+    <category xml:id="INDEXPAT">
+        <catDesc/>
+    </category>
+    <category xml:id="ITALARAB">
+        <catDesc/>
+    </category>
+    <category xml:id="ITALROMAN">
+        <catDesc/>
+    </category>
+    <category xml:id="JBRACKETPAT">
+        <catDesc/>
+    </category>
+    <category xml:id="JCOMMAPAT">
+        <catDesc/>
+    </category>
+    <category xml:id="LINENOPAT">
+        <catDesc/>
+    </category>
+    <category xml:id="ROMANPAT">
+        <catDesc/>
+    </category>
+    <category xml:id="ROMANPAT2">
+        <catDesc/>
+    </category>
+    <category xml:id="SMALLROMAN">
+        <catDesc/>
+    </category>
+    <category xml:id="VOLUMEARAB">
+        <catDesc/>
+    </category>
+</taxonomy>
