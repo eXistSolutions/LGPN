@@ -10,16 +10,16 @@ import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" 
 declare option output:method "json";
 declare option output:media-type "text/javascript";
 let $data := request:get-parameter('query', '')
-            let $constituents :=  collection($config:references-root)//tei:biblFull[contains(lower-case(.//tei:title[@type="abbr"]), lower-case($data))]
+            let $constituents :=  collection($config:references-root)//tei:bibl[contains(lower-case(tei:abbr), lower-case($data))]
             return
             <result>
                 <total>{count($constituents)}</total>
                 { for $m in $constituents
-                    order by $m//tei:title[@type="abbr"]
+                    order by $m//tei:abbr
                     return 
                     <term>
                         <value>{$m/@xml:id/string()}</value>
-                        <id>{$m//tei:title[@type="abbr"]/string()}</id>
+                        <id>{$m//tei:abbr/string()}</id>
                     </term>
                 }
             </result>

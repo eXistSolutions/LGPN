@@ -63,6 +63,9 @@
     <category xml:id="pragmateutes">
         <catDesc xml:lang="en">pragmateutes</catDesc>
     </category>
+    <category xml:id="merchant">
+        <catDesc xml:lang="en">merchant</catDesc>
+    </category>
     <category xml:id="shipwright">
         <catDesc xml:lang="en">shipwright</catDesc>
     </category>

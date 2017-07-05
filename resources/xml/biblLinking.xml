@@ -2,5 +2,6 @@
 <data>
     <option value=""/>
     <option value="equal">=</option>
+    <option value="published-twice">;=</option>
     <option value="correction">+</option>
 </data>

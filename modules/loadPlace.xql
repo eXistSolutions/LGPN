@@ -22,6 +22,6 @@ declare function local:new($id) {
 };
 
 let $id := request:get-parameter('id', '')
-let $entry := $config:places//TEI:place[@xml:id=$id]
+let $entry := $config:places//id($id)
 
 return if ($entry) then $entry else local:new("P" || util:uuid())

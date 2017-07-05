@@ -54,15 +54,16 @@ footer .poweredby img { width: 120px; }
 .tp-width-main {
   background-color: @color-form-bg;
   padding-top: 2rem;
-  padding-bottom: 2rem;
   &:last-of-type {
     @media (min-width: @screen-sm-min) {
       margin-bottom: 2rem;
     }
   }
+}
 
-  .tp-row:last-of-type .form-group:last-of-type {
-    margin-bottom: 0;
+.tp-section-save {
+  .tp-width-main {
+    padding-bottom: 2rem;
   }
 }
 
@@ -102,7 +103,130 @@ footer .poweredby img { width: 120px; }
   margin-right: 4px;
 }
 
+.tp-button-row {
+  .glyphicon {
+    margin-right: 0;
+    top: 3px;
+  }
+}
+
+.tp-repeat-buttons {
+  .tp-button-row:not(:nth-of-type(2)) {
+    &:extend(.form-group);
+  }
+}
+
+.tp-repeat-buttons,
+.tp-repeat-add {
+  @media (min-width: @screen-sm-min) {
+    padding: 0 0 10px 0;
+    margin-top: 10px;
+  }
+  .control-label {
+    &:extend(.col-xs-12);
+    &:extend(.col-sm-9);
+    &:extend(.col-md-10);
+
+    @media (max-width: @screen-sm) {
+      padding-left: 0;
+      text-align: left;
+    }
+  }
+  label,
+  &> div {
+    position: relative;
+    min-height: 1px;
+  }
+  &> div {
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  label {
+    height: @input-height;
+    line-height: @input-height;
+  }
+  h3, h4 {
+    margin: 0;
+    line-height: @input-height;
+    width: 50%;
+    position: relative;
+    float: left;
+    min-height: 1px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .xfRepeatIndex h3,
+  .xfRepeatIndex h4 {
+    display: inline-block;
+  }
+}
+
+.tp-repeat-headline {
+  display: inline;
+}
+
+.tp-repeat-add {
+  max-width: 62.5rem;
+}
+
+#C226 > div.tp-row.tp-repeat-buttons,
+#C687 > div.tp-row.tp-repeat-buttons,
+#C951 > div.tp-row.tp-repeat-buttons {
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
 // Bootstrap-style add/delete button
+.tp-repeat-button-left {
+  &> div {
+    margin-left: auto;
+    margin-right: 0;
+    @media (min-width: 992px) {
+      padding-top: 4px;
+    }
+  }
+}
+
+.tp-repeat-button-right {
+  &> div {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  &> div > div {
+    padding-left: 15px;
+    @media (min-width: 768px) {
+      margin-left: 0;
+    }
+  }
+  label {
+    text-align: right;
+    @media (min-width: 768px) {
+      width: 68%;
+    }
+    @media (min-width: 992px) {
+      width: 81%;
+    }
+  }
+}
+
+.tp-delete,
+.tp-add {
+  display: table;
+  margin-left: auto;
+  margin-right: 0;
+
+  label {
+    display: table-cell;
+    text-align: right;
+    width: auto;
+  }
+  .xfControl {
+    display: table-cell;
+    padding-left: 15px;
+  }
+}
+
 .tp-delete {
   .btn-default {
     background-color: lighten(@colorRed, 20%);
@@ -112,6 +236,33 @@ footer .poweredby img { width: 120px; }
     }
     &:active {
       background-color: darken(@colorRed, 20%);
+    }
+  }
+}
+
+// Special for add buttons and headline and margins in Status section
+.status-section {
+  .xfGroup {
+    margin-top: 20px;
+  }
+  .tp-repeat-buttons {
+    padding: 10px 0 0;
+  }
+}
+
+.tp-repeat-add h3.status-headline {
+  float: none;
+}
+.tp-repeat-add>div.status-button-container {
+  width: 100%;
+  .tp-repeat-button-left {
+    .make-xs-column(6);
+    .make-sm-column(4);
+    padding-bottom: 20px;
+    span {
+      @media (max-width: @screen-xs) {
+        display: none;
+      }
     }
   }
 }
@@ -129,69 +280,44 @@ footer .poweredby img { width: 120px; }
   }
 }
 
-.tp-button-row {
-  .glyphicon {
-    margin-right: 0;
-    top: 3px;
-  }
-}
-
-.tp-repeat-buttons {
-  @media (min-width: @screen-sm-min) {
-    padding-top: 15px;
-  }
-  .tp-button-row:not(:nth-of-type(2)) {
-    &:extend(.form-group);
-  }
-  .control-label {
-    &:extend(.col-xs-12);
-    &:extend(.col-sm-9);
-    &:extend(.col-md-10);
-
-    @media (max-width: @screen-sm) {
-      padding-left: 0;
-      text-align: left;
-    }
-  }
-}
-
-#C226 > div.tp-row.tp-repeat-buttons,
-#C687 > div.tp-row.tp-repeat-buttons,
-#C951 > div.tp-row.tp-repeat-buttons {
-  padding-top: 30px;
-  padding-bottom: 15px;
+// secondary-sources
+.secondary-sources {
+  padding-top: 20px;
 }
 
 // Save/delete buttons in last section
 .tp-section-save {
-  .form-horizontal > .col-sm-6 {
-    @media (max-width: @screen-sm) {
-      margin-bottom: 2rem;
-    }
-  }
-
-  .tp-button-row > div {
-    padding-left: 26px;
-  }
   .btn {
     width: @button-size;
     height: @button-size;
     padding: 0;
   }
   .tp-button-cancel {
-    display: inline-block;
+    display: table;
   }
   // Text in cancel button
-  .control-label {
+  label {
     span {
       display: block;
-      text-align: left;
-      @media (min-width: @screen-sm-min) {
-        text-align: right;
-      }
       &:nth-of-type(2) {
         font-weight: normal;
+        line-height: 1rem;
       }
+    }
+  }
+  .tp-repeat-buttons>div {
+    float: left !important;
+    @media (min-width: 768px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  .tp-add {
+    margin-left: 13%;
+  }
+  @media (min-width: 992px) {
+    .tp-repeat-button-left label {
+      width: 50%;
     }
   }
 }
@@ -199,11 +325,9 @@ footer .poweredby img { width: 120px; }
 // Headline in subform
 .tp-form-header {
   h3, h4 {
+    .make-xs-column(4);
     text-align: left;
     padding-left: 0;
-    @media (min-width: @screen-sm-min) {
-      text-align: center;
-    }
     @media (min-width: @screen-md-min) {
       text-align: right;
     }
@@ -244,19 +368,59 @@ footer .poweredby img { width: 120px; }
     margin-bottom: 0;
     padding-top: 7px;
   }
+  @media (min-width: 992px) {
+    width: 27%;
+  }
 }
 
 // Responsive 50% width form group columns
 .tp-form-group-col {
   &:extend(.form-group);
   .make-md-column(6);
+  min-height: @input-height;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 // Responsive input with search dropdown
 .tp-input {
   &:extend(.input-group);
-  .make-sm-column(8);
   float: none;
   padding-left: 0;
   padding-right: 0;
+  @media (min-width: 768px) {
+    width: 83%;
+  }
+  @media (min-width: 992px) {
+    width: 72%;
+  }
+}
+
+// Label for full-width input in 2 column section
+.tp-label-1-row-2-col {
+  &:extend(.control-label);
+  .make-sm-column(2);
+  padding-left: 0;
+  vertical-align: top;
+  @media (min-width: 768px) {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+  }
+  @media (min-width: 992px) {
+    width: 13.666%;
+  }
+}
+
+// Full-width input in 2 column section
+.tp-input-1-row-2-col {
+  &:extend(.input-group);
+  min-height: 1px;
+  @media (min-width: 768px) {
+    float: left;
+    width: 83%;
+  }
+  @media (min-width: 992px) {
+    width: 85.7%;
+  }
 }
