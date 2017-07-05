@@ -1,231 +1,323 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms">
-    <head>
-        <title>LGPN</title><!--
-        ~ Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com
-        -->
-        <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
-        <link href="resources/js/vendor/select2/select2.css" rel="stylesheet"/>
-        <link rel="stylesheet" type="text/css" href="resources/css/editor.css"/>
-    </head>
-    <body>
-        <div id="xforms">
-            <div style="display:none">
-                <xf:model id="model-place">
-                    <xf:instance id="i-place-default">
-                        <wrapper xmlns="http://www.tei-c.org/ns/1.0">
-                            <place type="settlement" xml:id="uuid" ref="LGPN_Syria">
-                                <placeName type="" subtype="" cert="" xml:lang=""/>
-                                <location type="pleiades">
-                                    <label/>
-                                </location>
-                                <location cert="">
-                                    <geo/>
-                                    <alt/>
-                                </location>
-                            </place>
-                        </wrapper>
-                    </xf:instance>
-                    <xf:instance id="i-place-template">
-                        <wrapper xmlns="http://www.tei-c.org/ns/1.0">
-                            <place type="settlement" xml:id="uuid" ref="LGPN_Syria">
-                                <placeName type="" subtype="" cert="" xml:lang=""/>
-                                <location type="pleiades">
-                                    <label/>
-                                </location>
-                                <location cert="">
-                                    <geo/>
-                                    <alt/>
-                                </location>
-                            </place>
-                        </wrapper>
-                    </xf:instance>
-                    <xf:instance xmlns="" id="i-certainty" src="resources/xml/certainty.xml"/>
-                    <xf:instance xmlns="" id="i-variants" src="resources/xml/variants.xml"/>
-                    <xf:instance xmlns="" id="i-languages" src="resources/xml/languages.xml"/>
-                    <xf:instance xmlns="" id="i-periods" src="resources/xml/periods.xml"/>
-                    <xf:instance xmlns="" id="i-placeTypes" src="resources/xml/placeTypes.xml"/>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>LGPN Place Sub Form</title>
+    <!--~ Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com-->
+    <link href="resources/js/vendor/select2/select2.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+</head>
+<body>
+<div id="xforms">
+    <div class="hidden">
+        <xf:model id="model-place">
+            <xf:instance id="i-place-default">
+                <wrapper xmlns="http://www.tei-c.org/ns/1.0">
+                    <place type="settlement" xml:id="uuid" ref="LGPN_Syria">
+                        <placeName type="" subtype="" cert="" xml:lang=""/>
+                        <location type="pleiades">
+                            <label/>
+                        </location>
+                        <location cert="">
+                            <geo/>
+                            <alt/>
+                        </location>
+                    </place>
+                </wrapper>
+            </xf:instance>
+            <xf:instance id="i-place-template">
+                <wrapper xmlns="http://www.tei-c.org/ns/1.0">
+                    <place type="settlement" xml:id="uuid" ref="LGPN_Syria">
+                        <placeName type="" subtype="" cert="" xml:lang=""/>
+                        <location type="pleiades">
+                            <label/>
+                        </location>
+                        <location cert="">
+                            <geo/>
+                            <alt/>
+                        </location>
+                    </place>
+                </wrapper>
+            </xf:instance>
+            <xf:instance xmlns="" id="i-certainty" src="resources/xml/certainty.xml"/>
+            <xf:instance xmlns="" id="i-variants" src="resources/xml/variants.xml"/>
+            <xf:instance xmlns="" id="i-languages" src="resources/xml/languages.xml"/>
+            <xf:instance xmlns="" id="i-periods" src="resources/xml/periods.xml"/>
+            <xf:instance xmlns="" id="i-placeTypes" src="resources/xml/placeTypes.xml"/>
 
-                    <xf:submission id="s-load-place" method="get" replace="instance" ref="instance('i-place-default')" validate="false" resource="modules/loadPlace.xql?id={substring-before(bf:appContext('place'), '#xforms')}">
-                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
-                        <xf:message ev:event="xforms-submit-error">Failed to load place data. <xf:output value="substring-before(bf:appContext('place'), '#xforms')"/>
-                        </xf:message>
-                    </xf:submission>
-                    <xf:submission id="s-save-place" method="post" replace="none" ref="instance('i-place-default')" resource="modules/savePlace.xql">
-                        <xf:action ev:event="xforms-submit">
-                            <xf:message ev:event="xforms-submit-done" level="ephemeral">Saving...</xf:message>
-                        </xf:action>
-                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
-                        <xf:message ev:event="xforms-submit-error">Failed to save place data</xf:message>
-                    </xf:submission>
-                    <xf:action ev:event="xforms-ready">
-                        <xf:send submission="s-load-place"/>
-                        <script>
-                            clearAndInitAutocompletes();
-                        </script>
-                    </xf:action>
-                </xf:model>
+            <xf:submission id="s-load-place" method="get" replace="instance" ref="instance('i-place-default')" validate="false" resource="modules/loadPlace.xql?id={substring-before(bf:appContext('place'), '#xforms')}">
+                <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
+                <xf:message ev:event="xforms-submit-error">Failed to load place data.
+                    <xf:output value="substring-before(bf:appContext('place'), '#xforms')"/>
+                </xf:message>
+            </xf:submission>
+            <xf:submission id="s-save-place" method="post" replace="none" ref="instance('i-place-default')" resource="modules/savePlace.xql">
+                <xf:action ev:event="xforms-submit">
+                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Saving...</xf:message>
+                </xf:action>
+                <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
+                <xf:message ev:event="xforms-submit-error">Failed to save place data</xf:message>
+            </xf:submission>
+            <xf:action ev:event="xforms-ready">
+                <xf:send submission="s-load-place"/>
+                <script>
+                    clearAndInitAutocompletes();
+                </script>
+            </xf:action>
+        </xf:model>
+    </div>
+    <header>
+        <div class="tp-row">
+        </div>
+    </header>
+
+    <main>
+        <section class="tp-section">
+            <div class="tp-row">
+                <h2 class="tp-width-sidebar">Edit place</h2>
+                <div class="tp-width-main">
+                    <fieldset class="form-horizontal" id="place">
+                        <xf:group ref="//TEI:place">
+                            <section>
+                                <div class="tp-row">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">ID</label>
+                                        <xf:input class="input-group col-sm-8 -form-control" ref="@xml:id">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-lock"/>
+                                            </xf:label>
+                                            <xf:hint>id</xf:hint>
+                                        </xf:input>
+                                    </div>
+                                </div>
+                                <div class="tp-row">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Place Type</label>
+                                        <xf:select1 class="input-group col-sm-8 -form-control" ref="@type">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-flag"/>
+                                            </xf:label>
+                                            <xf:itemset nodeset="instance('i-placeTypes')//TEI:category">
+                                                <xf:label ref="TEI:catDesc"/>
+                                                <xf:value ref="@xml:id"/>
+                                            </xf:itemset>
+                                        </xf:select1>
+                                    </div>
+                                </div>
+
+                                <div class="tp-row">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" tooltip="ref">In</label>
+                                        <xf:input ref="@ref" class="hidden">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-map-marker"/>
+                                            </xf:label>
+                                            <xf:action ev:event="places_autocomplete-callback">
+                                                <xf:setvalue ref="." value="event('termValue')"/>
+                                            </xf:action>
+                                            <xf:hint>place</xf:hint>
+                                        </xf:input>
+                                            <input type="hidden" class="input-group col-sm-8" data-function="places_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+<!--
+                                        <xf:trigger class="hidden places_autocomplete">
+                                            <xf:label/>
+                                            <xf:action ev:event="DOMActivate">
+                                                <xf:setvalue ref="instance('i-controller')/place" value="instance('i-default')//TEI:state[@type='location'][index('r-place')]/TEI:placeName/@key"/>
+                                                <xf:dispatch name="load-place-subform-event" targetid="load-subform-group"/>
+                                            </xf:action>
+                                        </xf:trigger>
+-->
+
+                                    </div>
+                                </div>
+                            </section>
+
+                            <div class="tp-section-divider"/>
+
+                            <section>
+                                <xf:repeat ref="instance('i-place-default')/descendant-or-self::TEI:place/TEI:placeName" id="r-name">
+                                    <xf:label class="tp-row tp-form-header">
+                                        <h4 class="col-md-2">Name variants</h4>
+                                    </xf:label>
+                                    <xf:group ref=".">
+                                        <div class="tp-row">
+                                            <div class="tp-width-main">
+                                                <fieldset class="form-horizontal" id="variants">
+                                                    <div class="form-group">
+                                                        <label class="tp-label-1-row-2-col">Name</label>
+                                                        <xf:input class="tp-input-1-row-2-col -form-control" ref=".">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-font"/>
+                                                            </xf:label>
+                                                            <xf:hint>variant name</xf:hint>
+                                                        </xf:input>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Type</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="@type">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-calendar"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-periods')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Variant</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="@subtype">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-signal"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-variants')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Language</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="@xml:lang">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-flag"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-languages')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Certainty</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="@cert">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-check"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-certainty')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </xf:group>
+
+                                    <div class="tp-row tp-repeat-buttons">
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div class="tp-button-row tp-add">
+                                                <label class="col-xs-12 col-sm-9 col-md-10 control-label">Add Name Variant</label>
+                                                <xf:trigger class="-btn -btn-default">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-plus"/>
+                                                    </xf:label>
+                                                    <xf:insert context="instance('i-place-default')/descendant-or-self::TEI:place" ref="TEI:placeName" origin="instance('i-place-template')//TEI:placeName"/>
+                                                    <script>clearAndInitAutocompletes();</script>
+                                                </xf:trigger>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-4 col-sm-offset-3">
+                                            <div class="tp-button-row tp-delete">
+                                                <label class="col-xs-12 col-sm-10 control-label">Delete Name variant</label>
+                                                <xf:trigger class="-btn -btn-default">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-trash"/>
+                                                    </xf:label>
+                                                    <xf:delete nodeset="instance('i-place-default')/descendant-or-self::TEI:place/TEI:placeName[index('r-name')]"/>
+                                                </xf:trigger>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </xf:repeat>
+                            </section>
+
+                            <section>
+                                <div class="tp-section-divider"/>
+                                <div class="tp-row">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Geocoordinates</label>
+                                        <xf:input class="input-group col-sm-8 -form-control" ref="//TEI:geo">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-globe"/>
+                                            </xf:label>
+                                            <xf:hint>lat lon</xf:hint>
+                                        </xf:input>
+                                    </div>
+                                </div>
+                                <div class="tp-row">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Pleiades</label>
+                                        <xf:input class="input-group col-sm-8 -form-control" ref="//TEI:location[@type='pleiades']/TEI:label">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-globe"/>
+                                            </xf:label>
+                                            <xf:hint>pleiades id</xf:hint>
+                                        </xf:input>
+                                    </div>
+                                </div>
+                            </section>
+                        </xf:group>
+                    </fieldset>
+                </div>
             </div>
-            <div>
-                <fieldset id="segment">
-                    <legend>
-                        LGPN place sub-form
-                    </legend>
-            <xf:group ref="//TEI:place">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <xf:input class="input-group -form-control" ref="@xml:id">
-                                <xf:label class="input-group-addon">id</xf:label>
-                                <xf:hint>id</xf:hint>
-                            </xf:input>
+        </section>
+
+        <section class="tp-section tp-section-save">
+            <div class="tp-row">
+                <h2 class="tp-width-sidebar">Save Form</h2>
+                <div class="tp-width-main">
+                    <fieldset class="form-horizontal">
+                        <div class="col-sm-6">
+                            <label class="col-sm-4 control-label">Save form</label>
+                            <div class="tp-button-row tp-add">
+                                <xf:submit class="-btn -btn-default" submission="s-save-place">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-save"/>
+                                    </xf:label>
+                                </xf:submit>
+                            </div>
                         </div>
-                        <div class="col-xs-4">
-                            <xf:select1 class="input-group -form-control" ref="@type">
-                                <xf:label class="input-group-addon glyphicon glyphicon-flag"/>
-                                <xf:itemset nodeset="instance('i-placeTypes')//TEI:category">
-                                    <xf:label ref="TEI:catDesc"/>
-                                    <xf:value ref="@xml:id"/>
-                                </xf:itemset>
-                            </xf:select1>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="input-group">
-                                <label class="input-group-addon glyphicon glyphicon-map-marker" tooltip="ref">in</label>
-                                <div>
-                                    <xf:input class="-input-group --form-control" ref="@ref" style="display:none">
-                                        <xf:action ev:event="places_autocomplete-callback">
-                                            <xf:setvalue ref="." value="event('termValue')"/>
-                                        </xf:action>
-                                        <xf:hint>place</xf:hint>
-                                    </xf:input>
-                                    <input type="hidden" data-function="places_autocomplete" placeholder="Type to search ..." autocomplete="off"/><!--
-                                            <xf:trigger class="hidden places_autocomplete">
-                                                <xf:label/>
-                                                <xf:action ev:event="DOMActivate">
-                                                    <xf:setvalue ref="instance('i-controller')/place" value="instance('i-default')//TEI:state[@type='location'][index('r-place')]/TEI:placeName/@key"/>
-                                                    <xf:dispatch name="load-place-subform-event" targetid="load-subform-group"/>
-                                                </xf:action>
-                                            </xf:trigger>
-                                            -->
+
+                        <div class="col-sm-6">
+                            <label class="col-sm-6 control-label">
+                                <span>Cancel</span>
+                            </label>
+                            <div class="tp-button-row tp-delete">
+                                <div class="tp-button-cancel">
+                                    <xf:trigger class="-btn -btn-default">
+                                        <xf:label class="input-group-addon">
+                                            <i class="glyphicon glyphicon-log-out"/>
+                                        </xf:label>
+                                        <script ev:event="DOMActivate" type="text/javascript">dijit.byId("place").hide()</script>
+                                    </xf:trigger>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                <fieldset id="segment">
-                    <legend>
-                        Name variants
-                    </legend>
-
-            <xf:repeat ref="instance('i-place-default')//TEI:placeName" id="r-name">
-                <xf:group ref=".">
-
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <xf:input class="input-group -form-control" ref=".">
-                                <xf:label class="input-group-addon">name</xf:label>
-                                <xf:hint>variant name</xf:hint>
-                            </xf:input>
-                        </div>
-                        <div class="col-xs-2">
-                            <xf:select1 class="input-group -form-control" ref="@type">
-                                <xf:label class="input-group-addon glyphicon glyphicon-calendar"/>
-                                <xf:itemset nodeset="instance('i-periods')/option">
-                                    <xf:label ref="."/>
-                                    <xf:value ref="@value"/>
-                                </xf:itemset>
-                            </xf:select1>
-                        </div>
-                    
-                        <div class="col-xs-3">
-                            <xf:select1 class="input-group -form-control" ref="@subtype">
-                                <xf:label class="input-group-addon glyphicon glyphicon-signal"/>
-                                <xf:itemset nodeset="instance('i-variants')/option">
-                                    <xf:label ref="."/>
-                                    <xf:value ref="@value"/>
-                                </xf:itemset>
-                            </xf:select1>
-                        </div>
-                        <div class="col-xs-2">
-                            <xf:select1 class="input-group -form-control" ref="@xml:lang">
-                                <xf:label class="input-group-addon glyphicon glyphicon-flag"/>
-                                <xf:itemset nodeset="instance('i-languages')/option">
-                                    <xf:label ref="."/>
-                                    <xf:value ref="@value"/>
-                                </xf:itemset>
-                            </xf:select1>
-                        </div>
-                        <div class="col-xs-2">
-                            <xf:select1 class="input-group -form-control" ref="@cert">
-                                <xf:label class="input-group-addon glyphicon glyphicon-question-sign"/>
-                                <xf:itemset nodeset="instance('i-certainty')/option">
-                                    <xf:label ref="."/>
-                                    <xf:value ref="@value"/>
-                                </xf:itemset>
-                            </xf:select1>
-                        </div>
-                        <div class="col-xs-1">
-                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
-                                <xf:label/>
-                                <xf:delete nodeset="instance('i-place-default')//TEI:placeName[index('r-name')]"/>
-                            </xf:trigger>
-                        </div>
-                    </div>
-
-                </xf:group>
-            </xf:repeat>
-                    <div class="row">
-                        <div class="col-xs-1">
-                            <xf:label>add variant name</xf:label>
-                        </div>
-                        <div class="col-xs-1">
-                                <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                        <xf:label/>
-                                        <xf:insert context="instance('i-place-default')//TEI:place" ref="TEI:placeName" origin="instance('i-place-template')//TEI:placeName"/>
-                                </xf:trigger>
-                        </div>
-                    </div>
-        </fieldset>
-        
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <xf:input class="input-group  input-group-lg -form-control" ref="//TEI:geo">
-                                <xf:label class="input-group-addon">geocoordinates</xf:label>
-                                <xf:hint>lat lon</xf:hint>
-                            </xf:input>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <xf:input class="input-group  input-group-lg -form-control" ref="//TEI:location[@type='pleiades']/TEI:label">
-                                <xf:label class="input-group-addon">pleiades</xf:label>
-                                <xf:hint>pleiades id</xf:hint>
-                            </xf:input>
-                        </div>
-                    </div>
-                    </xf:group>
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-sm-offset-4">
-                                <xf:submit class="-btn -btn-primary -glyphicon -glyphicon-save" submission="s-save-place">
-                                    <xf:label>Save</xf:label>
-                                </xf:submit>
-                                <xf:trigger class="-bigbtn -btn-primary -glyphicon -glyphicon-trash">
-                                    <xf:label>Cancel</xf:label>
-                                    <script ev:event="DOMActivate" type="text/javascript">dijit.byId("place").hide()</script>
-                                </xf:trigger>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
+                    </fieldset>
+                </div>
             </div>
-        </div>
-        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
-        <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
-        <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
-        <script src="$shared/resources/scripts/jquery/jquery-ui.min.js" type="text/javascript" charset="utf-8"/>
-        <script type="text/javascript" src="resources/js/editor.js"/>
-        <script type="text/javascript" src="resources/js/vendor/select2/select2.js"/>
-        <script type="text/javascript" src="resources/js/select2/select2.js"/>
-    </body>
+        </section>
+    </main>
+</div>
+<bfc:dialog id="bibl" src="bibl.html">
+    <xf:label>Add bibl</xf:label>
+    <div id="mountpoint"/>
+</bfc:dialog>
+<bfc:dialog id="place" src="place.html">
+    <xf:label>Add place</xf:label>
+    <div id="mountpointPlace"/>
+</bfc:dialog>
+
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"/>
+<script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
+<script type="text/javascript" src="resources/js/bootstrap-3.4.4.min.js"/>
+<script src="$shared/resources/scripts/jquery/jquery-ui.min.js" type="text/javascript" charset="utf-8"/>
+<script type="text/javascript" src="resources/js/editor.js"/>
+<script type="text/javascript" src="resources/js/vendor/select2/select2.js"/>
+<script type="text/javascript" src="resources/js/select2/select2.js"/>
+</body>
 </html>
