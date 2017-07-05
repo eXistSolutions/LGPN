@@ -33,13 +33,14 @@ declare function local:setRegions() {
 
 
 declare function local:setRegion($name) {
+(:  all added regions are set into Inland Asia Minor  :)
 let $data:=
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
  {$local:teiHeader}
     <text>
         <body>
             <listPlace>
-                <place xml:id="LGPN_{translate($name, ' ?.()', '')}" type="region" ref="">
+                <place xml:id="LGPN_{translate($name, ' ?.()', '')}" type="region" ref="P6afbf097-c078-4a08-a98d-f2c71667a366">
                     <placeName type="" subtype="" cert="" xml:lang="">{$name}</placeName>
                 </place>
             </listPlace>
@@ -77,7 +78,7 @@ declare function local:disambiguate($hits, $name) {
 };
 
 let $a:=local:setRegions()
-let $c:=console:log($a)
+(:let $c:=console:log($a):)
 (:return $a:)
  
 
@@ -114,7 +115,9 @@ let $c:=console:log($a)
   let $alterName :=
         if ($type='tribe' and not($node/tei:placeName/string()=$node/tei:polis/string())) then
                     <placeName type="{if (contains($node/tei:polis/string(), '(mod.)')) then 'modern' else ''}" subtype="minor" cert="" xml:lang="">{replace($node/tei:polis/string(), '\(mod\.\)', '')}</placeName>
-        else 
+        else if ($type='suspicious') then
+                    <placeName type="other" subtype="minor" cert="" xml:lang="">{string-join($node/*[not(local-name()='placeName')]/string(), ' ')}</placeName>
+        else                     
             ()
 
   let $placeName:=
@@ -149,10 +152,14 @@ let $c:=console:log($a)
     </text>
 </TEI>
 
+let $exists := collection('/db/apps/lgpn-data/data/places')//id($node/@xml:id)
+
   return 
 (:      $data/@xml:id:)
+    if (empty($exists)) then
   
         xmldb:store('/db/apps/lgpn-data/data/temp', concat($node/@xml:id , ".xml"), $data)
+    else ()
 
 
 
