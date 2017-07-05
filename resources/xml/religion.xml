@@ -29,6 +29,9 @@
         <category xml:id="priest">
             <catDesc xml:lang="en">priest</catDesc>
         </category>
+        <category xml:id="presbyter">
+            <catDesc xml:lang="en">presbyter</catDesc>
+        </category>
         <category xml:id="anagnostes">
             <catDesc xml:lang="en">anagnostes</catDesc>
         </category>
