@@ -47,16 +47,13 @@
             <xf:instance xmlns="" id="i-periods" src="resources/xml/periods.xml"/>
             <xf:instance xmlns="" id="i-placeTypes" src="resources/xml/placeTypes.xml"/>
 
-            <xf:submission id="s-load-place" method="get" replace="instance" ref="instance('i-place-default')"
-                           validate="false"
-                           resource="modules/loadPlace.xql?id={substring-before(bf:appContext('place'), '#xforms')}">
+            <xf:submission id="s-load-place" method="get" replace="instance" ref="instance('i-place-default')" validate="false" resource="modules/loadPlace.xql?id={substring-before(bf:appContext('place'), '#xforms')}">
                 <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
                 <xf:message ev:event="xforms-submit-error">Failed to load place data.
                     <xf:output value="substring-before(bf:appContext('place'), '#xforms')"/>
                 </xf:message>
             </xf:submission>
-            <xf:submission id="s-save-place" method="post" replace="none" ref="instance('i-place-default')"
-                           resource="modules/savePlace.xql">
+            <xf:submission id="s-save-place" method="post" replace="none" ref="instance('i-place-default')" resource="modules/savePlace.xql">
                 <xf:action ev:event="xforms-submit">
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Saving...</xf:message>
                 </xf:action>
@@ -123,12 +120,8 @@
                                                 <xf:setvalue ref="." value="event('termValue')"/>
                                             </xf:action>
                                             <xf:hint>place</xf:hint>
-                                            <input type="hidden"
-                                                   class="input-group col-sm-8"
-                                                   data-function="places_autocomplete"
-                                                   placeholder="Type to search ..."
-                                                   autocomplete="off"/>
                                         </xf:input>
+                                            <input type="hidden" class="input-group col-sm-8" data-function="places_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
 <!--
                                         <xf:trigger class="hidden places_autocomplete">
                                             <xf:label/>
@@ -138,6 +131,7 @@
                                             </xf:action>
                                         </xf:trigger>
 -->
+
                                     </div>
                                 </div>
                             </section>
@@ -145,7 +139,7 @@
                             <div class="tp-section-divider"/>
 
                             <section>
-                                <xf:repeat ref="instance('i-place-default')/TEI:place/TEI:placeName" id="r-name">
+                                <xf:repeat ref="instance('i-place-default')/descendant-or-self::TEI:place/TEI:placeName" id="r-name">
                                     <xf:label class="tp-row tp-form-header">
                                         <h4 class="col-md-2">Name variants</h4>
                                     </xf:label>
@@ -164,7 +158,7 @@
                                         </div>
                                         <div class="tp-row">
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label">Period</label>
+                                                <label class="col-sm-2 control-label">Type</label>
                                                 <xf:select1 class="input-group col-sm-8 -form-control" ref="@type">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-calendar"/>
@@ -178,7 +172,7 @@
                                         </div>
                                         <div class="tp-row">
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label">Variant Option</label>
+                                                <label class="col-sm-2 control-label">Variant</label>
                                                 <xf:select1 class="input-group col-sm-8 -form-control" ref="@subtype">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-signal"/>
@@ -228,9 +222,7 @@
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-plus"/>
                                                     </xf:label>
-                                                    <xf:insert context="instance('i-place-default')//TEI:place"
-                                                               ref="TEI:placeName"
-                                                               origin="instance('i-place-template')//TEI:placeName"/>
+                                                    <xf:insert context="instance('i-place-default')/descendant-or-self::TEI:place" ref="TEI:placeName" origin="instance('i-place-template')//TEI:placeName"/>
                                                     <script>clearAndInitAutocompletes();</script>
                                                 </xf:trigger>
                                             </div>
@@ -242,16 +234,16 @@
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-trash"/>
                                                     </xf:label>
-                                                    <xf:delete nodeset="instance('i-place-default')//TEI:placeName[index('r-name')]"/>
+                                                    <xf:delete nodeset="instance('i-place-default')/descendant-or-self::TEI:place/TEI:placeName[index('r-name')]"/>
                                                 </xf:trigger>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tp-section-divider"/>
                                 </xf:repeat>
                             </section>
 
                             <section>
+                                <div class="tp-section-divider"/>
                                 <div class="tp-row">
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Geocoordinates</label>
@@ -289,7 +281,7 @@
                         <div class="col-sm-6">
                             <label class="col-sm-4 control-label">Save form</label>
                             <div class="tp-button-row tp-add">
-                                <xf:submit class="-btn -btn-default" submission="s-save-data">
+                                <xf:submit class="-btn -btn-default" submission="s-save-place">
                                     <xf:label class="input-group-addon">
                                         <i class="glyphicon glyphicon-save"/>
                                     </xf:label>
