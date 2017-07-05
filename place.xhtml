@@ -70,15 +70,13 @@
     </div>
     <header>
         <div class="tp-row">
-            <h1 class="tp-column-fullwidth tp-headline">LGPN Place Sub Form</h1>
-
         </div>
     </header>
 
     <main>
         <section class="tp-section">
             <div class="tp-row">
-                <h2 class="tp-width-sidebar">Place</h2>
+                <h2 class="tp-width-sidebar">Edit place</h2>
                 <div class="tp-width-main">
                     <fieldset class="form-horizontal" id="place">
                         <xf:group ref="//TEI:place">
@@ -144,72 +142,67 @@
                                         <h4 class="col-md-2">Name variants</h4>
                                     </xf:label>
                                     <xf:group ref=".">
-
                                         <div class="tp-row">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Name</label>
-                                                <xf:input class="input-group col-sm-8 -form-control" ref=".">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-font"/>
-                                                    </xf:label>
-                                                    <xf:hint>variant name</xf:hint>
-                                                </xf:input>
-                                            </div>
-                                        </div>
-                                        <div class="tp-row">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Type</label>
-                                                <xf:select1 class="input-group col-sm-8 -form-control" ref="@type">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-calendar"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-periods')/option">
-                                                        <xf:label ref="."/>
-                                                        <xf:value ref="@value"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                        </div>
-                                        <div class="tp-row">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Variant</label>
-                                                <xf:select1 class="input-group col-sm-8 -form-control" ref="@subtype">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-signal"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-variants')/option">
-                                                        <xf:label ref="."/>
-                                                        <xf:value ref="@value"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                        </div>
-                                        <div class="tp-row">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Language</label>
-                                                <xf:select1 class="input-group col-sm-8 -form-control" ref="@xml:lang">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-flag"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-languages')/option">
-                                                        <xf:label ref="."/>
-                                                        <xf:value ref="@value"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                        </div>
-                                        <div class="tp-row">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Certainty</label>
-                                                <xf:select1 class="input-group col-sm-8 -form-control" ref="@cert">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-check"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-certainty')/option">
-                                                        <xf:label ref="."/>
-                                                        <xf:value ref="@value"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
+                                            <div class="tp-width-main">
+                                                <fieldset class="form-horizontal" id="variants">
+                                                    <div class="form-group">
+                                                        <label class="tp-label-1-row-2-col">Name</label>
+                                                        <xf:input class="tp-input-1-row-2-col -form-control" ref=".">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-font"/>
+                                                            </xf:label>
+                                                            <xf:hint>variant name</xf:hint>
+                                                        </xf:input>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Type</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="@type">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-calendar"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-periods')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Variant</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="@subtype">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-signal"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-variants')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Language</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="@xml:lang">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-flag"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-languages')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                    <div class="tp-form-group-col">
+                                                        <label class="tp-label">Certainty</label>
+                                                        <xf:select1 class="tp-input -form-control" ref="@cert">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-check"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-certainty')/option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select1>
+                                                    </div>
+                                                </fieldset>
                                             </div>
                                         </div>
                                     </xf:group>
