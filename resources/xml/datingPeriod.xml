@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-<data>
-    <option value="4B">4BC</option>
-    <option value="3B">3BC</option>
-    <option value="2B">2BC</option>
-    <option value="1B">1BC</option>
-    <option value="1A">1AD</option>
-    <option value="2A">2AD</option>
-    <option value="3A">3AD</option>
-    <option value="4A">4AD</option>
-    -->
 <taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="periods">
     <category xml:id="imperial">
         <catDesc>
@@ -116,16 +105,6 @@
             <date from="600" to="700">7A</date>
         </catDesc>
     </category>
-    <category xml:id="P8A">
-        <catDesc>
-            <date from="700" to="800">8A</date>
-        </catDesc>
-    </category>
-    <category xml:id="P9-8B">
-        <catDesc>
-            <date from="-900" to="-700">9-8B</date>
-        </catDesc>
-    </category>
     <category xml:id="P8-7B">
         <catDesc>
             <date from="-800" to="-600">8-7B</date>
@@ -196,21 +175,6 @@
             <date from="500" to="700">6-7A</date>
         </catDesc>
     </category>
-    <category xml:id="P7-8A">
-        <catDesc>
-            <date from="600" to="800">7-8A</date>
-        </catDesc>
-    </category>
-    <category xml:id="P8-9A">
-        <catDesc>
-            <date from="700" to="900">8-9A</date>
-        </catDesc>
-    </category>
-    <category xml:id="P9_8B">
-        <catDesc>
-            <date from="-825" to="-775">9/8B</date>
-        </catDesc>
-    </category>
     <category xml:id="P8_7B">
         <catDesc>
             <date from="-725" to="-675">8/7B</date>
@@ -279,16 +243,6 @@
     <category xml:id="P6_7A">
         <catDesc>
             <date from="575" to="625">6/7A</date>
-        </catDesc>
-    </category>
-    <category xml:id="P7_8A">
-        <catDesc>
-            <date from="675" to="725">7/8A</date>
-        </catDesc>
-    </category>
-    <category xml:id="P8_9A">
-        <catDesc>
-            <date from="775" to="825">8/9A</date>
         </catDesc>
     </category>
     <category xml:id="PF8B">
@@ -366,11 +320,6 @@
             <date from="601" to="650">F7A</date>
         </catDesc>
     </category>
-    <category xml:id="PF8A">
-        <catDesc>
-            <date from="701" to="750">F8A</date>
-        </catDesc>
-    </category>
     <category xml:id="PM8B">
         <catDesc>
             <date from="-775" to="-725">M8B</date>
@@ -441,16 +390,6 @@
             <date from="525" to="575">M6A</date>
         </catDesc>
     </category>
-    <category xml:id="PM7A">
-        <catDesc>
-            <date from="625" to="675">M7A</date>
-        </catDesc>
-    </category>
-    <category xml:id="PM8A">
-        <catDesc>
-            <date from="725" to="775">M8A</date>
-        </catDesc>
-    </category>
     <category xml:id="PS8B">
         <catDesc>
             <date from="-750" to="-700">S8B</date>
@@ -519,16 +458,6 @@
     <category xml:id="PS6A">
         <catDesc>
             <date from="551" to="600">S6A</date>
-        </catDesc>
-    </category>
-    <category xml:id="PS7A">
-        <catDesc>
-            <date from="651" to="700">S7A</date>
-        </catDesc>
-    </category>
-    <category xml:id="PS8A">
-        <catDesc>
-            <date from="751" to="800">S8A</date>
         </catDesc>
     </category>
 </taxonomy>
