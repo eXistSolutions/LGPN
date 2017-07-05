@@ -18,6 +18,9 @@
     <category xml:id="duovir">
         <catDesc xml:lang="en">duovir</catDesc>
     </category>
+    <category xml:id="decurio">
+        <catDesc xml:lang="en">decurio</catDesc>
+    </category>
     <category xml:id="asiarch">
         <catDesc xml:lang="en">asiarch</catDesc>
     </category>
