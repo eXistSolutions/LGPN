@@ -15,7 +15,7 @@
                 <xf:instance xmlns="" id="i-default" src="resources/xml/teiPersonTemplate.xml"/>
                 <xf:bind ref="//TEI:nym[@type ne 'Roman']/@nymRef" constraint="string-length(.) &gt; 0" type="xs:string"/>
                 <xf:bind ref="//TEI:bibl[@type='primary'][index('r-primarySource')]/TEI:ref/@target" constraint="string-length(.) &gt; 0" type="xs:string"/>
-                <xf:bind ref="//TEI:bibl[index('r-primarySource')]/TEI:ref/@target" constraint="string-length(.) &gt; 0" type="xs:string"/>
+                <xf:bind ref="//TEI:bibl[@type='auxiliary'][index('r-auxiliary')]/TEI:ref/@target" constraint="string-length(.) &gt; 0" type="xs:string"/>
                 <xf:bind ref="//TEI:bibl[@type='primary']/TEI:ref[index('r-primarySource')]" constraint="not(boolean-from-string(instance('i-biblPattern')/validate))"/>
                 <xf:instance xmlns="" id="i-template" src="resources/xml/personTemplate.xml"/>
                 <xf:instance xmlns="" id="i-volumes" src="resources/xml/volumes.xml"/>
