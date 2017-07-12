@@ -86,15 +86,13 @@ let $a:=local:setRegions()
  
  let $type :=   if ($node/tei:polis/string() ne '') then
                     'tribe'
-                else if ($node/tei:placeName = $node/tei:deme) then
+                else if ($node/tei:deme/string() ne '' ) then
                     'deme'
-                else if ($node/tei:placeName = $node/tei:town) then 
+                else if ($node/tei:town/string() ne '') then 
                     'settlement'
-                else if ($node/tei:placeName = $node/tei:region) then 
+                else  
                     'region'
-                else 
-                    'suspicious'
-                    
+
 
  let $ref :=
  switch ($type)
@@ -108,22 +106,57 @@ let $a:=local:setRegions()
      default return local:placeLookup($node/tei:region, $node/tei:region/string())
 
 
+    let $name :=
+    switch ($type)
+     case "tribe" return $node/tei:polis
+     case "deme" return $node/tei:deme
+     case "settlement" return $node/tei:town
+     default return $node/tei:region
+
  let $modern :=
-        if (contains($node/tei:placeName/string(), '(mod.)')) then 'modern' else ''
+        if (contains($name, '(mod.)')) then 'modern' else ''
 
 
   let $alterName :=
-        if ($type='tribe' and not($node/tei:placeName/string()=$node/tei:polis/string())) then
-                    <placeName xmlns="http://www.tei-c.org/ns/1.0" type="{if (contains($node/tei:polis/string(), '(mod.)')) then 'modern' else ''}" subtype="minor" cert="" xml:lang="">{replace($node/tei:polis/string(), '\(mod\.\)', '')}</placeName>
-        else if ($type='suspicious') then
-                    <placeName xmlns="http://www.tei-c.org/ns/1.0" type="other" subtype="minor" cert="" xml:lang="">{string-join($node/*[not(local-name()='placeName')]/string(), ' ')}</placeName>
-        else                     
-            ()
+(:        if ($type='tribe' and not($node/tei:placeName/string()=$node/tei:polis/string())) then:)
+(:                    <placeName xmlns="http://www.tei-c.org/ns/1.0" type="{if (contains($node/tei:polis/string(), '(mod.)')) then 'modern' else ''}" subtype="minor" cert="" xml:lang="">{replace($node/tei:polis/string(), '\(mod\.\)', '')}</placeName>:)
+(:        else if ($type='suspicious') then:)
+(:                    <placeName xmlns="http://www.tei-c.org/ns/1.0" type="other" subtype="minor" cert="" xml:lang="">{string-join($node/*[not(local-name()='placeName')]/string(), ' ')}</placeName>:)
+(:        else                     :)
+(:            ():)
+(: replace (mod.) and if ' )' is found, replace with just ')' :)
+        <placeName xmlns="http://www.tei-c.org/ns/1.0" type="other" subtype="minor" cert="" xml:lang="">
+        {normalize-space(replace(replace($node/tei:placeName/string(), '\(mod\.\)', ''), ' \)', ')'))}
+        </placeName>
+
+
 
   let $placeName:=
     switch ($modern)
-        case "modern" return replace($node/tei:placeName/string(), '\(mod\.\)', '')
-        default return $node/tei:placeName/string()
+        case "modern" return replace($name/string(), '\(mod\.\)', '')
+        default return $name/string()
+
+
+    let $firstName := <placeName xmlns="http://www.tei-c.org/ns/1.0" type="{$modern}" subtype="" cert="" xml:lang="">{replace(normalize-space($placeName), '\s\)', ')')}</placeName>
+     
+    let $region :=   if (collection('/db/apps/lgpn-data/data/temp')//id($ref)) then collection('/db/apps/lgpn-data/data/temp')//id($ref) else collection('/db/apps/lgpn-data/data/places')//id($ref)
+ 
+     let $suspicious :=
+     
+     if ($firstName != $alterName  
+                    and 
+                    (
+                    (($type='deme' and concat($region/tei:placeName[1]/string(), ' (', $firstName,')') !=$alterName)
+                    and ($type='deme' and concat($region/tei:placeName[1]/string(), '? (', $firstName,')') !=$alterName))
+                    or
+                    
+                    (($type='settlement' and concat($region/tei:placeName[1]/string(), ' (', $firstName,')') !=$alterName)
+                    and ($type='settlement' and concat($region/tei:placeName[1]/string(), '? (', $firstName,')') !=$alterName))
+                )
+                    ) then 'suspicious'
+                    
+                    else ''
+                 
      
  let $data :=
 
@@ -139,12 +172,13 @@ let $a:=local:setRegions()
                       attribute xml:id {$node/@xml:id},
                       attribute type {$type},
                       attribute ref {$ref},
-                    <placeName type="{$modern}" subtype="" cert="" xml:lang="">{$placeName}</placeName>,
-                    $alterName
-                    ,
-                    <location type="pleiades"><label/></location>,
-                    <location cert="high"><geo/></location>,
-                    <trait type="population"><num/></trait>   
+                      attribute ana {$suspicious},
+                      $firstName,
+                      if ($suspicious='suspicious') then $alterName else ()
+(:                    ,:)
+(:                    <location type="pleiades"><label/></location>,:)
+(:                    <location cert="high"><geo/></location>,:)
+(:                    <trait type="population"><num/></trait>   :)
               }
 }
             </listPlace>
