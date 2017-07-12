@@ -7,7 +7,7 @@
     </category>
     <category xml:id="byzantine">
         <catDesc>
-            <date from="311" to="999">byzantine</date>
+            <date from="311" to="699">byzantine</date>
         </catDesc>
     </category>
     <category xml:id="classical">
@@ -153,6 +153,11 @@
     <category xml:id="P2-3A">
         <catDesc>
             <date from="100" to="300">2-3A</date>
+        </catDesc>
+    </category>
+    <category xml:id="P2-4A">
+        <catDesc>
+            <date from="100" to="400">2-4A</date>
         </catDesc>
     </category>
     <category xml:id="P3-4A">
