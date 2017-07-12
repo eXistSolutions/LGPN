@@ -42,6 +42,7 @@
                 <xf:instance xmlns="" id="i-cases" src="resources/xml/cases.xml"/>
                 <xf:instance xmlns="" id="i-linking" src="resources/xml/linking.xml"/>
                 <xf:instance xmlns="" id="i-biblLinking" src="resources/xml/biblLinking.xml"/>
+                <xf:instance xmlns="" id="i-multilingual" src="resources/xml/multilingual.xml"/>
                 <xf:instance xmlns="" id="i-status" src="resources/xml/status.xml"/>
                 <xf:instance xmlns="" id="i-office" src="resources/xml/office.xml"/>
                 <xf:instance xmlns="" id="i-religion" src="resources/xml/religion.xml"/>
@@ -666,7 +667,7 @@
                                                     </xf:input>
                                                 </div>
                                                 <div class="tp-form-group-col">
-                                                    <label class="tp-label">Category items</label>
+                                                    <label class="tp-label">Source</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:ref/@type">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-tag"/>
@@ -742,6 +743,29 @@
                                                             <xf:value ref="@value"/>
                                                         </xf:itemset>
                                                     </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Multilingual</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="TEI:ref/@ana">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-multilingual')/option">
+                                                            <xf:label ref="."/>
+                                                            <xf:value ref="@value"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                            </div>
+                                            <div class="tp-row">
+                                                <div class="form-group">
+                                                    <label class="tp-label-1-row-2-col">Text. annotation</label>
+                                                    <xf:input class="tp-input-1-row-2-col -form-control" ref="TEI:note">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-comment"/>
+                                                        </xf:label>
+                                                        <xf:hint>annotation</xf:hint>
+                                                    </xf:input>
                                                 </div>
                                             </div>
                                             <div class="tp-row">
