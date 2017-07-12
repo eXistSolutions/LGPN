@@ -6,7 +6,7 @@
         </bibl>
         <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
         <bibl type="primary" ana="">
-            <ref target="" type="inscr_stone" subtype=""/>
+            <ref target="" type="inscr_stone" subtype="" ana=""/>
             <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
         </bibl>
         <persName type="attested"/>
