@@ -41,6 +41,9 @@
         <category xml:id="archdeacon">
             <catDesc xml:lang="en">archdeacon</catDesc>
         </category>
+        <category xml:id="subdeacon">
+            <catDesc xml:lang="en">subdeacon</catDesc>
+        </category>
         <category xml:id="bishop">
             <catDesc xml:lang="en">bishop</catDesc>
         </category>
