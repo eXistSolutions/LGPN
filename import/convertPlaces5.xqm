@@ -175,10 +175,10 @@ let $a:=local:setRegions()
                       attribute ana {$suspicious},
                       $firstName,
                       if ($suspicious='suspicious') then $alterName else ()
-(:                    ,:)
-(:                    <location type="pleiades"><label/></location>,:)
-(:                    <location cert="high"><geo/></location>,:)
-(:                    <trait type="population"><num/></trait>   :)
+                    ,
+                    <location type="pleiades"><label/></location>,
+                    <location cert="high"><geo/></location>,
+                    <trait type="population"><num/></trait>   
               }
 }
             </listPlace>
