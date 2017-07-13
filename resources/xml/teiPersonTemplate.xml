@@ -65,7 +65,7 @@
                     @ana: location, name, date, relationship, stemma -->
                 </person>
                 <listRelation>
-                    <relation type="family" subtype="natural" name="child" passive=""/>
+                    <relation type="family" subtype="natural" name="child" passive="" cert="high"/>
                 </listRelation>
             </listPerson>
         </body>

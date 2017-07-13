@@ -42,6 +42,6 @@
         <trait type="Roman" key="" ana=""/>
     </person>
     <listRelation>
-        <relation type="family" subtype="natural" name="child" passive=""/>
+        <relation type="family" subtype="natural" name="child" passive="" cert="high"/>
     </listRelation>
 </data>
