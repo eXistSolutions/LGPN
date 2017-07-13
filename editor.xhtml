@@ -690,6 +690,17 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
+                                            <div class="tp-row">
+                                                <div class="form-group">
+                                                    <label class="tp-label-1-row-2-col">Source characteristic</label>
+                                                    <xf:input class="tp-input-1-row-2-col -form-control" ref="TEI:note[@type='source']">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-comment"/>
+                                                        </xf:label>
+                                                        <xf:hint>monogram, etc (shown in print)</xf:hint>
+                                                    </xf:input>
+                                                </div>
+                                            </div>
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Period</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:date/@when">
@@ -760,7 +771,7 @@
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="tp-label-1-row-2-col">Text. annotation</label>
-                                                    <xf:input class="tp-input-1-row-2-col -form-control" ref="TEI:note">
+                                                    <xf:input class="tp-input-1-row-2-col -form-control" ref="TEI:note[@type='textual-annotation']">
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-comment"/>
                                                         </xf:label>

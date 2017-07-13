@@ -8,7 +8,8 @@
         <bibl type="primary" ana="">
             <ref target="" type="inscr_stone" subtype="" ana=""/>
             <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
-            <note/>
+            <note type="textual-annotation"/>
+            <note type="source"/>
         </bibl>
         <persName type="attested"/>
         <listNym>
