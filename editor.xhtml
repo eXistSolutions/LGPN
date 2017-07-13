@@ -684,7 +684,7 @@
                                                         <xf:label class="input-group-addon">
                                                             <i class="glyphicon glyphicon-tags"/>
                                                         </xf:label>
-                                                        <xf:itemset nodeset="instance('i-sourceTypes')/TEI:category/TEI:category">
+                                                        <xf:itemset nodeset="instance('i-sourceTypes')/TEI:category[@xml:id=current()/../@type]/TEI:category">
                                                             <xf:label ref="TEI:catDesc"/>
                                                             <xf:value ref="@xml:id"/>
                                                         </xf:itemset>
