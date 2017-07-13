@@ -1453,6 +1453,18 @@
                                                         <xf:hint>person</xf:hint>
                                                     </xf:input>
                                                 </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Certainty</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="@cert">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-check"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-certainty')/option">
+                                                            <xf:label ref="."/>
+                                                            <xf:value ref="@value"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
                                             </div>
                                         </xf:group>
                                         <div class="tp-row tp-repeat-buttons">
