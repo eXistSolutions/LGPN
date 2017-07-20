@@ -137,7 +137,7 @@
                             <div class="tp-section-divider"/>
 
                             <section>
-                                <xf:repeat ref="instance('i-place-default')/descendant-or-self::TEI:place/TEI:placeName" id="r-name">
+                                <xf:repeat ref="instance('i-place-default')/descendant-or-self::TEI:place/TEI:placeName" id="r-place-name">
                                     <xf:label class="tp-row tp-form-header">
                                         <h4 class="col-md-2">Name variants</h4>
                                     </xf:label>
@@ -227,7 +227,7 @@
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-trash"/>
                                                     </xf:label>
-                                                    <xf:delete nodeset="instance('i-place-default')/descendant-or-self::TEI:place/TEI:placeName[index('r-name')]"/>
+                                                    <xf:delete nodeset="instance('i-place-default')/descendant-or-self::TEI:place/TEI:placeName[index('r-place-name')]"/>
                                                 </xf:trigger>
                                             </div>
                                         </div>
