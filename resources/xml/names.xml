@@ -6,4 +6,5 @@
     <option value="patronymic_cognomen_q">patronymic cognomen?</option>
     <option value="matronymic_cognomen">matronymic cognomen</option>
     <option value="matronymic_cognomen_q">matronymic cognomen?</option>
+    <option value="nickname">nickname</option>
 </data>
