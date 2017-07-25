@@ -15,8 +15,8 @@
         <xf:model id="model-place">
             <xf:instance id="i-place-default">
                 <wrapper xmlns="http://www.tei-c.org/ns/1.0">
-                    <place type="settlement" xml:id="uuid" ref="LGPN_Syria">
-                        <placeName type="" subtype="" cert="" xml:lang=""/>
+                    <place type="settlement" xml:id="uuid" ref="LGPN_Syria" cert="high">
+                        <placeName type="" subtype="" cert="high" xml:lang=""/>
                         <location type="pleiades">
                             <label/>
                         </location>
@@ -29,8 +29,8 @@
             </xf:instance>
             <xf:instance id="i-place-template">
                 <wrapper xmlns="http://www.tei-c.org/ns/1.0">
-                    <place type="settlement" xml:id="uuid" ref="LGPN_Syria">
-                        <placeName type="" subtype="" cert="" xml:lang=""/>
+                    <place type="settlement" xml:id="uuid" ref="LGPN_Syria" cert="hing">
+                        <placeName type="" subtype="" cert="high" xml:lang=""/>
                         <location type="pleiades">
                             <label/>
                         </location>
@@ -106,7 +106,6 @@
                                         </xf:select1>
                                     </div>
                                 </div>
-
                                 <div class="tp-row">
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" tooltip="ref">In</label>
@@ -129,7 +128,20 @@
                                             </xf:action>
                                         </xf:trigger>
 -->
-
+                                    </div>
+                                </div>
+                                <div class="tp-row">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Certainty</label>
+                                        <xf:select1 class="input-group col-sm-8 -form-control" ref="@cert">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-check"/>
+                                            </xf:label>
+                                            <xf:itemset nodeset="instance('i-certainty')/option">
+                                                <xf:label ref="."/>
+                                                <xf:value ref="@value"/>
+                                            </xf:itemset>
+                                        </xf:select1>
                                     </div>
                                 </div>
                             </section>

@@ -10,10 +10,10 @@ import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" 
 declare option output:method "json";
 declare option output:media-type "text/javascript";
 
-declare function local:place-ancestors($id) {
+declare function local:place-ancestors($id, $cert) {
     let $place := $config:places//id($id)
     return
-        if (string($place/@ref)) then ($place//tei:placeName[1]/string(), local:place-ancestors($place/@ref)) else $place//tei:placeName[1]/string()
+        if (string($place/@ref)) then (concat($place//tei:placeName[1]/string(), if ($cert='low') then '?' else ()), local:place-ancestors($place/@ref, $place/@cert)) else $place//tei:placeName[1]/string()
 };
 
 let $data := request:get-parameter('query', 'Tri')
@@ -22,7 +22,7 @@ let $data := request:get-parameter('query', 'Tri')
             <result>
                 <total>{count($constituents)}</total>
                 { for $m in $constituents
-                    let $ancestors := local:place-ancestors($m/parent::tei:place/@ref)
+                    let $ancestors := local:place-ancestors($m/parent::tei:place/@ref, $m/parent::tei:place/@cert)
                     order by $m
                     return 
                     <term>

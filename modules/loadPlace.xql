@@ -6,14 +6,12 @@ import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" 
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 declare function local:new($id) {
                         <wrapper xmlns="http://www.tei-c.org/ns/1.0">
-                        <place type="settlement" xml:id="{$id}" ref="LGPN_10020">
-                            <placeName type="" subtype="" cert="" xml:lang=""/>
-                            <placeName type="" subtype="" cert="" xml:lang=""/>
-                            <placeName type="" subtype="" cert="" xml:lang=""/>
+                        <place type="settlement" xml:id="{$id}" ref="LGPN_10020" cert="high">
+                            <placeName type="" subtype="" cert="high" xml:lang=""/>
                             <location type="pleiades">
                                 <label/>
                             </location>
-                            <location cert="">
+                            <location cert="high">
                                 <geo/>
                                 <alt/>
                             </location>
