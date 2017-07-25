@@ -12,8 +12,9 @@ declare option output:media-type "text/javascript";
 
 declare function local:place-ancestors($id, $cert) {
     let $place := $config:places//id($id)
+    let $parent:= concat($place//tei:placeName[1]/string(), if ($cert='low') then '?' else ())
     return
-        if (string($place/@ref)) then (concat($place//tei:placeName[1]/string(), if ($cert='low') then '?' else ()), local:place-ancestors($place/@ref, $place/@cert)) else $place//tei:placeName[1]/string()
+        if (string($place/@ref)) then ($parent, local:place-ancestors($place/@ref, $place/@cert)) else $parent
 };
 
 let $data := request:get-parameter('query', 'Tri')
