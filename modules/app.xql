@@ -38,7 +38,7 @@ declare function app:datatables($node as node(), $model as map(*), $lang as xs:s
         "serverSide": true,
         "ajax": "modules/load-persons.xql",
         "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
-        "order": [[ 4, "desc" ],[ 1, "asc" ]],
+        "order": [[ 6, "desc" ],[ 1, "asc" ]],
         "paging":   true,
         "info":     true
     } );
