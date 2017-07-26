@@ -73,7 +73,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
 
             autocomplete.select2({
                 handler: undefined,
-                name: bibl,
+//                name: bibl,
                 placeholder: phLabel,
                 minimumInputLength: 2,
                 formatResult: _formatResult,

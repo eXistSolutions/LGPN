@@ -1308,7 +1308,7 @@
                                                     <xf:trigger class="hidden reference_autocomplete">
                                                         <xf:label/>
                                                         <xf:action ev:event="DOMActivate">
-                                                            <xf:setvalue ref="instance('i-controller')/bibl" value="instance('i-default')//TEI:bibl[index('r-primarySource')]/TEI:ref/@target"/>
+                                                            <xf:setvalue ref="instance('i-controller')/bibl" value="instance('i-default')//TEI:bibl[index('r-auxiliary')]/TEI:ref/@target"/>
                                                             <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                                         </xf:action>
                                                     </xf:trigger>
