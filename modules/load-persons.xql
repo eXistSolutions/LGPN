@@ -49,14 +49,15 @@ let $c:= console:log($index)
 (:        return "root($i)//tei:change[last()]/@when":)
 (:        return 'replace($i/parent::tei:entry//tei:orth[@type="greek"][1],  "[\p{M}\p{Sk}]", "")' :)
 
-let $c:= console:log($orderBy)
 
     let $collation:= 
         switch($index)
-            case '1'
+            case 0
                 return ' collation "?lang=el-grc&amp;amp;strength=primary&amp;amp;decomposition=standard"' 
             default 
                 return ()
+
+let $c:= console:log('ψολλατιον' || $collation)
         
     return $orderBy || $direction || $collation
     
@@ -96,12 +97,18 @@ let $nyms := if($qs) then
      or .//tei:nym[contains(upper-case(replace(normalize-unicode(@nymRef, "NFD"), "[\p{M}\p{Sk}]", "")), "' || $qs || '")] ' 
     else ''
 
+(: search in modification dates :)
+let $dates := if($qs) then ' or ./ancestor::tei:TEI//tei:change[starts-with(@when, "' || $qs || '")]' else ''
+    
+(: search in references :)
+let $refs := if($qs) then ' or .//tei:bibl[@type=("primary", "auxiliary")][contains(concat(tei:ref/@target, " ", tei:ref), "' || $search || '")]' else ''
+
 let $collection := 'collection($config:persons-root)//tei:person'
 ||
 '[contains(upper-case(normalize-unicode(., "NFD")), "'|| $qs || '") 
             or 
         contains(upper-case(replace(normalize-unicode(., "NFD"), "[\p{M}\p{Sk}]", "")), "' || $qs || '")'
-        || $qp || $nyms || '
+        || $qp || $nyms || $dates || $refs || '
 ]
 '
 
@@ -137,6 +144,11 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
         </a>
         
         let $name := <span>{$icon}{$nlabel}</span>
+        let $volume := $i//tei:bibl[@type='volume']/tei:ref/@target/string()
+        let $date := if ($i//tei:birth/@when/string()) then $i//tei:birth/@when/string() else concat($i//tei:birth/@notBefore/string(), '-', $i//tei:birth/@notAfter/string())
+        let $refs := 
+            for $p in $i//tei:bibl[@type=('primary', 'auxiliary')]
+                return string-join(($p/tei:ref/@target, if($p/tei:ref/string()) then $p/tei:ref/string() else ()), ' ')
         
         let $place := 
             for $p in $i//tei:state[@type='location']/tei:placeName/@key
@@ -164,10 +176,12 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
                 
 (:                if($offset=0) then map:entry(0, names:entry-action($i, '')) else (),:)
                 map:entry(0, $name),
-                map:entry(1, $place),
-                map:entry(2, ()),
-                map:entry(3, $rels),
-                map:entry(4, $updated)
+                map:entry(1, $volume),
+                map:entry(2, $place),
+                map:entry(3, $date),
+                map:entry(4, string-join($refs, '; ')),
+                map:entry(5, $rels),
+                map:entry(6, $updated)
 (:                ,:)
 (:                map:entry($offset+18, names:entry-updated($i)),:)
 (:                if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete')) else ():)
