@@ -91,7 +91,10 @@ let $places:= if ($qs) then collection($config:places-root)//tei:placeName[conta
 let $qp := if($places) then ' or .//tei:placeName/@key=("' || string-join($places/@xml:id, '", "') || '") ' else ''
 
 (: search in nym/@nymRef attributes :)
-let $nyms := if($qs) then ' or .//tei:nym[contains(upper-case(replace(normalize-unicode(@nymRef, "NFD"), "[\p{M}\p{Sk}]", "")), "' || $qs || '")] ' else ''
+let $nyms := if($qs) then 
+    ' or .//tei:nym[contains(upper-case(normalize-unicode(@nymRef, "NFD")), "' || $qs || '")]  
+     or .//tei:nym[contains(upper-case(replace(normalize-unicode(@nymRef, "NFD"), "[\p{M}\p{Sk}]", "")), "' || $qs || '")] ' 
+    else ''
 
 let $collection := 'collection($config:persons-root)//tei:person'
 ||
