@@ -22,7 +22,9 @@ let $data := request:get-parameter('query', '')
                     let $place := if($place_id) then $config:places//tei:place[@xml:id=$place_id]/tei:placeName[1] else ()
                     let $ref := $m/ancestor::tei:person/tei:bibl[@type='primary'][1]/tei:ref
                     let $source := $ref/@target || ' ' || $ref/string()
-                    order by $m
+                    let $date :=  xmldb:last-modified(util:collection-name($m), util:document-name($m))
+
+                    order by $date descending, $m
                     return 
                     <term>
                         <id>{$m/@nymRef/string()} 
