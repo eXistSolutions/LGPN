@@ -165,6 +165,10 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
         {string-join(($link, $name), ' ')}
         </a> else ()
 
+        let $clipboard :=   <button class="clipboard" data-clipboard-text="{$i/@xml:id}">
+                                <img src="resources/img/clippy.svg" alt="Copy to clipboard" height="20"/>
+                            </button>
+
         let $u := if($i) then xmldb:last-modified(util:collection-name($i), util:document-name($i)) else ()
         let $updated := <span>{substring-before($u, 'T')}<span class="invisible">{$u}</span></span>
 
@@ -181,7 +185,8 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
                 map:entry(3, $date),
                 map:entry(4, string-join($refs, '; ')),
                 map:entry(5, $rels),
-                map:entry(6, $updated)
+                map:entry(6, $updated),
+                map:entry(7, $clipboard)
 (:                ,:)
 (:                map:entry($offset+18, names:entry-updated($i)),:)
 (:                if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete')) else ():)
