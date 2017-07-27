@@ -728,47 +728,92 @@
                                                     </xf:input>
                                                 </div>
                                             </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Period</label>
-                                                    <xf:select1 class="tp-input -form-control" ref="TEI:date/@when">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-calendar"/>
-                                                        </xf:label>
-                                                        <xf:itemset nodeset="instance('i-period')/TEI:category">
-                                                            <xf:label ref="./TEI:catDesc/TEI:date"/>
-                                                            <xf:value ref="@xml:id"/>
-                                                        </xf:itemset>
-                                                    </xf:select1>
-                                                </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Date</label>
-                                                    <xf:input class="tp-input -form-control" ref="TEI:date/@notBefore">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-calendar"/>
-                                                        </xf:label>
-                                                        <xf:hint>not before</xf:hint>
-                                                    </xf:input>
-                                                </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Certainty</label>
-                                                    <xf:select1 class="tp-input -form-control" ref="TEI:date/@cert">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-check"/>
-                                                        </xf:label>
-                                                        <xf:itemset nodeset="instance('i-datingCertainty')/option">
-                                                            <xf:label ref="."/>
-                                                            <xf:value ref="@value"/>
-                                                        </xf:itemset>
-                                                    </xf:select1>
-                                                </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Date</label>
-                                                    <xf:input class="tp-input -form-control" ref="TEI:date/@notAfter">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-calendar"/>
-                                                        </xf:label>
-                                                        <xf:hint>not after</xf:hint>
-                                                    </xf:input>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Period</label>
+                                                <xf:select1 class="tp-input -form-control" ref="TEI:date/@when">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"/>
+                                                    </xf:label>
+                                                    <xf:itemset nodeset="instance('i-period')/TEI:category">
+                                                        <xf:label ref="./TEI:catDesc/TEI:date"/>
+                                                        <xf:value ref="@xml:id"/>
+                                                    </xf:itemset>
+                                                </xf:select1>
+                                            </div>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Precision</label>
+                                                <xf:select1 class="tp-input -form-control" ref="TEI:date/@precision">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"/>
+                                                    </xf:label>
+                                                    <xf:itemset nodeset="instance('i-datingPrecision')/option">
+                                                        <xf:label ref="."/>
+                                                        <xf:value ref="@value"/>
+                                                    </xf:itemset>
+                                                </xf:select1>
+                                            </div>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Certainty</label>
+                                                <xf:select1 class="tp-input -form-control" ref="TEI:date/@cert">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"/>
+                                                    </xf:label>
+                                                    <xf:itemset nodeset="instance('i-datingCertainty')/option">
+                                                        <xf:label ref="."/>
+                                                        <xf:value ref="@value"/>
+                                                    </xf:itemset>
+                                                </xf:select1>
+                                            </div>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">notBefore</label>
+                                                <xf:input class="tp-input -form-control" ref="TEI:date/@notBefore">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"/>
+                                                    </xf:label>
+                
+                                                    <xf:hint>not before</xf:hint>
+                                                </xf:input>
+                                            </div>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Date</label>
+                                                <xf:input class="tp-input -form-control" ref="TEI:date">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"/>
+                                                    </xf:label>
+                                                    <xf:hint>text summary (unusual cases only)</xf:hint>
+                                                    <xf:action ev:event="xforms-value-changed">
+                                                        <xf:send submission="validatePattern"/>
+                                                    </xf:action>
+                                                    <xf:alert>Boo</xf:alert>
+                                                </xf:input>
+                                            </div>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">notAfter</label>
+                                                <xf:input class="tp-input -form-control" ref="TEI:date/@notAfter">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"/>
+                                                    </xf:label>
+                
+                                                    <xf:hint>not before</xf:hint>
+                                                </xf:input>
+                                            </div>
+                
+                                                            
+                                            
+                                            
+                                                <div class="tp-row">
+                                                    <div class="form-group">
+                                                        <label class="tp-label-1-row-2-col">Dating</label>
+                                                        <xf:select class="tp-input-1-row-2-col" ref="TEI:date/@ana" appearance="full">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-calendar"/>
+                                                            </xf:label>
+                                                            <xf:itemset nodeset="instance('i-dating')//option">
+                                                                <xf:label ref="."/>
+                                                                <xf:value ref="@value"/>
+                                                            </xf:itemset>
+                                                        </xf:select>
+                                                    </div>
                                                 </div>
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Linking</label>
@@ -804,20 +849,6 @@
                                                         </xf:label>
                                                         <xf:hint>annotation</xf:hint>
                                                     </xf:input>
-                                                </div>
-                                            </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
-                                                    <label class="tp-label-1-row-2-col">Dating</label>
-                                                    <xf:select class="tp-input-1-row-2-col" ref="TEI:date/@ana" appearance="full">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-calendar"/>
-                                                        </xf:label>
-                                                        <xf:itemset nodeset="instance('i-dating')//option">
-                                                            <xf:label ref="."/>
-                                                            <xf:value ref="@value"/>
-                                                        </xf:itemset>
-                                                    </xf:select>
                                                 </div>
                                             </div>
                                         </xf:group>

@@ -7,7 +7,7 @@
         <birth notBefore="" notAfter="" when="" cert="high" precision="period" ana=""/>
         <bibl type="primary" ana="">
             <ref target="" type="inscr_stone" subtype="" ana=""/>
-            <date notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
+            <date notBefore="" notAfter="" when="" cert="high" precision="period" ana=""/>
             <note type="textual-annotation"/>
             <note type="source"/>
         </bibl>
