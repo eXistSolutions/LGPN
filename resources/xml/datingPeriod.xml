@@ -30,6 +30,11 @@
             <date from="-999" to="-700">heroic</date>
         </catDesc>
     </category>
+    <category xml:id="unknown">
+        <catDesc>
+            <date from="-999" to="999">?</date>
+        </catDesc>
+    </category>
     <category xml:id="P8B">
         <catDesc>
             <date from="-800" to="-700">8B</date>
