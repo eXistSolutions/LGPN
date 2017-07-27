@@ -22,7 +22,7 @@
                     <!-- person specific dating, if derived from context or other sources -->
                     <!-- @ana linking -->
                     <!-- @cert to hold information about uncertainty -->
-                    <birth notBefore="" notBeforeEra="" notAfter="" notAfterEra="" when="" cert="high" ana=""/>
+                    <birth notBefore="" notAfter="" when="" cert="high" precision="period" ana=""/>
                     <!-- repeatable for every primary source -->
                     <bibl type="primary" ana=""><!--
                         @target reference

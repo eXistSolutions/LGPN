@@ -16,13 +16,14 @@
                 <xf:bind ref="//TEI:nym[@type ne 'Roman']/@nymRef" constraint="string-length(.) &gt; 0" type="xs:string"/>
                 <xf:bind ref="//TEI:bibl[@type='primary'][index('r-primarySource')]/TEI:ref/@target" constraint="string-length(.) &gt; 0" type="xs:string"/>
                 <xf:bind ref="//TEI:bibl[@type='auxiliary'][index('r-auxiliary')]/TEI:ref/@target" constraint="string-length(.) &gt; 0" type="xs:string"/>
-                <xf:bind ref="//TEI:bibl[@type='primary']/TEI:ref[index('r-primarySource')]" constraint="not(boolean-from-string(instance('i-biblPattern')/validate))"/>
+                <xf:bind ref="//TEI:bibl[@type='primary'][index('r-primarySource')]/TEI:ref" constraint="not(boolean-from-string(instance('i-biblPattern')/validate))"/>
                 <xf:instance xmlns="" id="i-template" src="resources/xml/personTemplate.xml"/>
                 <xf:instance xmlns="" id="i-volumes" src="resources/xml/volumes.xml"/>
                 <xf:instance xmlns="" id="i-genders" src="resources/xml/genders.xml"/>
                 <xf:instance xmlns="" id="i-personType" src="resources/xml/personType.xml"/>
                 <xf:instance xmlns="" id="i-certainty" src="resources/xml/certainty.xml"/>
                 <xf:instance xmlns="" id="i-datingCertainty" src="resources/xml/datingCertainty.xml"/>
+                <xf:instance xmlns="" id="i-datingPrecision" src="resources/xml/datingPrecision.xml"/>
                 <xf:instance xmlns="" id="i-personDating" src="resources/xml/personDating.xml"/>
                 <xf:instance xmlns="" id="i-dating" src="resources/xml/dating.xml"/>
                 <xf:instance xmlns="" id="i-period" src="resources/xml/datingPeriod.xml"/>
@@ -182,7 +183,31 @@
                                 </xf:select1>
                             </div>
                             <div class="tp-form-group-col">
-                                <label class="tp-label">Date</label>
+                                <label class="tp-label">Precision</label>
+                                <xf:select1 class="tp-input -form-control" ref="//TEI:birth/@precision">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-datingPrecision')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@value"/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Certainty</label>
+                                <xf:select1 class="tp-input -form-control" ref="//TEI:birth/@cert">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-datingCertainty')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@value"/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">notBefore</label>
                                 <xf:input class="tp-input -form-control" ref="//TEI:birth/@notBefore">
                                     <xf:label class="input-group-addon">
                                         <i class="glyphicon glyphicon-calendar"/>
@@ -192,7 +217,30 @@
                                 </xf:input>
                             </div>
                             <div class="tp-form-group-col">
-                                <label class="tp-label">Person</label>
+                                <label class="tp-label">Date</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:birth">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"/>
+                                    </xf:label>
+                                    <xf:hint>text summary (unusual cases only)</xf:hint>
+                                    <xf:action ev:event="xforms-value-changed">
+                                        <xf:send submission="validatePattern"/>
+                                    </xf:action>
+                                    <xf:alert>Boo</xf:alert>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">notAfter</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:birth/@notAfter">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"/>
+                                    </xf:label>
+
+                                    <xf:hint>not before</xf:hint>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Dating</label>
                                 <div class="">
                                     <xf:select class="tp-input" ref="//TEI:birth/@ana" appearance="full">
                                         <xf:label class="input-group-addon">
@@ -206,33 +254,12 @@
                                 </div>
                             </div>
                             <div class="tp-form-group-col">
-                                <label class="tp-label">Date</label>
-                                <xf:input class="tp-input -form-control" ref="//TEI:birth/@notAfter">
-                                    <xf:label class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"/>
-                                    </xf:label>
-                                    <xf:hint>not after</xf:hint>
-                                </xf:input>
-                            </div>
-                            <div class="tp-form-group-col">
                                 <label class="tp-label">Type</label>
                                 <xf:select1 class="tp-input -form-control" ref="//TEI:person/@type">
                                     <xf:label class="input-group-addon">
                                         <i class="glyphicon glyphicon-user"/>
                                     </xf:label>
                                     <xf:itemset nodeset="instance('i-personType')/option">
-                                        <xf:label ref="."/>
-                                        <xf:value ref="@value"/>
-                                    </xf:itemset>
-                                </xf:select1>
-                            </div>
-                            <div class="tp-form-group-col">
-                                <label class="tp-label">Certainty</label>
-                                <xf:select1 class="tp-input -form-control" ref="//TEI:birth/@cert">
-                                    <xf:label class="input-group-addon">
-                                        <i class="glyphicon glyphicon-check"/>
-                                    </xf:label>
-                                    <xf:itemset nodeset="instance('i-datingCertainty')/option">
                                         <xf:label ref="."/>
                                         <xf:value ref="@value"/>
                                     </xf:itemset>
