@@ -64,6 +64,26 @@ let $c:= console:log('ψολλατιον' || $collation)
     
 };
 
+declare function local:bibl($bibl) {
+    let $text:= string-join(($bibl/tei:ref/@target, if($bibl/tei:ref/string()) then $bibl/tei:ref/string() else ()), ' ')
+    let $prefix :=
+    switch ($bibl/@ana)
+        case "equal" return '('
+        case "published-twice" return '='
+        case "correction" return '&amp;'
+        default return ()
+    
+    let $sufix :=
+    switch ($bibl/@ana)
+        case "equal" return ')'
+        default return ()
+
+  (:    ;= book: =:)
+(:= book: ():)
+(:+ book: &:)
+    return string-join(($prefix, $text, $sufix), '')
+};
+
 (:let $setuser :=  login:set-user("org.exist.lgpn-ling", (), false()):)
 let $setuser := 'michael'
 
@@ -105,7 +125,9 @@ let $refs := if($qs) then ' or .//tei:bibl[@type=("primary", "auxiliary")][conta
 
 let $collection := 'collection($config:persons-root)//tei:person'
 ||
-'[contains(upper-case(normalize-unicode(., "NFD")), "'|| $qs || '") 
+'[@xml:id="'|| $search || '"
+or 
+contains(upper-case(normalize-unicode(., "NFD")), "'|| $qs || '") 
             or 
         contains(upper-case(replace(normalize-unicode(., "NFD"), "[\p{M}\p{Sk}]", "")), "' || $qs || '")'
         || $qp || $nyms || $dates || $refs || '
@@ -148,7 +170,7 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
         let $date := if ($i//tei:birth/@when/string()) then $i//tei:birth/@when/string() else concat($i//tei:birth/@notBefore/string(), '-', $i//tei:birth/@notAfter/string())
         let $refs := 
             for $p in $i//tei:bibl[@type=('primary', 'auxiliary')]
-                return string-join(($p/tei:ref/@target, if($p/tei:ref/string()) then $p/tei:ref/string() else ()), ' ')
+                return local:bibl($p)
         
         let $place := 
             for $p in $i//tei:state[@type='location']/tei:placeName/@key
