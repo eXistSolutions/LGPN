@@ -169,8 +169,9 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
         let $volume := $i//tei:bibl[@type='volume']/tei:ref/@target/string()
         let $date := if ($i//tei:birth/@when/string()) then $i//tei:birth/@when/string() else concat($i//tei:birth/@notBefore/string(), '-', $i//tei:birth/@notAfter/string())
         let $refs := 
-            for $p in $i//tei:bibl[@type=('primary', 'auxiliary')]
-                return local:bibl($p)
+            for $p in $i//tei:bibl
+(:            [@type=('primary', 'auxiliary')]:)
+                return if ($p/@type=('primary', 'auxiliary')) then local:bibl($p) else ()
         
         let $place := 
             for $p in $i//tei:state[@type='location']/tei:placeName/@key
