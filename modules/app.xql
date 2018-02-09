@@ -23,6 +23,8 @@ declare function app:datatables($node as node(), $model as map(*), $lang as xs:s
     let $quote := "'"
 
     let $js := '
+
+    
     $(document).ready(function() {
     $("#datatable").DataTable( {
         "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
@@ -33,17 +35,34 @@ declare function app:datatables($node as node(), $model as map(*), $lang as xs:s
             "url": "resources/js/' || $lang || '.json"
         }
     } );
-    $("#servertable").DataTable( {
+    
+
+    var table =$("#servertable").DataTable( {
         "processing": true,
         "serverSide": true,
+        "searchDelay": 100,
         "ajax": "modules/load-persons.xql",
         "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
         "order": [[ 6, "desc" ],[ 1, "asc" ]],
         "paging":   true,
-        "info":     true
+        "info":     true,
+        "initComplete": function(settings, json) {
+    //change the default search input behaviour, not sending all requests but only after hitting enter (or empty string)
+    $("#servertable_filter input")
+    .unbind()
+    .bind("keyup change", function(e) {
+        if (e.keyCode == 13 || this.value == "") {
+            table
+                .search(this.value)
+                .draw();
+        }
+    });
+    
+  }
     } );
 
 } );
+
 '
     return
         <script>
