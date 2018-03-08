@@ -5,6 +5,7 @@
             <ref target="V6"/>
         </bibl>
         <birth notBefore="" notAfter="" when="" cert="high" precision="period" ana=""/>
+        <age type="death"/>
         <bibl type="primary" ana="">
             <ref target="" type="inscr_stone" subtype="" ana=""/>
             <date notBefore="" notAfter="" when="" cert="high" precision="period" ana=""/>
@@ -19,8 +20,7 @@
                     <persName type="main" xml:lang="grc" ana="Nom" corresp="s1" n=""/>
                 </form>
             </nym>
-            <nym type="Roman" ana="greek" n="1" corresp="s1">
-                <!-- special entry type for Roman names                -->
+            <nym type="Roman" ana="greek" n="1" corresp="s1"><!-- special entry type for Roman names                -->
                 <persName type="praenomen"/>
                 <persName type="nomen_gentile"/>
                 <persName type="filiation" subtype="son"/>

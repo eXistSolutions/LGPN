@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
         <title>LGPN</title><!-- Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com-->
         <link href="resources/js/vendor/select2/select2.css" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
@@ -63,8 +62,7 @@
                         <validate/>
                     </data>
                 </xf:instance>
-                <xf:submission id="validatePattern" method="get" replace="instance" ref="instance('i-biblPattern')" validate="false" resource="modules/validatePattern.xql?biblId={instance('i-default')//TEI:bibl[@type='primary']/TEI:ref[index('r-primarySource')]/@target}">
-                    <!--<?biblId={instance('i-default')//TEI:bibl[@type='primary'][index('r-primarySource')]}">-->
+                <xf:submission id="validatePattern" method="get" replace="instance" ref="instance('i-biblPattern')" validate="false" resource="modules/validatePattern.xql?biblId={instance('i-default')//TEI:bibl[@type='primary']/TEI:ref[index('r-primarySource')]/@target}"><!--<?biblId={instance('i-default')//TEI:bibl[@type='primary'][index('r-primarySource')]}">-->
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Ok.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Boo.</xf:message>
                 </xf:submission>
@@ -123,15 +121,12 @@
                 </xf:action>
             </xf:group>
         </div>
-
         <header>
             <div class="tp-row">
                 <h1 class="tp-column-fullwidth tp-headline">LGPN Person Input Form</h1>
             </div>
         </header>
-
-        <main>
-            <!-- begin section general -->
+        <main><!-- begin section general -->
             <section class="tp-section">
                 <div class="tp-row">
                     <h2 class="tp-width-sidebar">General</h2>
@@ -212,7 +207,6 @@
                                     <xf:label class="input-group-addon">
                                         <i class="glyphicon glyphicon-calendar"/>
                                     </xf:label>
-
                                     <xf:hint>not before</xf:hint>
                                 </xf:input>
                             </div>
@@ -235,7 +229,6 @@
                                     <xf:label class="input-group-addon">
                                         <i class="glyphicon glyphicon-calendar"/>
                                     </xf:label>
-
                                     <xf:hint>not before</xf:hint>
                                 </xf:input>
                             </div>
@@ -254,6 +247,15 @@
                                 </div>
                             </div>
                             <div class="tp-form-group-col">
+                                <label class="tp-label">Age</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:age[@type='death']">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"/>
+                                    </xf:label>
+                                    <xf:hint>age at death</xf:hint>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
                                 <label class="tp-label">Type</label>
                                 <xf:select1 class="tp-input -form-control" ref="//TEI:person/@type">
                                     <xf:label class="input-group-addon">
@@ -268,17 +270,13 @@
                         </fieldset>
                     </div>
                 </div>
-            </section>
-            <!-- // end section general -->
-
-            <!-- begin section names -->
+            </section><!-- // end section general --><!-- begin section names -->
             <section class="tp-section">
                 <div class="tp-row">
                     <h2 class="tp-width-sidebar">Names</h2>
                     <div class="tp-width-main">
                         <section class="form-horizontal" id="names">
-                            <xf:group ref="//TEI:person">
-                                <!-- NAMES -->
+                            <xf:group ref="//TEI:person"><!-- NAMES -->
                                 <div class="form-group">
                                     <label class="tp-label-1-row-2-col">Final Bracket</label>
                                     <xf:input class="tp-input-1-row-2-col -form-control" ref="TEI:persName">
@@ -287,9 +285,7 @@
                                         </xf:label>
                                         <xf:hint>full attested form (aka final bracket)</xf:hint>
                                     </xf:input>
-                                </div>
-
-                                <!-- NAME -->
+                                </div><!-- NAME -->
                                 <xf:group>
                                     <div class="tp-row tp-repeat-add">
                                         <xf:label class="tp-form-header">
@@ -310,14 +306,12 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <xf:repeat ref="TEI:listNym/TEI:nym[@type!='Roman']" id="r-name">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
                                                 <h4>Nym</h4>
                                             </xf:label>
                                         </div>
-
                                         <xf:group ref=".">
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col tp-validation">
@@ -382,7 +376,7 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                           </div>
+                                            </div>
                                             <div class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
@@ -397,9 +391,7 @@
                                                 </div>
                                             </div>
                                             <div class="tp-section-divider"/>
-                                        </xf:group>
-
-                                        <!-- Attested forms -->
+                                        </xf:group><!-- Attested forms -->
                                         <div>
                                             <div class="tp-row tp-repeat-add">
                                                 <xf:label class="tp-form-header">
@@ -420,7 +412,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <xf:repeat ref="TEI:form[@type='attested']" id="r-nameForm">
                                                 <div class="tp-row tp-repeat-headline">
                                                     <xf:label class="tp-form-header">
@@ -488,7 +479,6 @@
                                                         </xf:select>
                                                     </div>
                                                 </div>
-
                                                 <div class="tp-row tp-repeat-buttons">
                                                     <div class="tp-repeat-button-right">
                                                         <div class="tp-button-row tp-delete">
@@ -502,13 +492,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="tp-section-divider"/>
                                             </xf:repeat>
                                         </div>
-                                    </xf:repeat>
-
-                                    <!-- Roman names -->
+                                    </xf:repeat><!-- Roman names -->
                                     <div>
                                         <div class="tp-row tp-repeat-add">
                                             <xf:label class="tp-form-header">
@@ -529,7 +516,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <xf:repeat ref="TEI:listNym/TEI:nym[@type='Roman']" id="r-rname">
                                             <div class="tp-row">
                                                 <div class="tp-row tp-repeat-headline">
@@ -537,7 +523,6 @@
                                                         <h4 class="col-md-6">Roman Name</h4>
                                                     </xf:label>
                                                 </div>
-
                                                 <xf:group ref=".">
                                                     <div class="tp-form-group-col">
                                                         <label class="tp-label" tooltip="ref">Praenomen</label>
@@ -604,7 +589,6 @@
                                                     </div>
                                                 </xf:group>
                                             </div>
-
                                             <div class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
@@ -621,12 +605,8 @@
                                             <div class="tp-section-divider"/>
                                         </xf:repeat>
                                     </div>
-
                                 </xf:group>
-
-                                <div class="tp-section-divider"/>
-
-                                <!-- Primary Sources -->
+                                <div class="tp-section-divider"/><!-- Primary Sources -->
                                 <xf:group>
                                     <div class="tp-row tp-repeat-add">
                                         <xf:label class="tp-form-header">
@@ -647,14 +627,12 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <xf:repeat ref="TEI:bibl[@type='primary']" id="r-primarySource">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
                                                 <h4>Primary Sources</h4>
                                             </xf:label>
                                         </div>
-
                                         <xf:group ref=".">
                                             <xf:label/>
                                             <div class="tp-row">
@@ -671,7 +649,6 @@
                                                         <xf:alert>Please insert term</xf:alert>
                                                     </xf:input>
                                                     <input type="hidden" class="tp-input" data-function="reference_autocomplete" placeholder="Type to search reference abbreviation" autocomplete="off"/>
-
                                                     <xf:trigger class="hidden reference_autocomplete">
                                                         <xf:label/>
                                                         <xf:action ev:event="DOMActivate">
@@ -717,90 +694,84 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            <div class="tp-row">
-                                                <div class="form-group">
-                                                    <label class="tp-label-1-row-2-col">Source characteristic</label>
-                                                    <xf:input class="tp-input-1-row-2-col -form-control" ref="TEI:note[@type='source']">
+                                                <div class="tp-row">
+                                                    <div class="form-group">
+                                                        <label class="tp-label-1-row-2-col">Source characteristic</label>
+                                                        <xf:input class="tp-input-1-row-2-col -form-control" ref="TEI:note[@type='source']">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-comment"/>
+                                                            </xf:label>
+                                                            <xf:hint>monogram, etc (shown in print)</xf:hint>
+                                                        </xf:input>
+                                                    </div>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Period</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="TEI:date/@when">
                                                         <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-comment"/>
+                                                            <i class="glyphicon glyphicon-calendar"/>
                                                         </xf:label>
-                                                        <xf:hint>monogram, etc (shown in print)</xf:hint>
+                                                        <xf:itemset nodeset="instance('i-period')/TEI:category">
+                                                            <xf:label ref="./TEI:catDesc/TEI:date"/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Precision</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="TEI:date/@precision">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-calendar"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-datingPrecision')/option">
+                                                            <xf:label ref="."/>
+                                                            <xf:value ref="@value"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Certainty</label>
+                                                    <xf:select1 class="tp-input -form-control" ref="TEI:date/@cert">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-calendar"/>
+                                                        </xf:label>
+                                                        <xf:itemset nodeset="instance('i-datingCertainty')/option">
+                                                            <xf:label ref="."/>
+                                                            <xf:value ref="@value"/>
+                                                        </xf:itemset>
+                                                    </xf:select1>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">notBefore</label>
+                                                    <xf:input class="tp-input -form-control" ref="TEI:date/@notBefore">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-calendar"/>
+                                                        </xf:label>
+                                                        <xf:hint>not before</xf:hint>
                                                     </xf:input>
                                                 </div>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Period</label>
-                                                <xf:select1 class="tp-input -form-control" ref="TEI:date/@when">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-calendar"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-period')/TEI:category">
-                                                        <xf:label ref="./TEI:catDesc/TEI:date"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Precision</label>
-                                                <xf:select1 class="tp-input -form-control" ref="TEI:date/@precision">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-calendar"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-datingPrecision')/option">
-                                                        <xf:label ref="."/>
-                                                        <xf:value ref="@value"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Certainty</label>
-                                                <xf:select1 class="tp-input -form-control" ref="TEI:date/@cert">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-calendar"/>
-                                                    </xf:label>
-                                                    <xf:itemset nodeset="instance('i-datingCertainty')/option">
-                                                        <xf:label ref="."/>
-                                                        <xf:value ref="@value"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">notBefore</label>
-                                                <xf:input class="tp-input -form-control" ref="TEI:date/@notBefore">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-calendar"/>
-                                                    </xf:label>
-                
-                                                    <xf:hint>not before</xf:hint>
-                                                </xf:input>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Date</label>
-                                                <xf:input class="tp-input -form-control" ref="TEI:date">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-calendar"/>
-                                                    </xf:label>
-                                                    <xf:hint>text summary (unusual cases only)</xf:hint>
-                                                    <xf:action ev:event="xforms-value-changed">
-                                                        <xf:send submission="validatePattern"/>
-                                                    </xf:action>
-                                                    <xf:alert>Boo</xf:alert>
-                                                </xf:input>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">notAfter</label>
-                                                <xf:input class="tp-input -form-control" ref="TEI:date/@notAfter">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-calendar"/>
-                                                    </xf:label>
-                
-                                                    <xf:hint>not before</xf:hint>
-                                                </xf:input>
-                                            </div>
-                
-                                                            
-                                            
-                                            
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Date</label>
+                                                    <xf:input class="tp-input -form-control" ref="TEI:date">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-calendar"/>
+                                                        </xf:label>
+                                                        <xf:hint>text summary (unusual cases only)</xf:hint>
+                                                        <xf:action ev:event="xforms-value-changed">
+                                                            <xf:send submission="validatePattern"/>
+                                                        </xf:action>
+                                                        <xf:alert>Boo</xf:alert>
+                                                    </xf:input>
+                                                </div>
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">notAfter</label>
+                                                    <xf:input class="tp-input -form-control" ref="TEI:date/@notAfter">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-calendar"/>
+                                                        </xf:label>
+                                                        <xf:hint>not before</xf:hint>
+                                                    </xf:input>
+                                                </div>
                                                 <div class="tp-row">
                                                     <div class="form-group">
                                                         <label class="tp-label-1-row-2-col">Dating</label>
@@ -867,10 +838,7 @@
                                         </div>
                                         <div class="tp-section-divider"/>
                                     </xf:repeat>
-                                </xf:group>
-
-
-                                <!-- PLACES -->
+                                </xf:group><!-- PLACES -->
                                 <xf:group>
                                     <div class="tp-row tp-repeat-add">
                                         <xf:label class="tp-form-header">
@@ -891,7 +859,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <xf:repeat ref="TEI:state[@type='location']" id="r-place">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
@@ -925,7 +892,6 @@
                                                         <xf:hint>place</xf:hint>
                                                     </xf:input>
                                                     <input type="hidden" class="tp-input" data-function="places_autocomplete" placeholder="Type to search place" autocomplete="off"/>
-
                                                     <xf:trigger class="hidden places_autocomplete">
                                                         <xf:label/>
                                                         <xf:action ev:event="DOMActivate">
@@ -959,7 +925,6 @@
                                                     </xf:select1>
                                                 </div>
                                             </div>
-
                                             <div class="tp-row">
                                                 <div class="form-group">
                                                     <label class="tp-label-1-row-2-col">Source</label>
@@ -991,7 +956,6 @@
                                         <div class="tp-section-divider"/>
                                     </xf:repeat>
                                 </xf:group>
-
                                 <section class="status-section">
                                     <section class="tp-row tp-repeat-add">
                                         <xf:label class="tp-form-header">
@@ -1060,7 +1024,6 @@
                                             </div>
                                         </div>
                                     </section>
-
                                     <xf:repeat ref="//TEI:trait[@type='status']" id="r-status">
                                         <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
@@ -1068,7 +1031,6 @@
                                                 <h4>Status</h4>
                                             </xf:label>
                                         </div>
-
                                         <xf:group ref=".">
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col">
@@ -1096,7 +1058,6 @@
                                                     </xf:select1>
                                                 </div>
                                             </div>
-
                                             <div class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
@@ -1112,7 +1073,6 @@
                                             </div>
                                         </xf:group>
                                     </xf:repeat>
-
                                     <xf:repeat ref="//TEI:trait[@type='profession']" id="r-profession">
                                         <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
@@ -1147,7 +1107,6 @@
                                                     </xf:select1>
                                                 </div>
                                             </div>
-
                                             <div class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
@@ -1163,7 +1122,6 @@
                                             </div>
                                         </xf:group>
                                     </xf:repeat>
-
                                     <xf:repeat ref="//TEI:trait[@type='office']" id="r-office">
                                         <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
@@ -1198,7 +1156,6 @@
                                                     </xf:select1>
                                                 </div>
                                             </div>
-
                                             <div class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
@@ -1212,10 +1169,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </xf:group>
                                     </xf:repeat>
-
                                     <xf:repeat ref="//TEI:trait[@type='religion']" id="r-religion">
                                         <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
@@ -1250,7 +1205,6 @@
                                                     </xf:select1>
                                                 </div>
                                             </div>
-
                                             <div class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
@@ -1266,7 +1220,6 @@
                                             </div>
                                         </xf:group>
                                     </xf:repeat>
-
                                     <xf:repeat ref="//TEI:trait[@type='Roman']" id="r-Roman">
                                         <div class="tp-section-divider"/>
                                         <div class="tp-row tp-repeat-headline">
@@ -1301,7 +1254,6 @@
                                                     </xf:select1>
                                                 </div>
                                             </div>
-
                                             <div class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
@@ -1318,10 +1270,7 @@
                                         </xf:group>
                                     </xf:repeat>
                                 </section>
-
-                                <div class="tp-section-divider"/>
-
-                                <!-- SECONDARY SOURCES -->
+                                <div class="tp-section-divider"/><!-- SECONDARY SOURCES -->
                                 <section class="secondary-sources">
                                     <div class="tp-row tp-repeat-add">
                                         <xf:label class="tp-form-header">
@@ -1340,7 +1289,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <xf:group>
                                         <xf:repeat ref="TEI:bibl[@type = 'auxiliary']" id="r-auxiliary">
                                             <div class="tp-row tp-repeat-headline">
@@ -1348,7 +1296,6 @@
                                                     <h4>Secondary Sources</h4>
                                                 </xf:label>
                                             </div>
-
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col tp-validation">
                                                     <label class="tp-label" tooltip="ref">Reference Abbr.</label>
@@ -1430,16 +1377,12 @@
                                             <div class="tp-section-divider"/>
                                         </xf:repeat>
                                     </xf:group>
-                                </section>
-                                <!-- // end secondary sources -->
+                                </section><!-- // end secondary sources -->
                             </xf:group>
                         </section>
                     </div>
                 </div>
-            </section>
-            <!-- // end section names -->
-
-            <!-- begin section relationships -->
+            </section><!-- // end section names --><!-- begin section relationships -->
             <section class="tp-section">
                 <div class="tp-row">
                     <h2 class="tp-width-sidebar">Relationships</h2>
@@ -1466,7 +1409,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <xf:repeat ref="TEI:relation" id="r-relation">
                                         <div class="tp-row tp-repeat-headline">
                                             <xf:label class="tp-form-header">
@@ -1556,15 +1498,12 @@
                         </fieldset>
                     </div>
                 </div>
-            </section>
-            <!-- // end section relationships -->
-
+            </section><!-- // end section relationships -->
             <section class="tp-section tp-section-save">
                 <div class="tp-row">
                     <h2 class="tp-width-sidebar">Save Form</h2>
                     <div class="tp-width-main">
                         <fieldset class="form-horizontal">
-
                             <div class="tp-row tp-repeat-buttons">
                                 <div class="tp-repeat-button-left">
                                     <div class="tp-button-row tp-add">
@@ -1576,7 +1515,6 @@
                                         </xf:submit>
                                     </div>
                                 </div>
-
                                 <div class="tp-repeat-button-right">
                                     <div class="tp-button-row tp-delete">
                                         <label>
@@ -1596,7 +1534,6 @@
                     </div>
                 </div>
             </section>
-
         </main>
         <bfc:dialog id="bibl" src="bibl.html">
             <xf:label>Add bibl</xf:label>

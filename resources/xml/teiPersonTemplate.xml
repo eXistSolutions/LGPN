@@ -12,18 +12,13 @@
     </teiHeader>
     <text>
         <body>
-            <listPerson>
-                <!-- @sex gender -->
-                <person xml:id="uuid" sex="" type="">
-                    <!-- LGPN volume -->
+            <listPerson><!-- @sex gender -->
+                <person xml:id="uuid" sex="" type=""><!-- LGPN volume -->
                     <bibl type="volume">
                         <ref target="V6"/>
-                    </bibl>
-                    <!-- person specific dating, if derived from context or other sources -->
-                    <!-- @ana linking -->
-                    <!-- @cert to hold information about uncertainty -->
-                    <birth notBefore="" notAfter="" when="" cert="high" precision="period" ana=""/>
-                    <!-- repeatable for every primary source -->
+                    </bibl><!-- person specific dating, if derived from context or other sources --><!-- @ana linking --><!-- @cert to hold information about uncertainty -->
+                    <birth notBefore="" notAfter="" when="" cert="high" precision="period" ana=""/><!-- repeatable for every primary source -->
+                    <age type="death"/>
                     <bibl type="primary" ana=""><!--
                         @target reference
                         @type type of source/inscription
@@ -41,12 +36,8 @@
                         <note type="source"/>
                     </bibl>
                     <persName type="attested"/>
-                    <listNym>
-                        <!-- repeatable for all names used by a person: eg main/nickname/Roman name/patronymic/demetic (@type) -->
-                        <!-- @nymRef holds normalized form of a name -->
-                        <!-- @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default -->
-                        <nym type="main" nymRef="" ana="greek" n="1" cert="high">
-                            <!-- repeatable for every attested name form
+                    <listNym><!-- repeatable for all names used by a person: eg main/nickname/Roman name/patronymic/demetic (@type) --><!-- @nymRef holds normalized form of a name --><!-- @ana origin of the name e.g. Greek/Anatolian/Semitic/... Greek default -->
+                        <nym type="main" nymRef="" ana="greek" n="1" cert="high"><!-- repeatable for every attested name form
                             @xml:lang source language of the form e.g. Greek/Latin/Hebrew Greek default
                             @ana case Nom/Gen/etc... Nom default value
                             text content: attested form; using marks system as previously to denote conjectures etc
@@ -56,12 +47,10 @@
                                 <persName xml:lang="grc" ana="Nom" corresp="s1" n=""/>
                             </form>
                         </nym>
-                    </listNym>
-                    <!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
+                    </listNym><!-- repeatable for @subtype: birth, residence, citizenship, attestation -->
                     <state type="location" subtype="citizen">
                         <placeName key="" type="ancient" subtype="" cert="high" corresp="s1"/>
-                    </state>
-                    <!-- repeatable
+                    </state><!-- repeatable
                     @subtype: secondary, dictionary, onomastic
                     @ana: location, name, date, relationship, stemma -->
                 </person>
