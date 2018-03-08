@@ -6,4 +6,5 @@
     <option value="Acc">Acc</option>
     <option value="Voc">Voc</option>
     <option value="Abl">Abl</option>
+    <option value="Undeclined">Undeclined</option>
 </data>
