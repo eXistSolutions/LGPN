@@ -75,7 +75,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                 handler: undefined,
 //                name: bibl,
                 placeholder: phLabel,
-                minimumInputLength: 2,
+                minimumInputLength: 3,
                 formatResult: _formatResult,
                 formatSelection: _termFormatSelection,
                 formatNoMatches: "<div>No matches</div>",
@@ -113,7 +113,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                     crossDomain: true,
                     data: function (term, page) {
                         return {
-                            type: 'meanings',
+                            type: 'relatives',
                             query: term,
                             page_limit: 10,
                             page: page
