@@ -65,8 +65,12 @@ let $c:= console:log('ψολλατιον' || $collation)
 };
 
 declare function local:bibl($bibl) {
-    let $text:= string-join(($bibl/tei:ref/@target, if($bibl/tei:ref/string()) then $bibl/tei:ref/string() else ()), ' ')
-    let $prefix :=
+  let $text:= if ($bibl/@type eq 'primary') then 
+        string-join(($bibl/tei:ref/@target, if($bibl/tei:ref/string()) then $bibl/tei:ref/string() else ()), ' ')
+    else 
+        string-join(($bibl/tei:ref/@target, if($bibl/tei:seg[@type='details']/string()) then $bibl/tei:seg[@type='details']/string() else ()), ' ')
+
+  let $prefix :=
     switch ($bibl/@ana)
         case "equal" return '('
         case "published-twice" return '='
