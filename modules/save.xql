@@ -18,6 +18,18 @@ let $c := console:log($config:persons-root)
 let $log := util:log("INFO", "data: " || $data)
 (:  Run stuff as dba :)
 (:  Store :)
+ 
+(: check if entry under the same id already exists , if so, delete it to avoid duplicates when changing volumes :)
+let $duplicates := collection($config:persons-root)//id($id) 
+let $coll := for $d in $duplicates 
+        let $new := $config:persons-root || "/" || $volume
+        let $old := util:collection-name($d)
+return
+    if ($old ne $new) then 
+        system:as-user($config:dba-credentials[1], $config:dba-credentials[2], xmldb:remove(util:collection-name($d), concat($id , ".xml")))
+    else 
+        ()
+  
 let $path := system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
         xmldb:store($config:persons-root || "/" || $volume, concat($id , ".xml"), $data)
     )
