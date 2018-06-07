@@ -25,7 +25,7 @@ let $data := request:get-parameter('query', '')
                     let $parent := collection($config:persons-root)//id($parent_id)//tei:nym/@nymRef
                     let $place_id := $m/root()/tei:state/tei:placeName[1]/@key
                     let $place := if($place_id) then $config:places//tei:place[@xml:id=$place_id]/tei:placeName[1] else ()
-                    let $ref := $m/root()//tei:bibl[@type='primary'][1]/tei:ref
+                    let $ref := ($m/root()//tei:bibl[@type='primary'][1]/tei:ref, $m/root()//tei:bibl[@type='auxiliary'][1]/tei:ref)[1]
                     let $source := $ref/@target || ' ' || $ref/string()
                     let $date :=  xmldb:last-modified(util:collection-name($m), util:document-name($m))
 
