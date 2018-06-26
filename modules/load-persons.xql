@@ -112,7 +112,7 @@ let $offset := 0
 let $qs := normalize-unicode(upper-case($search), "NFD")
 
 (: search also in place names :)
-let $places:= if ($qs) then collection($config:places-root)//tei:placeName[contains(upper-case(.), $qs)]/parent::tei:place else ()
+let $places:= if ($qs) then collection($config:places-root)//tei:placeName[contains(normalize-unicode(upper-case(.), "NFD"), $qs)]/parent::tei:place else ()
 let $qp := if($places) then ' or .//tei:placeName/@key=("' || string-join($places/@xml:id, '", "') || '") ' else ''
 
 (: search in nym/@nymRef attributes :)
