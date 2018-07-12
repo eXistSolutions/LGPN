@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="periods">
+    <category xml:id="imperial">
+        <catDesc>
+            <date from="-31" to="310">imp.</date>
+        </catDesc>
+    </category>
+    <category xml:id="byzantine">
+        <catDesc>
+            <date from="311" to="699">byz.</date>
+        </catDesc>
+    </category>
+    <category xml:id="classical">
+        <catDesc>
+            <date from="-508" to="-323">clas.</date>
+        </catDesc>
+    </category>
+    <category xml:id="hellenistic">
+        <catDesc>
+            <date from="-323" to="-31">hell.</date>
+        </catDesc>
+    </category>
+    <category xml:id="archaic">
+        <catDesc>
+            <date from="-998" to="-480">archaic</date>
+        </catDesc>
+    </category>
+    <category xml:id="heroic">
+        <catDesc>
+            <date from="-999" to="-700">her.</date>
+        </catDesc>
+    </category>
+    <category xml:id="unknown">
+        <catDesc>
+            <date from="-999" to="999">?</date>
+        </catDesc>
+    </category>
+    <category xml:id="P8B">
+        <catDesc>
+            <date from="-800" to="-700">viii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P7B">
+        <catDesc>
+            <date from="-700" to="-600">vii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P6B">
+        <catDesc>
+            <date from="-600" to="-500">vi BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P5B">
+        <catDesc>
+            <date from="-500" to="-400">v BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P4B">
+        <catDesc>
+            <date from="-400" to="-300">iV BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P3B">
+        <catDesc>
+            <date from="-300" to="-200">iii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P2B">
+        <catDesc>
+            <date from="-200" to="-100">ii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P1B">
+        <catDesc>
+            <date from="-100" to="0">i BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P1A">
+        <catDesc>
+            <date from="0" to="100">i AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P2A">
+        <catDesc>
+            <date from="100" to="200">ii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P3A">
+        <catDesc>
+            <date from="200" to="300">iii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P4A">
+        <catDesc>
+            <date from="300" to="400">iv AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P5A">
+        <catDesc>
+            <date from="400" to="500">v AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P6A">
+        <catDesc>
+            <date from="500" to="600">vi AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P7A">
+        <catDesc>
+            <date from="600" to="700">vii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P8-7B">
+        <catDesc>
+            <date from="-800" to="-600">viii-vii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P7-6B">
+        <catDesc>
+            <date from="-700" to="-500">vii-vi BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P6-5B">
+        <catDesc>
+            <date from="-600" to="-400">vi-v BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P5-4B">
+        <catDesc>
+            <date from="-500" to="-300">v-iv BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P4-3B">
+        <catDesc>
+            <date from="-400" to="-200">iv-iii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P3-2B">
+        <catDesc>
+            <date from="-300" to="-100">iii-ii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P2-1B">
+        <catDesc>
+            <date from="-200" to="0">ii-i BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P1B-1A">
+        <catDesc>
+            <date from="-100" to="100">i BC/AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P1-2A">
+        <catDesc>
+            <date from="0" to="200">i-ii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P2-3A">
+        <catDesc>
+            <date from="100" to="300">ii-iii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P2-4A">
+        <catDesc>
+            <date from="100" to="400">ii-iv AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P3-4A">
+        <catDesc>
+            <date from="200" to="400">iii-iv AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P4-5A">
+        <catDesc>
+            <date from="300" to="500">iv-v AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P5-6A">
+        <catDesc>
+            <date from="400" to="600">v-vi AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P6-7A">
+        <catDesc>
+            <date from="500" to="700">vi-vii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P8_7B">
+        <catDesc>
+            <date from="-725" to="-675">viii/vii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P7_6B">
+        <catDesc>
+            <date from="-625" to="-575">vii/vi BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P6_5B">
+        <catDesc>
+            <date from="-525" to="-475">vi/v BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P5_4B">
+        <catDesc>
+            <date from="-425" to="-375">v/iv BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P4_3B">
+        <catDesc>
+            <date from="-325" to="-275">iv/iii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P3_2B">
+        <catDesc>
+            <date from="-225" to="-175">iii/ii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P2_1B">
+        <catDesc>
+            <date from="-125" to="-75">ii/i BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="P1B_1A">
+        <catDesc>
+            <date from="-25" to="25">i BC/i AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P1_2A">
+        <catDesc>
+            <date from="75" to="125">i/ii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P2_3A">
+        <catDesc>
+            <date from="175" to="225">i/ii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P3_4A">
+        <catDesc>
+            <date from="275" to="325">iii/iv AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P4_5A">
+        <catDesc>
+            <date from="375" to="425">iv/v AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P5_6A">
+        <catDesc>
+            <date from="475" to="525">v/vi AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="P6_7A">
+        <catDesc>
+            <date from="575" to="625">vi/vii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF8B">
+        <catDesc>
+            <date from="-799" to="-750">f.viii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF7B">
+        <catDesc>
+            <date from="-699" to="-650">f.vii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF6B">
+        <catDesc>
+            <date from="-599" to="-550">f.vi BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF5B">
+        <catDesc>
+            <date from="-499" to="-450">f.v BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF4B">
+        <catDesc>
+            <date from="-399" to="-350">f.iv BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF3B">
+        <catDesc>
+            <date from="-299" to="-250">f.iii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF2B">
+        <catDesc>
+            <date from="-199" to="-150">f.ii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF1B">
+        <catDesc>
+            <date from="-99" to="-50">f.i BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF1A">
+        <catDesc>
+            <date from="1" to="50">f.i AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF2A">
+        <catDesc>
+            <date from="101" to="150">f.ii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF3A">
+        <catDesc>
+            <date from="201" to="250">f.iii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF4A">
+        <catDesc>
+            <date from="301" to="350">f.iv AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF5A">
+        <catDesc>
+            <date from="401" to="450">f.v AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF6A">
+        <catDesc>
+            <date from="501" to="550">f.vi AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PF7A">
+        <catDesc>
+            <date from="601" to="650">f.vii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM8B">
+        <catDesc>
+            <date from="-775" to="-725">m.viii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM7B">
+        <catDesc>
+            <date from="-675" to="-625">m.vii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM6B">
+        <catDesc>
+            <date from="-575" to="-525">m.vi BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM5B">
+        <catDesc>
+            <date from="-475" to="-425">m.v BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM4B">
+        <catDesc>
+            <date from="-375" to="-325">m.iv BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM3B">
+        <catDesc>
+            <date from="-275" to="-225">m.iii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM2B">
+        <catDesc>
+            <date from="-175" to="-125">m.ii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM1B">
+        <catDesc>
+            <date from="-75" to="-25">m.i BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM1A">
+        <catDesc>
+            <date from="25" to="75">m.i AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM2A">
+        <catDesc>
+            <date from="125" to="175">m.ii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM3A">
+        <catDesc>
+            <date from="225" to="275">m.iii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM4A">
+        <catDesc>
+            <date from="325" to="375">m.iv AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM5A">
+        <catDesc>
+            <date from="425" to="475">m.v AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PM6A">
+        <catDesc>
+            <date from="525" to="575">m.vi AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS8B">
+        <catDesc>
+            <date from="-750" to="-700">s.viii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS7B">
+        <catDesc>
+            <date from="-650" to="-600">s.vii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS6B">
+        <catDesc>
+            <date from="-550" to="-500">s.vi BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS5B">
+        <catDesc>
+            <date from="-450" to="-400">s.v BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS4B">
+        <catDesc>
+            <date from="-350" to="-300">s.iv BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS3B">
+        <catDesc>
+            <date from="-250" to="-200">s.iii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS2B">
+        <catDesc>
+            <date from="-150" to="-100">s.ii BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS1B">
+        <catDesc>
+            <date from="-50" to="0">s.i BC</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS1A">
+        <catDesc>
+            <date from="51" to="100">s.i AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS2A">
+        <catDesc>
+            <date from="151" to="200">s.ii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS3A">
+        <catDesc>
+            <date from="251" to="300">s.iii AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS4A">
+        <catDesc>
+            <date from="351" to="400">s.iv AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS5A">
+        <catDesc>
+            <date from="451" to="500">s.v AD</date>
+        </catDesc>
+    </category>
+    <category xml:id="PS6A">
+        <catDesc>
+            <date from="551" to="600">s.vi AD</date>
+        </catDesc>
+    </category>
+</taxonomy>

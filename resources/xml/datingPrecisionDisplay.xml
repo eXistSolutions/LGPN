@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option value="period">period</option>
+    <option value="exact"/>
+    <option value="circa">C</option>
+    <option value="before">B</option>
+    <option value="after">A</option>
+    <option value="alternative">or</option>
+    <option value="other">other</option>
+    <option value="import">*import</option>
+</data>

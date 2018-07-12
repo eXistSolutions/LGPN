@@ -2,13 +2,53 @@ xquery version "3.0";
 
 module namespace app="http://lgpn.classics.ox.ac.uk/apps/lgpn/templates";
 
-declare namespace tei="http://www.tei-c.org/ns/1.0";
-
 import module namespace templates="http://exist-db.org/xquery/templates" ;
 import module namespace config="http://lgpn.classics.ox.ac.uk/apps/lgpn/config" at "config.xqm";
+import module namespace proof="http://lgpn.classics.ox.ac.uk/apps/lgpn/proofing" at "proofing.xql";
 import module namespace functx = "http://www.functx.com";
 import module namespace i18n="http://exist-db.org/xquery/i18n/templates" at "i18n-templates.xql"; 
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
+
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+
+declare
+    %templates:wrap
+function app:person-proof($node as node(), $model as map(*)) {
+    
+let $name:= request:get-parameter('name', 'Ἀλέξανδρος')
+
+let $persons := collection($config:persons-root||'/V6')//tei:nym[@nymRef=$name]/ancestor::tei:person
+let $place-keys := distinct-values($persons//tei:state[@type='location']/tei:placeName/@key)
+let $places:= doc($config:temp-root || "/nestedPlaces.xml")//id($place-keys)
+
+let $top-places := proof:top-places($places, $place-keys)
+
+return 
+    <div>
+        <h1>{$name}</h1>
+    {
+        proof:placeSummary($top-places, $persons, $places, $place-keys, 1)
+    }
+    </div>
+};
+
+declare
+    %templates:wrap
+function app:proofing($node as node(), $model as map(*)) {
+    
+
+let $nyms := distinct-values(collection($config:persons-root||'/V6')//tei:nym/@nymRef)
+
+return
+    <ul>
+        {
+for $name in $nyms
+order by $name
+
+return <li><a href="proofPerson.html?name={$name}">{$name}</a></li>
+}
+</ul>
+};
 
 declare
 %templates:default("lang", "en") 
@@ -89,6 +129,7 @@ function app:search($node as node(), $model as map(*), $pname as xs:string?, $pl
         else ()
         
     let $query-string := app:prepare-query($node, $model, $ref)?query-string
+    let $c:=console:log('prep qs ' || $query-string)
 
     let $result :=
         if ($place) then
@@ -102,7 +143,7 @@ function app:search($node as node(), $model as map(*), $pname as xs:string?, $pl
             let $ref := "#" || $nref
             return
                 collection($config:volumes-root)//tei:persName[@nymRef=$ref]/parent::tei:person
-        else if (exists($pname)) then
+        else if (exists($ref)) then
             if ($query-string) then util:eval($query-string) else () 
         else
             ()
@@ -123,12 +164,15 @@ declare function app:prepare-query($node as node(), $model as map(*), $ref as xs
     let $placePredicate := app:placePredicate()
     let $datePredicate := app:datePredicate()
     let $genderPredicate := app:genderPredicate()
-    let $nymPredicate := if ($ref) then '[@nymRef="' || $ref || '"]' else ()
+    let $nymPredicate := if (exists($ref)) then '[@nymRef="' || $ref || '"]' else ()
     
     let $predicate-string :=    $placePredicate || $datePredicate || $genderPredicate
     
     let $query-string := 
             'collection("' || $config:volumes-root || '")//tei:persName' || $nymPredicate || '/parent::tei:person' || $predicate-string
+            
+    let $c:=console:log('qs ' || $query-string)
+    
     return map { "query-string" := $query-string }
 };
 
@@ -191,6 +235,8 @@ function app:show-results($node as node(), $model as map(*)) {
                 <td class="col-md-2">{string-join($person/tei:bibl/string(), '; ')}</td>
                 <td class="col-md-2">{string-join($person//tei:state/string(), '; ')}</td>
             </tr>
+    else if (exists($model?query-string)) then
+        <tr><td>No results found. Please enter a different query...</td></tr>
     else
         <tr><td>Please enter a query...</td></tr>
 };

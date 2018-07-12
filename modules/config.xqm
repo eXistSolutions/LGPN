@@ -12,7 +12,7 @@ declare namespace templates="http://exist-db.org/xquery/templates";
 declare namespace repo="http://exist-db.org/xquery/repo";
 declare namespace expath="http://expath.org/ns/pkg";
 
-declare variable $config:dba-credentials := ("admin", "$impl3");
+declare variable $config:dba-credentials := ("admin", "TtncWXqJcp2t4HiC");
 
 (: 
     Determine the application root collection from the current module load path.
@@ -48,6 +48,9 @@ declare variable $config:auxiliary-root := $config:volumes-root || "/auxiliary";
 
 (:~ To store bibliographical records :)
 declare variable $config:references-root := $config:auxiliary-root || "/references";
+
+(:~ To store computed records for caching/performance reasons:)
+declare variable $config:temp-root := concat($config:auxiliary-root, "/temp");
 
 declare variable $config:repo-descriptor := doc(concat($config:app-root, "/repo.xml"))/repo:meta;
 
