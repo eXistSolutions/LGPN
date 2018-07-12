@@ -18,7 +18,7 @@ declare function local:place-ancestors($id, $cert) {
 };
 
 let $data := request:get-parameter('query', 'Tri')
-            let $constituents :=  $config:places//tei:placeName[not(@subtype='minor')][contains(lower-case(.), lower-case($data))]
+            let $constituents :=  $config:places//tei:placeName[not(@subtype='minor')][contains(replace(lower-case(normalize-unicode(., "NFD")), "[\p{M}\p{Sk}]", ""), replace(lower-case(normalize-unicode($data, "NFD")), "[\p{M}\p{Sk}]", ""))]
             return
             <result>
                 <total>{count($constituents)}</total>

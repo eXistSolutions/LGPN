@@ -13,8 +13,8 @@ declare option output:media-type "text/javascript";
 
 let $data := request:get-parameter('query', '')
             let $constituents :=  
-            collection($config:persons-root)//tei:nym[starts-with(@nymRef, $data)] 
-            |  
+                collection($config:persons-root)//tei:nym[starts-with(replace(lower-case(normalize-unicode(@nymRef, "NFD")), "[\p{M}\p{Sk}]", ""), replace(lower-case(normalize-unicode($data, "NFD")), "[\p{M}\p{Sk}]", ""))]
+                |  
                 collection($config:persons-root)//id($data)//tei:nym[1]
             return
             <result>
@@ -23,9 +23,9 @@ let $data := request:get-parameter('query', '')
                 
                     let $parent_id := $m/root()//tei:relation[@name="child"][1]/@passive
                     let $parent := collection($config:persons-root)//id($parent_id)//tei:nym/@nymRef
-                    let $place_id := $m/root()/tei:state/tei:placeName[1]/@key
+                    let $place_id := $m/root()//tei:state/tei:placeName[1]/@key
                     let $place := if($place_id) then $config:places//tei:place[@xml:id=$place_id]/tei:placeName[1] else ()
-                    let $ref := $m/root()//tei:bibl[@type='primary'][1]/tei:ref
+                    let $ref := ($m/root()//tei:bibl[@type='primary'][1]/tei:ref, $m/root()//tei:bibl[@type='auxiliary'][1]/tei:ref)[1]
                     let $source := $ref/@target || ' ' || $ref/string()
                     let $date :=  xmldb:last-modified(util:collection-name($m), util:document-name($m))
 
